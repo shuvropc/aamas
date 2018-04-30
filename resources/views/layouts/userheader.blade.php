@@ -320,7 +320,7 @@
                                 </li>
                                 <li><a target="_blank" href="{{route('men.homepage')}}">MEN </a></li>
                                 <li><a target="_blank" href="{{route('women.homepage')}}">WOMEN</a></li>
-                                <li><a target="_blank" href="electronics/index.html">ELECTRONICS</a></li>
+                                <li><a target="_blank" href="{{route('electronics.homepage')}}">ELECTRONICS</a></li>
                                 <li><a href="product-details-2.html">SHOES</a></li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="blog.html">BLOG <i class="fa fa-angle-down customColor"></i></a>
