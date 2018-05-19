@@ -68,7 +68,7 @@
                                 <!--</li>-->
                                 <li>
                                     <div class="dropdown">
-                                        <a class="cd-dropdown-trigger" href="#0">Shop</a>
+                                        <a data-toggle="dropdown" class="cd-dropdown-trigger dropdown-toggle" href="#0">Shop</a>
                                         <nav class="cd-dropdown">
                                             <h2>Title</h2>
                                             <a href="#0" class="cd-close">Close</a>
@@ -320,7 +320,7 @@
                                 </li>
                                 <li><a target="_blank" href="{{route('men.homepage')}}">MEN </a></li>
                                 <li><a target="_blank" href="{{route('women.homepage')}}">WOMEN</a></li>
-                                <li><a target="_blank" href="{{route('electronics.homepage')}}">ELECTRONICS</a></li>
+                                <li><a target="_blank" href="electronics/index.html">ELECTRONICS</a></li>
                                 <li><a href="product-details-2.html">SHOES</a></li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="blog.html">BLOG <i class="fa fa-angle-down customColor"></i></a>

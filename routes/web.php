@@ -23,5 +23,3 @@ Route::get('/searchresults','ProductController@searchResult')->name('checkout');
 Route::get('/men','MenController@index')->name('men.homepage');
 
 Route::get('/women','WomenController@index')->name('women.homepage');
-
-Route::get('electronics','ElectronicsController@index')->name('electronics.homepage');

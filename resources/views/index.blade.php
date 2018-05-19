@@ -63,7 +63,7 @@
                                     <h2 class="font-third font-weight-light text-uppercase color-main">FOR WOMEN</h2>
                                     <p class="font-additional font-weight-bold text-uppercase color-main line-text line-text_white">SPRING COLLECTION</p>
                                 </div>
-                                <a href="#">View more</a>
+                                <a href="{{route('women.homepage')}}">View more</a>
                             </figcaption>
                         </figure>
                     </li>
@@ -87,7 +87,7 @@
                                     <h2 class="font-third font-weight-light text-uppercase color-main">FOR MEN</h2>
                                     <p class="font-additional font-weight-bold text-uppercase color-main line-text line-text_white">TRENDS 2015</p>
                                 </div>
-                                <a href="#">View more</a>
+                                <a href="{{route('men.homepage')}}">View more</a>
                             </figcaption>
                         </figure>
                     </li>
