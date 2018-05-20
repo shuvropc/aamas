@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/index','HomeController@index')->name('homepage');
+Route::get('/','HomeController@index')->name('homepage');
 
 Route::get('/cart','CartController@cart')->name('cart');
 
