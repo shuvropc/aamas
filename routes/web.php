@@ -25,5 +25,9 @@ Route::get('/men','MenController@index')->name('men.homepage');
 Route::get('/women','WomenController@index')->name('women.homepage');
 
 Route::get('/api','ApiController@index')->name('api');
+
 Route::get('/api/getallproducts','ApiController@getAllProducts')->name('getAllProducts.api');
+
 Route::get('/api/getproduct/{id}','ApiController@getProduct')->name('getProduct.api');
+
+Route::get('/admin','AdminController@index')->name('admin');
