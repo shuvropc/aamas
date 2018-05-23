@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Philbert I Fast build Admin dashboard for any platform</title>
-    <meta name="description" content="Philbert is a Dashboard & Admin Site Responsive Template by hencework." />
-    <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Philbert Admin, Philbertadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
-    <meta name="author" content="hencework"/>
+    <title>Aamas Admin Dashboard</title>
+    <meta name="description" content="Admin Dashboard" />
+    <meta name="author" content="Asif Tanim"/>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
@@ -20,6 +19,15 @@
 
     <link href="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
 
+    <!-- bootstrap-select CSS -->
+    <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Bootstrap Switches CSS -->
+    <link href="vendors/bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- switchery CSS -->
+    <link href="vendors/bower_components/switchery/dist/switchery.min.css" rel="stylesheet" type="text/css"/>
+
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -30,7 +38,7 @@
     <div class="la-anim-1"></div>
 </div>
 <!-- /Preloader -->
-<div class="wrapper theme-1-active pimary-color-green">
+<div class="wrapper theme-3-active pimary-color-green">
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="mobile-only-brand pull-left">
@@ -351,10 +359,10 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="dashboard_dr" class="collapse collapse-level-1">
                     <li>
-                        <a class="active-page" href="index.html">Analytical</a>
+                        <a href="index.html">Analytical</a>
                     </li>
                     <li>
                         <a href="index2.html">Demographic</a>
@@ -377,10 +385,10 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span></div><div class="pull-right"><span class="label label-success">hot</span></div><div class="clearfix"></div></a>
+                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span></div><div class="pull-right"><span class="label label-success">hot</span></div><div class="clearfix"></div></a>
                 <ul id="ecom_dr" class="collapse collapse-level-1">
                     <li>
-                        <a href="e-commerce.html">Dashboard</a>
+                        <a class="active-page" href="e-commerce.html">Dashboard</a>
                     </li>
                     <li>
                         <a href="product.html">Products</a>
@@ -600,10 +608,10 @@
                         <a href="data-table.html">Data Table</a>
                     </li>
                     <li>
-                        <a href="export-table.html"><span class="pull-right"><span class="label label-success">New</span></span>Export Table</a>
+                        <a href="export-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>Export Table</a>
                     </li>
                     <li>
-                        <a href="responsive-data-table.html"><span class="pull-right"><span class="label label-success">New</span></span>RSPV DataTable</a>
+                        <a href="responsive-data-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>RSPV DataTable</a>
                     </li>
                     <li>
                         <a href="responsive-table.html">Responsive Table</a>
@@ -662,7 +670,7 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-google-pages mr-20"></i><span class="right-nav-text">Special Pages</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="pages_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
-                        <a href="blank.html">Blank Page</a>
+                        <a class="active" href="blank.html">Blank Page</a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth_dr">Authantication pages<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
@@ -1173,87 +1181,150 @@
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid pt-25">
+
             <!-- Row -->
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-default card-view pa-0">
+                <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                    <div class="panel panel-default card-view">
+                        <div class="panel-heading">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">sales analytics</h6>
+                            </div>
+                            <div class="pull-right">
+                                <div class="pull-left form-group mb-0 sm-bootstrap-select mr-15">
+                                    <select class="selectpicker" data-style="form-control">
+                                        <option selected value='1'>Janaury</option>
+                                        <option value='2'>February</option>
+                                        <option value='3'>March</option>
+                                        <option value='4'>April</option>
+                                        <option value='5'>May</option>
+                                        <option value='6'>June</option>
+                                        <option value='7'>July</option>
+                                        <option value='8'>August</option>
+                                        <option value='9'>September</option>
+                                        <option value='10'>October</option>
+                                        <option value='11'>November</option>
+                                        <option value='12'>December</option>
+                                    </select>
+                                </div>
+                                <a href="#" class="pull-left inline-block full-screen">
+                                    <i class="zmdi zmdi-fullscreen"></i>
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <div class="sm-data-box">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-                                                <span class="txt-dark block counter"><span class="counter-anim">914,001</span></span>
-                                                <span class="weight-500 uppercase-font block font-13">visits</span>
-                                            </div>
-                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
-                                                <i class="icon-user-following data-right-rep-icon txt-light-grey"></i>
-                                            </div>
+                            <div class="panel-body">
+                                <ul class="flex-stat mb-10 ml-15">
+                                    <li class="text-left auto-width mr-60">
+                                        <span class="block">Traffic</span>
+                                        <span class="block txt-dark weight-500 font-18"><span class="counter-anim">3,24,222</span></span>
+                                        <span class="block txt-success mt-5">
+												<i class="zmdi zmdi-caret-up pr-5 font-20"></i><span class="weight-500">+15%</span>
+											</span>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                    <li class="text-left auto-width mr-60">
+                                        <span class="block">Orders</span>
+                                        <span class="block txt-dark weight-500 font-18"><span class="counter-anim">1,23,432</span></span>
+                                        <span class="block txt-success mt-5">
+												<i class="zmdi zmdi-caret-up pr-5 font-20"></i><span class="weight-500">+4%</span>
+											</span>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                    <li class="text-left auto-width">
+                                        <span class="block">Revenue</span>
+                                        <span class="block txt-dark weight-500 font-18">$<span class="counter-anim">324,222</span></span>
+                                        <span class="block txt-danger mt-5">
+												<i class="zmdi zmdi-caret-down pr-5 font-20"></i><span class="weight-500">-5%</span>
+											</span>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                </ul>
+                                <div id="chart_1" class="morris-chart" style="height:345px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="panel panel-default card-view panel-refresh">
+                        <div class="refresh-container">
+                            <div class="la-anim-1"></div>
+                        </div>
+                        <div class="panel-heading">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">top 5 products</h6>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body row">
+                                <div class="col-sm-6 pa-0">
+                                    <canvas id="chart_7" height="164"></canvas>
+                                </div>
+                                <div class="col-sm-6 pr-0 pt-25">
+                                    <div class="label-chatrs">
+                                        <div class="mb-5">
+                                            <span class="clabels inline-block bg-yellow mr-5"></span>
+                                            <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Paleo Bars</span>
+                                        </div>
+                                        <div class="mb-5">
+                                            <span class="clabels inline-block bg-pink mr-5"></span>
+                                            <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Bow Ties</span>
+                                        </div>
+                                        <div class="mb-5">
+                                            <span class="clabels inline-block bg-blue mr-5"></span>
+                                            <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Pocket Squares</span>
+                                        </div>
+                                        <div class="mb-5">
+                                            <span class="clabels inline-block bg-red mr-5"></span>
+                                            <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Wood Sunglasses</span>
+                                        </div>
+                                        <div class="">
+                                            <span class="clabels inline-block bg-green mr-5"></span>
+                                            <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Leggings</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-default card-view pa-0">
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <div class="sm-data-box">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-                                                <span class="txt-dark block counter"><span class="counter-anim">46.41</span>%</span>
-                                                <span class="weight-500 uppercase-font block">bounce rate</span>
-                                            </div>
-                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
-                                                <i class="icon-control-rewind data-right-rep-icon txt-light-grey"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="panel panel-default card-view sm-data-box-3">
+                        <div class="panel-heading">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">conversion rate</h6>
                             </div>
+                            <div class="clearfix"></div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-default card-view pa-0">
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <div class="sm-data-box">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-                                                <span class="txt-dark block counter"><span class="counter-anim">4,054,876</span></span>
-                                                <span class="weight-500 uppercase-font block">pageviews</span>
-                                            </div>
-                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
-                                                <i class="icon-layers data-right-rep-icon txt-light-grey"></i>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="panel-body">
+                                <div class="col-sm-6 pa-0">
+										<span id="pie_chart_4" class="easypiechart" data-percent="33">
+											<span class="percent block txt-dark weight-500"></span>
+											<span class="block txt-success text-center">
+												<i class="zmdi zmdi-caret-up pr-5 font-20"></i><span class="weight-500">+33%</span>
+											</span>
+										</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-default card-view pa-0">
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <div class="sm-data-box">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-                                                <span class="txt-dark block counter"><span class="counter-anim">46.43</span>%</span>
-                                                <span class="weight-500 uppercase-font block">growth rate</span>
-                                            </div>
-                                            <div class="col-xs-6 text-center  pl-0 pr-0 pt-25  data-wrap-right">
-                                                <div id="sparkline_4" style="width: 100px; overflow: hidden; margin: 0px auto;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-sm-6 pr-0">
+                                    <ul class="flex-stat mb-15">
+                                        <li class="text-left block no-float full-width mb-15">
+                                            <span class="block">Cart Abandonment</span>
+                                            <span class="block txt-dark weight-500  font-18"><span class="counter-anim">73</span>%</span>
+                                            <span class="block txt-success pull-left mt-5">
+													<i class="zmdi zmdi-caret-up pr-5 font-20 pull-left"></i><span class="weight-500 pull-left">+15%</span>
+												</span>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                        <li class="text-left block no-float full-width">
+                                            <span class="block">Revenue Left</span>
+                                            <span class="block txt-dark weight-500  font-18">$<span class="counter-anim">12,432</span></span>
+                                            <span class="block txt-success pull-left mt-5">
+													<i class="zmdi zmdi-caret-up pr-5 font-20 pull-left"></i><span class="weight-500 pull-left">+4%</span>
+												</span>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -1264,78 +1335,49 @@
 
             <!-- Row -->
             <div class="row">
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                    <div class="panel panel-default card-view">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="panel panel-default card-view panel-refresh">
+                        <div class="refresh-container">
+                            <div class="la-anim-1"></div>
+                        </div>
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-dark">user statistics</h6>
-                            </div>
-                            <div class="pull-right">
-									<span class="no-margin-switcher">
-										<input type="checkbox" checked id="morris_switch"  class="js-switch" data-color="#2ecd99" data-secondary-color="#dedede" data-size="small"/>
-									</span>
+                                <h6 class="panel-title txt-dark">earnings by item type</h6>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body">
-                                <div id="area_chart" class="morris-chart" style="height:293px;"></div>
-                                <ul class="flex-stat mt-40">
-                                    <li>
-                                        <span class="block">Weekly Users</span>
-                                        <span class="block txt-dark weight-500 font-18"><span class="counter-anim">3,24,222</span></span>
-                                    </li>
-                                    <li>
-                                        <span class="block">Monthly Users</span>
-                                        <span class="block txt-dark weight-500 font-18"><span class="counter-anim">1,23,432</span></span>
-                                    </li>
-                                    <li>
-                                        <span class="block">Trend</span>
-                                        <span class="block">
-												<i class="zmdi zmdi-trending-up txt-success font-24"></i>
-											</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-default card-view">
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body sm-data-box-1">
-                                <span class="uppercase-font weight-500 font-14 block text-center txt-dark">customer satisfaction</span>
-                                <div class="cus-sat-stat weight-500 txt-success text-center mt-5">
-                                    <span class="counter-anim">93.13</span><span>%</span>
+                            <div class="panel-body row">
+                                <div class="col-sm-6 pa-0">
+                                    <canvas id="chart_8" height="185"></canvas>
                                 </div>
-                                <div class="progress-anim mt-20">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success wow animated progress-animated" role="progressbar" aria-valuenow="93.12" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="col-sm-6 pr-0 pt-30">
+                                    <div class="label-chatrs">
+                                        <div class="mb-5">
+                                            <span class="clabels circular-clabels inline-block bg-yellow mr-5"></span>
+                                            <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Paleo Bars</span>
+                                        </div>
+                                        <div class="mb-5">
+                                            <span class="clabels circular-clabels inline-block bg-green mr-5"></span>
+                                            <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Bow Ties</span>
+                                        </div>
+                                        <div class="mb-5">
+                                            <span class="clabels circular-clabels inline-block bg-blue mr-5"></span>
+                                            <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Pocket Squares</span>
+                                        </div>
+                                        <div class="">
+                                            <span class="clabels circular-clabels inline-block bg-red mr-5"></span>
+                                            <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Wood Sunglasses</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <ul class="flex-stat mt-5">
-                                    <li>
-                                        <span class="block">Previous</span>
-                                        <span class="block txt-dark weight-500 font-15">79.82</span>
-                                    </li>
-                                    <li>
-                                        <span class="block">% Change</span>
-                                        <span class="block txt-dark weight-500 font-15">+14.29</span>
-                                    </li>
-                                    <li>
-                                        <span class="block">Trend</span>
-                                        <span class="block">
-												<i class="zmdi zmdi-trending-up txt-success font-20"></i>
-											</span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-dark">browser stats</h6>
+                                <h6 class="panel-title txt-dark">Top Keywords</h6>
                             </div>
                             <div class="pull-right">
                                 <a href="#" class="pull-left inline-block mr-15">
@@ -1348,90 +1390,268 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body">
-                                <div>
-										<span class="pull-left inline-block capitalize-font txt-dark">
-											google chrome
-										</span>
-                                    <span class="label label-warning pull-right">50%</span>
-                                    <div class="clearfix"></div>
-                                    <hr class="light-grey-hr row mt-10 mb-10"/>
-                                    <span class="pull-left inline-block capitalize-font txt-dark">
-											mozila firefox
-										</span>
-                                    <span class="label label-danger pull-right">10%</span>
-                                    <div class="clearfix"></div>
-                                    <hr class="light-grey-hr row mt-10 mb-10"/>
-                                    <span class="pull-left inline-block capitalize-font txt-dark">
-											Internet explorer
-										</span>
-                                    <span class="label label-success pull-right">30%</span>
-                                    <div class="clearfix"></div>
-                                    <hr class="light-grey-hr row mt-10 mb-10"/>
-                                    <span class="pull-left inline-block capitalize-font txt-dark">
-											safari
-										</span>
-                                    <span class="label label-primary pull-right">10%</span>
-                                    <div class="clearfix"></div>
+                            <div class="panel-body row pa-0">
+                                <div class="table-wrap sm-data-box-2">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped mb-0">
+                                            <thead>
+                                            <tr>
+                                                <th>Keyword</th>
+                                                <th>Revenue</th>
+                                                <th>Conversion Rate</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>adidas</td>
+                                                <td>$49,897</td>
+                                                <td>8.61%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>men's park</td>
+                                                <td>$15,478</td>
+                                                <td>2.10%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>nutiva coconut oil</td>
+                                                <td>$23,546</td>
+                                                <td>4.35%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>cart software</td>
+                                                <td>$36,589</td>
+                                                <td>1.58%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>where to buy</td>
+                                                <td>$55,467</td>
+                                                <td>56%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>pink adhesive</td>
+                                                <td>$71,245</td>
+                                                <td>47.6%</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-default card-view panel-refresh">
-                        <div class="refresh-container">
-                            <div class="la-anim-1"></div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="panel panel-default card-view pt-0">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box bg-white">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-left pl-0 pr-0 data-wrap-left">
+                                                <span class="txt-dark block counter">$<span class="counter-anim">15,678</span></span>
+                                                <span class="block"><span class="weight-500 uppercase-font txt-grey font-13">Visits</span><i class="zmdi zmdi-caret-down txt-danger font-21 ml-5 vertical-align-middle"></i></span>
+                                            </div>
+                                            <div class="col-xs-6 text-left  pl-0 pr-0 pt-25 data-wrap-right">
+                                                <div id="sparkline_4" style="width: 100px; overflow: hidden; margin: 0px auto;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="panel panel-default card-view pt-0">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box bg-white">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-left pl-0 pr-0 data-wrap-left">
+                                                <span class="txt-dark block counter"><span class="counter-anim">46.41</span>%</span>
+                                                <span class="block"><span class="weight-500 uppercase-font txt-grey font-13">Bounce Rate</span><i class="zmdi zmdi-caret-up txt-success font-21 ml-5 vertical-align-middle"></i></span>
+                                            </div>
+                                            <div class="col-xs-6 text-left  pl-0 pr-0 pt-25 data-wrap-right">
+                                                <div id="sparkline_5" style="width: 100px; overflow: hidden; margin: 0px auto;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default card-view pt-0">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box bg-white">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-left pl-0 pr-0 data-wrap-left">
+                                                <span class="txt-dark block counter"><span class="counter-anim">142,357</span></span>
+                                                <span class="block"><span class="weight-500 uppercase-font txt-grey font-13">Products</span><i class="zmdi zmdi-caret-down txt-danger font-21 ml-5 vertical-align-middle"></i></span>
+                                            </div>
+                                            <div class="col-xs-6 text-left  pl-0 pr-0 pt-25 data-wrap-right">
+                                                <div id="sparkline_6" style="width: 100px; overflow: hidden; margin: 0px auto;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default card-view">
+                        <div class="panel-wrapper collapse in">
+                            <div  class="panel-body">
+                                <!-- START carousel-->
+                                <div id="testimonial_slider" data-ride="carousel" class="carousel slide testimonial-slider-wrap text-slider">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#testimonial_slider" data-slide-to="0" class="active"></li>
+                                        <li data-target="#testimonial_slider" data-slide-to="1"></li>
+                                        <li data-target="#testimonial_slider" data-slide-to="2"></li>
+                                    </ol>
+                                    <div role="listbox" class="carousel-inner mb-50">
+                                        <div class="item active">
+                                            <div class="testimonial-wrap text-center  pl-30 pr-30">
+                                                <img class="img-circle" src="dist/img/user1.png" alt="First slide image">
+                                                <p class="mt-20 font-16">"Activist, criteria planned giving dignity, committed democratizing the global financial system progressive."</p>
+                                                <span class="testi-pers-name block mt-15  txt-dark capitalize-font head-font">
+														Jens Brincker
+													</span>
+                                                <span class="testi-pers-desg block capitalize-font">
+														Interaction Designer
+													</span>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="testimonial-wrap text-center  pl-30 pr-30">
+                                                <img class="img-circle" src="dist/img/user2.png" alt="First slide image">
+                                                <p class="mt-20 font-16">"Nelson Mandela equal opportunity change accelerate pathway to a better life invest our ambitions catalyst."</p>
+                                                <span class="testi-pers-name block mt-15  txt-dark capitalize-font head-font">
+														Mark Hay
+													</span>
+                                                <span class="testi-pers-desg block capitalize-font">
+														Interface Designer
+													</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="testimonial-wrap text-center  pl-30 pr-30">
+                                                <img class="img-circle" src="dist/img/user3.png" alt="First slide image">
+                                                <p class="pt-20 font-16">"Making progress contribution compassion Ford Foundation, cross-agency coordination Bill development."</p>
+                                                <span class="testi-pers-name block mt-15  txt-dark capitalize-font head-font">
+														Anthony Davie
+													</span>
+                                                <span class="testi-pers-desg block capitalize-font">
+														Project Manager
+													</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- END carousel-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                    <div class="panel panel-default border-panel  review-box card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-dark">Visit by Traffic Types</h6>
+                                <h6 class="panel-title txt-dark">recent reviews</h6>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="pull-left inline-block refresh mr-15">
-                                    <i class="zmdi zmdi-replay"></i>
-                                </a>
-                                <div class="pull-left inline-block dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Devices</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>General</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Referral</a></li>
-                                    </ul>
+                                <div class="form-group mb-0 sm-bootstrap-select">
+                                    <select class="selectpicker" data-style="form-control">
+                                        <option>Sort by Newest</option>
+                                        <option>Sort by Highest Rating</option>
+                                        <option>Sort by Lowest Rating</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body">
-                                <div>
-                                    <canvas id="chart_6" height="191"></canvas>
-                                </div>
-                                <hr class="light-grey-hr row mt-10 mb-15"/>
-                                <div class="label-chatrs">
-                                    <div class="">
-                                        <span class="clabels clabels-lg inline-block bg-blue mr-10 pull-left"></span>
-                                        <span class="clabels-text font-12 inline-block txt-dark capitalize-font pull-left"><span class="block font-15 weight-500 mb-5">44.46% organic</span><span class="block txt-grey">356 visits</span></span>
-                                        <div id="sparkline_1" class="pull-right" style="width: 100px; overflow: hidden; margin: 0px auto;"></div>
-                                        <div class="clearfix"></div>
+                            <div class="panel-body row pa-0">
+                                <div class="streamline">
+                                    <div class="sl-item">
+                                        <div class="sl-content">
+                                            <div class="per-rating inline-block pull-left">
+                                                <a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star-outline"></a>
+                                                <span class="inline-block">for Paleo Bars</span>
+                                            </div>
+                                            <a href="javascript:void(0);"  class=" pull-right txt-grey"><i class="zmdi zmdi-mail-reply"></i></a>
+                                            <div class="clearfix"></div>
+                                            <div class="inline-block pull-left">
+													<span class="reviewer font-13">
+														<span>By</span>
+														<a href="javascript:void(0)" class="inline-block capitalize-font  mb-5">Jens Brincker</a>
+													</span>
+                                                <span class="inline-block font-13  mb-5">11 day ago</span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <p class="mt-5">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr class="light-grey-hr row mt-10 mb-15"/>
-                                <div class="label-chatrs">
-                                    <div class="">
-                                        <span class="clabels clabels-lg inline-block bg-green mr-10 pull-left"></span>
-                                        <span class="clabels-text font-12 inline-block txt-dark capitalize-font pull-left"><span class="block font-15 weight-500 mb-5">5.54% Refrral</span><span class="block txt-grey">36 visits</span></span>
-                                        <div id="sparkline_2" class="pull-right" style="width: 100px; overflow: hidden; margin: 0px auto;"></div>
-                                        <div class="clearfix"></div>
+                                    <hr class="light-grey-hr"/>
+                                    <div class="sl-item">
+                                        <div class="sl-content">
+                                            <div class="per-rating inline-block pull-left">
+                                                <a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a>
+                                                <span class="inline-block">for Bow Ties</span>
+                                            </div>
+                                            <a href="javascript:void(0);"  class=" pull-right txt-grey"><i class="zmdi zmdi-mail-reply"></i></a>
+                                            <div class="clearfix"></div>
+                                            <div class="inline-block pull-left">
+													<span class="reviewer font-13">
+														<span>By</span>
+														<a href="javascript:void(0)" class="inline-block capitalize-font  mb-5">Madalyn Rascon</a>
+													</span>
+                                                <span class="inline-block font-13  mb-5">11 day ago</span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <p class="mt-5">Neque porro quisquam est qui dolorem ipsum quiipsum quia dolor sit amet.</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr class="light-grey-hr row mt-10 mb-15"/>
-                                <div class="label-chatrs">
-                                    <div class="">
-                                        <span class="clabels clabels-lg inline-block bg-yellow mr-10 pull-left"></span>
-                                        <span class="clabels-text font-12 inline-block txt-dark capitalize-font pull-left"><span class="block font-15 weight-500 mb-5">50% Other</span><span class="block txt-grey">245 visits</span></span>
-                                        <div id="sparkline_3" class="pull-right" style="width: 100px; overflow: hidden; margin: 0px auto;"></div>
-                                        <div class="clearfix"></div>
+                                    <hr class="light-grey-hr"/>
+                                    <div class="sl-item">
+                                        <div class="sl-content">
+                                            <div class="per-rating inline-block pull-left">
+                                                <a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star-outline"></a>
+                                                <span class="inline-block">for Pocket Squares</span>
+                                            </div>
+                                            <a href="javascript:void(0);"  class=" pull-right txt-grey"><i class="zmdi zmdi-mail-reply"></i></a>
+                                            <div class="clearfix"></div>
+                                            <div class="inline-block pull-left">
+													<span class="reviewer font-13">
+														<span>By</span>
+														<a href="javascript:void(0)" class="inline-block capitalize-font  mb-5">Evie Ono</a>
+													</span>
+                                                <span class="inline-block font-13  mb-5">13 day ago</span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <p class="mt-5">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur.ipsum quia dolor sit amet.</p>
+                                        </div>
+                                    </div>
+                                    <hr class="light-grey-hr"/>
+                                    <div class="sl-item">
+                                        <div class="sl-content">
+                                            <div class="per-rating inline-block pull-left">
+                                                <a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star"></a><a href="javascript:void(0);" class="zmdi zmdi-star-outline"></a>
+                                                <span class="inline-block">for Wood Sunglasses</span>
+                                            </div>
+                                            <a href="javascript:void(0);"  class=" pull-right txt-grey"><i class="zmdi zmdi-mail-reply"></i></a>
+                                            <div class="clearfix"></div>
+                                            <div class="inline-block pull-left">
+													<span class="reviewer font-13">
+														<span>By</span>
+														<a href="javascript:void(0)" class="inline-block capitalize-font  mb-5">Evie Ono</a>
+													</span>
+                                                <span class="inline-block font-13  mb-5">13 day ago</span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <p class="mt-5">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur.ipsum quia dolor sit amet, consectetur.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1443,123 +1663,22 @@
 
             <!-- Row -->
             <div class="row">
-                <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                <div class="col-lg-8 col-md-6 col-xs-12">
                     <div class="panel panel-default card-view panel-refresh">
                         <div class="refresh-container">
                             <div class="la-anim-1"></div>
                         </div>
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-dark">social campaigns</h6>
+                                <h6 class="panel-title txt-dark">Invoice List</h6>
                             </div>
                             <div class="pull-right">
+                                <a href="javascript:void(0)" class="pull-left btn btn-primary btn-xs mr-15">view all</a>
                                 <a href="#" class="pull-left inline-block refresh mr-15">
                                     <i class="zmdi zmdi-replay"></i>
                                 </a>
                                 <a href="#" class="pull-left inline-block full-screen mr-15">
                                     <i class="zmdi zmdi-fullscreen"></i>
-                                </a>
-                                <div class="pull-left inline-block dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Delete</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>New</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body row pa-0">
-                                <div class="table-wrap">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover mb-0">
-                                            <thead>
-                                            <tr>
-                                                <th>Campaign</th>
-                                                <th>Client</th>
-                                                <th>Changes</th>
-                                                <th>Budget</th>
-                                                <th>Status</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td><span class="txt-dark weight-500">Facebook</span></td>
-                                                <td>Beavis</td>
-                                                <td><span class="txt-success"><i class="zmdi zmdi-caret-up mr-10 font-20"></i><span>2.43%</span></span></td>
-                                                <td>
-                                                    <span class="txt-dark weight-500">$1478</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-primary">Active</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="txt-dark weight-500">Youtube</span></td>
-                                                <td>Felix</td>
-                                                <td><span class="txt-success"><i class="zmdi zmdi-caret-up mr-10 font-20"></i><span>1.43%</span></span></td>
-                                                <td>
-                                                    <span class="txt-dark weight-500">$951</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-danger">Closed</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="txt-dark weight-500">Twitter</span></td>
-                                                <td>Cannibus</td>
-                                                <td><span class="txt-danger"><i class="zmdi zmdi-caret-down mr-10 font-20"></i><span>-8.43%</span></span></td>
-                                                <td>
-                                                    <span class="txt-dark weight-500">$632</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-default">Hold</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="txt-dark weight-500">Spotify</span></td>
-                                                <td>Neosoft</td>
-                                                <td><span class="txt-success"><i class="zmdi zmdi-caret-up mr-10 font-20"></i><span>7.43%</span></span></td>
-                                                <td>
-                                                    <span class="txt-dark weight-500">$325</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-default">Hold</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="txt-dark weight-500">Instagram</span></td>
-                                                <td>Hencework</td>
-                                                <td><span class="txt-success"><i class="zmdi zmdi-caret-up mr-10 font-20"></i><span>9.43%</span></span></td>
-                                                <td>
-                                                    <span class="txt-dark weight-500">$258</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-primary">Active</span>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
-                    <div class="panel panel-default card-view panel-refresh">
-                        <div class="refresh-container">
-                            <div class="la-anim-1"></div>
-                        </div>
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 class="panel-title txt-dark">Advertising & Promotions</h6>
-                            </div>
-                            <div class="pull-right">
-                                <a href="#" class="pull-left inline-block refresh mr-15">
-                                    <i class="zmdi zmdi-replay"></i>
                                 </a>
                                 <div class="pull-left inline-block dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
@@ -1573,30 +1692,176 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body">
-                                <div>
-                                    <canvas id="chart_2" height="253"></canvas>
-                                </div>
-                                <div class="label-chatrs mt-30">
-                                    <div class="inline-block mr-15">
-                                        <span class="clabels inline-block bg-yellow mr-5"></span>
-                                        <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Active</span>
-                                    </div>
-                                    <div class="inline-block mr-15">
-                                        <span class="clabels inline-block bg-blue mr-5"></span>
-                                        <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Closed</span>
-                                    </div>
-                                    <div class="inline-block">
-                                        <span class="clabels inline-block bg-green mr-5"></span>
-                                        <span class="clabels-text font-12 inline-block txt-dark capitalize-font">Hold</span>
+                            <div class="panel-body row pa-0">
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
+                                        <table id="datable_1" class="table  display table-hover border-none">
+                                            <thead>
+                                            <tr>
+                                                <th>#Invoice</th>
+                                                <th>Description</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                                <th>issue date</th>
+                                                <th>due date</th>
+                                                <th>View</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <tr>
+                                                <td>#5012</td>
+                                                <td>System Architect</td>
+                                                <td>$205,500</td>
+                                                <td>
+                                                    <span class="label label-danger">unpaid</span>
+                                                </td>
+                                                <td>2011/04/25</td>
+                                                <td>2012/12/02</td>
+                                                <td>
+                                                    <a href="#">
+                                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#5013</td>
+                                                <td>Accountant</td>
+                                                <td>$205,500</td>
+                                                <td>
+                                                    <span class="label label-success">paid</span>
+                                                </td>
+                                                <td>2011/07/25</td>
+                                                <td>2012/12/02</td>
+                                                <td>
+                                                    <a href="#">
+                                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#5014</td>
+                                                <td>Junior Technical Author</td>
+                                                <td>$205,500</td>
+                                                <td>
+                                                    <span class="label label-warning">pending</span>
+                                                </td>
+                                                <td>2009/01/12</td>
+                                                <td>2012/12/02</td>
+                                                <td>
+                                                    <a href="#">
+                                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#5015</td>
+                                                <td>Senior Javascript Developer</td>
+                                                <td>$205,500</td>
+                                                <td>
+                                                    <span class="label label-success">paid</span>
+                                                </td>
+                                                <td>2012/03/29</td>
+                                                <td>2012/12/02</td>
+                                                <td>
+                                                    <a href="#">
+                                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#5010</td>
+                                                <td>Integration Specialist</td>
+                                                <td>$205,500</td>
+                                                <td>
+                                                    <span class="label label-success">paid</span>
+                                                </td>
+                                                <td>2010/10/14</td>
+                                                <td>2014/09/15</td>
+                                                <td>
+                                                    <a href="#">
+                                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#5011</td>
+                                                <td>Javascript Developer</td>
+                                                <td>$205,500</td>
+                                                <td>
+                                                    <span class="label label-success">paid</span>
+                                                </td>
+                                                <td>2009/09/15</td>
+                                                <td>2013/09/15</td>
+                                                <td>
+                                                    <a href="#">
+                                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="panel panel-default border-panel card-view">
+                        <div class="panel-heading">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">recent activity</h6>
+                            </div>
+                            <a class="txt-danger pull-right right-float-sub-text inline-block" href="javascript:void(0)"> clear all </a>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper task-panel collapse in">
+                            <div class="panel-body row pa-0">
+                                <div class="list-group mb-0">
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge transparent-badge badge-info capitalize-font">just now</span>
+                                        <i class="zmdi zmdi-calendar-check pull-left"></i><p class="pull-left">Calendar updated</p>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge transparent-badge badge-success capitalize-font">4 min</span>
+                                        <i class="zmdi zmdi-comment-alert pull-left"></i><p class=" pull-left">Commented on a post</p>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge transparent-badge badge-warning capitalize-font">23 min </span>
+                                        <i class="zmdi zmdi-truck pull-left"></i><p class=" pull-left">Order 392 shipped</p>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge transparent-badge badge-success capitalize-font">46 min</span>
+                                        <i class="zmdi zmdi-money pull-left"></i><p class=" pull-left">Invoice 653 has been paid</p>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge transparent-badge badge-danger capitalize-font">1 hr</span>
+                                        <i class="zmdi zmdi-account pull-left"></i><p class="pull-left">A new user has been added</p>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge transparent-badge badge-warning capitalize-font">just now</span>
+                                        <i class="zmdi zmdi-picture-in-picture pull-left"></i><p class=" pull-left">Finance report has been released</p>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge transparent-badge badge-success capitalize-font">1 hr</span>
+                                        <i class="zmdi zmdi-device-hub pull-left"></i><p class="pull-left">Web server hardware updated</p>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Row -->
+            <!-- /Row -->
         </div>
 
         <!-- Footer -->
@@ -1650,6 +1915,8 @@
 <!-- ChartJS JavaScript -->
 <script src="vendors/chart.js/Chart.min.js"></script>
 
+<!-- EasyPieChart JavaScript -->
+<script src="vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
 <!-- Morris Charts JavaScript -->
 <script src="vendors/bower_components/raphael/raphael.min.js"></script>
 <script src="vendors/bower_components/morris.js/morris.min.js"></script>
@@ -1658,9 +1925,12 @@
 <!-- Switchery JavaScript -->
 <script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
+<!-- Bootstrap Select JavaScript -->
+<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
-<script src="dist/js/dashboard-data.js"></script>
+<script src="dist/js/ecommerce-data.js"></script>
 </body>
 
 </html>
