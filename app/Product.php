@@ -20,4 +20,15 @@ class Product extends Model
         return DB::select($sql);
     }
 
+    public function Product($id){
+        $sql = "SELECT * FROM `products` 
+                INNER JOIN categories ON products.category_id = categories.id 
+                INNER JOIN vendors ON products.vendor_id = vendors.id
+                INNER JOIN details ON products.details_id = details.id
+                WHERE products.id = ".$id;
+
+
+        return DB::select($sql);
+    }
+
 }
