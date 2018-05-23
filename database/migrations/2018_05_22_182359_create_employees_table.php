@@ -24,7 +24,7 @@ class CreateEmployeesTable extends Migration
             $table->string('type');
 
             $table->unsignedInteger('vendor_id');
-            $table->foreign('vendor_id')->references('id')->on('vendor');
+            $table->foreign('vendor_id')->references('id')->on('vendors');
 
             $table->timestamps();
         });

@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string("shipping_address");
 
             $table->unsignedInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('product');
+            $table->foreign('product_id')->references('id')->on('products');
 
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
