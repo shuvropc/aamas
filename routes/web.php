@@ -14,20 +14,17 @@
 
 Route::get('/','HomeController@index')->name('homepage');
 
-Route::get('/cart','CartController@cart')->name('cart');
+//Route::get('/cart','CartController@cart')->name('cart');
 
 Route::get('/checkout','CheckoutController@checkout')->name('checkout');
 
-Route::get('/searchresults','ProductController@searchResult')->name('searchresults');
+//Route::get('/searchresults','ProductController@searchResult')->name('searchresults');
 
-Route::get('/men','MenController@index')->name('men.homepage');
 
-Route::get('/women','WomenController@index')->name('women.homepage');
-
-Route::get('/api','ApiController@index')->name('api');
-
-Route::get('/api/getallproducts','ApiController@getAllProducts')->name('getAllProducts.api');
-
-Route::get('/api/getproduct/{id}','ApiController@getProduct')->name('getProduct.api');
+//Route::get('/api','ApiController@index')->name('api');
+//
+//Route::get('/api/getallproducts','ApiController@getAllProducts')->name('getAllProducts.api');
+//
+//Route::get('/api/getproduct/{id}','ApiController@getProduct')->name('getProduct.api');
 
 Route::get('/admin','AdminController@index')->name('admin');
