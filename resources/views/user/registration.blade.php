@@ -15,33 +15,36 @@
                     <div lass="col-md-6 col-sm-6 create-new-account">
                         <h4 class="checkout-subtitle">Create a new account</h4>
                         <p class="text title-tag-line">Create your new account.</p>
-                        <form class="register-form outer-top-xs" role="form">
-                            <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail2">Email Address <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail2" >
-                            </div>
+                        <form class="register-form outer-top-xs" role="form" method="post">
+                            @csrf
+
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputEmail1">Name <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
+                                <input type="text" name="userName" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
                             </div>
+
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Phone Number <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
+                                <label class="info-title" for="exampleInputEmail2">Email Address <span>* {{$message or ''}}</span></label>
+                                <input type="email" name="userEmail" class="form-control unicase-form-control text-input" id="exampleInputEmail2" >
                             </div>
+                            {{--<div class="form-group">--}}
+                                {{--<label class="info-title" for="exampleInputEmail1">Phone Number <span>*</span></label>--}}
+                                {{--<input type="number" name="userPhone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >--}}
+                            {{--</div>--}}
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputEmail1">Password <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
+                                <input type="password" name="userPassword" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputEmail1">Confirm Password <span>*</span></label>
-                                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
+                                <input type="password" name="conUserPass" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
                             </div>
-                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
+                            <input type="submit" value="Sign up" class="btn-upper btn btn-primary checkout-page-button">
                         </form>
 
 
                     </div>
-                    <!-- create a new account -->	c
+                    <!-- create a new account -->
 
                 </div><!-- /.row -->
             </div><!-- /.sigin-in-->
