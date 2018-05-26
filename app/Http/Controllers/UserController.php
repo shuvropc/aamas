@@ -5,7 +5,7 @@ use App\User;
 use Crypt;
 use Illuminate\Http\Request;
 
-//use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -32,7 +32,7 @@ class UserController extends Controller
 
             $userAccount->name = $request->input('userName');
             $userAccount->email = $request->input('userEmail');
-            $userAccount->password = Crypt::encrypt($pass);
+            $userAccount->password = Hash::make($pass);
             $userAccount->save();
 
             return redirect()->route('admin');
@@ -45,16 +45,16 @@ class UserController extends Controller
     }
     public function login(Request $request){
         $email= $request->input('email');
-        $password=($request->input('password'));
+        $password=$request->input('password');
 
         $userDb=new User();
 
         $DbEmail= $userDb->email;
-        $DbPassword =Crypt::decrypt($userDb->password);
+        $DbPassword =$userDb->password;
 
         var_dump($DbPassword);
 
-        if($email==$DbEmail && $password == $DbPassword){
+        if($email==$DbEmail && (Hash::check($password, $DbPassword))){
             return redirect()->route('admin');
         }else{
             $message="Email or Password is wrong";
