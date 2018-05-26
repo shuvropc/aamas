@@ -16,7 +16,7 @@ Route::get('/','HomeController@index')->name('homepage');
 
 //Route::get('/cart','CartController@cart')->name('cart');
 
-Route::get('/checkout','CheckoutController@checkout')->name('checkout');
+Route::get('/test/checkout','CheckoutController@checkout')->name('checkout');
 
 //Route::get('/searchresults','ProductController@searchResult')->name('searchresults');
 
