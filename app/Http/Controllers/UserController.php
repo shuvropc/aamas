@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function registration(){
         $message="";
-        return view('user.registration',['message'=>$message]);
+        return view('user.login',['message'=>$message]);
     }
 
     public function createAccount(Request $request)
