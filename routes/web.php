@@ -28,3 +28,10 @@ Route::get('/checkout','CheckoutController@checkout')->name('checkout');
 //Route::get('/api/getproduct/{id}','ApiController@getProduct')->name('getProduct.api');
 
 Route::get('/admin','AdminController@index')->name('admin');
+
+Route::get('/user/registration', 'UserController@registration')->name('userRegistration');
+Route::post('/user/registration', 'UserController@createAccount');
+
+Route::get('/user/login', 'UserController@userLogin')->name('userLogin');
+Route::post('/user/login','UserController@login' );
+
