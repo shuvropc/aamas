@@ -96,7 +96,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!-- ============================================================= LOGO ============================================================= -->
                     <div class="logo">
-                        <a href="home.html">
+                        <a href="{{route('homepage')}}">
 
                             <img src=" {{ URL::asset('assets/images/logo.png') }}" alt="">
 
