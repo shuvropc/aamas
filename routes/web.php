@@ -17,6 +17,14 @@ Route::get('/user/registration', 'UserController@registration')->name('userRegis
 Route::post('/user/registration', 'UserController@createAccount');
 Route::get('/user/login', 'UserController@userLogin')->name('userLogin');
 Route::post('/user/login','UserController@login' );
+Route::get('/user/information', 'UserController@information')->name('user.setInformation');
+Route::post('/user/information', 'UserController@setInformation');
+Route::get('/user/edit', 'UserController@edit')->name('user.edit');
+Route::post('/user/edit', 'UserController@update' );
+Route::get('/user/passwordchange', 'UserController@changePassword')->name('user.Passwordchange');
+Route::post('/user/passwordchange', 'UserController@updatePassword' );
+
+
 Route::get('/logout','UserController@logOut' );
 
 
