@@ -21,7 +21,7 @@
                         <form class="register-form outer-top-xs" role="form" method="post">
                             @csrf
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
+                                <label class="info-title" for="exampleInputEmail1">Email Address <span>* {{$message or ''}}</span></label>
                                 <input type="email" name="email" required class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
                             </div>
                             <div class="form-group">

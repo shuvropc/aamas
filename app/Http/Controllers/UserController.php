@@ -50,13 +50,22 @@ class UserController extends Controller
         return view('user.login',['message'=>$message]);
     }
     public function login(Request $request){
+
         $email= $request->input('email');
         $password=$request->input('password');
 
 
 
 
+
+
         $userDb = User::where('email', '=', $email)->first();
+
+        if($userDb==null){
+            $message="Email doesn't exist";
+            return view('user.login',['message'=>$message]);
+        }
+
 
         $DbPassword =Crypt::decryptString($userDb->password);
 
@@ -92,6 +101,8 @@ class UserController extends Controller
         $userAccount->shipping_address = $request->input('userShippingAddress');
 
         $userAccount->save();
+
+
         return redirect()->route('admin');
     }
 
