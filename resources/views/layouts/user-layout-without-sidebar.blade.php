@@ -37,11 +37,16 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
+    @yield('styles')
+
 
 </head>
 
 
 <body class="cnt-home">
+
+
+
 <!-- ============================================== HEADER ============================================== -->
 <header class="header-style-1">
 
@@ -459,6 +464,9 @@
 </header>
 
 <!-- ============================================== HEADER : END ============================================== -->
+
+@yield('vendor-register-form')
+
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
     <div class="container">
 
@@ -621,7 +629,7 @@
 <script src="{{ URL::asset('assets/js/wow.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/scripts.js') }}"></script>
 
-
+@yield('scripts')
 
 
 

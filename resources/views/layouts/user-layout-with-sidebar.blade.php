@@ -37,6 +37,9 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 
+    @yield('styles')
+
+
 </head>
 
 
@@ -90,7 +93,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!-- ============================================================= LOGO ============================================================= -->
                     <div class="logo">
-                        <a href="home.html">
+                        <a href="{{route('homepage')}}">
 
                             <img src="assets/images/logo.png" alt="">
 
@@ -4443,7 +4446,7 @@
 
 
 
-
+@yield('scripts')
 
 
 

@@ -3,15 +3,14 @@
 
 
 
-Route::group([ 'middleware' => 'CheckLogin'], function()
-{
-    Route::get('/admin','AdminController@index')->name('admin');
+Route::group([ 'middleware' => 'CheckLogin'], function() {
+
     Route::get('/checkout','CheckoutController@checkout')->name('checkout');
 
 });
 
 
-
+Route::get('/admin','AdminController@index')->name('admin');
 Route::get('/','HomeController@index')->name('homepage');
 Route::get('/user/registration', 'UserController@registration')->name('userRegistration');
 Route::post('/user/registration', 'UserController@createAccount');
@@ -21,7 +20,9 @@ Route::get('/logout','UserController@logOut' );
 
 
 
+Route::get('/vendor/register','VendorController@register')->name('vendor.registration');
 
+Route::post('/vendor/register','VendorController@registerVendor');
 
 
 
