@@ -44,4 +44,12 @@ class VendorController extends Controller
             $vendor->company_reg_number=0;
             $vendor->save();
     }
+
+    function add_product(){
+        return view('vendor/AddProduct');
+    }
+
+    function orders(){
+        return view('vendor/ProductOrders');
+    }
 }
