@@ -32,6 +32,10 @@ Route::get('/vendor/register','VendorController@register')->name('vendor.registr
 
 Route::post('/vendor/register','VendorController@registerVendor');
 
+Route::get('/vendor/add_product','VendorController@add_product')->name('add_product.registration');
+
+Route::get('/vendor/orders','VendorController@orders')->name('orders.registration');
+
 
 
 
