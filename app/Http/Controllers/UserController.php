@@ -62,23 +62,24 @@ class UserController extends Controller
         if($userDb==null){
             $message="Email doesn't exist";
             return view('user.login',['message'=>$message]);
-        }
+        }else {
 
 
-        $DbPassword =Crypt::decryptString($userDb->password);
+            $DbPassword = Crypt::decryptString($userDb->password);
 
 
-        if($email==$userDb->email && $password==$DbPassword){
+            if ($email == $userDb->email && $password == $DbPassword) {
 
-            session(['user' => $userDb]);
+                session(['user' => $userDb]);
 
-            return "Logged in";
+                return "Logged in";
 
 //            return redirect()->route('admin');
-        }else{
-            $message="Email or Password is wrong";
-            return view('user.login',['message'=>$message]);
+            } else {
+                $message = "Email or Password is wrong";
+                return view('user.login', ['message' => $message]);
 
+            }
         }
 
     }

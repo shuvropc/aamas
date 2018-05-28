@@ -36,13 +36,45 @@ class VendorController extends Controller
 
 
 
-
-
             $vendor->logo_image='/public/uploads/vendor/logo/'.$file_name;
             $vendor->product_types=$request->input('producttype');
             $vendor->discount=0;
             $vendor->company_reg_number=0;
             $vendor->save();
+    }
+
+    public function vendorLogin(){
+        return view('vendor.login');
+    }
+
+    public function login(Request $request){
+
+
+       //$vendorDb = Vendor::where('email', '=', $email)->where('password', '=', $password)->first();
+
+
+        $this->validate($request,[
+            'email'=>'required|email',
+            'password'=>'required|min:5|max:15'
+        ]);
+
+        //return route('vendor.login');
+        $email=$request->input('email');
+        $password=$request->input('password');
+        $vendorDb = Vendor::where([
+            ['email', '=', $email],
+            ['password', '=', $password]
+            ])->first();
+        if($vendorDb){
+            session(['vendor' => $vendorDb]);
+            return "Logged in";
+
+        }else{
+            return view('vendor.login');
+        }
+
+
+
     }
 
     function add_product(){
@@ -51,5 +83,11 @@ class VendorController extends Controller
 
     function orders(){
         return view('vendor/ProductOrders');
+    }
+
+
+    public function logOut(){
+        session()->flush();
+        return "Logged out ";
     }
 }
