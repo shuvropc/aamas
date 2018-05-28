@@ -61,8 +61,11 @@ class VendorController extends Controller
         //return route('vendor.login');
         $email=$request->input('email');
         $password=$request->input('password');
-       $vendorDb = Vendor::where('email', '=', $email)->first();
-        if($vendorDb && $password == $vendorDb->password){
+        $vendorDb = Vendor::where([
+            ['email', '=', $email],
+            ['password', '=', $password]
+            ])->first();
+        if($vendorDb){
             session(['vendor' => $vendorDb]);
             return "Logged in";
 
