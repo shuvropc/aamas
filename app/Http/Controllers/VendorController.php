@@ -81,4 +81,10 @@ class VendorController extends Controller
     function orders(){
         return view('vendor/ProductOrders');
     }
+
+
+    public function logOut(){
+        session()->flush();
+        return "Logged out ";
+    }
 }

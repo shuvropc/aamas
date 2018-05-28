@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <label for="email_reg"><i class="glyphicon glyphicon-envelope"></i> Email<span>*</span></label>
-                        <input  type="text" name="email" id="email_reg" placeholder="Please enter a valid email address" title="It must contain a valid email address e.g. someone@provider.com" required>
+                        <input  type="email" name="email" id="email_reg" placeholder="Please enter a valid email address" title="It must contain a valid email address e.g. someone@provider.com" required>
                     </div>
                 </div>
                 <div class="row">
