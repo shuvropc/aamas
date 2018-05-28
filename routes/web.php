@@ -1,12 +1,6 @@
 <?php
-
-
-
-
 Route::group([ 'middleware' => 'CheckLogin'], function() {
-
     Route::get('/checkout','CheckoutController@checkout')->name('checkout');
-
 });
 
 
@@ -28,13 +22,11 @@ Route::get('/logout','UserController@logOut' );
 
 
 
+//Vendor
 Route::get('/vendor/register','VendorController@register')->name('vendor.registration');
-
 Route::post('/vendor/register','VendorController@registerVendor');
-
-Route::get('/vendor/add_product','VendorController@add_product')->name('add_product.registration');
-
-Route::get('/vendor/orders','VendorController@orders')->name('orders.registration');
+Route::get('/vendor/addproduct','VendorController@add_product')->name('vendor.addproduct');
+Route::get('/vendor/orders','VendorController@orders')->name('vendor.orders');
 
 
 
