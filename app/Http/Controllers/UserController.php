@@ -156,5 +156,6 @@ class UserController extends Controller
 
     public function logOut(){
         session()->flush();
+        return "Logged out ";
     }
 }
