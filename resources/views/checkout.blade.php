@@ -1,7 +1,6 @@
 @extends('layouts.user-layout-without-sidebar')
 
 
-
 @section('title', 'Checkout')
 
 

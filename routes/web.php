@@ -1,5 +1,5 @@
 <?php
-Route::group([ 'middleware' => 'CheckLogin'], function() {
+Route::group([ 'middleware' => 'UserLoginCheck'], function() {
     Route::get('/checkout','CheckoutController@checkout')->name('checkout');
 });
 

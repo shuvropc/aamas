@@ -19,11 +19,15 @@ class CreateProductsTable extends Migration
             $table->string("product_description");
             $table->integer("buying_price");
             $table->integer("selling_price");
-            $table->integer("discount_available");
-            $table->string("last_update_date");
-            $table->string("image");
+            $table->integer("discount");
+            
+            $table->string("image1");
+            $table->string("image2");
+            $table->string("image3");
+            $table->string("image4");
+
             $table->integer("available");
-            $table->integer("status");
+            $table->boolean("status");
 
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');

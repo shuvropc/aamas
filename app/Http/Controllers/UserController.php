@@ -57,8 +57,6 @@ class UserController extends Controller
 
 
 
-
-
         $userDb = User::where('email', '=', $email)->first();
 
         if($userDb==null){
