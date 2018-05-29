@@ -24,6 +24,7 @@ class VendorController extends Controller
             $vendor->address=$request->input('address');
             $vendor->country=$request->input('country');
             $vendor->zipcode=$request->input('zipcode');
+            $vendor->status = false;
 
 
 
