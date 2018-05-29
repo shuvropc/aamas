@@ -21,7 +21,6 @@ class VendorController extends Controller
             $vendor->email=$request->input('email');
             $vendor->password=$request->input('password');
             $vendor->website=$request->input('website');
-            $vendor->website=$request->input('website');
             $vendor->address=$request->input('address');
             $vendor->country=$request->input('country');
             $vendor->zipcode=$request->input('zipcode');
@@ -66,13 +65,72 @@ class VendorController extends Controller
             ['password', '=', $password]
             ])->first();
         if($vendorDb){
-            session(['vendor' => $vendorDb]);
-            return "Logged in";
+            session(['vendorId' => $vendorDb->id]);
+            session(['vendorEmail' => $vendorDb->email]);
+            session(['vendorUserName' => $vendorDb->name]);
+            session(['vendorName' => $vendorDb->vendor_name]);
+
+            return "Id  ".$request->session()->get('vendorId')."  Logged in";
 
         }else{
             return view('vendor.login');
         }
 
+
+
+    }
+
+    public function edit(Request $request){
+        $vendor=Vendor::find($request->session()->get('vendorId'));
+        return view('vendor.edit',['vendor'=>$vendor]);
+    }
+    public function update(Request $request){
+
+        $this->validate($request,[
+            'name'          => 'required',
+            'vendorname'    => 'required',
+            'phonenumber'   => 'required',
+            'website'       => 'required',
+            'address'       => 'required',
+            'zipcode'       => 'required',
+            'vendorlogo'    => 'required',
+            'producttype'   => 'required'
+
+        ]);
+
+
+
+        $vendor=Vendor::find($request->session()->get('vendorId'));
+
+
+        $vendor->name=$request->input('name');
+        $vendor->vendor_name=$request->input('vendorname');
+        $vendor->contact_number=$request->input('phonenumber');
+        $vendor->website=$request->input('website');
+        $vendor->address=$request->input('address');
+        $vendor->country=$request->input('country');
+        $vendor->zipcode=$request->input('zipcode');
+
+
+
+        //File Upload Code Start
+        $file = $request->file('vendorlogo');
+        $file_name = str_random(30).$request->input('email'). '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('/uploads/vendor/logo'), $file_name);
+        //File Upload Code End
+
+
+        $vendor->logo_image='/public/uploads/vendor/logo/'.$file_name;
+        $vendor->product_types=$request->input('producttype');
+        $vendor->discount=0;
+        $vendor->company_reg_number=0;
+        $vendor->save();
+
+
+
+
+
+        // 6g4Q4lR8JwwM8S67NsXdrLdULEpCfm
 
 
     }
