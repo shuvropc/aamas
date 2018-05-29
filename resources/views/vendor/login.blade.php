@@ -30,7 +30,7 @@
 
 
             <form class="form-content" id="register-form" action="#" method="post" enctype="multipart/form-data">
-                @csrf
+               {{ csrf_field() }}
                 <div class="row">
                     <div class="col-md-12">
                         <h2 class="form-title text-center">Sign in vendor account</h2>

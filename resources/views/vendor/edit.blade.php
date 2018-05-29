@@ -29,7 +29,7 @@
 
             <!-- BEGIN REGISTER FORM -->
             <form class="form-content" id="register-form" action="#" method="post" enctype="multipart/form-data">
-                @csrf
+{{ csrf_field() }}
                 <input type="hidden" value="{{$vendor->email}}" name="email">
                 <div class="row">
                     <div class="col-md-12">
@@ -45,7 +45,7 @@
 
                 </div>
 
-                <p class="section"><span class="number">2</span><span class="text">Location details</span></p>
+              
                 <div class="row">
                     <div class="col-sm-12">
                         <label for="address"><i class="glyphicon glyphicon-map-marker"></i> Address<span>*</span></label>
@@ -80,19 +80,19 @@
                 </div>
 
 
-                <p class="section"><span class="number">2</span><span class="text">Vendor Details</span></p>
+                <p class="section"><span class="number">3</span><span class="text">Company Details</span></p>
                 <div class="row">
                     <div class="col-sm-12">
-                        <label for="address">Vendor Name<span>*</span></label>
-                        <input required value="{{$vendor->vendor_name}}" type="text" name="vendorname" id="address" pattern="[a-zA-Z0-9. - , ]{10,}"  placeholder="Please enter your street address" title="It must contain letters and/or separators and a length of minimum 10 characters" required>
+                        <label for="address">Company Name<span>*</span></label>
+                        <input required value="{{$vendor->vendor_name}}" type="text" name="vendorname" id="vendorname" pattern="[a-zA-Z0-9. - , ]{10,}"  placeholder="Please enter your street address" title="It must contain letters and/or separators and a length of minimum 10 characters" required>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label for="address">Vendor Logo<span>*</span></label>
-                        <input required  type="file" name="vendorlogo" id="address" pattern="[a-zA-Z0-9. - , ]{10,}"  placeholder="Please enter your street address" title="It must contain letters and/or separators and a length of minimum 10 characters" required>
-                    </div>
+               <div class="row">
+                <div class="col-sm-12">
+                    <label for="address"><i class="glyphicon glyphicon-map-marker"></i>Company Registration Number<span>*</span></label>
+                    <input required value="{{$vendor->company_reg_number}}" type="text" name="regnumber" id="regnumber" pattern="[a-zA-Z0-9. - , ]{10,}"  placeholder="Please enter company registration number" title="It must contain letters and/or separators and a length of minimum 10 characters" required>
                 </div>
+            </div>
 
                 <div class="row">
                     <div class="col-sm-12">

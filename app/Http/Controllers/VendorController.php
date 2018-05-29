@@ -94,7 +94,7 @@ class VendorController extends Controller
             'website'       => 'required',
             'address'       => 'required',
             'zipcode'       => 'required',
-            'vendorlogo'    => 'required',
+            'regnumber'     => 'required',
             'producttype'   => 'required'
 
         ]);
@@ -111,19 +111,13 @@ class VendorController extends Controller
         $vendor->address=$request->input('address');
         $vendor->country=$request->input('country');
         $vendor->zipcode=$request->input('zipcode');
+        $vendor->company_reg_number=$request->input('regnumber');
 
 
-        //File Upload Code Start
-        $file = $request->file('vendorlogo');
-        $file_name = str_random(30).$request->input('email'). '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('/uploads/vendor/logo'), $file_name);
-        //File Upload Code End
-
-
-        $vendor->logo_image='/public/uploads/vendor/logo/'.$file_name;
+        
         $vendor->product_types=$request->input('producttype');
-        $vendor->discount=0;
-        $vendor->company_reg_number=0;
+        
+       
         $vendor->save();
 
 

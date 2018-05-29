@@ -24,7 +24,7 @@ class CreateVendorsTable extends Migration
             $table->string("address");
             $table->string("country");
             $table->string("zipcode");
-            $table->integer("discount");
+            $table->integer("discount")->nullable();
             $table->string("logo_image");
             $table->string("company_reg_number");
             $table->string("product_types");
