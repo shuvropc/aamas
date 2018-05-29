@@ -28,7 +28,7 @@ class CreateVendorsTable extends Migration
             $table->string("logo_image");
             $table->string("company_reg_number");
             $table->string("product_types");
-            $table->boolean("status")->default('1');
+            $table->boolean("status")->default('0');
             $table->timestamps();
         });
     }
