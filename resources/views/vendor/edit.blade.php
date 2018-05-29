@@ -29,7 +29,7 @@
 
             <!-- BEGIN REGISTER FORM -->
             <form class="form-content" id="register-form" action="#" method="post" enctype="multipart/form-data">
-{{ csrf_field() }}
+            {{ csrf_field() }}
                 <input type="hidden" value="{{$vendor->email}}" name="email">
                 <div class="row">
                     <div class="col-md-12">

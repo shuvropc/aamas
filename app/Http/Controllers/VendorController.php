@@ -24,7 +24,8 @@ class VendorController extends Controller
             $vendor->address=$request->input('address');
             $vendor->country=$request->input('country');
             $vendor->zipcode=$request->input('zipcode');
-            
+            $vendor->company_reg_number=$request->input('regnumber');
+
 
 
 
@@ -99,34 +100,57 @@ class VendorController extends Controller
 
         ]);
 
-
-
         $vendor=Vendor::find($request->session()->get('vendorId'));
 
-
-        $vendor->name=$request->input('name');
-        $vendor->vendor_name=$request->input('vendorname');
-        $vendor->contact_number=$request->input('phonenumber');
-        $vendor->website=$request->input('website');
-        $vendor->address=$request->input('address');
-        $vendor->country=$request->input('country');
-        $vendor->zipcode=$request->input('zipcode');
-        $vendor->company_reg_number=$request->input('regnumber');
-
-
-        
-        $vendor->product_types=$request->input('producttype');
-        
-       
-        $vendor->save();
+        if($vendor) {
+            $vendor->name = $request->input('name');
+            $vendor->vendor_name = $request->input('vendorname');
+            $vendor->contact_number = $request->input('phonenumber');
+            $vendor->website = $request->input('website');
+            $vendor->address = $request->input('address');
+            $vendor->country = $request->input('country');
+            $vendor->zipcode = $request->input('zipcode');
+            $vendor->company_reg_number = $request->input('regnumber');
 
 
+            $vendor->product_types = $request->input('producttype');
 
 
+            $vendor->save();
+        }else{
+            return "id not found";
+        }
 
-        // 6g4Q4lR8JwwM8S67NsXdrLdULEpCfm
+    }
 
+    public function changePassword(){
+        //$id=$request->session()->get('vendorId');
+        return view('vendor.passwordChange');
+    }
 
+    public function updatePassword(Request $request){
+
+        $this->validate($request,[
+            'oldPassword'   =>'required',
+            'NewPassword'   =>'required',
+            'conPassword'   =>'required|same:NewPassword'
+        ]);
+
+        $vendor=Vendor::find($request->session()->get('vendorId'));
+        if($vendor) {
+
+            $DbPassword = $vendor->password;
+
+            if ($DbPassword != $request->input('oldPassword')) {
+                $message = "Old password is not correct";
+                return view('vendor.passwordChange', ['message' => $message]);
+            } else {
+                $vendor->password = $request->input('NewPassword');
+                $vendor->save();
+            }
+        }else{
+            return "User does not exist";
+        }
     }
 
     function add_product(){
