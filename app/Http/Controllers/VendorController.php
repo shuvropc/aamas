@@ -24,7 +24,7 @@ class VendorController extends Controller
             $vendor->address=$request->input('address');
             $vendor->country=$request->input('country');
             $vendor->zipcode=$request->input('zipcode');
-            $vendor->status = false;
+            
 
 
 
@@ -38,8 +38,8 @@ class VendorController extends Controller
 
             $vendor->logo_image='/public/uploads/vendor/logo/'.$file_name;
             $vendor->product_types=$request->input('producttype');
-            $vendor->discount=0;
-            $vendor->company_reg_number=0;
+           
+           
             $vendor->save();
     }
 
