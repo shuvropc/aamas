@@ -112,7 +112,6 @@ class VendorController extends Controller
         $vendor->zipcode=$request->input('zipcode');
 
 
-
         //File Upload Code Start
         $file = $request->file('vendorlogo');
         $file_name = str_random(30).$request->input('email'). '.' . $file->getClientOriginalExtension();

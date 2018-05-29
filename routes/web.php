@@ -3,6 +3,11 @@ Route::group([ 'middleware' => 'UserLoginCheck'], function() {
     Route::get('/checkout','CheckoutController@checkout')->name('checkout');
 });
 
+Route::group(['middleware' => 'VendorLoginCheck'], function (){
+
+    Route::get('/vendor/edit', 'VendorController@edit')->name('vendor.edit');
+});
+
 
 Route::get('/admin','AdminController@index')->name('admin');
 Route::get('/','HomeController@index')->name('homepage');
@@ -29,7 +34,7 @@ Route::get('/vendor/addproduct','VendorController@add_product')->name('vendor.ad
 Route::get('/vendor/orders','VendorController@orders')->name('vendor.orders');
 Route::get('/vendor/login', 'VendorController@vendorLogin')->name('vendor.login');
 Route::post('/vendor/login', 'VendorController@login')->name('vendor.login');
-Route::get('/vendor/edit', 'VendorController@edit')->name('vendor.edit');
+
 Route::post('/vendor/edit', 'VendorController@update');
 
 Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
