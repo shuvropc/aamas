@@ -13,6 +13,8 @@
 
     <!-- Custom CSS -->
     <link href="/dist/css/style.css" rel="stylesheet" type="text/css">
+
+
 </head>
 <body>
 <!--Preloader-->
@@ -1201,7 +1203,7 @@
                                             <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10">Sub text</label>
+                                                    <label class="control-label mb-10">Product Id</label>
                                                     <input type="text" id="lastName" class="form-control" placeholder="globe type chair for rest">
                                                 </div>
                                             </div>
@@ -1234,7 +1236,7 @@
                                                         <div class="radio-inline">
                                                             <div class="radio radio-info">
                                                                 <input type="radio" name="radio" id="radio2" value="option2">
-                                                                <label for="radio2">Draft</label>
+                                                                <label for="radio2">Unpublished</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1246,7 +1248,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10">Price</label>
+                                                    <label class="control-label mb-10">Buing Price</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-money"></i></div>
                                                         <input type="text" class="form-control" id="exampleInputuname" placeholder="153">
@@ -1256,46 +1258,111 @@
                                             <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10">Discount</label>
+                                                    <label class="control-label mb-10">Selling Price</label>
                                                     <div class="input-group">
-                                                        <div class="input-group-addon"><i class="ti-cut"></i></div>
+                                                        <div class="input-group-addon"><i class="ti-money"></i></div>
                                                         <input type="text" class="form-control" id="exampleInputuname_1" placeholder="36%">
                                                     </div>
                                                 </div>
                                             </div>
                                             <!--/span-->
                                         </div>
+
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10">Discount</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="ti-cut"></i></div>
+                                                        <input type="text" class="form-control" id="exampleInputuname" placeholder="%">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+
+                                        <div class="seprator-block"></div>
+                                        <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-comment-text mr-10"></i>Product Quantity</h6>
+                                        <hr class="light-grey-hr"/>
+
+                                       <div id="quantity_input">
+
+                                                <div class="row">
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-10">Size</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon"><i class="ti-cut"></i></div>
+                                                                <input type="text" class="form-control" id="exampleInputuname" placeholder="%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-10">Color</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon"><i class="ti-cut"></i></div>
+                                                                <input type="text" class="form-control" id="exampleInputuname" placeholder="%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-10">Quatity</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon"><i class="ti-cut"></i></div>
+                                                                <input type="text" class="form-control" id="exampleInputuname" placeholder="%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                        </div>
+
+
+
+                                      <button class="bg-primary" id="addnewsize">Add New Size</button>
+
+
+
+
+
                                         <div class="seprator-block"></div>
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-comment-text mr-10"></i>Product Description</h6>
                                         <hr class="light-grey-hr"/>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <textarea class="form-control" rows="4">Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. but the majority have suffered alteration in some form, by injected humour</textarea>
-                                                </div>
+
+
+                                                <div id="summernote">Hello Summernote</div>
+
+                                                {{--<div class="form-group">--}}
+                                                    {{--<textarea class="form-control" rows="4">Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. but the majority have suffered alteration in some form, by injected humour</textarea>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                         <!--/row-->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10">Meta Title</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10">Meta Keyword</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="seprator-block"></div>
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-collection-image mr-10"></i>upload image</h6>
                                         <hr class="light-grey-hr"/>
                                         <div class="row">
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-3">
                                                 <div class="img-upload-wrap">
                                                     <img class="img-responsive" src="/dist/img/chair.jpg" alt="upload_img">
                                                 </div>
@@ -1304,6 +1371,12 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <button>add new </button>
+
+
+
                                         <div class="seprator-block"></div>
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i>general info</h6>
                                         <hr class="light-grey-hr"/>
@@ -1446,6 +1519,46 @@
 
 <!-- Init JavaScript -->
 <script src="/dist/js/init.js"></script>
+
+<script src="/assets/js/addNewProduct.js"></script>
+
+
+
+
+
+
+
+{{--Summer Note--}}
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+<!-- include summernote css/js -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+{{--Summer Note--}}
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+
+</script>
+
+
+
+
+
+
 
 </body>
 </html>
