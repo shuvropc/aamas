@@ -1190,23 +1190,24 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="form-wrap">
-                                    <form action="#">
+                                    <form method="post">
+                                        {{ csrf_field() }}
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-info-outline mr-10"></i>about product</h6>
                                         <hr class="light-grey-hr"/>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label mb-10">Product Name</label>
-                                                    <input type="text" id="firstName" class="form-control" placeholder="Rounded Chair">
+                                                    <input type="text" id="firstName" name="product_name" class="form-control" placeholder="Rounded Chair">
                                                 </div>
                                             </div>
                                             <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10">Product Id</label>
-                                                    <input type="text" id="lastName" class="form-control" placeholder="globe type chair for rest">
-                                                </div>
-                                            </div>
+                                            {{--<div class="col-md-6">--}}
+                                                {{--<div class="form-group">--}}
+                                                    {{--<label class="control-label mb-10">Product Id</label>--}}
+                                                    {{--<input type="text" id="lastName" class="form-control" placeholder="globe type chair for rest">--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                             <!--/span-->
                                         </div>
                                         <!-- Row -->
@@ -1229,13 +1230,13 @@
                                                     <div class="radio-list">
                                                         <div class="radio-inline pl-0">
                                                             <div class="radio radio-info">
-                                                                <input type="radio" name="radio" id="radio1" value="option1">
+                                                                <input type="radio" name="radio" id="radio1" value="1">
                                                                 <label for="radio1">Published</label>
                                                             </div>
                                                         </div>
                                                         <div class="radio-inline">
                                                             <div class="radio radio-info">
-                                                                <input type="radio" name="radio" id="radio2" value="option2">
+                                                                <input type="radio" name="radio" id="radio2" value="0">
                                                                 <label for="radio2">Unpublished</label>
                                                             </div>
                                                         </div>
@@ -1251,7 +1252,7 @@
                                                     <label class="control-label mb-10">Buing Price</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-money"></i></div>
-                                                        <input type="text" class="form-control" id="exampleInputuname" placeholder="153">
+                                                        <input type="text" name="buying_price" class="form-control" id="exampleInputuname" placeholder="153">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1261,7 +1262,7 @@
                                                     <label class="control-label mb-10">Selling Price</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-money"></i></div>
-                                                        <input type="text" class="form-control" id="exampleInputuname_1" placeholder="36%">
+                                                        <input type="text" name="selling_price" class="form-control" id="exampleInputuname_1" placeholder="36%">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1278,7 +1279,7 @@
                                                     <label class="control-label mb-10">Discount</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                        <input type="text" class="form-control" id="exampleInputuname" placeholder="%">
+                                                        <input type="text" name="discount" class="form-control" id="exampleInputuname" placeholder="%">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1303,7 +1304,7 @@
                                                             <label class="control-label mb-10">Size</label>
                                                             <div class="input-group">
                                                                 <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                                <input type="text" class="form-control" id="exampleInputuname" placeholder="%">
+                                                                <input type="text" name="size" class="form-control" id="exampleInputuname" placeholder="%">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1314,7 +1315,7 @@
                                                             <label class="control-label mb-10">Color</label>
                                                             <div class="input-group">
                                                                 <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                                <input type="text" class="form-control" id="exampleInputuname" placeholder="%">
+                                                                <input type="text" name="color" class="form-control" id="exampleInputuname" placeholder="%">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1325,7 +1326,7 @@
                                                             <label class="control-label mb-10">Quatity</label>
                                                             <div class="input-group">
                                                                 <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                                <input type="text" class="form-control" id="exampleInputuname" placeholder="%">
+                                                                <input type="text" name="total_quantity" class="form-control" id="exampleInputuname" placeholder="%">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1349,11 +1350,11 @@
                                             <div class="col-md-12">
 
 
-                                                <div id="summernote">Hello Summernote</div>
+                                                {{--<div id="summernote">Hello Summernote</div>--}}
 
-                                                {{--<div class="form-group">--}}
-                                                    {{--<textarea class="form-control" rows="4">Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. but the majority have suffered alteration in some form, by injected humour</textarea>--}}
-                                                {{--</div>--}}
+                                                <div class="form-group">
+                                                    <textarea name="product_description" class="form-control" rows="4"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                         <!--/row-->
@@ -1367,13 +1368,12 @@
                                                     <img class="img-responsive" src="/dist/img/chair.jpg" alt="upload_img">
                                                 </div>
                                                 <div class="fileupload btn btn-info btn-anim"><i class="fa fa-upload"></i><span class="btn-text">Upload new image</span>
-                                                    <input type="file" class="upload">
+                                                    <input type="file" name="image" class="upload">
                                                 </div>
                                             </div>
                                         </div>
 
 
-                                        <button>add new </button>
 
 
 
@@ -1466,7 +1466,7 @@
                                             </div>
                                         </div>
                                         <div class="form-actions">
-                                            <button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span>save</span></button>
+                                            <button type="submit" class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span>save</span></button>
                                             <button type="button" class="btn btn-warning pull-left">Cancel</button>
                                             <div class="clearfix"></div>
                                         </div>
