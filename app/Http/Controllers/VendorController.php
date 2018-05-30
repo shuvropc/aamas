@@ -141,23 +141,12 @@ class VendorController extends Controller
 
 
 
-<<<<<<< HEAD
-            if ($DbPassword != $request->input('oldPassword')) {
-                $message = "Old password is not correct";
-                return view('vendor.passwordChange', ['message' => $message]);
-            } else {
-                $vendor->password = $request->input('NewPassword');
-                $vendor->save();
-                return "Password Change successfully done";
-            }
-=======
         $vendor=Vendor::find($request->session()->get('vendor.id'));
 
         if (Hash::check($request->input('oldPassword'),  $vendor->password)) {
             $vendor->password = Hash::make($request->input('NewPassword'));
             $vendor->save();
             return "Password Changed Successfully";
->>>>>>> a6f7c5d94b883b0bfdf06d5212938ebb8ad08ee1
         }else{
             $message = "Old password is not correct";
             return view('vendor.passwordChange', ['message' => $message]);
