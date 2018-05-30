@@ -14,6 +14,9 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
 
 
     Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
+
+    Route::get('/employee/create','EmployeeController@create')->name('employee.create');
+    Route::post('/employee/create','EmployeeController@CreateEmployee');
 });
 
 
@@ -46,7 +49,8 @@ Route::get('/vendor/orders','VendorController@orders')->name('vendor.orders');
 Route::get('/vendor/login', 'VendorController@vendorLogin')->name('vendor.login');
 Route::post('/vendor/login', 'VendorController@login')->name('vendor.login');
 
-
+Route::get('/employee/create','EmployeeController@create')->name('employee.create');
+Route::post('/employee/create','EmployeeController@CreateEmployee');
 
 
 
