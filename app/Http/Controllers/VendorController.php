@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Vendor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class VendorController extends Controller
 {
@@ -19,7 +20,7 @@ class VendorController extends Controller
             $vendor->vendor_name=$request->input('vendorname');
             $vendor->contact_number=$request->input('phonenumber');
             $vendor->email=$request->input('email');
-            $vendor->password=$request->input('password');
+            $vendor->password=Hash::make($request->input('password'));
             $vendor->website=$request->input('website');
             $vendor->address=$request->input('address');
             $vendor->country=$request->input('country');
@@ -37,6 +38,7 @@ class VendorController extends Controller
 
 
 
+
             $vendor->logo_image='/public/uploads/vendor/logo/'.$file_name;
             $vendor->product_types=$request->input('producttype');
            
@@ -51,39 +53,40 @@ class VendorController extends Controller
     public function login(Request $request){
 
 
-       //$vendorDb = Vendor::where('email', '=', $email)->where('password', '=', $password)->first();
-
 
         $this->validate($request,[
             'email'=>'required|email',
             'password'=>'required|min:5|max:15'
         ]);
 
-        //return route('vendor.login');
+
         $email=$request->input('email');
         $password=$request->input('password');
+
+
         $vendorDb = Vendor::where([
-            ['email', '=', $email],
-            ['password', '=', $password]
-            ])->first();
+            ['email', '=', $email]
+        ])->first();
+
         if($vendorDb){
-            session(['vendorId' => $vendorDb->id]);
-            session(['vendorEmail' => $vendorDb->email]);
-            session(['vendorUserName' => $vendorDb->name]);
-            session(['vendorName' => $vendorDb->vendor_name]);
-
-            return "Id  ".$request->session()->get('vendorId')."  Logged in";
-
+            if(Hash::check($password,  $vendorDb->password)) {
+                $vendorDb->password=null;
+                session(['vendor' => $vendorDb]);
+                return "Email  ".$request->session()->get('vendor.email')."  Logged in";
+            }else{
+                return view('vendor.login',["errorMessage"=>"Email or Password doesn't match"]);
+            }
         }else{
             return view('vendor.login');
         }
 
 
 
+
     }
 
     public function edit(Request $request){
-        $vendor=Vendor::find($request->session()->get('vendorId'));
+        $vendor=Vendor::find($request->session()->get('vendor.id'));
         return view('vendor.edit',['vendor'=>$vendor]);
     }
     public function update(Request $request){
@@ -100,7 +103,7 @@ class VendorController extends Controller
 
         ]);
 
-        $vendor=Vendor::find($request->session()->get('vendorId'));
+        $vendor=Vendor::find($request->session()->get('vendor.id'));
 
         if($vendor) {
             $vendor->name = $request->input('name');
@@ -124,9 +127,9 @@ class VendorController extends Controller
     }
 
     public function changePassword(){
-        //$id=$request->session()->get('vendorId');
         return view('vendor.passwordChange');
     }
+
 
     public function updatePassword(Request $request){
 
@@ -136,21 +139,20 @@ class VendorController extends Controller
             'conPassword'   =>'required|same:NewPassword'
         ]);
 
-        $vendor=Vendor::find($request->session()->get('vendorId'));
-        if($vendor) {
 
-            $DbPassword = $vendor->password;
 
-            if ($DbPassword != $request->input('oldPassword')) {
-                $message = "Old password is not correct";
-                return view('vendor.passwordChange', ['message' => $message]);
-            } else {
-                $vendor->password = $request->input('NewPassword');
-                $vendor->save();
-            }
+        $vendor=Vendor::find($request->session()->get('vendor.id'));
+
+        if (Hash::check($request->input('oldPassword'),  $vendor->password)) {
+            $vendor->password = Hash::make($request->input('NewPassword'));
+            $vendor->save();
+            return "Password Changed Successfully";
         }else{
-            return "User does not exist";
+            $message = "Old password is not correct";
+            return view('vendor.passwordChange', ['message' => $message]);
         }
+
+
     }
 
     function add_product(){
@@ -162,8 +164,8 @@ class VendorController extends Controller
     }
 
 
-    public function logOut(){
-        session()->flush();
-        return "Logged out ";
+    public function logOut(Request $request){
+        $request->session()->forget('vendor');
+        return "Vendor Logged out ";
     }
 }

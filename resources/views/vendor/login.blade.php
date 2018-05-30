@@ -42,7 +42,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <label for="email_reg"><i class="glyphicon glyphicon-envelope"></i> Email<span>*</span></label>
+                        <label for="email_reg"><i class="glyphicon glyphicon-envelope"></i> Email<span>* {{$errorMessage or ''}}</span></label>
                         <input  type="email" name="email" id="email_reg" placeholder="Please enter a valid email address" title="It must contain a valid email address e.g. someone@provider.com" required>
                     </div>
                 </div>

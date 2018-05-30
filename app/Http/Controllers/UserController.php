@@ -146,15 +146,14 @@ class UserController extends Controller
                 return view('user.passwordChange', ['message'=> $message]);
             }else{
                 $password=Crypt::encryptString($newPass);
-
                 $user->password = $password;
                 $user->save();
             }
         }
     }
 
-    public function logOut(){
-        session()->flush();
-        return "Logged out ";
+    public function logOut(Request $request){
+        $request->session()->forget('user');
+        return "User Logged out ";
     }
 }
