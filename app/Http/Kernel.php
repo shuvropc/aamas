@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\CheckLogin;
 use App\Http\Middleware\CheckVendorLogin;
+use App\Http\Middleware\CheckEmployeeLogin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
