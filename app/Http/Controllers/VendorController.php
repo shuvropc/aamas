@@ -147,6 +147,7 @@ class VendorController extends Controller
             } else {
                 $vendor->password = $request->input('NewPassword');
                 $vendor->save();
+                return "Password Change successfully done";
             }
         }else{
             return "User does not exist";
