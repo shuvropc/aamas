@@ -46,6 +46,14 @@ Route::post('/vendor/login', 'VendorController@login')->name('vendor.login');
 
 
 
+Route::get('/cart', 'CartController@cart')->name('user.cart');
+Route::get('/wishlist', 'WishlistController@wishlist')->name('user.wishlist');
+Route::get('/faq', 'FAQController@faq')->name('faq');
+Route::get('/contact', 'ContactUsController@contact')->name('contact');
+Route::post('/contact', 'ContactUsController@storeContact');
+
+
+
 
 
 
