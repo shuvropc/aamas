@@ -478,6 +478,8 @@
 
 @yield('vendor-register-form')
 @yield('employee-register-form')
+@yield('employee-login-form')
+
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
     <div class="container">
 

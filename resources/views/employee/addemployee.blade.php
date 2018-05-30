@@ -67,11 +67,16 @@
                     </div>
                 </div>
 
-            
+             <p class="section"><span class="number">2</span><span class="text">Identity Details</span></p>
+             <div class="row">
+                <div class="col-sm-12">
+                    <label for="email_reg"><i class="glyphicon glyphicon-envelope"></i> Identity Number<span>*</span></label>
+                    <input required type="text" name="emp_ident" id="emp_ident" placeholder="Please enter employee citizen Identity number"  required>
+                </div>
+            </div>
             
 
-
-            <p class="section"><span class="number">2</span><span class="text">Account credentials</span></p>
+            <p class="section"><span class="number">3</span><span class="text">Account credentials</span></p>
             <div class="row">
                 <div class="col-sm-12">
                     <label for="email_reg"><i class="glyphicon glyphicon-envelope"></i> Email<span>*</span></label>

@@ -19,7 +19,40 @@ class EmployeeController extends Controller
     {
         //employee list
     }
+ public function employeeLogin(){
+        return view('employee.login');
+    }
 
+    public function login(Request $request){
+
+
+
+        
+
+        $email=$request->input('email');
+        $password=$request->input('password');
+
+
+        $employee = Employee::where([
+            ['email', '=', $email]
+        ])->first();
+
+        if($employee){
+            if(Hash::check($password,  $employee->password)) {
+                $employee->password=null;
+                session(['employee' => $employee]);
+                return "Email  ".$request->session()->get('employee.email')."  Logged in";
+            }else{
+                return view('employee.login',["errorMessage"=>"Email or Password doesn't match"]);
+            }
+        }else{
+            return view('employee.login');
+        }
+
+
+
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,13 +75,18 @@ class EmployeeController extends Controller
 
             $employee->name=$request->input('emp_name');
             $employee->email=$request->input('emp_email');
-            $employee->password=$request->input('emp_pass');
+            $employee->password=Hash::make($request->input('emp_pass'));
             $employee->current_address=$request->input('emp_address');
             $employee->parmanent_address=$request->input('emp_par_address');
             $employee->contact_number=$request->input('emp_contact');
             $employee->type=$request->input('emp_type');
+            $employee->Identity_number=$request->input('emp_ident');
             
-            $employee->vendor_id=session()->get('vendor.id');
+            
+            $employee->vendor_id=session()->get('employee.vendor_id');
+            $employee->referenced_by=session()->get('employee.id');
+
+            //emp_ident
          $employee->save();
             return "Employee added successfully";
     }
@@ -96,5 +134,11 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         //Delete employee
+    }
+
+
+    public function logOut(Request $request){
+        session()->forget('employee');
+        return "Employee Logged out ";
     }
 }

@@ -15,9 +15,14 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
 
     Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
 
+    
+});
+Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
     Route::get('/employee/create','EmployeeController@create')->name('employee.create');
     Route::post('/employee/create','EmployeeController@CreateEmployee');
 });
+
+
 
 
 Route::get('/admin','AdminController@index')->name('admin');
@@ -60,9 +65,11 @@ Route::post('/contact', 'ContactUsController@storeContact');
 
 
 
+//Employee
+Route::get('/employee/login', 'EmployeeController@employeeLogin')->name('employee.login');
+Route::post('/employee/login', 'EmployeeController@login');
 
-
-
+Route::get('/employee/logout','EmployeeController@logOut')->name('employee.logout');
 
 
 
