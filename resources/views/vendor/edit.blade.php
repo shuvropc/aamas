@@ -1,7 +1,7 @@
 @extends('layouts.user-layout-without-sidebar')
 
 
-@section('title', 'Vendor-Registration')
+@section('title', 'Vendor-Edit')
 
 
 @section('styles')
