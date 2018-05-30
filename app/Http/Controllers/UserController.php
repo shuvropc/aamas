@@ -130,7 +130,6 @@ class UserController extends Controller
         ]);
         $oldPass = $request->input('oldPass');
 
-<<<<<<< HEAD
         $user=User::where('id', '=', $request->session()->get('user.id'))->first();
 
         if(Hash::check($oldPass, $user->password)){
@@ -140,28 +139,12 @@ class UserController extends Controller
         }else{
             $error="Old Password is not correct";
             return view('user.passwordChange',['error'=> $error]);
-=======
-            if($newPass != $conPass){
-                $message = "New password and Confirm password does not match";
-                return view('user.passwordChange', ['message'=> $message]);
-            }else{
-                $password=Crypt::encryptString($newPass);
-                $user->password = $password;
-                $user->save();
-            }
->>>>>>> a6f7c5d94b883b0bfdf06d5212938ebb8ad08ee1
         }
 
     }
 
-<<<<<<< HEAD
     public function logOut(){
         session()->forget('user');
         return "Logged out ";
-=======
-    public function logOut(Request $request){
-        $request->session()->forget('user');
-        return "User Logged out ";
->>>>>>> a6f7c5d94b883b0bfdf06d5212938ebb8ad08ee1
     }
 }
