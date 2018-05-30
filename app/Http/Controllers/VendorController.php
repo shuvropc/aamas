@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Vendor;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,7 +26,7 @@ class VendorController extends Controller
             $vendor->address=$request->input('address');
             $vendor->country=$request->input('country');
             $vendor->zipcode=$request->input('zipcode');
-            $vendor->company_reg_number=$request->input('regnumber');
+            $vendor->company_reg_number=0;
 
 
 
@@ -89,6 +90,7 @@ class VendorController extends Controller
         $vendor=Vendor::find($request->session()->get('vendor.id'));
         return view('vendor.edit',['vendor'=>$vendor]);
     }
+
     public function update(Request $request){
 
         $this->validate($request,[
@@ -98,7 +100,7 @@ class VendorController extends Controller
             'website'       => 'required',
             'address'       => 'required',
             'zipcode'       => 'required',
-            'regnumber'     => 'required',
+            
             'producttype'   => 'required'
 
         ]);
@@ -113,7 +115,7 @@ class VendorController extends Controller
             $vendor->address = $request->input('address');
             $vendor->country = $request->input('country');
             $vendor->zipcode = $request->input('zipcode');
-            $vendor->company_reg_number = $request->input('regnumber');
+           
 
 
             $vendor->product_types = $request->input('producttype');
@@ -124,7 +126,24 @@ class VendorController extends Controller
             return "id not found";
         }
 
-    }
+
+        $vendor->name=$request->input('name');
+        $vendor->vendor_name=$request->input('vendorname');
+        $vendor->contact_number=$request->input('phonenumber');
+        $vendor->website=$request->input('website');
+        $vendor->address=$request->input('address');
+        $vendor->country=$request->input('country');
+        $vendor->zipcode=$request->input('zipcode');
+        
+       
+        $vendor->product_types=$request->input('producttype');
+         $vendor->company_reg_number=0;
+         $vendor->status = false;
+        $vendor->save();
+       
+      
+}
+
 
     public function changePassword(){
         return view('vendor.passwordChange');
@@ -138,6 +157,7 @@ class VendorController extends Controller
             'NewPassword'   =>'required',
             'conPassword'   =>'required|same:NewPassword'
         ]);
+
 
 
 
@@ -155,8 +175,25 @@ class VendorController extends Controller
 
     }
 
-    function add_product(){
+    public function addProduct(){
         return view('vendor/AddProduct');
+    }
+
+    public function addNewProduct(Request $request){
+        $product = new Product();
+
+        $product->product_name = $request->input("product_name");
+        $product->product_description = $request->input("product_description");
+        $product->buying_price = $request->input("buying_price");
+        $product->selling_price = $request->input("selling_price");
+        $product->discount = $request->input("discount");
+        $product->image1 = $request->input("image");
+        $product->available = $request->input("radio");
+        $product->category_id = "1";
+        $product->vendor_id = "1";
+        $product->details_id = "1";
+
+        $product->save();
     }
 
     function orders(){

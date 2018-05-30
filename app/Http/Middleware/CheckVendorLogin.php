@@ -15,10 +15,13 @@ class CheckVendorLogin
      */
     public function handle($request, Closure $next)
     {
+
+       
         if ($request->session()->has('vendor')) {
             return $next($request);
         }else{
             return redirect()->route('vendor.login');
         }
     }
+    
 }

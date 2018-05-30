@@ -29,7 +29,10 @@
 
             <!-- BEGIN REGISTER FORM -->
             <form class="form-content" id="register-form" action="#" method="post" enctype="multipart/form-data">
-            {{ csrf_field() }}
+
+            
+{{ csrf_field() }}
+
                 <input type="hidden" value="{{$vendor->email}}" name="email">
                 <div class="row">
                     <div class="col-md-12">
@@ -87,12 +90,7 @@
                         <input required value="{{$vendor->vendor_name}}" type="text" name="vendorname" id="vendorname" pattern="[a-zA-Z0-9. - , ]{10,}"  placeholder="Please enter your street address" title="It must contain letters and/or separators and a length of minimum 10 characters" required>
                     </div>
                 </div>
-               <div class="row">
-                <div class="col-sm-12">
-                    <label for="address"><i class="glyphicon glyphicon-map-marker"></i>Company Registration Number<span>*</span></label>
-                    <input required value="{{$vendor->company_reg_number}}" type="text" name="regnumber" id="regnumber" pattern="[a-zA-Z0-9. - , ]{10,}"  placeholder="Please enter company registration number" title="It must contain letters and/or separators and a length of minimum 10 characters" required>
-                </div>
-            </div>
+             
 
                 <div class="row">
                     <div class="col-sm-12">
