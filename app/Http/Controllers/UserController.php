@@ -37,7 +37,7 @@ class UserController extends Controller
 
                $userAccount->name = $request->input('userName');
                $userAccount->email = $request->input('userEmail');
-               $userAccount->password = Crypt::encryptString($pass);
+               $userAccount->password = Hash::make($pass);
                $userAccount->save();
 
                return redirect()->route('admin');
@@ -54,9 +54,6 @@ class UserController extends Controller
         $email= $request->input('email');
         $password=$request->input('password');
 
-
-
-
         $userDb = User::where('email', '=', $email)->first();
 
         if($userDb==null){
@@ -64,16 +61,10 @@ class UserController extends Controller
             return view('user.login',['message'=>$message]);
         }else {
 
-
-            $DbPassword = Crypt::decryptString($userDb->password);
-
-
-            if ($email == $userDb->email && $password == $DbPassword) {
+            if(Hash::check($password, $userDb->password)){
 
                 session(['user' => $userDb]);
-
-                return "Logged in";
-
+                return $request->session()->get('user');
 //            return redirect()->route('admin');
             } else {
                 $message = "Email or Password is wrong";
@@ -130,31 +121,30 @@ class UserController extends Controller
         return view('user.passwordChange');
     }
     public function updatePassword(Request $request){
+
+        $this->validate($request,[
+           'oldPass'    =>'required',
+            'newPassword'   =>'required',
+            'confirmPassword'=>'required|same:newPassword'
+
+        ]);
+        $oldPass = $request->input('oldPass');
+
         $user=User::where('id', '=', $request->session()->get('user.id'))->first();
 
-        $DbPass= Crypt::decryptString($user->password);
-
-        if($DbPass != $request->input('oldPass')){
+        if(Hash::check($oldPass, $user->password)){
+            $newPass = $request->input('newPassword');
+            $user->password=Hash::make($newPass);
+            $user->save();
+        }else{
             $error="Old Password is not correct";
             return view('user.passwordChange',['error'=> $error]);
-        }else{
-            $newPass = $request->input('newPass');
-            $conPass = $request->input('conNewPass');
-
-            if($newPass != $conPass){
-                $message = "New password and Confirm password does not match";
-                return view('user.passwordChange', ['message'=> $message]);
-            }else{
-                $password=Crypt::encryptString($newPass);
-
-                $user->password = $password;
-                $user->save();
-            }
         }
+
     }
 
     public function logOut(){
-        session()->flush();
+        session()->forget('user');
         return "Logged out ";
     }
 }

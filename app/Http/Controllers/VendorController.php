@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Vendor;
+use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class VendorController extends Controller
 {
@@ -19,12 +21,13 @@ class VendorController extends Controller
             $vendor->vendor_name=$request->input('vendorname');
             $vendor->contact_number=$request->input('phonenumber');
             $vendor->email=$request->input('email');
-            $vendor->password=$request->input('password');
+            $vendor->password=Hash::make($request->input('password'));
             $vendor->website=$request->input('website');
             $vendor->address=$request->input('address');
             $vendor->country=$request->input('country');
             $vendor->zipcode=$request->input('zipcode');
-            
+            $vendor->company_reg_number=$request->input('regnumber');
+
 
 
 
@@ -33,6 +36,7 @@ class VendorController extends Controller
             $file_name = str_random(30).$request->input('email'). '.' . $file->getClientOriginalExtension();
             $file->move(public_path('/uploads/vendor/logo'), $file_name);
             //File Upload Code End
+
 
 
 
@@ -50,41 +54,43 @@ class VendorController extends Controller
     public function login(Request $request){
 
 
-       //$vendorDb = Vendor::where('email', '=', $email)->where('password', '=', $password)->first();
-
 
         $this->validate($request,[
             'email'=>'required|email',
             'password'=>'required|min:5|max:15'
         ]);
 
-        //return route('vendor.login');
+
         $email=$request->input('email');
         $password=$request->input('password');
+
+
         $vendorDb = Vendor::where([
-            ['email', '=', $email],
-            ['password', '=', $password]
-            ])->first();
+            ['email', '=', $email]
+        ])->first();
+
         if($vendorDb){
-            session(['vendorId' => $vendorDb->id]);
-            session(['vendorEmail' => $vendorDb->email]);
-            session(['vendorUserName' => $vendorDb->name]);
-            session(['vendorName' => $vendorDb->vendor_name]);
-
-            return "Id  ".$request->session()->get('vendorId')."  Logged in";
-
+            if(Hash::check($password,  $vendorDb->password)) {
+                $vendorDb->password=null;
+                session(['vendor' => $vendorDb]);
+                return "Email  ".$request->session()->get('vendor.email')."  Logged in";
+            }else{
+                return view('vendor.login',["errorMessage"=>"Email or Password doesn't match"]);
+            }
         }else{
             return view('vendor.login');
         }
 
 
 
+
     }
 
     public function edit(Request $request){
-        $vendor=Vendor::find($request->session()->get('vendorId'));
+        $vendor=Vendor::find($request->session()->get('vendor.id'));
         return view('vendor.edit',['vendor'=>$vendor]);
     }
+
     public function update(Request $request){
 
         $this->validate($request,[
@@ -99,11 +105,28 @@ class VendorController extends Controller
 
         ]);
 
+        $vendor=Vendor::find($request->session()->get('vendor.id'));
+
+        if($vendor) {
+            $vendor->name = $request->input('name');
+            $vendor->vendor_name = $request->input('vendorname');
+            $vendor->contact_number = $request->input('phonenumber');
+            $vendor->website = $request->input('website');
+            $vendor->address = $request->input('address');
+            $vendor->country = $request->input('country');
+            $vendor->zipcode = $request->input('zipcode');
+            $vendor->company_reg_number = $request->input('regnumber');
 
 
-        $vendor=Vendor::find($request->session()->get('vendorId'));
+            $vendor->product_types = $request->input('producttype');
 
 
+            $vendor->save();
+        }else{
+            return "id not found";
+        }
+
+<<<<<<< HEAD
         $vendor->name=$request->input('name');
         $vendor->vendor_name=$request->input('vendorname');
         $vendor->contact_number=$request->input('phonenumber');
@@ -121,14 +144,58 @@ class VendorController extends Controller
       
 
       
+=======
+    }
 
-        // 6g4Q4lR8JwwM8S67NsXdrLdULEpCfm
+    public function changePassword(){
+        return view('vendor.passwordChange');
+    }
+
+
+    public function updatePassword(Request $request){
+
+        $this->validate($request,[
+            'oldPassword'   =>'required',
+            'NewPassword'   =>'required',
+            'conPassword'   =>'required|same:NewPassword'
+        ]);
+
+
+>>>>>>> 4d85fea189c0f3eece9a9e7870bf4d71e2d6b59c
+
+        $vendor=Vendor::find($request->session()->get('vendor.id'));
+
+        if (Hash::check($request->input('oldPassword'),  $vendor->password)) {
+            $vendor->password = Hash::make($request->input('NewPassword'));
+            $vendor->save();
+            return "Password Changed Successfully";
+        }else{
+            $message = "Old password is not correct";
+            return view('vendor.passwordChange', ['message' => $message]);
+        }
 
 
     }
 
-    function add_product(){
+    public function addProduct(){
         return view('vendor/AddProduct');
+    }
+
+    public function addNewProduct(Request $request){
+        $product = new Product();
+
+        $product->product_name = $request->input("product_name");
+        $product->product_description = $request->input("product_description");
+        $product->buying_price = $request->input("buying_price");
+        $product->selling_price = $request->input("selling_price");
+        $product->discount = $request->input("discount");
+        $product->image1 = $request->input("image");
+        $product->available = $request->input("radio");
+        $product->category_id = "1";
+        $product->vendor_id = "1";
+        $product->details_id = "1";
+
+        $product->save();
     }
 
     function orders(){
@@ -136,8 +203,8 @@ class VendorController extends Controller
     }
 
 
-    public function logOut(){
-        session()->flush();
-        return "Logged out ";
+    public function logOut(Request $request){
+        $request->session()->forget('vendor');
+        return "Vendor Logged out ";
     }
 }

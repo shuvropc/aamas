@@ -16,7 +16,6 @@
 
     <div class="container-fluid" style="background-color: seashell">
         <div class="form-wrapper">
-            <!-- BEGIN REGISTER FORM -->
 
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -26,41 +25,38 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
-
-
+             @endif
+            <!-- BEGIN REGISTER FORM -->
             <form class="form-content" id="register-form" action="#" method="post" enctype="multipart/form-data">
-               {{ csrf_field() }}
+                {{ csrf_field() }}
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="form-title text-center">Sign in vendor account</h2>
+                        <h2 class="form-title text-center">Update Password</h2>
                     </div>
-                </div>
-
-
-
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label for="email_reg"><i class="glyphicon glyphicon-envelope"></i> Email<span>* {{$errorMessage or ''}}</span></label>
-                        <input  type="email" name="email" id="email_reg" placeholder="Please enter a valid email address" title="It must contain a valid email address e.g. someone@provider.com" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label for="password_reg"><i class="glyphicon glyphicon-lock"></i> Password<span>*</span></label>
-                        <input required type="password" name="password" id="password_reg" pattern=".{6,}"  placeholder="Please enter your password" title="It can contain all types of characters and a length of minimum 6 characters" required>
-                    </div>
-
                 </div>
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <button name="register-submit" type="submit" class="button green">Login</button>
+                        <label for="email_reg"><i class="glyphicon glyphicon-envelope"></i> Old Password<span>*{{$message or ''}}</span></label>
+                        <input required type="password" name="oldPassword" id="email_reg" placeholder="Please enter a valid email address" title="It must contain a valid email address e.g. someone@provider.com" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="password_reg"><i class="glyphicon glyphicon-lock"></i>New Password<span>*</span></label>
+                        <input required type="password" name="NewPassword" id="password_reg" pattern=".{6,}"  placeholder="Please enter your password" title="It can contain all types of characters and a length of minimum 6 characters" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="rpassword"><i class="glyphicon glyphicon-lock"></i> Confirm Password<span>*</span></label>
+                        <input required type="password" name="conPassword" id="rpassword" pattern=".{6,}"  placeholder="Please enter your password" title="It can contain all types of characters and a length of minimum 6 characters" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button name="register-submit" type="submit" class="button green">Update</button>
                     </div>
                 </div>
             </form><!-- END OF REGISTER FORM -->
-
         </div><!-- END OF WRAPPER DIV -->
 
     </div>

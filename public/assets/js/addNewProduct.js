@@ -39,4 +39,6 @@ $("#addnewsize").click(function () {
 
     $("#quantity_input").append(newRow);
 
+    return false;
+
 });

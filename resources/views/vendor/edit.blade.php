@@ -29,8 +29,12 @@
 
             <!-- BEGIN REGISTER FORM -->
             <form class="form-content" id="register-form" action="#" method="post" enctype="multipart/form-data">
+<<<<<<< HEAD
             <label> check: {{$message or ''}}</label>
 {{ csrf_field() }}
+=======
+            {{ csrf_field() }}
+>>>>>>> 4d85fea189c0f3eece9a9e7870bf4d71e2d6b59c
                 <input type="hidden" value="{{$vendor->email}}" name="email">
                 <div class="row">
                     <div class="col-md-12">

@@ -17,18 +17,16 @@ class CreateProductsTable extends Migration
 
             $table->increments('id');
 
-
-            $table->string("vendor_product_id");
             $table->string("product_name");
             $table->string("product_description");
             $table->integer("buying_price");
             $table->integer("selling_price");
             $table->integer("discount");
             
-            $table->string("image1");
-            $table->string("image2");
-            $table->string("image3");
-            $table->string("image4");
+            $table->string("image1")->nullable();
+            $table->string("image2")->nullable();
+            $table->string("image3")->nullable();
+            $table->string("image4")->nullable();
 
             $table->boolean("available");
 
