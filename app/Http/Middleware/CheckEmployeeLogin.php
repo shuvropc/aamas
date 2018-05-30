@@ -15,9 +15,11 @@ class CheckEmployeeLogin
      */
     public function handle($request, Closure $next)
     {
+        
         if ($request->session()->has('employee')) {
             return $next($request);
-        }else{
+        }
+        else{
             return redirect()->route('employee.login');
         }
 

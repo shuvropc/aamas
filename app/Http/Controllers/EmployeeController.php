@@ -41,7 +41,7 @@ class EmployeeController extends Controller
             if(Hash::check($password,  $employee->password)) {
                 $employee->password=null;
                 session(['employee' => $employee]);
-                return "Email  ".$request->session()->get('employee.email')."  Logged in";
+                return "Email  ".$request->session()->get('employee.email')."  Logged in ".$request->session()->get('employee.type');
             }else{
                 return view('employee.login',["errorMessage"=>"Email or Password doesn't match"]);
             }
@@ -60,6 +60,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
+
         return view('employee.addemployee');
     }
 
@@ -71,6 +72,17 @@ class EmployeeController extends Controller
      */
     public function CreateEmployee(Request $request)
     {
+        $employeeType=session()->get('employee.type');
+
+        if($employeeType=="HR"){
+
+             $this->validate($request,[
+            'emp_email'=>'required|email|unique:employees,email',
+            'emp_ident'=>'required|unique:employees,Identity_number',
+            'emp_contact'=>'unique:employees,contact_number'
+            
+        ]);
+            
         $employee = new Employee();
 
             $employee->name=$request->input('emp_name');
@@ -89,6 +101,11 @@ class EmployeeController extends Controller
             //emp_ident
          $employee->save();
             return "Employee added successfully";
+
+    }else{
+            
+            return view('employee.addemployee',["message"=>"Sorry You are not authorized to add employee!"]);
+        }
     }
 
     /**

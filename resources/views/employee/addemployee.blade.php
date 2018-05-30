@@ -13,15 +13,29 @@
 
 
 @section('employee-register-form')
-
+<div class="row">
+<div class="col-md-12">
+    <span><b class="text-warning">{{$message or ''}}</b></span>
+</div>
+</div>
         <div class="container-fluid" style="background-color: seashell">
      <div class="form-wrapper">
+     @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         <!-- BEGIN REGISTER FORM -->
         <form class="form-content" id="emp-register-form" action="#" method="post" enctype="multipart/form-data">
            {{ csrf_field() }}
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="form-title text-center">Employee Registration</h2>
+                    
                 </div>
             </div>
             <p class="section"><span class="number">1</span><span class="text">Basic information</span></p>
@@ -50,7 +64,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <label for="fname">Contact Number<span>*</span></label>
-                    <input required  type="number" name="emp_contact" id="emp_contact" pattern="[0-9+]{10,}"  placeholder="Please enter employee contact number" required title="It must contain only letters and a length of minimum 2 characters">
+                    <input required  type="text" name="emp_contact" id="emp_contact" pattern="[0-9+]{10,}"  placeholder="Please enter employee contact number" required title="It must contain only letters and a length of minimum 2 characters">
                 </div>
 
             </div>
