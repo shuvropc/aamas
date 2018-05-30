@@ -94,7 +94,7 @@ class VendorController extends Controller
             'website'       => 'required',
             'address'       => 'required',
             'zipcode'       => 'required',
-            'regnumber'     => 'required',
+            
             'producttype'   => 'required'
 
         ]);
@@ -111,18 +111,16 @@ class VendorController extends Controller
         $vendor->address=$request->input('address');
         $vendor->country=$request->input('country');
         $vendor->zipcode=$request->input('zipcode');
-        $vendor->company_reg_number=$request->input('regnumber');
-
-
-        
-        $vendor->product_types=$request->input('producttype');
         
        
+        $vendor->product_types=$request->input('producttype');
+         $vendor->company_reg_number=0;
+         $vendor->status = false;
         $vendor->save();
+       
+      
 
-
-
-
+      
 
         // 6g4Q4lR8JwwM8S67NsXdrLdULEpCfm
 

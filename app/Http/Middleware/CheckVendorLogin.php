@@ -16,6 +16,7 @@ class CheckVendorLogin
     public function handle($request, Closure $next)
     {
         if ($request->session()->has('vendorId')) {
+           //return redirect()->back();
             return $next($request);
         }else{
             return redirect()->route('vendor.login');
