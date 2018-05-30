@@ -10,6 +10,15 @@
         <div class="container">
             <div class="sign-in-page">
                 <div class="row">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                @endif
                     <!-- Sign-in -->
                     <div class="col-md-6 col-sm-6 sign-in">
                         <h4 class="">Change Password</h4>
@@ -17,18 +26,18 @@
                         <form class="register-form outer-top-xs" role="form" method="post">
                             @csrf
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Old Password<span>*</span></label>
+                                <label class="info-title" for="exampleInputEmail1">Old Password<span>* {{$error or ''}}</span></label>
                                 <input type="password" name="oldPass" required class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputPassword1">New Password <span>*</span></label>
-                                <input type="password" name="newPass" required class="form-control unicase-form-control text-input" id="exampleInputPassword1" >
+                                <input type="password" name="newPassword" required class="form-control unicase-form-control text-input" id="exampleInputPassword1" >
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputPassword1">New Password <span>*</span></label>
-                                <input type="password" name="conNewPass" required class="form-control unicase-form-control text-input" id="exampleInputPassword1" >
+                                <input type="password" name="confirmPassword" required class="form-control unicase-form-control text-input" id="exampleInputPassword1" >
                             </div>
-                            <span>{{$error or ''}}</span>
+
 
                             <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Change Password</button>
                         </form>
