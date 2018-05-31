@@ -42,6 +42,8 @@ Route::post('/vendor/register','VendorController@registerVendor');
 Route::get('/vendor/addproduct','VendorController@addProduct')->name('vendor.addproduct');
 Route::post('/vendor/addproduct','VendorController@addNewProduct')->name('vendor.addNewProduct');
 
+Route::get('/vendor/addcategory/{name}','VendorController@addCategory')->name('vendor.addcategory');
+
 Route::get('/vendor/orders','VendorController@orders')->name('vendor.orders');
 Route::get('/vendor/login', 'VendorController@vendorLogin')->name('vendor.login');
 Route::post('/vendor/login', 'VendorController@login')->name('vendor.login');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Vendor;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -158,7 +159,11 @@ class VendorController extends Controller
     }
 
     public function addProduct(){
-        return view('vendor/AddProduct');
+
+        $categories = new Category();
+
+
+        return view('vendor/AddProduct')->with("categories", $categories->get());
     }
 
     public function addNewProduct(Request $request){
@@ -176,6 +181,18 @@ class VendorController extends Controller
         $product->details_id = "1";
 
         $product->save();
+
+        return redirect('vendor/addproduct');
+    }
+
+    public function addCategory($name = null ){
+
+        $category = new Category();
+
+        $category->category_name = $name;
+        $category->sub_category = "";
+
+        $category->save();
     }
 
     function orders(){
