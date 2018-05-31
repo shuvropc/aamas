@@ -20,6 +20,9 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
 Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
     Route::get('/employee/create','EmployeeController@create')->name('employee.create');
     Route::post('/employee/create','EmployeeController@CreateEmployee');
+
+    Route::get('/employee/edit', 'EmployeeController@edit')->name('employee.edit');
+Route::post('/employee/edit', 'EmployeeController@update' );
 });
 
 

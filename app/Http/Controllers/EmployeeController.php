@@ -10,11 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         //employee list
@@ -53,23 +49,13 @@ class EmployeeController extends Controller
 
 
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
 
         return view('employee.addemployee');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function CreateEmployee(Request $request)
     {
         $employeeType=session()->get('employee.type');
@@ -108,38 +94,55 @@ class EmployeeController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //Employee profile details
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    
+    public function edit(Request $request)
     {
-        //Employee profile edit view
+         $employee=Employee::find($request->session()->get('employee.id'));
+        return view('employee.edit',['employee'=>$employee]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //Employee profile update
+
+    public function update(Request $request)
+{
+        $employeeEmail = $request->input('emp_email');
+        if($employeeEmail != $request->session()->get('employee.email') )
+        {
+             $this->validate($request,[
+        
+            'emp_email'=>'required|email|unique:employees,email'
+            
+            
+        ]);
+        }
+       
+
+
+
+         $employee=Employee::find($request->session()->get('employee.id'));
+
+if($employee !=null){
+            $employee->name=$request->input('emp_name');
+            $employee->email=$request->input('emp_email');
+            
+            $employee->current_address=$request->input('emp_address');
+            $employee->parmanent_address=$request->input('emp_par_address');
+            $employee->contact_number=$request->input('emp_contact');
+            $employee->type=$request->input('emp_type');
+            $employee->Identity_number=$request->input('emp_ident');
+
+$employee->save();
+return "Profile Updated successfully.";
+
+}else{
+    return view('employee.edit',['employee'=>$employee, 'message'=>'not updated']);
+}
+
     }
 
     /**
