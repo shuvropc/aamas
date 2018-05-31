@@ -145,12 +145,37 @@ return "Profile Updated successfully.";
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
+public function changePassword(){
+        return view('employee.passwordChange');
+    }
+    public function updatePassword(Request $request){
+
+        $this->validate($request,[
+            'oldPassword'   =>'required',
+            'NewPassword'   =>'required',
+            'conPassword'   =>'required|same:NewPassword'
+        ]);
+
+
+
+
+        $employee=Employee::find($request->session()->get('employee.id'));
+
+        if (Hash::check($request->input('oldPassword'),  $employee->password)) {
+            $employee->password = Hash::make($request->input('NewPassword'));
+            $employee->password = Hash::make($request->input('NewPassword'));
+            $employee->save();
+            return "Password Changed Successfully";
+        }else{
+            $message = "current password does not match";
+            return view('employee.passwordChange', ['message' => $message]);
+        }
+
+
+    }
+
+
     public function destroy($id)
     {
         //Delete employee

@@ -24,6 +24,7 @@ class CreateEmployeesTable extends Migration
             $table->string('type');
             $table->integer('referenced_by');
             $table->string('Identity_number');
+            $table->boolean("Active")->default('1');
 
             $table->unsignedInteger('vendor_id');
             $table->foreign('vendor_id')->references('id')->on('vendors');

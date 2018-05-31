@@ -480,6 +480,7 @@
 @yield('employee-register-form')
 @yield('employee-login-form')
 @yield('employee-edit-form')
+@yield('employee-password-form')
 
 
 <div class="body-content outer-top-xs" id="top-banner-and-menu">

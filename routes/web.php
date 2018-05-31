@@ -23,6 +23,11 @@ Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
 
     Route::get('/employee/edit', 'EmployeeController@edit')->name('employee.edit');
 Route::post('/employee/edit', 'EmployeeController@update' );
+
+
+Route::get('/employee/changePassword', 'EmployeeController@changePassword')->name('employee.Passwordchange');
+Route::post('/employee/changePassword', 'EmployeeController@updatePassword' );
+
 });
 
 
