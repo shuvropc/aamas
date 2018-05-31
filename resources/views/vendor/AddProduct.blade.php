@@ -1223,7 +1223,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label mb-10">Category</label>
-                                                    <select id="category" class="form-control" data-placeholder="Choose a Category" tabindex="1">
+                                                    <select name="category" id="category" class="form-control" data-placeholder="Choose a Category" tabindex="1">
                                                         @foreach($categories as $category)
                                                         <option value="{{$category->id}}">{{ $category->category_name }}</option>
 
@@ -1303,8 +1303,21 @@
 
 
                                         <div class="seprator-block"></div>
-                                        <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-comment-text mr-10"></i>Product Quantity</h6>
+                                        <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-comment-text mr-10"></i>Product Details</h6>
                                         <hr class="light-grey-hr"/>
+
+                                        <table id="details" class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>Size</th>
+                                                <th>Color</th>
+                                                <th>Quantity</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tr></tr>
+
+                                        </table>
 
                                        <div id="quantity_input">
 
@@ -1315,7 +1328,7 @@
                                                             <label class="control-label mb-10">Size</label>
                                                             <div class="input-group">
                                                                 <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                                <input type="text" name="size" class="form-control" id="exampleInputuname" placeholder="%">
+                                                                <input type="text" name="size" class="form-control" id="size" placeholder="%">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1326,7 +1339,7 @@
                                                             <label class="control-label mb-10">Color</label>
                                                             <div class="input-group">
                                                                 <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                                <input type="text" name="color" class="form-control" id="exampleInputuname" placeholder="%">
+                                                                <input type="text" name="color" class="form-control" id="color" placeholder="%">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1337,7 +1350,7 @@
                                                             <label class="control-label mb-10">Quatity</label>
                                                             <div class="input-group">
                                                                 <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                                <input type="text" name="total_quantity" class="form-control" id="exampleInputuname" placeholder="%">
+                                                                <input type="text" name="total_quantity" class="form-control" id="quantity" placeholder="%">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1348,7 +1361,7 @@
 
 
 
-                                      <button class="bg-primary" id="addnewsize">Add New Size</button>
+                                      <button class="bg-primary" id="addnewdetails">Add New Size</button>
 
 
 

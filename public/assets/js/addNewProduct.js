@@ -1,4 +1,4 @@
-$("#addnewsize").click(function () {
+$("#addnewdetails").click(function () {
 
 
     var newRow=" <div class=\"row\">\n" +
@@ -37,7 +37,20 @@ $("#addnewsize").click(function () {
         "\n" +
         "                                                </div>";
 
-    $("#quantity_input").append(newRow);
+
+    var size = $('#size').val();
+    var color = $('#color').val();
+    var quantity = $('#quantity').val();
+
+    var detailsRow =  "<tr>\n" +
+        "                                                <td>"+size+"</td>\n" +
+        "                                                <td>"+color+"</td>\n" +
+        "                                                <td>"+quantity+"</td>\n" +
+        "                                            </tr>";
+
+    $.get("http://localhost:8000/vendor/adddetail/"+size+"/"+color+"/"+quantity+"", function(data, status){
+        $("#details").append(detailsRow);
+    });
 
     return false;
 
@@ -86,7 +99,7 @@ function sendCategory() {
     $("#saveCategory").click(function(){
         var categoryName = $("#exampleInputuname").val();
         $.get("http://localhost:8000/vendor/addcategory/"+categoryName, function(data, status){
-            $("#category").html("<option value=\""+data+"\">"+categoryName+"</option>");
+            $("#category").append("<option value=\""+data+"\">"+categoryName+"</option>");
         });
     });
 }

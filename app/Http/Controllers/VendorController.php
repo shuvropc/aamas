@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Vendor;
 use App\Product;
 use App\Category;
+use App\Detail;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -186,6 +188,7 @@ class VendorController extends Controller
 
     public function addNewProduct(Request $request){
         $product = new Product();
+        $category = new Category();
 
         $product->product_name = $request->input("product_name");
         $product->product_description = $request->input("product_description");
@@ -194,9 +197,14 @@ class VendorController extends Controller
         $product->discount = $request->input("discount");
         $product->image1 = $request->input("image");
         $product->available = $request->input("radio");
-        $product->category_id = "1";
+        $product->category_id = $request->input("category");
         $product->vendor_id = "1";
-        $product->details_id = "1";
+
+        $category->product_id = null;
+        $category->size = $request->input("size");
+        $category->color = $request->input("color");
+        $category->total_quantity = $request->input("total_quantity");
+        $category->available_quantity = $request->input("available_quantity");
 
         $product->save();
 
@@ -211,6 +219,19 @@ class VendorController extends Controller
         $category->sub_category = "";
 
         $category->save();
+    }
+
+    public function addDetail($size, $color, $quantity){
+        $detail = new Detail();
+
+        $detail->product_id = "1";
+        $detail->size = $size;
+        $detail->color = $color;
+        $detail->total_quantity = $quantity;
+        $detail->available_quantity = $quantity;
+
+        $detail->save();
+
     }
 
     function orders(){
