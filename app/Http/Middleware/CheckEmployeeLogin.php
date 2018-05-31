@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckVendorLogin
+class CheckEmployeeLogin
 {
     /**
      * Handle an incoming request.
@@ -15,13 +15,13 @@ class CheckVendorLogin
      */
     public function handle($request, Closure $next)
     {
-
-       
-        if ($request->session()->has('vendor')) {
+        
+        if ($request->session()->has('employee')) {
             return $next($request);
-        }else{
-            return redirect()->route('vendor.login');
         }
+        else{
+            return redirect()->route('employee.login');
+        }
+
     }
-    
 }

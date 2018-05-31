@@ -14,7 +14,23 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
 
 
     Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
+
+    
 });
+Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
+    Route::get('/employee/create','EmployeeController@create')->name('employee.create');
+    Route::post('/employee/create','EmployeeController@CreateEmployee');
+
+    Route::get('/employee/edit', 'EmployeeController@edit')->name('employee.edit');
+Route::post('/employee/edit', 'EmployeeController@update' );
+
+
+Route::get('/employee/changePassword', 'EmployeeController@changePassword')->name('employee.Passwordchange');
+Route::post('/employee/changePassword', 'EmployeeController@updatePassword' );
+
+});
+
+
 
 
 Route::get('/admin','AdminController@index')->name('admin');
@@ -50,9 +66,19 @@ Route::post('/vendor/login', 'VendorController@login')->name('vendor.login');
 
 
 
+Route::get('/cart', 'CartController@cart')->name('user.cart');
+Route::get('/wishlist', 'WishlistController@wishlist')->name('user.wishlist');
+Route::get('/faq', 'FAQController@faq')->name('faq');
+Route::get('/contact', 'ContactUsController@contact')->name('contact');
+Route::post('/contact', 'ContactUsController@storeContact');
 
 
 
+//Employee
+Route::get('/employee/login', 'EmployeeController@employeeLogin')->name('employee.login');
+Route::post('/employee/login', 'EmployeeController@login');
+
+Route::get('/employee/logout','EmployeeController@logOut')->name('employee.logout');
 
 
 

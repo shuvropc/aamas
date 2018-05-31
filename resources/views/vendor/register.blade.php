@@ -81,13 +81,7 @@
                     <input required type="text" name="website" id="website"   placeholder="https://www.yourcompany.com" title="please enter a valid website link" required>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <label for="address"><i class="glyphicon glyphicon-map-marker"></i>Company Registration Number<span>*</span></label>
-                    <input required type="text" name="regnumber" id="regnumber" pattern="[a-zA-Z0-9. - , ]{10,}"  placeholder="Please enter company registration number" title="It must contain letters and/or separators and a length of minimum 10 characters" required>
-                </div>
-            </div>
-
+           
             <div class="row">
                 <div class="col-sm-12">
                     <label for="address">Product Type<span>*</span></label>

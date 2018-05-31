@@ -27,7 +27,7 @@ class VendorController extends Controller
             $vendor->address=$request->input('address');
             $vendor->country=$request->input('country');
             $vendor->zipcode=$request->input('zipcode');
-            $vendor->company_reg_number=$request->input('regnumber');
+            $vendor->company_reg_number=0;
 
 
 
@@ -101,7 +101,7 @@ class VendorController extends Controller
             'website'       => 'required',
             'address'       => 'required',
             'zipcode'       => 'required',
-            'regnumber'     => 'required',
+            
             'producttype'   => 'required'
 
         ]);
@@ -116,7 +116,7 @@ class VendorController extends Controller
             $vendor->address = $request->input('address');
             $vendor->country = $request->input('country');
             $vendor->zipcode = $request->input('zipcode');
-            $vendor->company_reg_number = $request->input('regnumber');
+           
 
 
             $vendor->product_types = $request->input('producttype');
@@ -127,7 +127,24 @@ class VendorController extends Controller
             return "id not found";
         }
 
-    }
+
+        $vendor->name=$request->input('name');
+        $vendor->vendor_name=$request->input('vendorname');
+        $vendor->contact_number=$request->input('phonenumber');
+        $vendor->website=$request->input('website');
+        $vendor->address=$request->input('address');
+        $vendor->country=$request->input('country');
+        $vendor->zipcode=$request->input('zipcode');
+        
+       
+        $vendor->product_types=$request->input('producttype');
+         $vendor->company_reg_number=0;
+         $vendor->status = false;
+        $vendor->save();
+       
+      
+}
+
 
     public function changePassword(){
         return view('vendor.passwordChange');
@@ -141,6 +158,7 @@ class VendorController extends Controller
             'NewPassword'   =>'required',
             'conPassword'   =>'required|same:NewPassword'
         ]);
+
 
 
 
