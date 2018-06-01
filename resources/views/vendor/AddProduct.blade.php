@@ -1225,7 +1225,7 @@
                                                     <label class="control-label mb-10">Category</label>
                                                     <select name="category" id="category" class="form-control" data-placeholder="Choose a Category" tabindex="1">
                                                         @foreach($categories as $category)
-                                                        <option value="{{$category->id}}">{{ $category->category_name }}</option>
+                                                        <option value="{{$category->category_name}}">{{ $category->category_name }}</option>
 
                                                         @endforeach
                                                     </select>
@@ -1385,112 +1385,8 @@
 
 
                                         <input type="file" name="image">
-                                        {{--<div class="seprator-block"></div>--}}
-                                        {{--<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-collection-image mr-10"></i>upload image</h6>--}}
-                                        {{--<hr class="light-grey-hr"/>--}}
-                                        {{--<div class="row">--}}
-                                            {{--<div class="col-lg-3">--}}
-                                                {{--<div class="img-upload-wrap">--}}
-                                                    {{--<img class="img-responsive" src="/dist/img/chair.jpg" alt="upload_img">--}}
-                                                {{--</div>--}}
-                                                {{--<div class="fileupload btn btn-info btn-anim"><i class="fa fa-upload"></i><span class="btn-text">Upload new image</span>--}}
-                                                    {{--<input type="file" name="image" class="upload">--}}
-                                                {{--</div>--}}
-
-                                                <!-- The file upload form used as target for the file upload widget -->
-
-
-
-
-
                                         <div class="seprator-block"></div>
-                                        <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i>general info</h6>
-                                        <hr class="light-grey-hr"/>
 
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Brand">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Stellar">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Delivery Condition">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Knock Down">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Seat Lock Included">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Yes">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Type">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Office Chair">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Style">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Contemporary & Modern">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Wheels Included">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Yes">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Upholstery Included">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Yes">
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="form-actions">
                                             <button type="submit" class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span>save</span></button>
                                             <button type="button" class="btn btn-warning pull-left">Cancel</button>

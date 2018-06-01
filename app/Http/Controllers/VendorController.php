@@ -9,6 +9,7 @@ use App\Detail;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use SebastianBergmann\Environment\Console;
 
 class VendorController extends Controller
 {
@@ -189,21 +190,33 @@ class VendorController extends Controller
     public function addNewProduct(Request $request){
         $product = new Product();
         $category = new Category();
+        $detail = new Detail();
 
+
+        $cat = Category::where('category_name', $request->input("category"))->first();
+        if ($cat === null) {
+            // user doesn't exist
+            //add Category
+            $category->category_name = $request->input("category");
+            $category->sub_category = "";
+            $category->save();
+
+            $product->category_id = $category->id;
+
+        }else {
+            $product->category_id = $cat->id;
+        }
+
+
+
+        //add Product
         $product->product_name = $request->input("product_name");
         $product->product_description = $request->input("product_description");
         $product->buying_price = $request->input("buying_price");
         $product->selling_price = $request->input("selling_price");
         $product->discount = $request->input("discount");
         $product->available = $request->input("radio");
-        $product->category_id = $request->input("category");
         $product->vendor_id = "1";
-
-        $category->product_id = null;
-        $category->size = $request->input("size");
-        $category->color = $request->input("color");
-        $category->total_quantity = $request->input("total_quantity");
-        $category->available_quantity = $request->input("available_quantity");
 
         //File Upload Code Start
         $file = $request->file('image');

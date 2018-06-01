@@ -57,8 +57,6 @@ $("#addnewdetails").click(function () {
 });
 
 function addCategory() {
-    $("#addNewCategory").click(function () {
-
 
         var newRow=" <div class=\"row\">\n" +
             "\n" +
@@ -73,8 +71,8 @@ function addCategory() {
             "                                                        </div>\n" +
             "                                                    </div>\n" +
             "\n" +
-            "                                                    <a id='saveCategory' onclick='sendCategory()'>Save</a> |"+
-            "                                                    <a id='categoryCancel' onclick='removeCategoryHtml()' type='button'>Cancel</a>"+
+            "                                                    <button type='button' id='saveCategory' onclick='sendCategory()'>Save</button> |"+
+            "                                                    <button type='button' id='categoryCancel' onclick='removeCategoryHtml()' type='button'>Cancel</button>"+
             "\n" +
             "                                                </div>";
 
@@ -82,7 +80,6 @@ function addCategory() {
 
         return false;
 
-    });
 }
 
 
@@ -90,18 +87,13 @@ function addCategory() {
 
 
 function removeCategoryHtml() {
-    $("#categoryCancel").click(function () {
         $("#newCategory").remove();
-    });
 }
 
 function sendCategory() {
-    $("#saveCategory").click(function(){
-        var categoryName = $("#exampleInputuname").val();
-        $.get("http://localhost:8000/vendor/addcategory/"+categoryName, function(data, status){
-            $("#category").append("<option value=\""+data+"\">"+categoryName+"</option>");
-        });
-    });
+    var categoryName = $('#exampleInputuname').val();
+    $("#category").append("<option selected value=\""+categoryName+"\">"+categoryName+"</option>");
+    $("#newCategory").remove();
 }
 
 
