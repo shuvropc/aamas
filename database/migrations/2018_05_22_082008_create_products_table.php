@@ -38,8 +38,6 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('vendor_id');
             $table->foreign('vendor_id')->references('id')->on('vendors');
 
-            $table->unsignedInteger('details_id');
-            $table->foreign('details_id')->references('id')->on('details');
             $table->timestamps();
         });
     }
