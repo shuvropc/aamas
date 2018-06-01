@@ -58,7 +58,7 @@ $("#addnewdetails").click(function () {
 
 function addCategory() {
 
-        var newRow=" <div class=\"row\">\n" +
+        var newRow=" <div id='categoryHtml' class=\"row\">\n" +
             "\n" +
             "                                                    <div class=\"col-md-4\">\n" +
             "                                                        <div class=\"form-group\">\n" +
@@ -87,13 +87,13 @@ function addCategory() {
 
 
 function removeCategoryHtml() {
-        $("#newCategory").remove();
+        $("#categoryHtml").remove();
 }
 
 function sendCategory() {
     var categoryName = $('#exampleInputuname').val();
     $("#category").append("<option selected value=\""+categoryName+"\">"+categoryName+"</option>");
-    $("#newCategory").remove();
+    $("#categoryHtml").remove();
 }
 
 
