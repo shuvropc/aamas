@@ -23,14 +23,12 @@ class ContactUsController extends Controller
        $title = $request->input('title');
        $comment = $request->input('comment');
 
-      $contact=new Contact();
-
-      $contact->name = $name;
-      $contact->email = $email;
-      $contact->title = $title;
-      $contact->comment = $comment;
-
-      $contact->save();
+       Contact::create([
+           'name'   =>$name,
+           'email'  =>$email,
+           'title'  =>$title,
+           'comment'=>$comment
+       ]);
 
       return "done";
 

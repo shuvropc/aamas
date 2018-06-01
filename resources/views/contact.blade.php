@@ -34,14 +34,14 @@
                         <div class="col-md-4 ">
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputName">Your Name <span>* </span></label>
-                                <input type="text" name="name" class="form-control unicase-form-control text-input" id="exampleInputName" placeholder="">
+                                <input type="text" name="name" class="form-control unicase-form-control text-input" id="exampleInputName" placeholder="Your Name">
                                 <span class="text-danger">{{$errors->has('name') ? $errors->first('name'): ''}}</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
-                                <input type="email" name="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="">
+                                <input type="email" name="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Email Address">
                                 <span class="text-danger">{{$errors->has('email') ? $errors->first('email'): ''}}</span>
 
                             </div>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 outer-bottom-small m-t-20">
-                            <input type="submit" value="Send Message" class="btn-upper btn btn-primary checkout-page-button ">
+                            <input type="submit" value="Send Message" style="color:White;" class="btn-upper btn btn-primary checkout-page-button ">
                         </div>
                     </form>
                 </div>
