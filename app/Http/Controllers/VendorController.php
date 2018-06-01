@@ -195,7 +195,6 @@ class VendorController extends Controller
         $product->buying_price = $request->input("buying_price");
         $product->selling_price = $request->input("selling_price");
         $product->discount = $request->input("discount");
-        $product->image1 = $request->input("image");
         $product->available = $request->input("radio");
         $product->category_id = $request->input("category");
         $product->vendor_id = "1";
@@ -205,6 +204,14 @@ class VendorController extends Controller
         $category->color = $request->input("color");
         $category->total_quantity = $request->input("total_quantity");
         $category->available_quantity = $request->input("available_quantity");
+
+        //File Upload Code Start
+        $file = $request->file('image');
+        $file_name = str_random(30).$request->input('product_name'). '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('/uploads/vendor/product'), $file_name);
+        //File Upload Code End
+
+        $product->image1='/public/uploads/vendor/product/'.$file_name;
 
         $product->save();
 
