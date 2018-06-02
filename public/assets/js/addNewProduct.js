@@ -1,60 +1,57 @@
-$("#addnewdetails").click(function () {
+var dynamicRowindex=1;
+var dynamicImageUploadindex=1;
 
+function addNewDetailsRow() {
 
-    var newRow=" <div class=\"row\">\n" +
+    var newRow="           <div class=\"row\" id=\"newDynamicDetailsRow"+dynamicRowindex+"\">\n" +
         "\n" +
-        "                                                    <div class=\"col-md-4\">\n" +
+        "                                                    <div class=\"col-md-3\">\n" +
         "                                                        <div class=\"form-group\">\n" +
         "                                                            <label class=\"control-label mb-10\">Size</label>\n" +
         "                                                            <div class=\"input-group\">\n" +
         "                                                                <div class=\"input-group-addon\"><i class=\"ti-cut\"></i></div>\n" +
-        "                                                                <input type=\"text\" class=\"form-control\" id=\"exampleInputuname\" placeholder=\"%\">\n" +
+        "                                                                <input type=\"text\" required name=\"size[]\" class=\"form-control\" id=\"size\" placeholder=\"\">\n" +
         "                                                            </div>\n" +
         "                                                        </div>\n" +
         "                                                    </div>\n" +
         "\n" +
         "\n" +
-        "                                                    <div class=\"col-md-4\">\n" +
+        "                                                    <div class=\"col-md-3\">\n" +
         "                                                        <div class=\"form-group\">\n" +
         "                                                            <label class=\"control-label mb-10\">Color</label>\n" +
         "                                                            <div class=\"input-group\">\n" +
         "                                                                <div class=\"input-group-addon\"><i class=\"ti-cut\"></i></div>\n" +
-        "                                                                <input type=\"text\" class=\"form-control\" id=\"exampleInputuname\" placeholder=\"%\">\n" +
+        "                                                                <input type=\"text\" required name=\"color[]\" class=\"form-control\" id=\"color\" placeholder=\"\">\n" +
         "                                                            </div>\n" +
         "                                                        </div>\n" +
         "                                                    </div>\n" +
         "\n" +
         "\n" +
-        "                                                    <div class=\"col-md-4\">\n" +
+        "                                                    <div class=\"col-md-3\">\n" +
         "                                                        <div class=\"form-group\">\n" +
         "                                                            <label class=\"control-label mb-10\">Quatity</label>\n" +
         "                                                            <div class=\"input-group\">\n" +
         "                                                                <div class=\"input-group-addon\"><i class=\"ti-cut\"></i></div>\n" +
-        "                                                                <input type=\"text\" class=\"form-control\" id=\"exampleInputuname\" placeholder=\"%\">\n" +
+        "                                                                <input type=\"text\" required name=\"total_quantity[]\" class=\"form-control\" id=\"quantity\" placeholder=\"\">\n" +
         "                                                            </div>\n" +
         "                                                        </div>\n" +
         "                                                    </div>\n" +
         "\n" +
-        "                                                </div>";
+        "                                                   <div class=\"col-md-3\">\n" +
+        "                                                       <div class=\"form-group\">\n" +
+        "                                                           <label class=\"control-label mb-10\"></label>\n" +
+        "                                                           <div class=\"input-group\">\n" +
+        "                                                               <button type=\"button\" class=\"btn btn-danger\" type=\"button\" onclick=\"removeDynamicDetailsRow("+dynamicRowindex+")\">X</button>\n" +
+        "                                                           </div>\n" +
+        "                                                       </div>\n" +
+        "                                                   </div>\n" +
+        "                                                   </div>";
 
 
-    var size = $('#size').val();
-    var color = $('#color').val();
-    var quantity = $('#quantity').val();
-
-    var detailsRow =  "<tr>\n" +
-        "                                                <td>"+size+"</td>\n" +
-        "                                                <td>"+color+"</td>\n" +
-        "                                                <td>"+quantity+"</td>\n" +
-        "                                            </tr>";
-
-    $.get("http://localhost:8000/vendor/adddetail/"+size+"/"+color+"/"+quantity+"", function(data, status){
-        $("#details").append(detailsRow);
-    });
-
-    return false;
-
-});
+     $("#quantity_input").append(newRow);
+    dynamicRowindex++;
+     return false;
+}
 
 function addCategory() {
 
@@ -78,16 +75,21 @@ function addCategory() {
 
         $("#newCategory").html(newRow);
 
+        $("#addNewCategory").hide();
+
         return false;
 
 }
 
 
-
+function removeDynamicDetailsRow(index){
+    $("#newDynamicDetailsRow"+index).remove();
+}
 
 
 function removeCategoryHtml() {
         $("#categoryHtml").remove();
+    $("#addNewCategory").show();
 }
 
 function sendCategory() {
@@ -95,6 +97,4 @@ function sendCategory() {
     $("#category").append("<option selected value=\""+categoryName+"\">"+categoryName+"</option>");
     $("#categoryHtml").remove();
 }
-
-
 

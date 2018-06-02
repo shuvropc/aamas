@@ -23,6 +23,14 @@
     <link href="/dist/css/style.css" rel="stylesheet" type="text/css">
 
 
+
+    {{--added by shuvro--}}
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/imageUpload.css') }}">
+
+
+
+
 </head>
 <body>
 <!--Preloader-->
@@ -46,14 +54,14 @@
             <a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"><i class="zmdi zmdi-menu"></i></a>
             <a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a>
             <a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
-            <form id="search_form" role="search" class="top-nav-search collapse pull-left">
-                <div class="input-group">
-                    <input type="text" name="example-input1-group2" class="form-control" placeholder="Search">
-                    <span class="input-group-btn">
-							<button type="button" class="btn  btn-default"  data-target="#search_form" data-toggle="collapse" aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>
-							</span>
-                </div>
-            </form>
+            {{--<form id="search_form" role="search" class="top-nav-search collapse pull-left">--}}
+                {{--<div class="input-group">--}}
+                    {{--<input type="text" name="example-input1-group2" class="form-control" placeholder="Search">--}}
+                    {{--<span class="input-group-btn">--}}
+							{{--<button type="button" class="btn  btn-default"  data-target="#search_form" data-toggle="collapse" aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>--}}
+							{{--</span>--}}
+                {{--</div>--}}
+            {{--</form>--}}
         </div>
         <div id="mobile_only_nav" class="mobile-only-nav pull-right">
             <ul class="nav navbar-right top-nav pull-right">
@@ -766,14 +774,14 @@
                                         <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <form role="search" class="chat-search pl-15 pr-15 pb-15">
-                                        <div class="input-group">
-                                            <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
-                                            <span class="input-group-btn">
-													<button type="button" class="btn  btn-default"><i class="zmdi zmdi-search"></i></button>
-													</span>
-                                        </div>
-                                    </form>
+                                    {{--<form role="search" class="chat-search pl-15 pr-15 pb-15">--}}
+                                        {{--<div class="input-group">--}}
+                                            {{--<input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">--}}
+                                            {{--<span class="input-group-btn">--}}
+													{{--<button type="button" class="btn  btn-default"><i class="zmdi zmdi-search"></i></button>--}}
+													{{--</span>--}}
+                                        {{--</div>--}}
+                                    {{--</form>--}}
                                     <div id="chat_list_scroll">
                                         <div class="nicescroll-bar">
                                             <ul class="chat-list-wrap">
@@ -1199,14 +1207,16 @@
                             <div class="panel-body">
                                 <div class="form-wrap">
                                     <form method="post" enctype="multipart/form-data">
+
                                         {{ csrf_field() }}
+
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-info-outline mr-10"></i>about product</h6>
                                         <hr class="light-grey-hr"/>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label mb-10">Product Name</label>
-                                                    <input type="text" id="firstName" name="product_name" class="form-control" placeholder="Rounded Chair">
+                                                    <input type="text" required  id="firstName" name="product_name" class="form-control" placeholder="">
                                                 </div>
                                             </div>
                                             <!--/span-->
@@ -1223,7 +1233,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label mb-10">Category</label>
-                                                    <select name="category" id="category" class="form-control" data-placeholder="Choose a Category" tabindex="1">
+                                                    <select  name="category" id="category" class="form-control" data-placeholder="Choose a Category" tabindex="1">
                                                         @foreach($categories as $category)
                                                         <option value="{{$category->category_name}}">{{ $category->category_name }}</option>
 
@@ -1263,7 +1273,7 @@
                                                     <label class="control-label mb-10">Buing Price</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-money"></i></div>
-                                                        <input type="text" name="buying_price" class="form-control" id="exampleInputuname" placeholder="153">
+                                                        <input  required type="text" name="buying_price" class="form-control" id="exampleInputuname" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1273,7 +1283,7 @@
                                                     <label class="control-label mb-10">Selling Price</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-money"></i></div>
-                                                        <input type="text" name="selling_price" class="form-control" id="exampleInputuname_1" placeholder="36%">
+                                                        <input required type="text" name="selling_price" class="form-control" id="exampleInputuname_1" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1290,7 +1300,7 @@
                                                     <label class="control-label mb-10">Discount</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                        <input type="text" name="discount" class="form-control" id="exampleInputuname" placeholder="%">
+                                                        <input required type="text" name="discount" class="form-control" id="exampleInputuname" placeholder="%">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1299,73 +1309,56 @@
 
 
 
-
-
-
                                         <div class="seprator-block"></div>
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-comment-text mr-10"></i>Product Details</h6>
                                         <hr class="light-grey-hr"/>
 
-                                        <table id="details" class="table table-bordered">
-                                            <thead>
-                                            <tr>
-                                                <th>Size</th>
-                                                <th>Color</th>
-                                                <th>Quantity</th>
-                                            </tr>
-                                            </thead>
-
-                                            <tr></tr>
-
-                                        </table>
 
                                        <div id="quantity_input">
 
-                                                <div class="row">
+                                               <div class="row">
 
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label class="control-label mb-10">Size</label>
                                                             <div class="input-group">
                                                                 <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                                <input type="text" name="size" class="form-control" id="size" placeholder="%">
+                                                                <input required type="text" name="size[]" class="form-control" id="size" placeholder="">
                                                             </div>
                                                         </div>
                                                     </div>
 
 
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label class="control-label mb-10">Color</label>
                                                             <div class="input-group">
                                                                 <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                                <input type="text" name="color" class="form-control" id="color" placeholder="%">
+                                                                <input required type="text" name="color[]" class="form-control" id="color" placeholder="">
                                                             </div>
                                                         </div>
                                                     </div>
 
 
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label class="control-label mb-10">Quatity</label>
                                                             <div class="input-group">
                                                                 <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                                <input type="text" name="total_quantity" class="form-control" id="quantity" placeholder="%">
+                                                                <input required type="text" name="total_quantity[]" class="form-control" id="quantity" placeholder="">
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                 </div>
 
+
+
+
+
                                         </div>
 
-
-
-                                      <button class="bg-primary" id="addnewdetails">Add New Size</button>
-
-
-
-
+                                      <button type="button" class="btn btn-success btn-icon left-icon " onclick="addNewDetailsRow()" >Add New Size</button>
 
                                         <div class="seprator-block"></div>
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-comment-text mr-10"></i>Product Description</h6>
@@ -1377,23 +1370,111 @@
                                                 {{--<div id="summernote">Hello Summernote</div>--}}
 
                                                 <div class="form-group">
-                                                    <textarea name="product_description" class="form-control" rows="4"></textarea>
+                                                    <textarea  name="product_description" class="form-control" rows="4"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <!--/row-->
 
 
-                                        <input type="file" name="image">
-                                        <div class="seprator-block"></div>
 
-                                        <div class="form-actions">
-                                            <button type="submit" class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span>save</span></button>
-                                            <button type="button" class="btn btn-warning pull-left">Cancel</button>
-                                            <div class="clearfix"></div>
+
+                                <div class="seprator-block"></div>
+                                <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-comment-text mr-10"></i>Product Image</h6>
+                                <hr class="light-grey-hr"/>
+
+
+                                <div class="row" id="dynamicImageUploadDiv">
+
+                                    <div class="col-md-3">
+                                        <div class="imageupload panel panel-default">
+                                            <div class="panel-heading clearfix">
+                                                <h3 class="panel-title pull-left">Upload Image</h3>
+                                                <div class="btn-group pull-right">
+                                                    <button type="button" class="btn btn-default active">File</button>
+                                                </div>
+                                            </div>
+                                            <div class="file-tab panel-body">
+                                                <label class="btn btn-default btn-file">
+                                                    <span>Browse</span>
+                                                    <!-- The file is stored here. -->
+                                                    <input required type="file" name="productImage[]">
+                                                </label>
+                                                <button type="button" class="btn btn-default">Remove</button>
+                                            </div>
+
                                         </div>
-                                    </form>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="imageupload panel panel-default">
+                                            <div class="panel-heading clearfix">
+                                                <h3 class="panel-title pull-left">Upload Image</h3>
+                                                <div class="btn-group pull-right">
+                                                    <button type="button" class="btn btn-default active">File</button>
+                                                </div>
+                                            </div>
+                                            <div class="file-tab panel-body">
+                                                <label class="btn btn-default btn-file">
+                                                    <span>Browse</span>
+                                                    <!-- The file is stored here. -->
+                                                    <input type="file" name="productImage[]">
+                                                </label>
+                                                <button type="button" class="btn btn-default">Remove</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="imageupload panel panel-default">
+                                            <div class="panel-heading clearfix">
+                                                <h3 class="panel-title pull-left">Upload Image</h3>
+                                                <div class="btn-group pull-right">
+                                                    <button type="button" class="btn btn-default active">File</button>
+                                                </div>
+                                            </div>
+                                            <div class="file-tab panel-body">
+                                                <label class="btn btn-default btn-file">
+                                                    <span>Browse</span>
+                                                    <!-- The file is stored here. -->
+                                                    <input type="file" name="productImage[]">
+                                                </label>
+                                                <button type="button" class="btn btn-default">Remove</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="imageupload panel panel-default">
+                                            <div class="panel-heading clearfix">
+                                                <h3 class="panel-title pull-left">Upload Image</h3>
+                                                <div class="btn-group pull-right">
+                                                    <button type="button" class="btn btn-default active">File</button>
+                                                </div>
+                                            </div>
+                                            <div class="file-tab panel-body">
+                                                <label class="btn btn-default btn-file">
+                                                    <span>Browse</span>
+                                                    <!-- The file is stored here. -->
+                                                    <input type="file" name="productImage[]">
+                                                </label>
+                                                <button type="button" class="btn btn-default">Remove</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
                                 </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span>save</span></button>
+                                    <button type="button" class="btn btn-warning pull-left">Cancel</button>
+                                    <div class="clearfix"></div>
+                                </div>
+
+
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -1403,15 +1484,15 @@
 
         </div>
 
-        <!-- Footer -->
-        <footer class="footer container-fluid pl-30 pr-30">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p>2017 &copy; Philbert. Pampered by Hencework</p>
-                </div>
-            </div>
-        </footer>
-        <!-- /Footer -->
+        {{--<!-- Footer -->--}}
+        {{--<footer class="footer container-fluid pl-30 pr-30">--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-sm-12">--}}
+                    {{--<p>2017 &copy; Philbert. Pampered by Hencework</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</footer>--}}
+        {{--<!-- /Footer -->--}}
 
     </div>
     <!-- /Main Content -->
@@ -1450,31 +1531,7 @@
 
 
 
-{{--Summer Note--}}
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
-<!-- include summernote css/js -->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-{{--Summer Note--}}
-
-
-
-
-
-
-
-
-
-<script>
-    $(document).ready(function() {
-        $('#summernote').summernote();
-    });
-
-</script>
 
 
 
@@ -1577,6 +1634,28 @@
 <script src="/assets/js/jquery.fileupload-validate.js"></script>
 <!-- The File Upload user interface plugin -->
 <script src="/assets/js/jquery.fileupload-ui.js"></script>
+
+
+
+
+
+
+
+
+
+
+{{--image upload added by shuvro--}}
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="{{ URL::asset('assets/js/image-upload.js') }}"></script>
+
+
+<script>
+    var $imageupload = $('.imageupload');
+    $imageupload.imageupload();
+</script>
+
 
 
 
