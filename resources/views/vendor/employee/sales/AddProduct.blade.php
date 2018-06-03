@@ -41,7 +41,8 @@
                         <div class="form-wrap">
                             <form method="post" enctype="multipart/form-data">
 
-                                <input type="hidden" name="_token" value="90OO821qFBDvyEVLnXB2cGNSeLLIOdxO0FtahhOI">
+                              @csrf
+
 
                                 <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-info-outline mr-10"></i>about product</h6>
                                 <hr class="light-grey-hr">
@@ -66,9 +67,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label mb-10">Category</label>
-                                            <select name="category" id="category" class="form-control" data-placeholder="Choose a Category" tabindex="1">
-                                                <option value="Clothing">Clothing</option>
+                                            <select  name="category" id="category" class="form-control" data-placeholder="Choose a Category" tabindex="1">
+                                                @foreach($categories as $category)
+                                                    <option value="{{$category->category_name}}">{{ $category->category_name }}</option>
 
+                                                @endforeach
                                             </select>
                                             <div id="newCategory"></div>
                                             <button id="addNewCategory" onclick="addCategory()" type="button" class="btn btn-success btn-icon left-icon "> <i class="fa fa-plus"></i> <span>Add New</span></button>
@@ -131,7 +134,21 @@
                                             <label class="control-label mb-10">Discount</label>
                                             <div class="input-group">
                                                 <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                <input required="" type="text" name="discount" class="form-control" id="exampleInputuname" placeholder="%">
+                                                <input  type="text" name="discount" class="form-control" id="exampleInputuname" placeholder="%">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">Brand</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="ti-cut"></i></div>
+                                                <input  type="text" name="brand" class="form-control" id="exampleInputuname" placeholder="">
                                             </div>
                                         </div>
                                     </div>
@@ -154,7 +171,7 @@
                                                 <label class="control-label mb-10">Size</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                    <input required="" type="text" name="size[]" class="form-control" id="size" placeholder="">
+                                                    <input  type="text" name="size[]" class="form-control" id="size" placeholder="">
                                                 </div>
                                             </div>
                                         </div>

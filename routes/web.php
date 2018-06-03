@@ -14,19 +14,33 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
 
 
     Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
+    Route::get('/vendor/index', 'VendorController@index')->name('vendor.index');
 
     
 });
 Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
+
     Route::get('/employee/create','EmployeeController@create')->name('employee.create');
     Route::post('/employee/create','EmployeeController@CreateEmployee');
 
     Route::get('/employee/edit', 'EmployeeController@edit')->name('employee.edit');
-Route::post('/employee/edit', 'EmployeeController@update' );
+    Route::post('/employee/edit', 'EmployeeController@update' );
 
 
-Route::get('/employee/changePassword', 'EmployeeController@changePassword')->name('employee.Passwordchange');
-Route::post('/employee/changePassword', 'EmployeeController@updatePassword' );
+    Route::get('/employee/changePassword', 'EmployeeController@changePassword')->name('employee.Passwordchange');
+    Route::post('/employee/changePassword', 'EmployeeController@updatePassword' );
+
+
+
+    Route::get('/employee/sales/addproduct','ProductController@addProduct')->name('sales.addproduct');
+    Route::post('/employee/sales/addproduct','ProductController@addNewProduct');
+
+
+
+    Route::get('/employee/logout','EmployeeController@logOut')->name('employee.logout');
+
+    Route::get('/employee/hr/index','EmployeeController@HRindex')->name('hr.index');
+    Route::get('/employee/sales/index','EmployeeController@salesExcecutiveindex')->name('sales.index');
 
 });
 
@@ -55,8 +69,7 @@ Route::get('/logout','UserController@logOut')->name('vendor.logout');
 Route::get('/vendor/register','VendorController@register')->name('vendor.registration');
 Route::post('/vendor/register','VendorController@registerVendor');
 
-Route::get('/vendor/addproduct','VendorController@addProduct')->name('vendor.addproduct');
-Route::post('/vendor/addproduct','VendorController@addNewProduct')->name('vendor.addNewProduct');
+
 
 Route::get('/vendor/addcategory/{name}','VendorController@addCategory')->name('vendor.addcategory');
 
@@ -65,6 +78,8 @@ Route::get('/vendor/adddetail/{size}/{color}/{quantity}','VendorController@addDe
 Route::get('/vendor/orders','VendorController@orders')->name('vendor.orders');
 Route::get('/vendor/login', 'VendorController@vendorLogin')->name('vendor.login');
 Route::post('/vendor/login', 'VendorController@login')->name('vendor.login');
+
+
 
 
 
@@ -79,13 +94,6 @@ Route::post('/contact', 'ContactUsController@storeContact');
 //Employee
 Route::get('/employee/login', 'EmployeeController@employeeLogin')->name('employee.login');
 Route::post('/employee/login', 'EmployeeController@login');
-
-Route::get('/employee/logout','EmployeeController@logOut')->name('employee.logout');
-
-
-
-
-
 
 
 

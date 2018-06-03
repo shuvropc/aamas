@@ -11,10 +11,16 @@ use Illuminate\Support\Facades\Hash;
 class EmployeeController extends Controller
 {
    
-    public function index()
+    public function HRindex()
     {
-        //employee list
+        return view('vendor.employee.hr.index');
     }
+
+    public function salesExcecutiveindex()
+    {
+        return view('vendor.employee.sales.index');
+    }
+
  public function employeeLogin(){
         return view('employee.login');
     }
@@ -23,7 +29,6 @@ class EmployeeController extends Controller
 
 
 
-        
 
         $email=$request->input('email');
         $password=$request->input('password');
@@ -37,7 +42,14 @@ class EmployeeController extends Controller
             if(Hash::check($password,  $employee->password)) {
                 $employee->password=null;
                 session(['employee' => $employee]);
-                return "Email  ".$request->session()->get('employee.email')."  Logged in ".$request->session()->get('employee.type');
+
+                if($employee->type=="HR"){
+                    return redirect()->route('hr.index');
+                }
+                elseif ($employee->type=="Sales Executive"){
+                    return redirect()->route('sales.index');
+                }
+
             }else{
                 return view('employee.login',["errorMessage"=>"Email or Password doesn't match"]);
             }

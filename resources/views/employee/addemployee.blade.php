@@ -73,8 +73,7 @@
                     <div class="col-sm-12">
                         <label for="address">Employee Type<span>*</span></label>
                         <select required name="emp_type">
-                            <option value="Admin">Admin</option>
-                            <option value="Sells Executive">Sells Executive</option>
+                            <option value="Sells Executive">Sales Executive</option>
                             <option value="Accountant">Accountant</option>
                             <option value="HR">HR</option>
                         </select>

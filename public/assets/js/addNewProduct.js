@@ -10,7 +10,7 @@ function addNewDetailsRow() {
         "                                                            <label class=\"control-label mb-10\">Size</label>\n" +
         "                                                            <div class=\"input-group\">\n" +
         "                                                                <div class=\"input-group-addon\"><i class=\"ti-cut\"></i></div>\n" +
-        "                                                                <input type=\"text\" required name=\"size[]\" class=\"form-control\" id=\"size\" placeholder=\"\">\n" +
+        "                                                                <input type=\"text\"  name=\"size[]\" class=\"form-control\" id=\"size\" placeholder=\"\">\n" +
         "                                                            </div>\n" +
         "                                                        </div>\n" +
         "                                                    </div>\n" +
@@ -81,11 +81,9 @@ function addCategory() {
 
 }
 
-
 function removeDynamicDetailsRow(index){
     $("#newDynamicDetailsRow"+index).remove();
 }
-
 
 function removeCategoryHtml() {
         $("#categoryHtml").remove();
