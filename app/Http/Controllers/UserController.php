@@ -40,7 +40,7 @@ class UserController extends Controller
                $userAccount->password = Hash::make($pass);
                $userAccount->save();
 
-               return redirect()->route('admin');
+               return redirect()->route('userLogin');
            }
        }
     }
@@ -64,8 +64,8 @@ class UserController extends Controller
             if(Hash::check($password, $userDb->password)){
 
                 session(['user' => $userDb]);
-                return $request->session()->get('user');
-//            return redirect()->route('admin');
+//                return $request->session()->get('user');
+            return redirect()->route('homepage');
             } else {
                 $message = "Email or Password is wrong";
                 return view('user.login', ['message' => $message]);
@@ -141,6 +141,11 @@ class UserController extends Controller
             return view('user.passwordChange',['error'=> $error]);
         }
 
+    }
+
+    public function profile(Request $request){
+        $profile=User::find($request->session()->get('user.id'));
+        return view('user/profile',['profile'=>$profile]);
     }
 
     public function logOut(){

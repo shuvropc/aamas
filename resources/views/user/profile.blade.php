@@ -1,7 +1,7 @@
 @extends('layouts.user-layout-without-sidebar')
 
 
-@section('title', 'Login')
+@section('title', 'Registration')
 
 
 @section('content')
@@ -10,35 +10,55 @@
         <div class="container">
             <div class="sign-in-page">
                 <div class="row">
-                    <!-- Sign-in -->
-                    <div class="col-md-6 col-sm-6 sign-in">
-                        <h4 class="">Sign in</h4>
-                        <p class="">Hello, Welcome to your account.</p>
-                        <div class="social-sign-in outer-top-xs">
-                            <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
-                            <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
+
+                    <!-- create a new account -->
+                    <div lass="col-md-6 col-sm-6 create-new-account">
+                        <h4 align="center" class="checkout-subtitle">Profile</h4>
+
+                     <p align="center">
+                        <a href="{{url('user/edit')}}">Edit</a> | <a href="{{url('/')}}">Back</a>
+                     </p>
+                        <div align="center" style="margin-bottom: 20px" >
+                            <img style="width:200px; height:200px; border-radius: 50%; " src="{{asset('dist/img/mh.jpg')}}">
                         </div>
-                        <form class="register-form outer-top-xs" role="form" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Email Address <span>* {{$message or ''}}</span></label>
-                                <input type="email" name="email" required class="form-control unicase-form-control text-input" id="exampleInputEmail1" >
-                            </div>
-                            <div class="form-group">
-                                <label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
-                                <input type="password" name="password" required class="form-control unicase-form-control text-input" id="exampleInputPassword1" >
-                            </div>
-                            <div class="radio outer-xs">
-                                <label>
-                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Remember me!
-                                </label>
-                                <a href="#" class="forgot-password pull-right">Forgot your Password?</a>
-                            </div>
-                            <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
-                            <a href="{{url('user/registration')}}">Create account</a>
-                        </form>
+                        <table align="center">
+                           <tr>
+                             <td>Name:</td>
+                              <td>{{$profile->name}}</td>
+                           </tr>
+
+                            <tr>
+                                <td>Email:</td>
+                                <td>{{$profile->email}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Phone:</td>
+                                <td>{{$profile->contact_number}}</td>
+                            </tr>
+                            <tr>
+                                <td>Address:</td>
+                                <td>{{$profile->address}}</td>
+                            </tr>
+                            <tr>
+                                <td>City: </td>
+                                <td>{{$profile->city}}</td>
+                            </tr>
+                            <tr>
+                                <td>Zip code: </td>
+                                <td>{{$profile->zipcode}}</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping address:</td>
+                                <td>{{$profile->shipping_address}}</td>
+                            </tr>
+
+
+                        </table>
+
+
                     </div>
-                    <!-- Sign-in -->
+                    <!-- create a new account -->
 
                 </div><!-- /.row -->
             </div><!-- /.sigin-in-->

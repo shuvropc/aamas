@@ -128,31 +128,32 @@ class VendorController extends Controller
             $vendor->address = $request->input('address');
             $vendor->country = $request->input('country');
             $vendor->zipcode = $request->input('zipcode');
-           
-
 
             $vendor->product_types = $request->input('producttype');
+            if($vendor->save()){
+                return redirect()->route('vendor.index');
+            }else{
+                return "there is a problem to update";
+            }
 
-
-            $vendor->save();
         }else{
             return "id not found";
         }
 
 
-        $vendor->name=$request->input('name');
-        $vendor->vendor_name=$request->input('vendorname');
-        $vendor->contact_number=$request->input('phonenumber');
-        $vendor->website=$request->input('website');
-        $vendor->address=$request->input('address');
-        $vendor->country=$request->input('country');
-        $vendor->zipcode=$request->input('zipcode');
-        
-       
-        $vendor->product_types=$request->input('producttype');
-         $vendor->company_reg_number=0;
-         $vendor->status = false;
-        $vendor->save();
+//        $vendor->name=$request->input('name');
+//        $vendor->vendor_name=$request->input('vendorname');
+//        $vendor->contact_number=$request->input('phonenumber');
+//        $vendor->website=$request->input('website');
+//        $vendor->address=$request->input('address');
+//        $vendor->country=$request->input('country');
+//        $vendor->zipcode=$request->input('zipcode');
+//
+//
+//        $vendor->product_types=$request->input('producttype');
+//        $vendor->company_reg_number=0;
+//        $vendor->status = false;
+//        $vendor->save();
        
       
 }
@@ -169,15 +170,16 @@ class VendorController extends Controller
             'conPassword'   =>'required|same:NewPassword'
         ]);
 
-
-
-
         $vendor=Vendor::find($request->session()->get('vendor.id'));
 
         if (Hash::check($request->input('oldPassword'),  $vendor->password)) {
             $vendor->password = Hash::make($request->input('NewPassword'));
-            $vendor->save();
-            return "Password Changed Successfully";
+            if($vendor->save())
+            {
+                return redirect()->route('vendor.index');
+            } else{
+                return "there is a problem to update password";
+            }
         }else{
             $message = "Old password is not correct";
             return view('vendor.passwordChange', ['message' => $message]);

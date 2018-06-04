@@ -64,7 +64,7 @@
 
 
                         @if(!empty(Session::get('user.name')))
-                            <li><a href="#"><i class="icon fa fa-lock"></i>{{Session::get('user.name')}}</a></li>
+                            <li><a href="{{url('user/profile')}}"><i class="icon fa fa-lock"></i>{{Session::get('user.name')}}</a></li>
                         @else
                             <li><a href="{{url('user/login')}}"><i class="icon fa fa-lock"></i>Login</a></li>
                         @endif
