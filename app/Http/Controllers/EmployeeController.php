@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use File;
 use App\Vendor;
 use App\Employee;
 use Illuminate\Http\Request;
@@ -11,18 +11,29 @@ use Illuminate\Support\Facades\Hash;
 class EmployeeController extends Controller
 {
    
-    public function HRindex()
+    public function HRindex(Request $request)
     {
-        return view('vendor.employee.hr.index');
+        $employee=session()->get('employee');
+         if($employee->type=="HR"){
+        return view('vendor.employee.hr.index',['employee'=>$employee]);
+    }else{
+         return redirect()->route('sales.index');
+    }
     }
 
     public function salesExcecutiveindex()
     {
-        return view('vendor.employee.sales.index');
+        $employee=session()->get('employee');
+         if($employee->type=="Sales Executive"){
+         return view('vendor.employee.sales.index',['employee'=>$employee]);
+    }else{
+          return redirect()->route('hr.index');
+    }
+       
     }
 
  public function employeeLogin(){
-        return view('employee.login');
+        return view('vendor.employee.login');
     }
 
     public function login(Request $request){
@@ -116,7 +127,12 @@ class EmployeeController extends Controller
     public function edit(Request $request)
     {
          $employee=Employee::find($request->session()->get('employee.id'));
-        return view('employee.edit',['employee'=>$employee]);
+if($employee->type=="HR"){
+    return view('vendor.employee.hr.edit',['employee'=>$employee]);
+}else{
+    return view('vendor.employee.sales.edit',['employee'=>$employee]);
+}
+        
     }
 
 
@@ -187,6 +203,43 @@ public function changePassword(){
 
     }
 
+ public function imagechange(Request $request)
+    {
+        $employee=Employee::find($request->session()->get('employee.id'));
+        $file=$request->file('image');
+
+        if($file!=null){
+                
+                    //File Upload Code Start
+                    $file_name = $request->session()->get('employee.id').'.png';
+                    if(file_exists(public_path('/uploads/vendor/employee/'.$file_name))){
+                         //delete existing file
+                        File::delete(public_path('/uploads/vendor/employee/'.$file_name));
+
+                    }
+                         $file->move(public_path('/uploads/vendor/employee'), $file_name);
+                    $employee->image='/uploads/vendor/employee/'.$file_name;
+                    $employee->save();
+                   
+                       
+                    
+
+                     $employee->password=null;
+                session(['employee' => $employee]);
+                 return redirect()->route('hr.index');
+                    
+                    
+                    //File Upload Code End
+                }
+                if($employee->type=="HR"){
+                    return redirect()->route('hr.index');
+                }
+                elseif ($employee->type=="Sales Executive"){
+                    return redirect()->route('sales.index');
+                }
+    }
+
+
 
     public function destroy($id)
     {
@@ -196,6 +249,6 @@ public function changePassword(){
 
     public function logOut(Request $request){
         session()->forget('employee');
-        return "Employee Logged out ";
+        return redirect()->route('employee.login');
     }
 }

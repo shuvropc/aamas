@@ -1,4 +1,6 @@
-@extends('layouts.user-layout-without-sidebar')
+@extends('layouts.employee-hr-layout')
+
+
 
 
 @section('title', 'Edit Profile')
@@ -12,7 +14,7 @@
 
 
 
-@section('employee-edit-form')
+@section('details')
 <div class="row">
 <div class="col-md-12">
     <span><b class="text-warning">{{$message or ''}}</b></span>
@@ -72,13 +74,10 @@
             <div class="row">
                     <div class="col-sm-12">
                         <label for="address">Employee Type<span>*</span></label>
-                        <select required name="emp_type">
-                            <option value="Admin" {{ $employee->type == "Admin" ? 'selected="selected"' : '' }} >
-                            Admin
-                            </option>
-                            <option value="Sells Executive" {{ $employee->type == "Sells Executive" ? 'selected="selected"' : '' }} >Sells Executive</option>
-                            <option value="Accountant" {{ $employee->type == "Accountant" ? 'selected="selected"' : '' }} >Accountant</option>
-                            <option value="HR" {{ $employee->type == "HR" ? 'selected="selected"' : '' }}>HR</option>
+                        <select  required name="emp_type" readonly="readonly">
+                            <option readonly value="{{ $employee->type}}">
+                            {{ $employee->type}}
+                           
                         </select>
                     </div>
                 </div>
@@ -102,8 +101,9 @@
             
             <div class="row">
                 <div class="col-sm-12">
-                    <button name="emp-submit" type="submit" class="button green">Create Account</button>
+                    <button name="emp-submit" type="submit" class="button green">Update Account</button>
                 </div>
+                
             </div>
         </form><!-- END OF REGISTER FORM -->
     </div><!-- END OF WRAPPER DIV -->

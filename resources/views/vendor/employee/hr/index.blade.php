@@ -4,7 +4,7 @@
 @section('title', 'HR')
 
 
-@section('content')
+@section('index')
 
     <h1>HR Dashboard</h1>
 

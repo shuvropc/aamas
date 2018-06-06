@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Aamas Admin Dashboard</title>
+    <title>Aamas Sales Dashboard</title>
     <meta name="description" content="Admin Dashboard" />
 
 
@@ -35,6 +35,7 @@
 
 
     <!-- Custom CSS -->
+     <link href="{{ URL::asset('assets/css/hr.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('dist/css/style.css')}}" rel="stylesheet" type="text/css"/>
 
     <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
@@ -332,7 +333,7 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="dist/img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="{{url($employee->image)}}" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                         <li>
                             <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
@@ -346,24 +347,16 @@
                         <li>
                             <a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
                         </li>
-                        <li class="divider"></li>
-                        <li class="sub-menu show-on-hover">
-                            <a href="#" class="dropdown-toggle pr-0 level-2-drp"><i class="zmdi zmdi-check text-success"></i> available</a>
-                            <ul class="dropdown-menu open-left-side">
-                                <li>
-                                    <a href="#"><i class="zmdi zmdi-check text-success"></i><span>available</span></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="zmdi zmdi-circle-o text-warning"></i><span>busy</span></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="zmdi zmdi-minus-circle-outline text-danger"></i><span>offline</span></a>
-                                </li>
-                            </ul>
+                        <li>
+                       
+                            <a href="#" data-toggle="modal" data-target="#modalLoginForm"><i class="zmdi zmdi-image"></i><span>Change Image</span></a>
                         </li>
+
+
+                      
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
+                            <a href="/employee/logout"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
                         </li>
                     </ul>
                 </li>
@@ -378,6 +371,11 @@
     <!-- Left Sidebar Menu -->
     <div class="fixed-sidebar-left">
         <ul class="nav navbar-nav side-nav nicescroll-bar">
+
+ 
+
+
+
             <li class="navigation-header">
                 <span>Product</span>
                 <i class="zmdi zmdi-more"></i>
@@ -907,6 +905,37 @@
     </div>
     <!-- /Main Content -->
 
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <form class="form-content" id="register-form" action="imagechange" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
+               <div class="row">
+                    <div class="pcontainer">
+                <img class="pimage profile" id="profile" src="{{url($employee->image)}}" alt="{{$employee->name}}" />
+                
+                    </div>
+                </div>
+               <div class="row">
+                    <input  type="file" name="image" id="image">
+                
+                    </div>
+                </div>
+              
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button name="image-submit" type="submit" class="button green">Update Image</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+    
+
 </div>
 <!-- /#wrapper -->
 
@@ -980,7 +1009,7 @@
 <script src="{{asset('dist/js/init.js')}}"></script>
 
 <script src="{{asset('dist/js/ecommerce-data.js')}}"></script>
-
+<script type="text/javascript" src="{{ URL::asset('dist/js/hr.js') }}"></script>
 
 @yield('scripts')
 

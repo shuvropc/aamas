@@ -1,7 +1,7 @@
-@extends('layouts.user-layout-without-sidebar')
+@extends('layouts.employee-hr-layout')
 
 
-@section('title', 'Vendor-Registration')
+@section('title', 'Change Password')
 
 
 @section('styles')
@@ -12,7 +12,7 @@
 
 
 
-@section('employee-password-form')
+@section('passwordchange')
 
     <div class="container-fluid" style="background-color: seashell">
         <div class="form-wrapper">

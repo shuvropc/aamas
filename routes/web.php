@@ -57,6 +57,9 @@ Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
     Route::get('/employee/hr/index','EmployeeController@HRindex')->name('hr.index');
     Route::get('/employee/sales/index','EmployeeController@salesExcecutiveindex')->name('sales.index');
 
+    Route::post('/employee/hr/imagechange','EmployeeController@imagechange')->name('employee.image');
+     Route::post('/employee/sales/imagechange','EmployeeController@imagechange')->name('employee.image');
+
 });
 
 
