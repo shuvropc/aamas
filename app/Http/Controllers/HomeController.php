@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
    function index(){
-       return view('index');
+       $newProducts= Product::orderBy('id','desc')->get();
+       return view('index',['newProducts'=>$newProducts]);
+//       return $newProducts;
    }
 
 }

@@ -145,7 +145,12 @@ class UserController extends Controller
 
     public function profile(Request $request){
         $profile=User::find($request->session()->get('user.id'));
-        return view('user/profile',['profile'=>$profile]);
+        if($profile){
+
+            return view('user/profile',['profile'=>$profile]);
+        }else{
+            return "can not found";
+        }
     }
 
     public function logOut(){

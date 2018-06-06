@@ -23,33 +23,40 @@
                         </div>
                         <table align="center">
                            <tr>
-                             <td>Name:</td>
+                             <td>Name</td>
+                               <td>:&nbsp &nbsp</td>
                               <td>{{$profile->name}}</td>
                            </tr>
 
                             <tr>
-                                <td>Email:</td>
+                                <td>Email</td>
+                                <td>:&nbsp &nbsp</td>
                                 <td>{{$profile->email}}</td>
                             </tr>
 
                             <tr>
-                                <td>Phone:</td>
+                                <td>Phone</td>
+                                <td>:&nbsp &nbsp</td>
                                 <td>{{$profile->contact_number}}</td>
                             </tr>
                             <tr>
-                                <td>Address:</td>
+                                <td>Address</td>
+                                <td>:&nbsp &nbsp</td>
                                 <td>{{$profile->address}}</td>
                             </tr>
                             <tr>
-                                <td>City: </td>
+                                <td>City</td>
+                                <td>:&nbsp &nbsp</td>
                                 <td>{{$profile->city}}</td>
                             </tr>
                             <tr>
-                                <td>Zip code: </td>
+                                <td>Zip code</td>
+                                <td>:&nbsp &nbsp</td>
                                 <td>{{$profile->zipcode}}</td>
                             </tr>
                             <tr>
-                                <td>Shipping address:</td>
+                                <td>Shipping address</td>
+                                <td>: &nbsp &nbsp</td>
                                 <td>{{$profile->shipping_address}}</td>
                             </tr>
 
