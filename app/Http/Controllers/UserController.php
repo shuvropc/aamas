@@ -157,4 +157,6 @@ class UserController extends Controller
         session()->forget('user');
         return "Logged out ";
     }
+
+
 }

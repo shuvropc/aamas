@@ -118,6 +118,8 @@ Route::post('/employee/login', 'EmployeeController@login');
 
 
 
+Route::get('/product/details/{id}', 'ProductController@details')->name('product.details');
+
 
 
 
