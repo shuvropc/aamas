@@ -61,7 +61,7 @@ class ProductController extends Controller
                     //File Upload Code Start
                     $file_name = str_random(30).sha1(time()).'.' .$file->getClientOriginalExtension();
                     $file->move(public_path('/uploads/vendor/product'), $file_name);
-                    $product->image1='/public/uploads/vendor/product/'.$file_name;
+                    $product->image1='uploads/vendor/product/'.$file_name;
                     $uploadImageCount++;
                     //File Upload Code End
                 }
@@ -70,7 +70,7 @@ class ProductController extends Controller
                     //File Upload Code Start
                     $file_name = str_random(30).sha1(time()).'.' .$file->getClientOriginalExtension();
                     $file->move(public_path('/uploads/vendor/product'), $file_name);
-                    $product->image2='/public/uploads/vendor/product/'.$file_name;
+                    $product->image2='uploads/vendor/product/'.$file_name;
                     $uploadImageCount++;
                     //File Upload Code End
                 }
@@ -79,7 +79,7 @@ class ProductController extends Controller
                     //File Upload Code Start
                     $file_name = str_random(30).sha1(time()).'.' .$file->getClientOriginalExtension();
                     $file->move(public_path('/uploads/vendor/product'), $file_name);
-                    $product->image3='/public/uploads/vendor/product/'.$file_name;
+                    $product->image3='uploads/vendor/product/'.$file_name;
                     $uploadImageCount++;
                     //File Upload Code End
                 }
@@ -88,7 +88,7 @@ class ProductController extends Controller
                     //File Upload Code Start
                     $file_name = str_random(30).sha1(time()).'.' .$file->getClientOriginalExtension();
                     $file->move(public_path('/uploads/vendor/product'), $file_name);
-                    $product->image4='/public/uploads/vendor/product/'.$file_name;
+                    $product->image4='uploads/vendor/product/'.$file_name;
                     $uploadImageCount++;
                     //File Upload Code End
                 }

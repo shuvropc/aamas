@@ -11,6 +11,8 @@ Route::group([ 'middleware' => 'UserLoginCheck'], function() {
     Route::get('/user/information', 'UserController@information')->name('user.setInformation');
     Route::post('/user/information', 'UserController@setInformation');
 
+    Route::get('/user/profile', 'UserController@profile')->name('user.profile');
+
     Route::get('/logout','UserController@logOut')->name('vendor.logout');
 
 
@@ -72,7 +74,7 @@ Route::post('/user/registration', 'UserController@createAccount');
 Route::get('/user/login', 'UserController@userLogin')->name('userLogin');
 Route::post('/user/login','UserController@login' );
 
-Route::get('/user/profile', 'UserController@profile')->name('user.profile');
+
 
 
 
