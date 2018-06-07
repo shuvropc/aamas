@@ -7,13 +7,15 @@ use App\Vendor;
 use App\Product;
 use App\Category;
 use App\Detail;
+use App\Employee;
 
 class ProductController extends Controller
 {
 
-    public function addProduct(){
+    public function addProduct(Request $request){
         $categories = new Category();
-        return view('vendor.employee.sales.AddProduct')->with("categories", $categories->get());
+         $employee=Employee::find($request->session()->get('employee.id'));
+        return view('vendor.employee.sales.AddProduct',['employee'=>$employee])->with("categories", $categories->get());
     }
 
 

@@ -246,6 +246,24 @@ public function changePassword(){
         //Delete employee
     }
 
+    public function allemployee(Request $request){
+         $employee=Employee::find($request->session()->get('employee.id'));
+
+        if($employee->type=="HR"){
+           $employees=Employee::all()->sortByDesc("Active");
+
+         return view('vendor.employee.hr.allemployee',['employee'=>$employee, 'employees'=>$employees]);
+        }
+        else{
+            return "You are not authorized.";
+        }
+    }
+
+    public function active(Request $request){
+$employee=Employee::find('id',$request->id);
+$employee->Active=$request->active;
+    }
+
 
     public function logOut(Request $request){
         session()->forget('employee');

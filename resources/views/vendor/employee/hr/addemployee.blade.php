@@ -1,4 +1,4 @@
-@extends('layouts.user-layout-without-sidebar')
+@extends('layouts.employee-hr-layout')
 
 
 @section('title', 'Employee-Registration')

@@ -370,13 +370,13 @@
 
 
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Employee List</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="/employee/hr/allemployee" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Employee List</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="maps_dr" class="collapse collapse-level-1">
                     <li>
-                        <a href="vector-map.html">HR</a>
+                        <a href="#" class="hr" id="hr">HR</a>
                     </li>
                     <li>
-                        <a href="google-map.html">Sales</a>
+                        <a href="#" class="sales" id="sales">Sales</a>
                     </li>
                 </ul>
             </li>
@@ -871,6 +871,7 @@
 
             @yield('index')
             @yield('details')
+            @yield('allemployee')
             @yield('addemployee')
             @yield('employeelistHR')
             @yield('employeelistSales')
