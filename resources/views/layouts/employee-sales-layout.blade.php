@@ -333,7 +333,12 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
+<<<<<<< HEAD
                     <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="dist/img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+=======
+                <!-- {{url($employee->image)}} -->
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+>>>>>>> 20dcbb8effdc61bd12b18dec056b8b5c032a4700
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                         <li>
                             <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
@@ -917,7 +922,12 @@
                 {{ csrf_field() }}
                <div class="row">
                     <div class="pcontainer">
+<<<<<<< HEAD
                     <img class="pimage profile" id="profile" src="" alt="{{$employee->name}}" />
+=======
+                    <!-- {{url($employee->image)}} -->
+                <img class="pimage profile" id="profile" src="" alt="{{$employee->name}}" />
+>>>>>>> 20dcbb8effdc61bd12b18dec056b8b5c032a4700
                 
                     </div>
                 </div>
