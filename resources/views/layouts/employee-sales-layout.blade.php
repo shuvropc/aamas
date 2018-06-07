@@ -81,7 +81,7 @@
         </div>
 
         <div class="mobile-only-nav pull-left col-md-offset-2">
-            <h1> Sales Executive Dashboard</h1>
+            <h3>Sales Executive Dashboard</h3>
         </div>
 
         <div id="mobile_only_nav" class="mobile-only-nav pull-right">
@@ -333,7 +333,7 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="{{url($employee->image)}}" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="dist/img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                         <li>
                             <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
@@ -398,15 +398,19 @@
             </li>
 
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Product Status</span></div><div class="pull-right"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Product Status</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 
             </li>
 
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span></div><div class="pull-right"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 
             </li>
 
+            <li>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+
+            </li>
 
 
 
@@ -896,7 +900,7 @@
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
                 <div class="col-sm-12">
-                    <p>2017 &copy; Philbert. Pampered by Hencework</p>
+                    <p>2018 &copy; Aamas</p>
                 </div>
             </div>
         </footer>
@@ -909,20 +913,19 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
-            <form class="form-content" id="register-form" action="imagechange" method="post" enctype="multipart/form-data">
+            <div class="form-content" id="register-form" action="imagechange" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                <div class="row">
                     <div class="pcontainer">
-                <img class="pimage profile" id="profile" src="{{url($employee->image)}}" alt="{{$employee->name}}" />
+                    <img class="pimage profile" id="profile" src="" alt="{{$employee->name}}" />
                 
                     </div>
                 </div>
                <div class="row">
                     <input  type="file" name="image" id="image">
                 
-                    </div>
-                </div>
-              
+               </div>
+            
                 
                 <div class="row">
                     <div class="col-sm-12">
