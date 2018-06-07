@@ -102,7 +102,7 @@
                     <div class="logo">
                         <a href="{{route('homepage')}}">
 
-                            <img src="assets/images/logo.png" alt="">
+                            <img src="{{asset('assets/images/logo.png')}}" alt="">
 
                         </a>
                     </div><!-- /.logo -->
@@ -166,7 +166,7 @@
                                     <div class="row">
                                         <div class="col-xs-4">
                                             <div class="image">
-                                                <a href="detail.html"><img src="assets/images/cart.jpg" alt=""></a>
+                                                <a href="detail.html"><img src="{{asset('assets/images/cart.jpg')}}" alt=""></a>
                                             </div>
                                         </div>
                                         <div class="col-xs-7">
@@ -291,7 +291,7 @@
 
 
                                                     <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image">
-                                                        <img class="img-responsive" src="assets/images/banners/top-menu-banner.jpg" alt="">
+                                                        <img class="img-responsive" src="{{asset('assets/images/banners/top-menu-banner.jpg')}}" alt="">
 
 
 
@@ -380,7 +380,7 @@
                                                     </div>
 
                                                     <div class="col-xs-12 col-sm-12 col-md-4 col-menu custom-banner">
-                                                        <a href="#"><img alt="" src="assets/images/banners/banner-side.png"></a>
+                                                        <a href="#"><img alt="" src="{{asset('assets/images/banners/banner-side.png')}}"></a>
                                                     </div>
                                                 </div><!-- /.row -->
                                             </div><!-- /.yamm-content -->					</li>
@@ -573,7 +573,7 @@
                                             </div>
 
                                             <div class="dropdown-banner-holder">
-                                                <a href="#"><img alt="" src="assets/images/banners/banner-side.png" /></a>
+                                                <a href="#"><img alt="" src="{{asset('assets/images/banners/banner-side.png')}}" /></a>
                                             </div>
                                         </div><!-- /.row -->
                                     </li><!-- /.yamm-content -->
@@ -674,7 +674,7 @@
                                             </div>
 
                                             <div class="dropdown-banner-holder">
-                                                <a href="#"><img alt="" src="assets/images/banners/banner-side.png" /></a>
+                                                <a href="#"><img alt="" src="{{asset('assets/images/banners/banner-side.png')}}" /></a>
                                             </div>
                                         </div><!-- /.row -->
                                     </li><!-- /.yamm-content -->
@@ -774,7 +774,7 @@
                                             </div>
 
                                             <div class="dropdown-banner-holder">
-                                                <a href="#"><img alt="" src="assets/images/banners/banner-side.png" /></a>
+                                                <a href="#"><img alt="" src="{{asset('assets/images/banners/banner-side.png')}}" /></a>
                                             </div>
                                         </div><!-- /.row -->
                                     </li><!-- /.yamm-content -->
@@ -800,7 +800,7 @@
                 <!-- ================================== TOP NAVIGATION : END ================================== -->
 
                 <div class="home-banner outer-bottom-xs">
-                    <img src="assets/images/banners/LHS-banner.jpg" alt="Image">
+                    <img src="{{asset('assets/images/banners/LHS-banner.jpg')}}" alt="Image">
                 </div>
 
                 <!-- ============================================== HOT DEALS ============================================== -->
@@ -812,7 +812,7 @@
                             <div class="products">
                                 <div class="hot-deal-wrapper">
                                     <div class="image">
-                                        <img src="assets/images/hot-deals/p25.jpg" alt="">
+                                        <img src="{{asset('assets/images/hot-deals/p25.jpg')}}" alt="">
                                     </div>
                                     <div class="sale-offer-tag"><span>49%<br>off</span></div>
                                     <div class="timing-wrapper">
@@ -880,7 +880,7 @@
                             <div class="products">
                                 <div class="hot-deal-wrapper">
                                     <div class="image">
-                                        <img src="assets/images/hot-deals/p5.jpg" alt="">
+                                        <img src="{{asset('assets/images/hot-deals/p5.jpg')}}" alt="">
                                     </div>
                                     <div class="sale-offer-tag"><span>35%<br>off</span></div>
                                     <div class="timing-wrapper">
@@ -948,7 +948,7 @@
                             <div class="products">
                                 <div class="hot-deal-wrapper">
                                     <div class="image">
-                                        <img src="assets/images/hot-deals/p10.jpg" alt="">
+                                        <img src="{{asset('assets/images/hot-deals/p10.jpg')}}" alt="">
                                     </div>
                                     <div class="sale-offer-tag"><span>35%<br>off</span></div>
                                     <div class="timing-wrapper">
@@ -1034,7 +1034,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p30.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p30.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1065,7 +1065,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p29.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p29.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1095,7 +1095,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p28.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p28.jpg')}}" alt="">
 
                                                             </a>
                                                         </div><!-- /.image -->
@@ -1131,7 +1131,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p27.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p27.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1161,7 +1161,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p26.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p26.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1190,7 +1190,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p25.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p25.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1224,7 +1224,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p24.jpg"  alt="">
+                                                                <img src="{{asset('assets/images/products/p24.jpg')}}"  alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1254,7 +1254,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p23.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p23.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1284,7 +1284,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p22.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p22.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1346,7 +1346,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p28.jpg"  alt="">
+                                                                <img src="{{asset('assets/images/products/p28.jpg')}}"  alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1376,7 +1376,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p15.jpg"  alt="">
+                                                                <img src="{{asset('assets/images/products/p15.jpg')}}"  alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1406,7 +1406,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img data-echo="assets/images/products/p26.jpg"  alt="">
+                                                                <img data-echo="{{asset('assets/images/products/p26.jpg')}}"  alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1440,7 +1440,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p18.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p18.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1470,7 +1470,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p17.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p17.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1501,7 +1501,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p16.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p16.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1534,7 +1534,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img data-echo="assets/images/products/p15.jpg" alt="">
+                                                                <img data-echo="{{asset('assets/images/products/p15.jpg')}}" alt="">
                                                                 <div class="zoom-overlay"></div>
                                                             </a>
                                                         </div><!-- /.image -->
@@ -1566,7 +1566,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p14.jpg"  alt="">
+                                                                <img src="{{asset('assets/images/products/p14.jpg')}}"  alt="">
                                                                 <div class="zoom-overlay"></div>
                                                             </a>
                                                         </div><!-- /.image -->
@@ -1598,7 +1598,7 @@
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="#">
-                                                                <img src="assets/images/products/p13.jpg" alt="">
+                                                                <img src="{{asset('assets/images/products/p13.jpg')}}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 
@@ -1647,19 +1647,19 @@
                 <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
                     <div id="advertisement" class="advertisement">
                         <div class="item">
-                            <div class="avatar"><img src="assets/images/testimonials/member1.png" alt="Image"></div>
+                            <div class="avatar"><img src="{{asset('assets/images/testimonials/member1.png')}}" alt="Image"></div>
                             <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
                             <div class="clients_author">John Doe	<span>Abc Company</span>	</div><!-- /.container-fluid -->
                         </div><!-- /.item -->
 
                         <div class="item">
-                            <div class="avatar"><img src="assets/images/testimonials/member3.png" alt="Image"></div>
+                            <div class="avatar"><img src="{{asset('assets/images/testimonials/member3.png')}}" alt="Image"></div>
                             <div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
                             <div class="clients_author">Stephen Doe	<span>Xperia Designs</span>	</div>
                         </div><!-- /.item -->
 
                         <div class="item">
-                            <div class="avatar"><img src="assets/images/testimonials/member2.png" alt="Image"></div>
+                            <div class="avatar"><img src="{{asset('assets/images/testimonials/member2.png')}}" alt="Image"></div>
                             <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
                             <div class="clients_author">Saraha Smith	<span>Datsun &amp; Co</span>	</div><!-- /.container-fluid -->
                         </div><!-- /.item -->
@@ -1808,11 +1808,11 @@
             <div class="col-xs-12 col-sm-6 no-padding">
                 <div class="clearfix payment-methods">
                     <ul>
-                        <li><img src="assets/images/payments/1.png" alt=""></li>
-                        <li><img src="assets/images/payments/2.png" alt=""></li>
-                        <li><img src="assets/images/payments/3.png" alt=""></li>
-                        <li><img src="assets/images/payments/4.png" alt=""></li>
-                        <li><img src="assets/images/payments/5.png" alt=""></li>
+                        <li><img src="{{asset('assets/images/payments/1.png')}}" alt=""></li>
+                        <li><img src="{{asset('assets/images/payments/2.png')}}" alt=""></li>
+                        <li><img src="{{asset('assets/images/payments/3.png')}}" alt=""></li>
+                        <li><img src="{{asset('assets/images/payments/4.png')}}" alt=""></li>
+                        <li><img src="{{asset('assets/images/payments/5.png')}}" alt=""></li>
                     </ul>
                 </div><!-- /.payment-methods -->
             </div>
