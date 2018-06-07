@@ -324,7 +324,7 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="{{url($employee->image)}}" alt="{{$employee->name}}" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="" alt="Employee" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                         <li>
                             <a href="/employee/edit"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
