@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Category;
 use App\Vendor;
+use App\Feature_product;
 
 class Product extends Model
 {
@@ -29,6 +30,10 @@ class Product extends Model
 
 
         return DB::select($sql);
+    }
+
+    public function Feature(){
+       return $this->hasOne(Freature_product::class);
     }
 
 }

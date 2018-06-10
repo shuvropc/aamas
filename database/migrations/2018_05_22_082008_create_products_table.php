@@ -16,7 +16,6 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
 
             $table->increments('id');
-
             $table->string("product_name");
             $table->string("product_description",2000);
             $table->integer("buying_price");
@@ -28,14 +27,10 @@ class CreateProductsTable extends Migration
             $table->string("image2")->nullable();
             $table->string("image3")->nullable();
             $table->string("image4")->nullable();
-
             $table->boolean("available");
-
             $table->boolean("aamas_status")->default(1);
-
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
-
             $table->unsignedInteger('vendor_id');
             $table->foreign('vendor_id')->references('id')->on('vendors');
 
