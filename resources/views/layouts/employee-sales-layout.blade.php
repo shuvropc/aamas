@@ -333,12 +333,12 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-<<<<<<< HEAD
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="dist/img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
-=======
-                <!-- {{url($employee->image)}} -->
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
->>>>>>> 20dcbb8effdc61bd12b18dec056b8b5c032a4700
+
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="dist/img/user1.png" alt="user_auth" class=""/></span></a>
+
+                {{--<!-- {{url($employee->image)}} -->--}}
+
+
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                         <li>
                             <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
@@ -403,17 +403,17 @@
             </li>
 
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Product Status</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Product Status</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 
             </li>
 
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 
             </li>
 
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 
             </li>
 
@@ -922,12 +922,12 @@
                 {{ csrf_field() }}
                <div class="row">
                     <div class="pcontainer">
-<<<<<<< HEAD
-                    <img class="pimage profile" id="profile" src="" alt="{{$employee->name}}" />
-=======
-                    <!-- {{url($employee->image)}} -->
-                <img class="pimage profile" id="profile" src="" alt="{{$employee->name}}" />
->>>>>>> 20dcbb8effdc61bd12b18dec056b8b5c032a4700
+
+                    <img class="pimage profile" id="profile" src="" alt="" />
+
+                    {{--<!-- {{url($employee->image)}} -->--}}
+                <img class="pimage profile" id="profile" src="" alt="" />
+
                 
                     </div>
                 </div>

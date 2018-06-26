@@ -13,19 +13,20 @@ class EmployeeController extends Controller
    
     public function HRindex(Request $request)
     {
-        $employee=session()->get('employee');
-         if($employee->type=="HR"){
-        return view('vendor.employee.hr.index',['employee'=>$employee]);
-    }else{
-         return redirect()->route('sales.index');
-    }
+        $employee=$request->session()->get('employee');
+      if($employee->type=="HR"){
+        return view('vendor.employee.hr.index');
+   }
+   else{
+        return redirect()->route('sales.index');
+   }
     }
 
-    public function salesExcecutiveindex()
+    public function salesExcecutiveindex(Request $request)
     {
-        $employee=session()->get('employee');
-         if($employee->type=="Sales Executive"){
-         return view('vendor.employee.sales.index',['employee'=>$employee]);
+        $employee=$request->session()->get('employee');
+         if($employee->type=="Sales"){
+         return view('vendor.employee.sales.index');
     }else{
           return redirect()->route('hr.index');
     }
@@ -37,9 +38,6 @@ class EmployeeController extends Controller
     }
 
     public function login(Request $request){
-
-
-
 
         $email=$request->input('email');
         $password=$request->input('password');
@@ -57,7 +55,7 @@ class EmployeeController extends Controller
                 if($employee->type=="HR"){
                     return redirect()->route('hr.index');
                 }
-                elseif ($employee->type=="Sales Executive"){
+                elseif ($employee->type=="Sales"){
                     return redirect()->route('sales.index');
                 }
 
@@ -76,42 +74,43 @@ class EmployeeController extends Controller
     public function create()
     {
 
-        return view('employee.addemployee');
+        return view('vendor.employee.hr.addemployee');
     }
 
     public function CreateEmployee(Request $request)
     {
-        $employeeType=session()->get('employee.type');
+        $employeeType=$request->session()->get('employee.type');
+      //  return $employeeType;
 
         if($employeeType=="HR"){
 
              $this->validate($request,[
-            'emp_email'=>'required|email|unique:employees,email',
-            'emp_ident'=>'required|unique:employees,Identity_number',
-            'emp_contact'=>'unique:employees,contact_number'
+                 'emp_email'=>'required|email|unique:employees,email',
+                 'emp_ident'=>'required|unique:employees,Identity_number',
+                 'emp_pass' =>'required',
+                 'cnpassword'=>'required|same:emp_pass'
             
-        ]);
+            ]);
             
-        $employee = new Employee();
+            $employee = new Employee();
 
-            $employee->name=$request->input('emp_name');
-            $employee->email=$request->input('emp_email');
-            $employee->password=Hash::make($request->input('emp_pass'));
-            $employee->current_address=$request->input('emp_address');
-            $employee->parmanent_address=$request->input('emp_par_address');
-            $employee->contact_number=$request->input('emp_contact');
-            $employee->type=$request->input('emp_type');
-            $employee->Identity_number=$request->input('emp_ident');
-            
-            
-            $employee->vendor_id=session()->get('employee.vendor_id');
-            $employee->referenced_by=session()->get('employee.id');
+                $employee->name=$request->input('emp_name');
+                $employee->email=$request->input('emp_email');
+                $employee->password=Hash::make($request->input('emp_pass'));
+    //            $employee->current_address=$request->input('emp_address');
+    //            $employee->parmanent_address=$request->input('emp_par_address');
+    //            $employee->contact_number=$request->input('emp_contact');
+                $employee->type=$request->input('emp_type');
+                $employee->Identity_number=$request->input('emp_ident');
 
-            //emp_ident
-         $employee->save();
-            return "Employee added successfully";
+                $employee->vendor_id=session()->get('employee.vendor_id');
+                $employee->referenced_by=session()->get('employee.id');
 
-    }else{
+                //emp_ident
+                $employee->save();
+                return redirect()->route('hr.index');
+
+        }else{
             
             return view('employee.addemployee',["message"=>"Sorry You are not authorized to add employee!"]);
         }

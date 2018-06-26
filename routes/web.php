@@ -48,10 +48,8 @@ Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
     Route::post('/employee/changePassword', 'EmployeeController@updatePassword' );
 
 
-
     Route::get('/employee/sales/addproduct','ProductController@addProduct')->name('sales.addproduct');
     Route::post('/employee/sales/addproduct','ProductController@addNewProduct');
-
 
 
     Route::get('/employee/logout','EmployeeController@logOut')->name('employee.logout');
@@ -60,10 +58,10 @@ Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
     Route::get('/employee/sales/index','EmployeeController@salesExcecutiveindex')->name('sales.index');
 
     Route::post('/employee/hr/imagechange','EmployeeController@imagechange')->name('employee.image');
-     Route::post('/employee/sales/imagechange','EmployeeController@imagechange')->name('employee.image');
-     Route::get('/employee/hr/allemployee','EmployeeController@allemployee')->name('hr.allemployee');
+    Route::post('/employee/sales/imagechange','EmployeeController@imagechange')->name('employee.image');
+    Route::get('/employee/hr/allemployee','EmployeeController@allemployee')->name('hr.allemployee');
 
-     Route::post('/employee/hr/active','EmployeeController@active')->name('employee.active');
+    Route::post('/employee/hr/active','EmployeeController@active')->name('employee.active');
 
 });
 

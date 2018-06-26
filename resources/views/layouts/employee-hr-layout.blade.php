@@ -324,8 +324,8 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                <!-- {{url($employee->image)}} -->
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="" alt="{{$employee->name}}" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+                {{--<!-- {{url($employee->image)}} -->--}}
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="" alt="" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                         <li>
                             <a href="/employee/edit"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
@@ -384,7 +384,7 @@
 
 
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Employee</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+                <a href="{{route('employee.create')}}" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Employee</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 
             </li>
 
@@ -903,8 +903,8 @@
                 {{ csrf_field() }}
                <div class="row">
                     <div class="pcontainer">
-                <img class="pimage profile" id="profile" src="" alt="{{$employee->name}}" />
-                <!-- {{url($employee->image)}} -->
+                <img class="pimage profile" id="profile" src="" alt="" />
+                {{--<!-- {{url($employee->image)}} -->--}}
                     </div>
                 </div>
                <div class="row">
