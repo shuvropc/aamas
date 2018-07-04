@@ -15,10 +15,8 @@ Route::group([ 'middleware' => 'UserLoginCheck'], function() {
 
     Route::get('/logout','UserController@logOut')->name('vendor.logout');
 
-
-
-
 });
+
 
 Route::group(['middleware' => 'VendorLoginCheck'], function (){
 
@@ -35,6 +33,8 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
 
     
 });
+
+
 Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
 
     Route::get('/employee/create','EmployeeController@create')->name('employee.create');
@@ -73,7 +73,7 @@ Route::get('/','HomeController@index')->name('homepage');
 Route::get('/user/registration', 'UserController@registration')->name('userRegistration');
 Route::post('/user/registration', 'UserController@createAccount');
 Route::get('/user/login', 'UserController@userLogin')->name('userLogin');
-Route::post('/user/login','UserController@login' );
+Route::post('/user/login','UserController@login');
 
 
 

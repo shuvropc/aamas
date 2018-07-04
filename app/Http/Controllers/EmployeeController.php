@@ -13,27 +13,28 @@ class EmployeeController extends Controller
    
     public function HRindex(Request $request)
     {
-        $employee=$request->session()->get('employee');
-      if($employee->type=="HR"){
-        return view('vendor.employee.hr.index');
-   }
-   else{
-        return redirect()->route('sales.index');
-   }
+//            $employee=$request->session()->get('employee');
+//            if($employee->type=="HR"){
+            return view('vendor.employee.hr.index');
+//            }
+//            else
+//            {
+//            return redirect()->route('sales.index');
+//            }
     }
 
     public function salesExcecutiveindex(Request $request)
     {
-        $employee=$request->session()->get('employee');
-         if($employee->type=="Sales"){
+//        $employee=$request->session()->get('employee');
+//         if($employee->type=="Sales"){
          return view('vendor.employee.sales.index');
-    }else{
-          return redirect()->route('hr.index');
-    }
-       
+//    }else{
+//          return redirect()->route('hr.index');
+//    }
+//
     }
 
- public function employeeLogin(){
+    public function employeeLogin(){
         return view('vendor.employee.login');
     }
 
@@ -60,10 +61,10 @@ class EmployeeController extends Controller
                 }
 
             }else{
-                return view('employee.login',["errorMessage"=>"Email or Password doesn't match"]);
+                return view('vendor.employee.login',["errorMessage"=>"Email or Password doesn't match"]);
             }
         }else{
-            return view('employee.login');
+            return view('vendor.employee.login');
         }
 
 
@@ -71,10 +72,17 @@ class EmployeeController extends Controller
 
     }
    
-    public function create()
+    public function create(Request $request)
     {
+                $employeeType=$request->session()->get('employee.type');
 
-        return view('vendor.employee.hr.addemployee');
+                if($employeeType=="HR"){
+
+                return view('vendor.employee.hr.addemployee');
+
+                }else{
+                        return "Not authorized";
+                }
     }
 
     public function CreateEmployee(Request $request)
@@ -112,7 +120,7 @@ class EmployeeController extends Controller
 
         }else{
             
-            return view('employee.addemployee',["message"=>"Sorry You are not authorized to add employee!"]);
+            return view('vendor.employee.hr.addemployee',["message"=>"Sorry You are not authorized to add employee!"]);
         }
     }
 
@@ -126,11 +134,11 @@ class EmployeeController extends Controller
     public function edit(Request $request)
     {
          $employee=Employee::find($request->session()->get('employee.id'));
-if($employee->type=="HR"){
-    return view('vendor.employee.hr.edit',['employee'=>$employee]);
-}else{
-    return view('vendor.employee.sales.edit',['employee'=>$employee]);
-}
+        if($employee->type=="HR"){
+            return view('vendor.employee.hr.edit',['employee'=>$employee]);
+        }else{
+            return view('vendor.employee.sales.edit',['employee'=>$employee]);
+        }
         
     }
 
@@ -151,24 +159,24 @@ if($employee->type=="HR"){
 
 
 
-         $employee=Employee::find($request->session()->get('employee.id'));
+        $employee=Employee::find($request->session()->get('employee.id'));
 
-if($employee !=null){
+        if($employee !=null){
             $employee->name=$request->input('emp_name');
             $employee->email=$request->input('emp_email');
-            
+
             $employee->current_address=$request->input('emp_address');
             $employee->parmanent_address=$request->input('emp_par_address');
             $employee->contact_number=$request->input('emp_contact');
             $employee->type=$request->input('emp_type');
             $employee->Identity_number=$request->input('emp_ident');
 
-$employee->save();
-return "Profile Updated successfully.";
+            $employee->save();
+            return "Profile Updated successfully.";
 
-}else{
-    return view('employee.edit',['employee'=>$employee, 'message'=>'not updated']);
-}
+    }else{
+        return view('employee.edit',['employee'=>$employee, 'message'=>'not updated']);
+    }
 
     }
 
@@ -216,7 +224,8 @@ public function changePassword(){
                         File::delete(public_path('/uploads/vendor/employee/'.$file_name));
 
                     }
-                         $file->move(public_path('/uploads/vendor/employee'), $file_name);
+
+                    $file->move(public_path('/uploads/vendor/employee'), $file_name);
                     $employee->image='/uploads/vendor/employee/'.$file_name;
                     $employee->save();
                    
@@ -259,8 +268,8 @@ public function changePassword(){
     }
 
     public function active(Request $request){
-$employee=Employee::find('id',$request->id);
-$employee->Active=$request->active;
+        $employee=Employee::find('id',$request->id);
+        $employee->Active=$request->active;
     }
 
 
