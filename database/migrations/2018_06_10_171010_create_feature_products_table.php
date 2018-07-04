@@ -15,7 +15,9 @@ class CreateFeatureProductsTable extends Migration
     {
         Schema::create('feature_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id');
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
+
             $table->string('featured_by');
             $table->timestamps();
         });

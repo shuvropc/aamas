@@ -68,8 +68,6 @@ class EmployeeController extends Controller
         }
 
 
-
-
     }
    
     public function create(Request $request)

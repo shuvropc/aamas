@@ -69,6 +69,8 @@ Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
 
 
 Route::get('/admin','AdminController@index')->name('admin');
+Route::get('/admin/featureproduct','AdminController@featured')->name('admin.featured');
+
 Route::get('/','HomeController@index')->name('homepage');
 Route::get('/user/registration', 'UserController@registration')->name('userRegistration');
 Route::post('/user/registration', 'UserController@createAccount');
@@ -123,7 +125,7 @@ Route::get('/product/details/{id}', 'ProductController@details')->name('product.
 
 
 
-
+Route::get('/admin/product', 'AdminController@product')->name('admin.product');
 
 
 
