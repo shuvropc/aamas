@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-   function index(){
-       $newProducts= Product::orderBy('id','desc')->get();
-       return view('index',['newProducts'=>$newProducts]);
-//       return $newProducts;
-   }
+    function index()
+    {
+        $newProducts = Product::orderBy('id', 'desc')->limit(4)->get();
+        return view('index', ['newProducts' => $newProducts]);
+    }
 
 }

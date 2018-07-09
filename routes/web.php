@@ -80,10 +80,6 @@ Route::post('/user/login','UserController@login');
 
 
 
-
-
-
-
 //Vendor
 Route::get('/vendor/register','VendorController@register')->name('vendor.registration');
 Route::post('/vendor/register','VendorController@registerVendor');
@@ -91,7 +87,6 @@ Route::post('/vendor/register','VendorController@registerVendor');
 
 
 Route::get('/vendor/addcategory/{name}','VendorController@addCategory')->name('vendor.addcategory');
-
 Route::get('/vendor/adddetail/{size}/{color}/{quantity}','VendorController@addDetail')->name('vendor.addDetail');
 
 Route::get('/vendor/orders','VendorController@orders')->name('vendor.orders');
@@ -117,12 +112,12 @@ Route::post('/employee/login', 'EmployeeController@login');
 
 
 
-
-
 Route::get('/product/details/{id}', 'ProductController@details')->name('product.details');
 
 
 
+
+Route::post('/product/quantityByDetails', 'ProductController@quantityByDetails');
 
 
 
@@ -139,5 +134,3 @@ Route::get('/product/details/{id}', 'ProductController@details')->name('product.
 //Route::get('/api/getallproducts','ApiController@getAllProducts')->name('getAllProducts.api');
 //
 //Route::get('/api/getproduct/{id}','ApiController@getProduct')->name('getProduct.api');
-
-
