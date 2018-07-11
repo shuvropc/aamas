@@ -63,10 +63,9 @@ class EmployeeController extends Controller
             }else{
                 return view('vendor.employee.login',["errorMessage"=>"Email or Password doesn't match"]);
             }
-        }else{
+        }else {
             return view('vendor.employee.login');
         }
-
 
     }
    

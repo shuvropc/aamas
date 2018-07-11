@@ -128,6 +128,9 @@ Route::get('/product/details/{id}', 'ProductController@details')->name('product.
 Route::get('/admin/product', 'AdminController@product')->name('admin.product');
 
 
+Route::post('/admin/addOrRemoveFeaturedProduct', 'AdminController@addOrRemoveFeaturedProduct');
+
+
 
 //Route::get('/cart','CartController@cart')->name('cart');
 
