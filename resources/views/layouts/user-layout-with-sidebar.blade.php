@@ -131,12 +131,13 @@
                                     </li>
                                 </ul>
 
-                                <input class="search-field" placeholder="Search here..." />
+                                <input id="search_field" onkeyup="search()" class="search-field" placeholder="Search here..." />
 
                                 <a class="search-button" href="#" ></a>
 
                             </div>
                         </form>
+                        <label id="show_product"></label>
                     </div><!-- /.search-area -->
                     <!-- ============================================================= SEARCH AREA : END ============================================================= -->				</div><!-- /.top-search-holder -->
 
@@ -1839,7 +1840,26 @@
 <script src="{{ URL::asset('assets/js/bootstrap-select.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/wow.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/scripts.js') }}"></script>
+<script>
 
+    function search() {
+        var val = $('#search_field').val();
+
+        $.ajax({
+            url: 'http://localhost:8000/searchproduct',
+            type: 'GET',
+            data: {val:val},
+            success: function(response)
+            {
+                $('#show_product').html(response[0]['product_name']);
+            },
+            error: function(response){
+                $('#show_product').html(response);
+            }
+        });
+    }
+
+</script>
 
 
 
