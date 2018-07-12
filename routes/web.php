@@ -1,4 +1,8 @@
 <?php
+
+
+use Gloudemans\Shoppingcart\Facades\Cart;
+
 Route::group([ 'middleware' => 'UserLoginCheck'], function() {
     Route::get('/checkout','CheckoutController@checkout')->name('checkout');
 
@@ -72,6 +76,7 @@ Route::get('/admin','AdminController@index')->name('admin');
 Route::get('/admin/featureproduct','AdminController@featured')->name('admin.featured');
 
 Route::get('/','HomeController@index')->name('homepage');
+Route::get('/searchproduct','HomeController@searchProduct')->name('searchProduct');
 Route::get('/user/registration', 'UserController@registration')->name('userRegistration');
 Route::post('/user/registration', 'UserController@createAccount');
 Route::get('/user/login', 'UserController@userLogin')->name('userLogin');
@@ -120,12 +125,21 @@ Route::get('/product/details/{id}', 'ProductController@details')->name('product.
 
 
 
+Route::post('/product/addToCart', 'ProductController@addToCart');
+
+Route::get('/showcart',function (){
+    return Cache::get('cart');;
+});
+
+
 Route::post('/product/quantityByDetails', 'ProductController@quantityByDetails');
 
 
 Route::get('/admin/product', 'AdminController@product')->name('admin.product');
 
+
 Route::post('/admin/product', 'AdminController@product');
+
 
 
 
@@ -135,7 +149,19 @@ Route::get('/admin/searchByAnything', 'AdminController@searchByAnything');
 
 
 
-//Route::get('/cart','CartController@cart')->name('cart');
+
+Route::get('/cart','CartController@cart')->name('cart');
+Route::get('/confirmcheckout','CheckoutController@confirmCheckout')->name('confirmCheckout');
+
+
+Route::get('/showcart',function (\Illuminate\Http\Request $request){
+
+//    return Cart::destroy();
+    return Cart::content();
+
+});
+
+
 
 
 
