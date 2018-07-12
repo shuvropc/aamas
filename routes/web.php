@@ -1,7 +1,7 @@
 <?php
 
 
-use Illuminate\Support\Facades\Cookie;
+
 
 Route::group([ 'middleware' => 'UserLoginCheck'], function() {
     Route::get('/checkout','CheckoutController@checkout')->name('checkout');
@@ -122,7 +122,7 @@ Route::post('/employee/login', 'EmployeeController@login');
 Route::get('/product/details/{id}', 'ProductController@details')->name('product.details');
 
 
-<<<<<<< HEAD
+
 
 Route::post('/product/addToCart', 'ProductController@addToCart');
 
@@ -130,12 +130,6 @@ Route::get('/showcart',function (){
     return Cache::get('cart');;
 });
 
-
-
-
-
-=======
->>>>>>> 24ece621816db358a2ddc5421a1eeaf4a6cf8fd8
 Route::post('/product/quantityByDetails', 'ProductController@quantityByDetails');
 
 
@@ -143,11 +137,8 @@ Route::get('/admin/product', 'AdminController@product')->name('admin.product');
 
 
 
-<<<<<<< HEAD
-
-=======
 Route::post('/admin/addOrRemoveFeaturedProduct', 'AdminController@addOrRemoveFeaturedProduct');
->>>>>>> 24ece621816db358a2ddc5421a1eeaf4a6cf8fd8
+
 
 
 
