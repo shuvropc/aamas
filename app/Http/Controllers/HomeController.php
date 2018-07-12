@@ -13,4 +13,11 @@ class HomeController extends Controller
         return view('index', ['newProducts' => $newProducts]);
     }
 
+    function searchProduct(Request $request){
+
+        $product = Product::orWhere('product_name', 'like', '%' . $request->val . '%')->get();
+
+        return $product;
+    }
+
 }
