@@ -9,6 +9,8 @@ use App\Product;
 use App\Category;
 use App\Detail;
 use App\Employee;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
 
 class ProductController extends Controller
 {
@@ -143,6 +145,10 @@ class ProductController extends Controller
             ->where('color', '=', $request->color)
             ->get();
         return $productQuantity;
+    }
+
+    public function addToCart(Request $request){
+        return $request;
     }
 
 

@@ -351,7 +351,7 @@
                                         </div>
 
                                         <div class="col-sm-7">
-                                            <a href="#" id="addToCartButton"  class="btn btn-primary disabled"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+                                            <button  type="button" onclick="addToCart()" id="addToCartButton"  class="btn btn-primary disabled"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
                                         </div>
 
 
@@ -678,6 +678,7 @@
 @section('scripts')
     <script src="{{ URL::asset('assets/js/jquery.zoom.js') }}"></script>
     <script src="{{ URL::asset('assets/js/product-details.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/cart.js') }}"></script>
     <script>
         $(document).ready(function(){
             $('#slide1').zoom();
