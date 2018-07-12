@@ -118,16 +118,20 @@ Route::get('/product/details/{id}', 'ProductController@details')->name('product.
 
 
 
-<<<<<<< HEAD
+
 
 Route::post('/product/quantityByDetails', 'ProductController@quantityByDetails');
 
-=======
+
 Route::get('/admin/product', 'AdminController@product')->name('admin.product');
->>>>>>> f206a13f9c4508287cba436fa5731befa9497e79
+
+Route::post('/admin/product', 'AdminController@product');
+
 
 
 Route::post('/admin/addOrRemoveFeaturedProduct', 'AdminController@addOrRemoveFeaturedProduct');
+
+Route::get('/admin/searchByAnything', 'AdminController@searchByAnything');
 
 
 

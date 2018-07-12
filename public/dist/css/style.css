@@ -7388,6 +7388,14 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
   margin-left: 5px;
 }
 
-
+.number-entries{
+  width: 60%;
+  float: left;
+}
+.all-search{
+  width: 40%;
+  float: left;
+  padding-left: 170px;
+}
 
 
