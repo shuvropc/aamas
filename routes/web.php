@@ -72,6 +72,7 @@ Route::get('/admin','AdminController@index')->name('admin');
 Route::get('/admin/featureproduct','AdminController@featured')->name('admin.featured');
 
 Route::get('/','HomeController@index')->name('homepage');
+Route::get('/searchproduct','HomeController@searchProduct')->name('searchProduct');
 Route::get('/user/registration', 'UserController@registration')->name('userRegistration');
 Route::post('/user/registration', 'UserController@createAccount');
 Route::get('/user/login', 'UserController@userLogin')->name('userLogin');
@@ -117,21 +118,18 @@ Route::post('/employee/login', 'EmployeeController@login');
 Route::get('/product/details/{id}', 'ProductController@details')->name('product.details');
 
 
-
-<<<<<<< HEAD
-
 Route::post('/product/quantityByDetails', 'ProductController@quantityByDetails');
 
-=======
+
 Route::get('/admin/product', 'AdminController@product')->name('admin.product');
->>>>>>> f206a13f9c4508287cba436fa5731befa9497e79
+
 
 
 Route::post('/admin/addOrRemoveFeaturedProduct', 'AdminController@addOrRemoveFeaturedProduct');
 
 
 
-//Route::get('/cart','CartController@cart')->name('cart');
+Route::get('/cart','CartController@cart')->name('cart');
 
 
 
