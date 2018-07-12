@@ -3,6 +3,8 @@ function addToCart() {
     var color = $('input[name=color]:checked').val();
     var size= $('input[name=size]:checked').val();
     var pid= $('#product_id').text();
+    var pname= $('#pro_name').html();
+    var pprice = $('#product_price').html();
     var qty=$("#qtyToBeAddedInCart").val();
 
     $.ajax({
@@ -15,7 +17,9 @@ function addToCart() {
             color : color,
             size : size,
             pid : pid,
-            qty: qty
+            qty: qty,
+            pname: pname,
+            pprice: pprice
         },
         success: function (result) {
           console.log(result);

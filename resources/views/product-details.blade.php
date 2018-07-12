@@ -206,7 +206,7 @@
                         </div><!-- /.gallery-holder -->
                         <div class='col-sm-6 col-md-7 product-info-block'>
                             <div class="product-info">
-                                <h1 class="name">{{$product->product_name}}</h1>
+                                <h1 class="name" id="pro_name">{{$product->product_name}}</h1>
 
                                 <div class="rating-reviews m-t-20">
                                     <div class="row">
@@ -246,7 +246,7 @@
 
                                         <div class="col-sm-6">
                                             <div class="price-box">
-                                                <span class="price">{{$product->selling_price}}</span>
+                                                <span id="product_price" class="price">{{$product->selling_price}}</span>
                                                 <span class="price-strike">900</span>
                                             </div>
                                         </div>

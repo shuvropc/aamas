@@ -1,7 +1,7 @@
 <?php
 
 
-
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 Route::group([ 'middleware' => 'UserLoginCheck'], function() {
     Route::get('/checkout','CheckoutController@checkout')->name('checkout');
@@ -143,6 +143,17 @@ Route::post('/admin/addOrRemoveFeaturedProduct', 'AdminController@addOrRemoveFea
 
 
 Route::get('/cart','CartController@cart')->name('cart');
+Route::get('/confirmcheckout','CheckoutController@confirmCheckout')->name('confirmCheckout');
+
+
+Route::get('/showcart',function (\Illuminate\Http\Request $request){
+
+//    return Cart::destroy();
+    return Cart::content();
+
+});
+
+
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ViewProductWithDetails;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Vendor;
 use App\Product;
@@ -11,6 +12,7 @@ use App\Detail;
 use App\Employee;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -148,7 +150,12 @@ class ProductController extends Controller
     }
 
     public function addToCart(Request $request){
-        return $request;
+
+//       $product['cart'] = [$request->pid,$request->size,$request->color];
+        Cart::add(['id' => $request->pid,'name' => $request->pname,'qty' => $request->qty, 'price' => $request->pprice,'options' => ['size' => $request->size,'color'=>$request->color]]);
+//        Cart::add(['id' => '293ad', 'name' => 'Product 1', 'qty' => 1, 'price' => 9.99, 'options' => ['size' => 'large']]);
+
+        return "Stored";
     }
 
 
