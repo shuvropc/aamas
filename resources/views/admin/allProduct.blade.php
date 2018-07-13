@@ -152,14 +152,10 @@
 
                                             </tbody>
                                         </table>
-                                        <div class="dataTables_info" id="myTable_info" role="status" aria-live="polite">Showing 1 to 8 of 8 entries</div>
-                                            <div class="dataTables_paginate paging_simple_numbers" id="myTable_paginate">
-                                                <a class="paginate_button previous disabled" aria-controls="myTable" data-dt-idx="0" tabindex="0" id="myTable_previous">Previous</a>
-                                                <span>
-                                                    <a class="paginate_button current" aria-controls="myTable" data-dt-idx="1" tabindex="0">1</a>
-                                                </span>
-                                                <a class="paginate_button next disabled" aria-controls="myTable" data-dt-idx="2" tabindex="0" id="myTable_next">Next</a>
-                                            </div>
+                                        <div style="margin: 0 auto ;font-size: 25px">
+                                            {{$products->render()}}
+                                        </div>
+
                                         </div>
                                 </div>
                             </div>

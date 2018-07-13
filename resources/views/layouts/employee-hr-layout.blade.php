@@ -36,10 +36,11 @@
 
     <!-- Custom CSS -->
     <link href="{{ URL::asset('assets/css/hr.css') }}" rel="stylesheet" type="text/css"/>
- <link href="{{asset('dist/css/style.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('dist/css/style.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
 
-@yield('styles')
+
+    @yield('styles')
 </head>
 
 <body>
