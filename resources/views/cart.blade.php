@@ -48,27 +48,21 @@
                             </tr>
                             </tfoot>
                             <tbody>
+                            @foreach($carts as $cart)
                             <tr>
                                 <td class="romove-item"><a href="#" title="cancel" class="icon"><i class="fa fa-trash-o"></i></a></td>
                                 <td class="cart-image">
-                                    <a class="entry-thumbnail" href="detail.html">
-                                        <img src="assets/images/products/p1.jpg" alt="">
+                                    <a class="entry-thumbnail" href="/product/details/{{$cart->id}}">
+                                        <img src="{{$cart->options['image']}}" alt="">
                                     </a>
                                 </td>
                                 <td class="cart-product-name-info">
-                                    <h4 class="cart-product-description"><a href="detail.html">Floral Print Buttoned</a></h4>
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="rating rateit-small rateit"><button id="rateit-reset-2" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-2" style="display: none;"></button><div id="rateit-range-2" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-2" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="reviews">
-                                                (06 Reviews)
-                                            </div>
-                                        </div>
-                                    </div><!-- /.row -->
+                                    <h4 class="cart-product-description"><a href="/product/details/{{$cart->id}}">{{$cart->name}}</a></h4>
                                     <div class="cart-product-info">
-                                        <span class="product-color">COLOR:<span>Blue</span></span>
+                                        <span class="product-color">COLOR:<span>{{$cart->options['color']}}</span></span>
+                                    </div>
+                                    <div class="cart-product-info">
+                                        <span class="product-color">SIZE:<span>{{$cart->options['size']}}</span></span>
                                     </div>
                                 </td>
                                 <td class="cart-product-edit"><a href="#" class="product-edit">Edit</a></td>
@@ -78,50 +72,13 @@
                                             <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
                                             <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
                                         </div>
-                                        <input type="text" value="1">
+                                        <input type="text" value="{{$cart->qty}}">
                                     </div>
                                 </td>
-                                <td class="cart-product-sub-total"><span class="cart-sub-total-price">$300.00</span></td>
-                                <td class="cart-product-grand-total"><span class="cart-grand-total-price">$300.00</span></td>
+                                <td class="cart-product-sub-total"><span class="cart-sub-total-price">${{$cart->price}}</span></td>
+                                <td class="cart-product-grand-total"><span class="cart-grand-total-price">${{$cart->price}}</span></td>
                             </tr>
-                            <tr>
-                                <td class="romove-item"><a href="#" title="cancel" class="icon"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="cart-image">
-                                    <a class="entry-thumbnail" href="detail.html">
-                                        <img src="assets/images/products/p2.jpg" alt="">
-                                    </a>
-                                </td>
-                                <td class="cart-product-name-info">
-                                    <h4 class="cart-product-description"><a href="detail.html">Floral Print Buttoned</a></h4>
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="rating rateit-small rateit"><button id="rateit-reset-3" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-3" style="display: none;"></button><div id="rateit-range-3" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-3" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="reviews">
-                                                (06 Reviews)
-                                            </div>
-                                        </div>
-                                    </div><!-- /.row -->
-                                    <div class="cart-product-info">
-                                        <span class="product-color">COLOR:<span>Pink</span></span>
-                                    </div>
-                                </td>
-                                <td class="cart-product-edit"><a href="#" class="product-edit">Edit</a></td>
-                                <td class="cart-product-quantity">
-                                    <div class="cart-quantity">
-                                        <div class="quant-input">
-                                            <div class="arrows">
-                                                <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-                                                <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-                                            </div>
-                                            <input type="text" value="1">
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="cart-product-sub-total"><span class="cart-sub-total-price">$300.00</span></td>
-                                <td class="cart-product-grand-total"><span class="cart-grand-total-price">$300.00</span></td>
-                            </tr>
+                            @endforeach
                             </tbody><!-- /tbody -->
                         </table><!-- /table -->
                     </div>

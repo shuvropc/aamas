@@ -159,11 +159,11 @@
                                 <div class="basket">
                                     <i class="glyphicon glyphicon-shopping-cart"></i>
                                 </div>
-                                <div class="basket-item-count"><span class="count">2</span></div>
+                                <div class="basket-item-count"><span class="count">{{$cart_count}}</span></div>
                                 <div class="total-price-basket">
-                                    <span class="lbl">cart -</span>
+                                    {{--<span class="lbl">cart -</span>--}}
                                     <span class="total-price">
-						<span class="sign">$</span><span class="value">600.00</span>
+						<span class="sign">$</span><span class="value">{{$cart_total}}</span>
 					</span>
                                 </div>
 
@@ -173,21 +173,23 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="cart-item product-summary">
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <div class="image">
-                                                <a href="detail.html"><img src=" {{ URL::asset('assets/images/cart.jpg') }}" alt=""></a>
+                                    @foreach($carts as $cart)
+                                        <div class="row" style="margin-top: 15px">
+                                            <div class="col-xs-4">
+                                                <div class="image">
+                                                    <a href="/product/details/{{$cart->id}}"><img src="{{$cart->options['image']}}" alt=""></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-7">
+
+                                                <h3 class="name"><a href="/product/details/{{$cart->id}}">{{$cart->name}}</a></h3>
+                                                <div class="price">{{$cart->price}} X {{$cart_count}}</div>
+                                            </div>
+                                            <div class="col-xs-1 action">
+                                                <a href="#"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </div>
-                                        <div class="col-xs-7">
-
-                                            <h3 class="name"><a href="index8a95.html?page-detail">Simple Product</a></h3>
-                                            <div class="price">$600.00</div>
-                                        </div>
-                                        <div class="col-xs-1 action">
-                                            <a href="#"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div><!-- /.cart-item -->
                                 <div class="clearfix"></div>
                                 <hr>
@@ -195,7 +197,7 @@
                                 <div class="clearfix cart-total">
                                     <div class="pull-right">
 
-                                        <span class="text">Sub Total :</span><span class='price'>$600.00</span>
+                                        <span class="text">Sub Total :</span><span class='price'>${{$cart_total}}</span>
 
                                     </div>
                                     <div class="clearfix"></div>

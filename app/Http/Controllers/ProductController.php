@@ -152,10 +152,11 @@ class ProductController extends Controller
     public function addToCart(Request $request){
 
 //       $product['cart'] = [$request->pid,$request->size,$request->color];
-        Cart::add(['id' => $request->pid,'name' => $request->pname,'qty' => $request->qty, 'price' => $request->pprice,'options' => ['size' => $request->size,'color'=>$request->color]]);
+        Cart::add(['id' => $request->pid,'name' => $request->pname,'qty' => $request->qty, 'price' => $request->pprice,'options' => ['size' => $request->size,'color'=>$request->color, 'image' => $request->image]]);
 //        Cart::add(['id' => '293ad', 'name' => 'Product 1', 'qty' => 1, 'price' => 9.99, 'options' => ['size' => 'large']]);
 
-        return "Stored";
+        return "stored";
+
     }
 
 

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     function cart(){
-        return view('cart')->with('cart', Cart::content());
+        return view('cart')->with('carts', Cart::content())->with('count', Cart::count());
     }
 
     function carts(){

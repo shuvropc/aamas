@@ -123,8 +123,8 @@
                                 <div id="owl-single-product">
                                     @if ($product->image1)
                                     <div class="single-product-gallery-item zoom" id="slide1">
-                                        <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p8.jpg">
-                                            <img class="img-responsive" alt=""  src="{{asset($product->image1)}}" data-echo="{{asset($product->image1)}}" />
+                                        <a  data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p8.jpg">
+                                            <img id="image" class="img-responsive" alt=""  src="{{asset($product->image1)}}" data-echo="{{asset($product->image1)}}" />
                                         </a>
                                     </div><!-- /.single-product-gallery-item -->
                                     @endif

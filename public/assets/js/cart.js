@@ -6,6 +6,7 @@ function addToCart() {
     var pname= $('#pro_name').html();
     var pprice = $('#product_price').html();
     var qty=$("#qtyToBeAddedInCart").val();
+    var image = $('#image').attr("src");
 
     $.ajax({
         type: "POST",
@@ -19,10 +20,12 @@ function addToCart() {
             pid : pid,
             qty: qty,
             pname: pname,
-            pprice: pprice
+            pprice: pprice,
+            image: image
         },
         success: function (result) {
           console.log(result);
+            window.location.reload();
         }
     });
 
