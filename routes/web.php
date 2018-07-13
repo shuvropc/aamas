@@ -104,6 +104,7 @@ Route::post('/vendor/login', 'VendorController@login')->name('vendor.login');
 
 
 
+
 Route::get('/cart', 'CartController@cart')->name('user.cart');
 Route::get('/wishlist', 'WishlistController@wishlist')->name('user.wishlist');
 Route::get('/faq', 'FAQController@faq')->name('faq');
@@ -146,6 +147,13 @@ Route::post('/admin/product', 'AdminController@product');
 Route::post('/admin/addOrRemoveFeaturedProduct', 'AdminController@addOrRemoveFeaturedProduct');
 
 Route::get('/admin/searchByAnything', 'AdminController@searchByAnything');
+
+Route::get('/admin/vendorList', 'VendorController@vendorList');
+
+Route::post('/vendor/changeVendorstatus', 'VendorController@changeVendorstatus');
+
+Route::get('/admin/vendorDetails/{id}', 'VendorController@vendorDetails')->name('vendor.details');
+
 
 
 

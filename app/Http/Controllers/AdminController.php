@@ -36,17 +36,25 @@ class AdminController extends Controller
 
         }else if($request->isMethod('get')){
 
-            $products = DB::select("
-                                        SELECT products.*,
-                                        feature_products.product_id,
-                                        vendors.vendor_name,
-                                        vendors.id AS vendorId
-                                        FROM   `products`
-                                        LEFT JOIN feature_products
-                                        ON products.id = feature_products.product_id
-                                        INNER JOIN vendors
-                                        ON products.vendor_id = vendors.id  
-                                   ");
+
+            $products = $users = DB::table('products')
+                ->leftJoin('feature_products', 'products.id', '=', 'feature_products.product_id')
+                ->join('vendors', 'vendors.id', '=', 'products.vendor_id')
+                ->select('products.*', 'feature_products.product_id', 'vendors.vendor_name', 'vendors.id as vendorId')
+                ->paginate(4);
+
+
+//            $products = DB::select("
+//                                        SELECT products.*,
+//                                        feature_products.product_id,
+//                                        vendors.vendor_name,
+//                                        vendors.id AS vendorId
+//                                        FROM   `products`
+//                                        LEFT JOIN feature_products
+//                                        ON products.id = feature_products.product_id
+//                                        INNER JOIN vendors
+//                                        ON products.vendor_id = vendors.id
+//                                   ");
         }
 
         return view('admin/allProduct', ['products'=>$products]);
@@ -55,6 +63,7 @@ class AdminController extends Controller
     function addOrRemoveFeaturedProduct(Request $request){
 
         $product=Feature_product::where('product_id','=',$request->pid)->first();
+
 
         if($product){
             $product->delete();
