@@ -30,3 +30,21 @@ function addToCart() {
     });
 
 }
+
+function removeFromCart() {
+    var rowId = $('#rowId{{$cart->id}}').val();
+    $.ajax({
+        type: "POST",
+        url: "/product/removeFromCart",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            rowId : rowId
+        },
+        success: function (result) {
+            console.log(result);
+            window.location.reload();
+        }
+    });
+}

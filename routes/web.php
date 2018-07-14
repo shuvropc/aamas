@@ -127,6 +127,7 @@ Route::get('/product/details/{id}', 'ProductController@details')->name('product.
 
 
 Route::post('/product/addToCart', 'ProductController@addToCart');
+Route::get('/product/removeFromCart/{id}', 'ProductController@removeFromCart')->name('product.removeFromCart');;
 
 Route::get('/showcart',function (){
     return Cache::get('cart');;

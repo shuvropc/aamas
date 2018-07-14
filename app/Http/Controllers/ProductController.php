@@ -159,9 +159,10 @@ class ProductController extends Controller
 
     }
 
+    public function removeFromCart($id){
+        Cart::remove($id);
 
-
-
-
+        return redirect()->back();
+    }
 
 }

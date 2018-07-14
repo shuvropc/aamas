@@ -183,10 +183,10 @@
                                             <div class="col-xs-7">
 
                                                 <h3 class="name"><a href="/product/details/{{$cart->id}}">{{$cart->name}}</a></h3>
-                                                <div class="price">{{$cart->price}} X {{$cart_count}}</div>
+                                                <div class="price">{{$cart->price}} X {{$cart->qty}}</div>
                                             </div>
                                             <div class="col-xs-1 action">
-                                                <a href="#"><i class="fa fa-trash"></i></a>
+                                                <a href="/product/removeFromCart/{{$cart->rowId}}"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -648,6 +648,7 @@
 <script src="{{ URL::asset('assets/js/bootstrap-select.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/wow.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/scripts.js') }}"></script>
+<script src="{{ URL::asset('assets/js/cart.js') }}"></script>
 
 @yield('scripts')
 
