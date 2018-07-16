@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Aamas Admin Dashboard</title>
     <meta name="description" content="Admin Dashboard" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
     <!-- Favicon -->
@@ -381,7 +382,7 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Product</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="dashboard_dr" class="collapse collapse-level-1">
                     <li>
-                        <a href="{{url('employee/sales/addproduct')}}">Add</a>
+                        <a href="{{route('vendor.addProduct')}}">Add</a>
                     </li>
                     <li>
                         <a href="index2.html">Edit</a>

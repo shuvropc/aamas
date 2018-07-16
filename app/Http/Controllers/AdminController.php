@@ -36,25 +36,12 @@ class AdminController extends Controller
 
         }else if($request->isMethod('get')){
 
-
             $products = $users = DB::table('products')
                 ->leftJoin('feature_products', 'products.id', '=', 'feature_products.product_id')
                 ->join('vendors', 'vendors.id', '=', 'products.vendor_id')
                 ->select('products.*', 'feature_products.product_id', 'vendors.vendor_name', 'vendors.id as vendorId')
                 ->paginate(4);
 
-
-//            $products = DB::select("
-//                                        SELECT products.*,
-//                                        feature_products.product_id,
-//                                        vendors.vendor_name,
-//                                        vendors.id AS vendorId
-//                                        FROM   `products`
-//                                        LEFT JOIN feature_products
-//                                        ON products.id = feature_products.product_id
-//                                        INNER JOIN vendors
-//                                        ON products.vendor_id = vendors.id
-//                                   ");
         }
 
         return view('admin/allProduct', ['products'=>$products]);
@@ -80,6 +67,19 @@ class AdminController extends Controller
             ->orWhere('product_name', 'like', $request->value .'%')
             ->orWhere('brand', 'like', $request->value .'%')->get();
         return $product;
+    }
+
+    function setNumberInAPage(Request $request){
+
+
+        $products = $users = DB::table('products')
+            ->leftJoin('feature_products', 'products.id', '=', 'feature_products.product_id')
+            ->join('vendors', 'vendors.id', '=', 'products.vendor_id')
+            ->select('products.*', 'feature_products.product_id', 'vendors.vendor_name', 'vendors.id as vendorId')
+            ->paginate($request->number);
+
+        return $products;
+//        return $request->number;
     }
 
 

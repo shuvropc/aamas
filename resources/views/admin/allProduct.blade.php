@@ -38,11 +38,11 @@
                                     <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
                                         <div class="dataTables_length number-entries" id="myTable_length">
                                             <label>Show
-                                                <select name="myTable_length" aria-controls="myTable" class="">
-                                                    <option value="10">10</option>
-                                                    <option value="25">25</option>
-                                                    <option value="50">50</option>
-                                                    <option value="100">100</option>
+                                                <select name="myTable_length" id="number" aria-controls="myTable" class="" >
+                                                    <option value="2" onclick="setNumber()">2</option>
+                                                    <option value="4" onclick="setNumber()">4</option>
+                                                    <option value="6" onclick="setNumber()">6</option>
+                                                    <option value="10" onclick="setNumber()">10</option>
                                                 </select> entries
                                             </label>
                                         </div>
@@ -69,7 +69,7 @@
                                             <tbody>
 
                                         @foreach($products as $product)
-                                            <tr role="row" class="odd">
+                                            <tr role="row" class="odd" id="product">
                                                 <td class="txt-dark sorting_1">{{$product->product_name}}</td>
                                                 <td class="txt-dark">{{$product->id}}</td>
                                                 <td>
@@ -136,25 +136,47 @@
                                                                 value:value
                                                             },
                                                             success: function(result){
+
+                                                               $("#product").html(result);
+
+                                                            }
+                                                        });
+                                                    }
+                                                    function setNumber() {
+                                                        var number=$('#number').val();
+                                                        //alert(number);
+                                                        $.ajax({
+                                                            type: 'POST',
+                                                            url:"http://127.0.0.1:8000/admin/setNumberInAPage",
+                                                            headers: {
+                                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                            },
+                                                            data:{
+                                                                number:number
+                                                            },
+                                                            success: function(result){
+
+                                                                console.log(result);
                                                                 var listOfProduct="";
-
-                                                                for(var i=0; i<result.length;i++){
-                                                                    listOfProduct+="  </li> "+result[i].product_name+" <li>";
+                                                                for(var i=0; i<result.length; i++){
+                                                                    listOfProduct += "  <tr> "+result[i].product_name +" </tr>";
+                                                                    $("#product").html(listOfProduct);
                                                                 }
-
-                                                                $("#product").html(listOfProduct);
+                                                                console.log(listOfProduct);
 
                                                             }
                                                         });
                                                     }
 
+//
+
                                                 </script>
 
                                             </tbody>
                                         </table>
-                                        <div style="margin: 0 auto ;font-size: 25px">
-                                            {{$products->render()}}
-                                        </div>
+                                        {{--<div style="margin: 0 auto ;font-size: 20px">--}}
+                                            {{--{{$products->render()}}--}}
+                                        {{--</div>--}}
 
                                         </div>
                                 </div>

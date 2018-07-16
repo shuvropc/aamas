@@ -27,6 +27,10 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
     Route::get('/vendor/edit', 'VendorController@edit')->name('vendor.edit');
     Route::post('/vendor/edit', 'VendorController@update');
 
+    Route::get('/vendor/addProduct', 'ProductController@addProductByVendor')->name('vendor.addProduct');
+    Route::post('/vendor/addProduct', 'ProductController@addNewProductByVendor');
+
+
 
     Route::get('/vendor/passwordChange', 'VendorController@changePassword')->name('vendor.passwordChange');
     Route::post('/vendor/passwordChange', 'VendorController@updatePassword');
@@ -155,9 +159,13 @@ Route::post('/vendor/changeVendorstatus', 'VendorController@changeVendorstatus')
 
 Route::get('/admin/vendorDetails/{id}', 'VendorController@vendorDetails')->name('vendor.details');
 
+Route::post('/admin/setNumberInAPage', 'AdminController@setNumberInAPage');
 
 
+Route::get('/vendor/product', 'ProductController@showAllProduct')->name('vendor.product');
+Route::post('/product/changeProductAvability', 'ProductController@changeProductAvability');
 
+Route::get('vendor/product/edit','ProductController@editProductByVendor')->name('vendor.product.edit');
 
 Route::get('/cart','CartController@cart')->name('cart');
 Route::get('/confirmcheckout','CheckoutController@confirmCheckout')->name('confirmCheckout');

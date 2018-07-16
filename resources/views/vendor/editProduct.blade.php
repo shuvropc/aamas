@@ -1,7 +1,7 @@
 @extends('layouts.vendor-layout')
 
 
-@section('title', 'Vendor Dashboard')
+@section('title', 'Vendor Admin')
 
 
 @section('styles')
@@ -50,7 +50,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label mb-10">Product Name</label>
-                                                <input type="text" required="" id="firstName" name="product_name" class="form-control" placeholder="">
+                                                <input type="text" required="" id="firstName" name="product_name" value="{{$product['product_name']}}" class="form-control" placeholder="">
                                             </div>
                                         </div>
                                         <!--/span-->
@@ -107,7 +107,7 @@
                                                 <label class="control-label mb-10">Buing Price</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon"><i class="ti-money"></i></div>
-                                                    <input required="" type="text" name="buying_price" class="form-control" id="exampleInputuname" placeholder="">
+                                                    <input required="" type="text" value="{{$product['buying_price']}}" name="buying_price" class="form-control" id="exampleInputuname" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
@@ -117,7 +117,7 @@
                                                 <label class="control-label mb-10">Selling Price</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon"><i class="ti-money"></i></div>
-                                                    <input required="" type="text" name="selling_price" class="form-control" id="exampleInputuname_1" placeholder="">
+                                                    <input required="" type="text" value="{{$product['selling_price']}}" name="selling_price" class="form-control" id="exampleInputuname_1" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
@@ -134,7 +134,7 @@
                                                 <label class="control-label mb-10">Discount</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                    <input  type="text" name="discount" class="form-control" id="exampleInputuname" placeholder="%">
+                                                    <input  type="text" name="discount" value="{{$product['discount']}}" class="form-control" id="exampleInputuname" placeholder="%">
                                                 </div>
                                             </div>
                                         </div>
@@ -148,7 +148,7 @@
                                                 <label class="control-label mb-10">Brand</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                    <input  type="text" name="brand" class="form-control" id="exampleInputuname" placeholder="">
+                                                    <input  type="text" name="brand" value="{{$product['brand']}}" class="form-control" id="exampleInputuname" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@
                                                     <label class="control-label mb-10">Size</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                        <input  type="text" name="size[]" class="form-control" id="size" placeholder="">
+                                                        <input  type="text" name="size[]"  class="form-control" id="size" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>

@@ -141,20 +141,7 @@ class VendorController extends Controller
         }
 
 
-//        $vendor->name=$request->input('name');
-//        $vendor->vendor_name=$request->input('vendorname');
-//        $vendor->contact_number=$request->input('phonenumber');
-//        $vendor->website=$request->input('website');
-//        $vendor->address=$request->input('address');
-//        $vendor->country=$request->input('country');
-//        $vendor->zipcode=$request->input('zipcode');
-//
-//
-//        $vendor->product_types=$request->input('producttype');
-//        $vendor->company_reg_number=0;
-//        $vendor->status = false;
-//        $vendor->save();
-       
+
       
 }
 
@@ -214,6 +201,9 @@ class VendorController extends Controller
     public function orders(){
         return view('vendor/ProductOrders');
     }
+
+
+
 
     public function logOut(Request $request){
         $request->session()->forget('vendor');
