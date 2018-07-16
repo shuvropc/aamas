@@ -153,7 +153,9 @@ class ProductController extends Controller
         $product= Product::find(1);
         $details=Detail::where('product_id', '=', '1' )->get();
 
-        return view('vendor.editProduct',['categories'=>$categories->get()],['product'=>$product]);
+        //return $details;
+
+        return view('vendor.editProduct',['categories'=>$categories->get()],['product'=>$product])->with('details', $details);
     }
 
     public function addProduct(Request $request)

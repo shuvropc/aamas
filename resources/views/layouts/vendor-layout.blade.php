@@ -1010,6 +1010,8 @@
 
 <script src="{{asset('dist/js/ecommerce-data.js')}}"></script>
 
+@yield('scripts')
+
 </body>
 
 </html>

@@ -163,6 +163,7 @@
 
 
                                     <div id="quantity_input">
+                                        @foreach($details as $detail)
 
                                         <div class="row">
 
@@ -171,7 +172,8 @@
                                                     <label class="control-label mb-10">Size</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                        <input  type="text" name="size[]"  class="form-control" id="size" placeholder="">
+                                                        <input  type="text" value="{{$detail['size']}}" name="size[]"  class="form-control" id="size" placeholder="">
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,7 +184,7 @@
                                                     <label class="control-label mb-10">Color</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                        <input required="" type="text" name="color[]" class="form-control" id="color" placeholder="">
+                                                        <input required="" type="text" value="{{$detail['color']}}" name="color[]" class="form-control" id="color" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -193,12 +195,13 @@
                                                     <label class="control-label mb-10">Quatity</label>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-cut"></i></div>
-                                                        <input required="" type="text" name="total_quantity[]" class="form-control" id="quantity" placeholder="">
+                                                        <input required="" type="text" value="{{$detail['total_quantity']}}" name="total_quantity[]" class="form-control" id="quantity" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
 
                                         </div>
+                                            @endforeach
 
 
 
@@ -218,7 +221,7 @@
 
 
                                             <div class="form-group">
-                                                <textarea name="product_description" class="form-control" rows="4"></textarea>
+                                                <textarea name="product_description"  class="form-control" rows="4" >{{$product['product_description']}}</textarea>
                                             </div>
                                         </div>
                                     </div>
