@@ -29,6 +29,7 @@ class ProductController extends Controller
         $category = new Category();
 
         $cat = Category::where('category_name', $request->input("category"))->first();
+
         if ($cat === null) {
             // user doesn't exist
             //add Category
@@ -121,9 +122,15 @@ class ProductController extends Controller
         return redirect()->route('vendor.index');
     }
 
+    public function deleteDetailsByDetailsId(Request $request){
+
+        Detail::destroy($request->detailsid);
+
+        return "Deleted";
+    }
     public function showAllProduct(Request $request){
 //        return $request->session()->get('vendor.id');
-        $products=Product::where('vendor_id', '=' , $request->session()->get('vendor.id') )->get();
+        $products=Product::where('vendor_id', '=' , $request->session()->get('vendor.id') )->paginate(5);
         return view('vendor.showAllProduct', ['products'=>$products ]);
 
 //        return $products;
@@ -156,6 +163,90 @@ class ProductController extends Controller
         //return $details;
 
         return view('vendor.editProduct',['categories'=>$categories->get()],['product'=>$product])->with('details', $details);
+    }
+
+    public function updateProductByVendor(Request $request){
+
+
+        $product = Product::find($request->input('product_id'));
+
+        $category = new Category();
+
+        $cat = Category::where('category_name', $request->input("category"))->first();
+
+        if ($cat === null) {
+            // user doesn't exist
+            //add Category
+            $category->category_name = $request->input("category");
+            $category->sub_category = "";
+            $category->save();
+
+            $product->category_id = $category->id;
+
+        } else {
+            $product->category_id = $cat->id;
+        }
+
+
+        $product->product_name = $request->input("product_name");
+        $product->product_description = $request->input("product_description");
+        $product->buying_price = $request->input("buying_price");
+        $product->selling_price = $request->input("selling_price");
+        $product->discount = $request->input("discount");
+        $product->brand = $request->input("brand");
+        $product->available = $request->input("radio");
+        $product->vendor_id = $request->session()->get('vendor.id');
+
+//        return $request->file('productImage') ;
+
+
+
+
+        $product->save();
+
+
+//Details Update start
+
+        $color = $request->input('color');
+        $size = $request->input('size');
+        $total_quantity = $request->input('total_quantity');
+        $detail_id= $request->input('detail_id');
+
+        for ($i = 0; $i < count($color); $i++) {
+
+            $detail = Detail::find($detail_id[$i]);
+            $detail->size = $size[$i];
+            $detail->color = $color[$i];
+            $detail->total_quantity = $total_quantity[$i];
+            $detail->available_quantity = $total_quantity[$i];
+            $detail->save();
+        }
+
+
+
+        $color = $request->input('newcolor');
+        $size = $request->input('newsize');
+        $total_quantity = $request->input('newtotal_quantity');
+
+
+        if(count($color)>0){
+
+
+        for ($i = 0; $i < count($color); $i++) {
+            $detail = new Detail();
+            $detail->product_id = $request->input('product_id');
+            $detail->size = $size[$i];
+            $detail->color = $color[$i];
+            $detail->total_quantity = $total_quantity[$i];
+            $detail->available_quantity = $total_quantity[$i];
+            $detail->save();
+        }
+
+        }
+
+       return "Updated";
+
+
     }
 
     public function addProduct(Request $request)

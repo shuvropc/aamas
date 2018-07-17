@@ -78,6 +78,9 @@
 
                                             </div>
                                         </div>
+
+                                        <input type="text" name="product_id" value="{{$product->id}}">
+
                                         <!--/span-->
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -104,7 +107,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label mb-10">Buing Price</label>
+                                                <label class="control-label mb-10">Buying Price</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon"><i class="ti-money"></i></div>
                                                     <input required="" type="text" value="{{$product['buying_price']}}" name="buying_price" class="form-control" id="exampleInputuname" placeholder="">
@@ -165,7 +168,10 @@
                                     <div id="quantity_input">
                                         @foreach($details as $detail)
 
-                                        <div class="row">
+                                        <div class="row" id="detail_row_{{$detail->id}}">
+
+                                        <input type="hidden" value="{{$detail->id}}" name="detail_id[]">
+
 
                                             <div class="col-md-3">
                                                 <div class="form-group">
@@ -200,14 +206,24 @@
                                                 </div>
                                             </div>
 
+
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10"></label>
+                                                    <div class="input-group">
+                                                        <button type="button" class="btn btn-danger" type="button" onclick="removeDetails({{$detail->id}})">X</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                            @endforeach
+
+                                        @endforeach
+                                        </div>
 
 
 
-
-
-                                    </div>
 
                                     <button type="button" class="btn btn-success btn-icon left-icon " onclick="addNewDetailsRow()">Add New Size</button>
 
@@ -216,8 +232,6 @@
                                     <hr class="light-grey-hr">
                                     <div class="row">
                                         <div class="col-md-12">
-
-
 
 
                                             <div class="form-group">
@@ -255,7 +269,7 @@
                                                     <label class="btn btn-default btn-file">
                                                         <span>Browse</span>
                                                         <!-- The file is stored here. -->
-                                                        <input required="" type="file" name="productImage[]">
+                                                        <input  type="file" name="productImage[]">
                                                     </label>
                                                     <button type="button" class="btn btn-default" style="display: none;">Remove</button>
                                                 </div>
@@ -369,9 +383,12 @@
 
 
 
+
+
+
 @section('scripts')
     p
-    <script src="/assets/js/addNewProduct.js"></script>
+    <script src="/assets/js/edit-product.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="{{ URL::asset('assets/js/image-upload.js') }}"></script>
