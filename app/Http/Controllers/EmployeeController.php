@@ -68,7 +68,11 @@ class EmployeeController extends Controller
         }
 
     }
-   
+
+    public function employeeCreateByVendor(){
+        return view('vendor.addEmployee');
+    }
+
     public function create(Request $request)
     {
                 $employeeType=$request->session()->get('employee.type');

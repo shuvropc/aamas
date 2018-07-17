@@ -180,9 +180,9 @@
 
                                                 </tbody>
                                             </table>
-                                            {{--<div style="margin: 0 auto ;font-size: 20px">--}}
-                                            {{--{{$products->render()}}--}}
-                                            {{--</div>--}}
+                                            <div style="margin: 0 auto ;font-size: 20px">
+                                            {{$products->render()}}
+                                            </div>
 
                                         </div>
                                     </div>
