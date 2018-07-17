@@ -245,6 +245,12 @@
                                                         <button type="button" class="btn btn-default active">File</button>
                                                     </div>
                                                 </div>
+
+                                                <div style="width: 100%">
+
+                                                    <img style="height: 200px;" src="{{asset($product->image1)}}">
+                                                </div>
+
                                                 <div class="file-tab panel-body">
                                                     <label class="btn btn-default btn-file">
                                                         <span>Browse</span>
@@ -262,7 +268,40 @@
                                                     <h3 class="panel-title pull-left">Upload Image</h3>
                                                     <div class="btn-group pull-right">
                                                         <button type="button" class="btn btn-default active">File</button>
+{{--                                                        <img style="height: 200px;" src="{{asset($product->image2)}}">--}}
+
                                                     </div>
+                                                </div>
+
+                                                <div style="width: 100%">
+
+                                                    <img style="height: 200px;" src="{{asset($product->image2)}}">
+                                                </div>
+
+                                                <div class="file-tab panel-body">
+                                                    <label class="btn btn-default btn-file">
+                                                        <span>Browse</span>
+                                                        <!-- The file is stored here. -->
+                                                        <input type="file" name="productImage[]">
+                                                    </label>
+                                                    <button type="button" class="btn btn-default" style="display: none;">Remove</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="imageupload panel panel-default">
+                                                <div class="panel-heading clearfix">
+                                                    <h3 class="panel-title pull-left">Upload Image</h3>
+                                                    <div class="btn-group pull-right">
+                                                        <button type="button" class="btn btn-default active">File</button>
+
+                                                    </div>
+                                                </div>
+
+                                                <div style="width: 100%">
+
+                                                    <img style="height: 200px;" src="{{asset($product->image3)}}">
                                                 </div>
                                                 <div class="file-tab panel-body">
                                                     <label class="btn btn-default btn-file">
@@ -281,27 +320,15 @@
                                                     <h3 class="panel-title pull-left">Upload Image</h3>
                                                     <div class="btn-group pull-right">
                                                         <button type="button" class="btn btn-default active">File</button>
+
                                                     </div>
-                                                </div>
-                                                <div class="file-tab panel-body">
-                                                    <label class="btn btn-default btn-file">
-                                                        <span>Browse</span>
-                                                        <!-- The file is stored here. -->
-                                                        <input type="file" name="productImage[]">
-                                                    </label>
-                                                    <button type="button" class="btn btn-default" style="display: none;">Remove</button>
                                                 </div>
 
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="imageupload panel panel-default">
-                                                <div class="panel-heading clearfix">
-                                                    <h3 class="panel-title pull-left">Upload Image</h3>
-                                                    <div class="btn-group pull-right">
-                                                        <button type="button" class="btn btn-default active">File</button>
-                                                    </div>
+                                                <div style="width: 100%">
+
+                                                <img style="height: 200px;" src="{{asset($product->image4)}}">
                                                 </div>
+
                                                 <div class="file-tab panel-body">
                                                     <label class="btn btn-default btn-file">
                                                         <span>Browse</span>
@@ -343,6 +370,7 @@
 
 
 @section('scripts')
+    p
     <script src="/assets/js/addNewProduct.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

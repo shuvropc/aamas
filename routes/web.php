@@ -163,6 +163,34 @@ Route::post('/admin/setNumberInAPage', 'AdminController@setNumberInAPage');
 
 
 Route::get('/vendor/product', 'ProductController@showAllProduct')->name('vendor.product');
+
+
+Route::get('/vendor/employeeList/{type}', 'VendorController@employeeList')->name('vendor.emp-list');
+
+
+Route::post('/vendor/changeEmployeeStatus', 'VendorController@changeEmployeeStatus');
+
+
+
+Route::get('/vendor/productStatus', 'VendorController@productStatus')->name('product.status');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::post('/product/changeProductAvability', 'ProductController@changeProductAvability');
 
 Route::get('vendor/product/edit','ProductController@editProductByVendor')->name('vendor.product.edit');

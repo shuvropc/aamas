@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use App\Vendor;
 use App\Product;
 use App\Category;
 use App\Detail;
 
+use App\ViewProductWithDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use SebastianBergmann\Environment\Console;
@@ -235,4 +237,45 @@ class VendorController extends Controller
     public function vendorDetails($id){
         return view('vendor.vendorDetails',['vendor'=>Vendor::find($id)]);
     }
+
+
+    public function employeeList(Request $request, $type){
+
+        $employees = Employee::where('vendor_id', '=', $request->session()->get('vendor.id'))
+            ->where('type', '=', $type)
+            ->get();
+
+        return view('vendor.employeeList')->with('employees',$employees)->with('type', $type);
+    }
+
+
+
+    public function changeEmployeeStatus(Request $request){
+
+
+        $employee =Employee::find($request->empid);
+
+
+        if($employee->active==1){
+            $employee->active=0;
+        }
+        else if($employee->active==0){
+            $employee->active=1;
+        }
+
+        $employee->save();
+
+        return "Status CHanged";
+    }
+
+
+    public function productStatus(Request $request){
+
+            $products = ViewProductWithDetails::where('vendor_id','=',$request->session()
+                ->get('vendor.id'))
+                ->orderBy('available_quantity', 'ASC')
+                ->get();
+            return view('vendor.productStatus')->with('products', $products);
+    }
+
 }

@@ -15,7 +15,7 @@ class EmployeeController extends Controller
     {
 //            $employee=$request->session()->get('employee');
 //            if($employee->type=="HR"){
-            return view('vendor.employee.hr.index');
+                    return view('vendor.employee.hr.index');
 //            }
 //            else
 //            {
