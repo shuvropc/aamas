@@ -214,6 +214,16 @@ Route::get('/showcart',function (\Illuminate\Http\Request $request){
 
 
 
+Route::get('/data',function (\Illuminate\Http\Request $request){
+    $vendorid=1;
+
+    $sql = "SELECT * FROM categories WHERE categories.id in (SELECT products.category_id from products WHERE vendor_id={$vendorid})";
+    return DB::select($sql);
+
+});
+
+
+
 
 //Route::get('/searchresults','ProductController@searchResult')->name('searchresults');
 

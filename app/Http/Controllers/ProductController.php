@@ -282,7 +282,12 @@ class ProductController extends Controller
         $total_quantity = $request->input('newtotal_quantity');
 
 
-        if(is_array($color)>0){
+
+        
+
+
+        if(is_array ($color)){
+
 
 
         for ($i = 0; $i < count($color); $i++) {

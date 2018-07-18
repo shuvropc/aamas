@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Schema;
 
@@ -15,7 +18,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
+        $product = new Product();
+
         Schema\Builder::defaultStringLength(191);
 
         view()->composer('layouts.user-layout-with-sidebar', function($view)
@@ -27,6 +32,21 @@ class AppServiceProvider extends ServiceProvider
         {
             $view->with('cart_count', Cart::count())->with('cart_total', Cart::subtotal())->with('carts', Cart::content());
         });
+
+
+
+
+        view()->composer('layouts.vendor-layout', function($view)
+        {
+//            $sql = "SELECT * FROM categories WHERE categories.id in (SELECT products.category_id from products WHERE vendor_id={$request->session()->get('vendor.id')})";
+            $sql = "SELECT * FROM categories WHERE categories.id in (SELECT products.category_id from products WHERE vendor_id=1)";
+            $cat=DB::select($sql);
+
+            $view->with('categories',  $cat);
+        });
+
+
+
     }
 
     /**
