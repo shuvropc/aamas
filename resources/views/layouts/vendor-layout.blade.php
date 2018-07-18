@@ -418,27 +418,41 @@
                     <li>
                         <a href="{{route('vendor.addProduct')}}">Add</a>
                     </li>
-                    <li>
-                        <a href="index2.html">Edit</a>
-                    </li>
-                    <li>
-                        <a href="index3.html">Delete</a>
-                    </li>
 
                     </li>
                 </ul>
             </li>
 
 
+
+
+
+
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="">
-                    <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span>
-                    </div>
-                    <div class="pull-right"></div>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr2">
+                    <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span
+                                class="right-nav-text">Show Products</span></div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                     <div class="clearfix"></div>
                 </a>
+                <ul id="dashboard_dr2" class="collapse collapse-level-1">
+                    <li>
+                        <a href="{{route('vendor.product')}}">All</a>
+                    </li>
 
+
+                    @foreach($categories as $category)
+                        <li>
+                            <a href="{{route('vendor.addProduct')}}">{{$category->category_name}}</a>
+                        </li>
+                        @endforeach
+
+                </ul>
             </li>
+
+
+
+
 
             <li>
                 <a href="{{route('product.status')}}" data-toggle="collapse" data-target="">
