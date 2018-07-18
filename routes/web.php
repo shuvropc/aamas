@@ -179,6 +179,7 @@ Route::get('/details/deleteDetailsByDetailsId', 'ProductController@deleteDetails
 
 
 Route::get('/addeEmployee', 'EmployeeController@employeeCreateByVendor')->name('vendor.addEmployee');
+Route::post('/addeEmployee', 'EmployeeController@createEmployeeByVendor');
 
 
 
@@ -196,7 +197,7 @@ Route::get('/addeEmployee', 'EmployeeController@employeeCreateByVendor')->name('
 
 Route::post('/product/changeProductAvability', 'ProductController@changeProductAvability');
 
-Route::get('vendor/product/edit','ProductController@editProductByVendor')->name('vendor.product.edit');
+Route::get('vendor/product/edit/{id}','ProductController@editProductByVendor')->name('vendor.product.edit');
 Route::post('vendor/product/edit','ProductController@updateProductByVendor');
 
 Route::get('/cart','CartController@cart')->name('cart');

@@ -38,12 +38,7 @@
 
 
                 <p class="section"><span class="number">2</span><span class="text">Employee Details</span></p>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <label for="address">Identity Number<span>*</span></label>
-                        <input required type="text" name="emp_ident" id="idNumber"   placeholder="Please enter Employee Id Number" title="It must contain letters and/or separators and a length of minimum 10 characters" required>
-                    </div>
-                </div>
+
 
                 <div class="row">
                     <div class="col-sm-12">

@@ -72,6 +72,33 @@ class EmployeeController extends Controller
     public function employeeCreateByVendor(){
         return view('vendor.addEmployee');
     }
+    public function createEmployeeByVendor(Request $request){
+        $vendorId=$request->session()->get('vendor.id');
+        $this->validate($request,[
+            'emp_name' =>'required',
+            'emp_type'=>'required',
+            'emp_email'=>'required|email|unique:employees,email',
+            'emp_pass' =>'required',
+            'cnpassword'=>'required|same:emp_pass'
+
+        ]);
+
+
+        $employee= new Employee();
+
+        $employee->name= $request->input('emp_name');
+        $employee->email= $request->input('emp_email');
+        $employee->password=Hash::make($request->input('emp_pass'));
+        $employee->type=$request->input('emp_type');
+        $employee->Identity_number= $vendorId .'-'. date("H-i-s").'-'. str_random(2);
+        $employee->vendor_id=$vendorId;
+        $employee->referenced_by= $vendorId;
+
+        $employee->save();
+
+        return redirect()->route('vendor.index');
+
+    }
 
     public function create(Request $request)
     {
@@ -89,6 +116,7 @@ class EmployeeController extends Controller
     public function CreateEmployee(Request $request)
     {
         $employeeType=$request->session()->get('employee.type');
+
       //  return $employeeType;
 
         if($employeeType=="HR"){
@@ -110,7 +138,7 @@ class EmployeeController extends Controller
     //            $employee->parmanent_address=$request->input('emp_par_address');
     //            $employee->contact_number=$request->input('emp_contact');
                 $employee->type=$request->input('emp_type');
-                $employee->Identity_number=$request->input('emp_ident');
+                $employee->Identity_number= $request->session()->get('employee.id') .'-'. date("H-i-s").'-'. str_random(2);
 
                 $employee->vendor_id=session()->get('employee.vendor_id');
                 $employee->referenced_by=session()->get('employee.id');

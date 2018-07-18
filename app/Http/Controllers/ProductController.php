@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 
+use File;
+
 class ProductController extends Controller
 {
     public function addProductByVendor(Request $request)
@@ -154,11 +156,11 @@ class ProductController extends Controller
     }
 
 
-    public function editProductByVendor(Request $request)
+    public function editProductByVendor(Request $request, $id)
     {
         $categories = new Category();
-        $product= Product::find(1);
-        $details=Detail::where('product_id', '=', '1' )->get();
+        $product= Product::find($id);
+        $details=Detail::where('product_id', '=', $id )->get();
 
         //return $details;
 
@@ -198,8 +200,59 @@ class ProductController extends Controller
         $product->vendor_id = $request->session()->get('vendor.id');
 
 //        return $request->file('productImage') ;
+         $productImage1=$product->image1;
+         $productImage2=$product->image2;
+         $productImage3=$product->image3;
+         $productImage4=$product->image4;
 
 
+        $file1=$request->file('productImage1');
+        $file2=$request->file('productImage2');
+        $file3=$request->file('productImage3');
+        $file4=$request->file('productImage4');
+
+                if($request->file('productImage1')==null){
+                    $product->image1 = $productImage1;
+                }else{
+                    if(File::exists($productImage1)) {
+                        File::delete($productImage1);
+                        $file_name = str_random(30) . sha1(time()) . '.' . $file1->getClientOriginalExtension();
+                        $file1->move(public_path('/uploads/vendor/product'), $file_name);
+                        $product->image1 = 'uploads/vendor/product/' . $file_name;
+                    }
+                }
+                if($request->file('productImage2')==null){
+                    $product->image2 = $productImage2;
+                } else{
+                    if(File::exists($productImage2)) {
+                        File::delete($productImage2);
+                        $file_name = str_random(30) . sha1(time()) . '.' . $file2->getClientOriginalExtension();
+                        $file2->move(public_path('/uploads/vendor/product'), $file_name);
+                        $product->image2 = 'uploads/vendor/product/' . $file_name;
+                    }
+                }
+                if($request->file('productImage3')==null){
+                    $product->image3 = $productImage3;
+                } else{
+                    if(File::exists($productImage3)) {
+                        File::delete($productImage3);
+                        $file_name = str_random(30) . sha1(time()) . '.' . $file3->getClientOriginalExtension();
+                        $file3->move(public_path('/uploads/vendor/product'), $file_name);
+                        $product->image3 = 'uploads/vendor/product/' . $file_name;
+                    }
+                }
+                if($request->file('productImage4')==null){
+                    $product->image4 = $productImage4;
+                }else{
+                    if(File::exists($productImage4))
+                    {
+                        File::delete($productImage4);
+                        //unlink($image_path);
+                        $file_name = str_random(30) . sha1(time()) . '.' . $file4->getClientOriginalExtension();
+                        $file4->move(public_path('/uploads/vendor/product'), $file_name);
+                        $product->image4 = 'uploads/vendor/product/' . $file_name;
+                    }
+                }
 
 
         $product->save();
@@ -229,7 +282,7 @@ class ProductController extends Controller
         $total_quantity = $request->input('newtotal_quantity');
 
 
-        if(count($color)>0){
+        if(is_array($color)>0){
 
 
         for ($i = 0; $i < count($color); $i++) {

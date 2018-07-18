@@ -480,7 +480,7 @@
 
 
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr">
+                <a href="{{route('vendor.addEmployee')}}" data-toggle="collapse" data-target="#ui_dr">
                     <div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Employee</span>
                     </div>
                     <div class="pull-right"></div>

@@ -101,14 +101,34 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="text-inverse pr-10" title="" data-toggle="tooltip" data-original-title="Edit">
+                                                            <a href="{{route('vendor.product.edit',['id'=>$product->id])}}" class="text-inverse pr-10" title="" data-toggle="tooltip" data-original-title="Edit">
                                                                 <i class="zmdi zmdi-edit txt-warning"></i>
                                                             </a>
-                                                            <a href="javascript:void(0)" class="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete">
+                                                            <a href="#myModal" class="trigger-btn" data-toggle="modal" class="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete">
                                                                 <i class="zmdi zmdi-delete txt-danger"></i>
                                                             </a>
                                                         </td>
                                                         @endforeach
+
+
+                                                        <div id="myModal" class="modal fade">
+                                                            <div class="modal-dialog modal-confirm">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+
+                                                                        <h4 class="modal-title">Are you sure?</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                                                        <button type="button" class="btn btn-danger" onclick="confirmDelete()" >Delete</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
                                                         <script>
 

@@ -269,7 +269,7 @@
                                                     <label class="btn btn-default btn-file">
                                                         <span>Browse</span>
                                                         <!-- The file is stored here. -->
-                                                        <input  type="file" name="productImage[]">
+                                                        <input  type="file" name="productImage1">
                                                     </label>
                                                     <button type="button" class="btn btn-default" style="display: none;">Remove</button>
                                                 </div>
@@ -296,7 +296,7 @@
                                                     <label class="btn btn-default btn-file">
                                                         <span>Browse</span>
                                                         <!-- The file is stored here. -->
-                                                        <input type="file" name="productImage[]">
+                                                        <input type="file" name="productImage2">
                                                     </label>
                                                     <button type="button" class="btn btn-default" style="display: none;">Remove</button>
                                                 </div>
@@ -321,7 +321,7 @@
                                                     <label class="btn btn-default btn-file">
                                                         <span>Browse</span>
                                                         <!-- The file is stored here. -->
-                                                        <input type="file" name="productImage[]">
+                                                        <input type="file" name="productImage3">
                                                     </label>
                                                     <button type="button" class="btn btn-default" style="display: none;">Remove</button>
                                                 </div>
@@ -347,7 +347,7 @@
                                                     <label class="btn btn-default btn-file">
                                                         <span>Browse</span>
                                                         <!-- The file is stored here. -->
-                                                        <input type="file" name="productImage[]">
+                                                        <input type="file" name="productImage4">
                                                     </label>
                                                     <button type="button" class="btn btn-default" style="display: none;">Remove</button>
                                                 </div>
