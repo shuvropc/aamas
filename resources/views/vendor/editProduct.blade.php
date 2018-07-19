@@ -79,7 +79,7 @@
                                             </div>
                                         </div>
 
-                                        <input type="text" name="product_id" value="{{$product->id}}">
+                                        <input type="hidden" name="product_id" value="{{$product->id}}">
 
                                         <!--/span-->
                                         <div class="col-md-6">

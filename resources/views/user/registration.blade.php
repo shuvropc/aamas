@@ -27,10 +27,7 @@
                                 <label class="info-title" for="exampleInputEmail2">Email Address <span>* {{$message or ''}}</span></label>
                                 <input type="email" name="userEmail" class="form-control unicase-form-control text-input" id="exampleInputEmail2" required>
                             </div>
-                            {{--<div class="form-group">--}}
-                                {{--<label class="info-title" for="exampleInputEmail1">Phone Number <span>*</span></label>--}}
-                                {{--<input type="number" name="userPhone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >--}}
-                            {{--</div>--}}
+
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputEmail1">Password <span>* {{$message or ''}}</span></label>
                                 <input type="password" name="userPassword" class="form-control unicase-form-control text-input" id="exampleInputEmail1" >

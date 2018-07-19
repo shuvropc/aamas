@@ -18,7 +18,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                @endif
+                    @endif
                     <!-- Sign-in -->
                     <div class="col-md-6 col-sm-6 sign-in">
                         <h4 class="">Change Password</h4>

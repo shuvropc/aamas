@@ -16,6 +16,16 @@
 
     <div class="container-fluid" style="background-color: seashell">
         <div class="form-wrapper">
+            {{--@if ($errors->any())--}}
+                {{--<div class="alert alert-danger">--}}
+                    {{--<ul>--}}
+                        {{--@foreach ($errors->all() as $error)--}}
+                            {{--<li>{{ $error }}</li>--}}
+                        {{--@endforeach--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+        {{--@endif--}}
+
             <!-- BEGIN REGISTER FORM -->
             <form class="form-content" id="register-form" action="#" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
@@ -28,8 +38,9 @@
                 <p class="section"><span class="number">1</span><span class="text">Basic information</span></p>
                 <div class="row">
                     <div class="col-sm-12">
-                        <label for="fname">Name<span>*</span></label>
+                        <label for="fname">Name<span>* </span></label>
                         <input required  type="text" name="emp_name" id="name" pattern="[a-zA-Z ]{2,}"  placeholder="Please enter your full name" required title="It must contain only letters and a length of minimum 2 characters">
+                        <label style="color: #990000;">{{$errors->first('emp_name')}}</label>
                     </div>
 
                 </div>
@@ -42,11 +53,12 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <label for="address">Employee Type<span>*</span></label>
+                        <label for="address">Employee Type<span>* </span></label>
                         <select required name="emp_type">
                             <option value="HR">HR</option>
                             <option value="Sales">Sales Executive</option>
                         </select>
+                        <label style="color: #990000;">{{$errors->first('emp_type')}}</label>
                     </div>
                 </div>
 
@@ -54,18 +66,21 @@
                 <p class="section"><span class="number">3</span><span class="text">Account credentials</span></p>
                 <div class="row">
                     <div class="col-sm-12">
-                        <label for="email_reg"><i class="glyphicon glyphicon-envelope"></i> Email<span>*</span></label>
+                        <label for="email_reg"><i class="glyphicon glyphicon-envelope"></i> Email<span>* </span></label>
                         <input required type="email" name="emp_email" id="email_reg" placeholder="Please enter a valid email address" title="It must contain a valid email address e.g. someone@provider.com" required>
+                        <label style="color: #990000;">{{$errors->first('emp_email')}}</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
-                        <label for="password_reg"><i class="glyphicon glyphicon-lock"></i> Password<span>*</span></label>
+                        <label for="password_reg"><i class="glyphicon glyphicon-lock"></i> Password<span>* </span></label>
                         <input required type="password" name="emp_pass" id="password_reg" pattern=".{6,}"  placeholder="Please enter your password" title="It can contain all types of characters and a length of minimum 6 characters" required>
+                        <label style="color: #990000;">{{$errors->first('emp_pass')}}</label>
                     </div>
                     <div class="col-sm-6">
-                        <label for="rpassword"><i class="glyphicon glyphicon-lock"></i> Confirm Password<span>*</span></label>
+                        <label for="rpassword"><i class="glyphicon glyphicon-lock"></i> Confirm Password<span>* </span></label>
                         <input required type="password" name="cnpassword" id="rpassword" pattern=".{6,}"  placeholder="Please enter your password" title="It can contain all types of characters and a length of minimum 6 characters" required>
+                        <label style="color: #990000;">{{$errors->first('cnpassword')}}</label>
                     </div>
                 </div>
                 <div class="row">

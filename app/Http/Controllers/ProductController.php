@@ -283,7 +283,7 @@ class ProductController extends Controller
 
 
 
-        
+
 
 
         if(is_array ($color)){

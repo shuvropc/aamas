@@ -81,7 +81,19 @@ class EmployeeController extends Controller
             'emp_pass' =>'required',
             'cnpassword'=>'required|same:emp_pass'
 
-        ]);
+        ],
+        [
+            'emp_name.required'     => 'Please provide your name',
+            'emp_type.required'     => 'Provide employee type',
+            'emp_email.required'    => 'You must Provide an email address',
+            'emp_email.email'       => 'You must Provide an email address',
+            'emp_email.unique'      => 'This email already exist ',
+            'emp_pass.required'     => 'Please provide your Password',
+            'cnpassword.required'   => 'Please provide your Password again',
+            'cnpassword.same'       => 'Password and confirm password does not match',
+
+        ]
+        );
 
 
         $employee= new Employee();
