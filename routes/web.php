@@ -188,18 +188,13 @@ Route::post('/addeEmployee', 'EmployeeController@createEmployeeByVendor');
 
 
 
+Route::get('/employee/employeeList/{type}', 'EmployeeController@employeeList')->name('hr.emp-list');
 
 
 
 
 
-
-
-
-
-
-
-    Route::get('/product/showProductByCategoryId/{id}', 'ProductController@showProductByCategoryId')->name('vendor.product.category');
+Route::get('/product/showProductByCategoryId/{id}', 'ProductController@showProductByCategoryId')->name('vendor.product.category');
 
 
 
@@ -225,13 +220,15 @@ Route::get('/showcart',function (\Illuminate\Http\Request $request){
 
 
 
-Route::get('/data',function (\Illuminate\Http\Request $request){
-    $vendorid=1;
 
-    $sql = "SELECT * FROM categories WHERE categories.id in (SELECT products.category_id from products WHERE vendor_id={$vendorid})";
-    return DB::select($sql);
+
+
+Route::get('/show',function (\Illuminate\Http\Request $request){
+
+    return $request->session()->get('employee.vendor_id');
 
 });
+
 
 
 

@@ -318,4 +318,17 @@ public function changePassword(){
         session()->forget('employee');
         return redirect()->route('employee.login');
     }
+
+
+
+
+    public function employeeList(Request $request, $type){
+
+        $employees = Employee::where('vendor_id', '=', $request->session()->get('employee.vendor_id'))
+            ->where('type', '=', $type)
+            ->get();
+
+        return view('vendor.employee.hr.employeeList')->with('employees',$employees)->with('type', $type);
+    }
+
 }

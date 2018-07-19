@@ -372,13 +372,13 @@
 
 
             <li>
-                <a href="/employee/hr/allemployee" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Employee List</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Employee List</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="maps_dr" class="collapse collapse-level-1">
                     <li>
-                        <a href="#" class="hr" id="hr">HR</a>
+                        <a href="{{route('hr.emp-list', ['type' => 'HR'])}}">HR</a>
                     </li>
                     <li>
-                        <a href="#" class="sales" id="sales">Sales</a>
+                        <a href="{{route('hr.emp-list', ['type' => 'Sales'])}}">Sales</a>
                     </li>
                 </ul>
             </li>
@@ -386,11 +386,6 @@
 
             <li>
                 <a href="{{route('employee.create')}}" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Employee</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
-
-            </li>
-
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Employee Status</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 
             </li>
 
@@ -871,13 +866,7 @@
     <div class="page-wrapper">
         <div class="container-fluid pt-25">
 
-            @yield('index')
-            @yield('details')
-            @yield('allemployee')
-            @yield('addemployee')
-            @yield('employeelistHR')
-            @yield('employeelistSales')
-            @yield('passwordchange')
+            @yield('content')
 
         </div>
 
