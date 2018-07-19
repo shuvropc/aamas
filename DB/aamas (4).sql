@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2018 at 01:51 PM
+-- Generation Time: Jul 19, 2018 at 09:32 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -113,14 +113,17 @@ CREATE TABLE `details` (
 --
 
 INSERT INTO `details` (`id`, `product_id`, `size`, `color`, `total_quantity`, `available_quantity`, `created_at`, `updated_at`) VALUES
-(1, 1, NULL, 'Black', 5, 5, '2018-06-03 07:26:51', '2018-06-03 07:26:51'),
-(2, 1, NULL, 'Red', 3, 3, '2018-06-03 07:26:51', '2018-06-03 07:26:51'),
-(3, 2, 'M', 'Red', 5, 5, '2018-06-03 07:29:16', '2018-06-03 07:29:16'),
-(4, 2, 'S', 'Black', 3, 3, '2018-06-03 07:29:16', '2018-06-03 07:29:16'),
-(5, 3, NULL, 'Red', 5, 5, '2018-06-03 07:34:53', '2018-06-03 07:34:53'),
-(6, 3, NULL, 'Black', 15, 15, '2018-06-03 07:34:53', '2018-06-03 07:34:53'),
-(7, 6, NULL, 'Black', 50, 50, '2018-07-03 07:25:08', '2018-07-03 07:25:08'),
-(8, 4, NULL, 'Black', 3, 3, '2018-06-03 07:29:16', '2018-06-03 07:29:16');
+(1, 1, NULL, 'Black', 10, 10, '2018-07-19 01:19:37', '2018-07-19 01:19:37'),
+(2, 1, NULL, 'Red', 20, 20, '2018-07-19 01:19:37', '2018-07-19 01:19:37'),
+(3, 2, NULL, 'Black', 10, 10, '2018-07-19 01:20:39', '2018-07-19 01:20:39'),
+(4, 2, NULL, 'Grey', 10, 10, '2018-07-19 01:20:39', '2018-07-19 01:20:39'),
+(5, 2, NULL, 'Sand Stone', 5, 5, '2018-07-19 01:20:39', '2018-07-19 01:20:39'),
+(6, 3, NULL, 'Red', 5, 5, '2018-07-19 01:21:53', '2018-07-19 01:21:53'),
+(7, 3, NULL, 'Pink', 3, 3, '2018-07-19 01:21:53', '2018-07-19 01:21:53'),
+(8, 4, NULL, 'Pink', 8, 8, '2018-07-19 01:23:30', '2018-07-19 01:23:30'),
+(9, 5, NULL, 'Black', 5, 5, '2018-07-19 01:24:53', '2018-07-19 01:24:53'),
+(10, 4, NULL, 'Red', 4, 4, '2018-07-19 01:31:45', '2018-07-19 01:31:45'),
+(11, 4, NULL, 'White', 3, 3, '2018-07-19 01:31:45', '2018-07-19 01:31:45');
 
 -- --------------------------------------------------------
 
@@ -139,7 +142,7 @@ CREATE TABLE `employees` (
   `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `referenced_by` int(11) NOT NULL,
   `Identity_number` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT '1',
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vendor_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -150,8 +153,8 @@ CREATE TABLE `employees` (
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`id`, `name`, `email`, `password`, `current_address`, `parmanent_address`, `contact_number`, `type`, `referenced_by`, `Identity_number`, `Active`, `image`, `vendor_id`, `created_at`, `updated_at`) VALUES
-(1, 'Mark Jow', 'hr1@gmail.com', '$2y$10$b8809APlVnzoXXLryHNEwegVLh3BfnNU.a8x7UcJAjN1TYUYNMfNC', 'Dhaka', 'Lalmonirhat', '0098978454545', 'HR', 1, '122345678765432345', 1, NULL, 1, '2018-05-29 06:27:00', '2018-05-29 06:27:00'),
+INSERT INTO `employees` (`id`, `name`, `email`, `password`, `current_address`, `parmanent_address`, `contact_number`, `type`, `referenced_by`, `Identity_number`, `active`, `image`, `vendor_id`, `created_at`, `updated_at`) VALUES
+(1, 'Mark Jow', 'hr1@gmail.com', '$2y$10$b8809APlVnzoXXLryHNEwegVLh3BfnNU.a8x7UcJAjN1TYUYNMfNC', 'Dhaka', 'Lalmonirhat', '0098978454545', 'HR', 1, '122345678765432345', 1, 'uploads/vendor/product/QiMvJNU0xmpLjM9WnRf2XU7paQMHQN.jpg', 1, '2018-05-29 06:27:00', '2018-07-17 00:34:22'),
 (2, 'Ricardo Rick', 'sales1@gmail.com', '$2y$10$J3FdvLGMv6mAmEDb2nvIIeggKjMcuWim5/ceDF/TmOfGWx4Pjw8aC', 'Chittagong', 'Faridpur', '0065989749465', 'Sales', 1, '122345678765432345', 1, NULL, 1, '2018-05-29 12:43:09', '2018-05-29 12:43:09'),
 (3, 'asasda', 'sales2@ajsdh.com', '$2y$10$xLoZoPTDjA0ww/NZsbZjuO63.hMAltxir4YnU7hAJcyaUy6p2Owc.', NULL, NULL, NULL, 'Sales', 1, 'asdasd', 1, NULL, 1, '2018-07-03 07:16:33', '2018-07-03 07:16:33');
 
@@ -261,12 +264,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_name`, `product_description`, `buying_price`, `selling_price`, `discount`, `brand`, `image1`, `image2`, `image3`, `image4`, `available`, `aamas_status`, `category_id`, `vendor_id`, `created_at`, `updated_at`) VALUES
-(1, 'iPhone X', 'Apple iPhone X smartphone was launched in September 2017. The phone comes with a 5.80-inch touchscreen display with a resolution of 1125 pixels by 2436 pixels. Apple iPhone X price in India starts from Rs. 77,989*.\r\n\r\nThe Apple iPhone X is powered by hexa-core processor and it comes with 3GB of RAM. The phone packs 64GB of internal storage that cannot be expanded. As far as the cameras are concerned, the Apple iPhone X packs a 12-megapixel primary camera on the rear and a 7-megapixel front shooter for selfies.', 80000, 100000, 5, 'Apple', 'uploads/vendor/product/QiMvJNU0xmpLjM9WnRf2XU7paQMHQN.jpg', 'uploads/vendor/product/lPfilhiDRh0kUX656tgSTyjat740P9.jpg', 'uploads/vendor/product/FlP89Guw9IPe043DLX71nCbOJHKWay.jpg', 'uploads/vendor/product/huGUn6jjGcMMe4tnnGk7XJfw3ZIcI7.jpg', 1, 1, 1, 1, '2018-06-03 01:26:51', '2018-06-03 01:26:51'),
-(2, 'Shirt', 'Two before narrow not relied how except moment myself. Dejection assurance mrs led certainly. So gate at no only none open. Betrayed at properly it of graceful on. Dinner abroad am depart ye turned hearts as me wished. Therefore allowance too perfectly gentleman supposing man his now. Families goodness all eat out bed steepest servants. Explained the incommode sir improving northward immediate eat. Man denoting received you sex possible you. Shew park own loud son door less yet.', 800, 1500, 10, 'Shirt House', 'uploads/vendor/product/qcXdwaG5seGOBKK4OHWp8ExIwKB6kF.jpg', 'uploads/vendor/product/dgX0OR6l49jzwHEDLd3W2fx3lA8tzb.jpeg', 'uploads/vendor/product/pZlHzGOygq7K9MbSHwWuUln7N7CGfj.jpg', NULL, 1, 1, 2, 1, '2018-06-03 01:29:16', '2018-06-03 01:29:16'),
-(3, 'One Plus 6', 'Woody equal ask saw sir weeks aware decay. Entrance prospect removing we packages strictly is no smallest he. For hopes may chief get hours day rooms. Oh no turned behind polite piqued enough at. Forbade few through inquiry blushes you. Cousin no itself eldest it in dinner latter missed no. Boisterous estimating interested collecting get conviction friendship say boy. Him mrs shy article smiling respect opinion excited. Welcomed humoured rejoiced peculiar to in an.', 35000, 50000, 4, 'One Plus', 'uploads/vendor/product/zxonGUvCkX1WrJ4Mrw5vu8Ts9JDMjc9d248f95c725605887d5284a6529221e63927fdc.jpg', 'uploads/vendor/product/gQRibWd11vdyGQKwwAEhYu4EdWKkHH9d248f95c725605887d5284a6529221e63927fdc.jpg', 'uploads/vendor/product/HJfpsOIN92Nc2xgpmlNlZQAiIfYUWu9d248f95c725605887d5284a6529221e63927fdc.jpg', 'uploads/vendor/product/1FHy9l6V1dReUgfdQB1s4JQMvTiMYP9d248f95c725605887d5284a6529221e63927fdc.jpg', 1, 1, 1, 1, '2018-06-03 01:34:53', '2018-06-03 01:34:53'),
-(4, 'hp', 'its a good product', 40000, 50000, 2, 'hp', 'uploads/vendor/product/tI1K7cs6CX0KPmEyJIE8i3pVg74dfI292396b5a5cddf2b61fd979adc6aa19523db599f.jpg', 'uploads/vendor/product/lu8gvGtgl1BjpNasGj6FMaKedTgQjg292396b5a5cddf2b61fd979adc6aa19523db599f.jpg', 'uploads/vendor/product/8G5Vyv7qBfA5sHVoYsp0bcDGa7RXNR292396b5a5cddf2b61fd979adc6aa19523db599f.jpg', 'uploads/vendor/product/WuknhMCwnGY6jjZORNvhTC9jXSLejn292396b5a5cddf2b61fd979adc6aa19523db599f.gif', 1, 1, 1, 1, '2018-06-06 06:02:55', '2018-06-06 06:02:55'),
-(5, 'samsung', 'good', 10000, 12000, 5, 'samsung', 'uploads/vendor/product/E3W0WMTLtlJSykcbDk7vaqyYi7wjqGc924c1a277369a760ac4d57fc217f725eafb1dfe.jpg', 'uploads/vendor/product/utuQ3WeA1ftKTrX8GGJrF9jAluUpw2c924c1a277369a760ac4d57fc217f725eafb1dfe.jpg', 'uploads/vendor/product/ZZmpBBNkdZE9ybFq6YXtoDMB2CP6hYc924c1a277369a760ac4d57fc217f725eafb1dfe.jpg', 'uploads/vendor/product/AqhszdifrJdKdaYcEsRoY959Ec7rqwc924c1a277369a760ac4d57fc217f725eafb1dfe.jpg', 1, 1, 1, 1, '2018-06-06 06:52:09', '2018-06-06 06:52:09'),
-(6, 'Glass', 'fdsfsdfsd', 500, 800, 4, 'Reabon', 'uploads/vendor/product/y6kSoxjaYjDmvwuEL3Tla8i95DREInbd204cbbb0ce116a85f983c07a76337005a888bb.png', NULL, NULL, NULL, 1, 1, 2, 1, '2018-07-03 07:25:08', '2018-07-03 07:25:08');
+(1, 'iPhone X', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 80000, 100000, 5, 'Apple', 'uploads/vendor/product/nFFMUYllegJZ6BMghD8Zp58zPcFJOSb6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 'uploads/vendor/product/sMrjywHTOhjqBFERCN31NbdMI28sVcb6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 'uploads/vendor/product/Fj79PlEpKD5A7Twv1WM7GmemHNgjSob6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 'uploads/vendor/product/bmzKvvzGjWcq2KOpF8l3SryqdyWwDnb6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 1, 1, 1, 1, '2018-07-19 01:19:37', '2018-07-19 01:19:37'),
+(2, 'One Plus 6', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 40000, 50000, 4, 'One Plus', 'uploads/vendor/product/trFch0Z0sfaca3lXIeFyOIC7fNIToV829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 'uploads/vendor/product/nf8HyFhTHie5mNgTgmnTtPFOdnBo14829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 'uploads/vendor/product/jVJinLsq5PXQG6TPp6xAN7N7gBiuLe829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 'uploads/vendor/product/pcYEr9dhzr22S9iDG87C0TlVSNnmNs829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 1, 1, 1, 1, '2018-07-19 01:20:39', '2018-07-19 01:20:39'),
+(3, 'Galaxy Note 8', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 80000, 100009, 3, 'Samsung', 'uploads/vendor/product/eMF8nD2x95isFtW3FETiuay2Ry5EyW29f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 'uploads/vendor/product/wFEkmHH9Gj4Dry2OMoIUF3fOCei00V29f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 'uploads/vendor/product/LFpibC9hSuHHUBeCPVmahWlUYCCNYO29f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 'uploads/vendor/product/R9nGGHglZODkVVdazPna7AG9Oca4m529f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 1, 1, 1, 1, '2018-07-19 01:21:53', '2018-07-19 01:21:53'),
+(4, 'Tops', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 1000, 2000, 3, 'Non-Brand', 'uploads/vendor/product/b4niEOk4oI2ROac0l3TUx2pQuqH3i983293938e889854bef14eefcc851986267eefc8a.jpg', 'uploads/vendor/product/RiYItClRWXcEywbWY7c2tJS7hrH7qE83293938e889854bef14eefcc851986267eefc8a.jpg', 'uploads/vendor/product/uUq5kgQA3e7QtrovmYoxwTtxothH8R83293938e889854bef14eefcc851986267eefc8a.jpg', 'uploads/vendor/product/UFTTxhTOD8EGE3U3pWHKHgwtrOyBQ483293938e889854bef14eefcc851986267eefc8a.jpg', 1, 1, 1, 1, '2018-07-19 01:23:30', '2018-07-19 01:31:45'),
+(5, 'ROG Strix GeForce® GTX 1080 Ti OC edition', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 60000, 80000, 2, 'Asus', 'uploads/vendor/product/0IQX8FmJuDFfI40muQyJOFbhsSxYBr50ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 'uploads/vendor/product/ueE4pDs0cBJPT2XzmL6VAQQWMgd96550ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 'uploads/vendor/product/owKBdZgeuzpyh4LaM3yHOQ75IrciZl50ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 'uploads/vendor/product/stQNY9fKbSZVDipPcajKuljjDPuQwr50ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 1, 1, 1, 1, '2018-07-19 01:24:53', '2018-07-19 01:24:53');
 
 -- --------------------------------------------------------
 
@@ -436,7 +438,7 @@ ALTER TABLE `deliveries`
 --
 ALTER TABLE `details`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `details_ibfk_1` (`product_id`);
 
 --
 -- Indexes for table `employees`
@@ -450,7 +452,7 @@ ALTER TABLE `employees`
 --
 ALTER TABLE `feature_products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `feature_products_ibfk_1` (`product_id`);
 
 --
 -- Indexes for table `migrations`
@@ -477,8 +479,8 @@ ALTER TABLE `password_resets`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `products_category_id_foreign` (`category_id`),
-  ADD KEY `products_vendor_id_foreign` (`vendor_id`);
+  ADD KEY `products_vendor_id_foreign` (`vendor_id`),
+  ADD KEY `products_category_id_foreign` (`category_id`);
 
 --
 -- Indexes for table `users`
@@ -533,7 +535,7 @@ ALTER TABLE `deliveries`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -545,7 +547,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `feature_products`
 --
 ALTER TABLE `feature_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -563,7 +565,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -605,7 +607,7 @@ ALTER TABLE `deliveries`
 -- Constraints for table `details`
 --
 ALTER TABLE `details`
-  ADD CONSTRAINT `details_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `details_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `employees`
@@ -617,7 +619,7 @@ ALTER TABLE `employees`
 -- Constraints for table `feature_products`
 --
 ALTER TABLE `feature_products`
-  ADD CONSTRAINT `feature_products_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `feature_products_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `orders`
@@ -630,7 +632,7 @@ ALTER TABLE `orders`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `products_vendor_id_foreign` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`);
 
 --
