@@ -72,7 +72,7 @@
                                                 <tbody>
 
                                                 @foreach($products as $product)
-                                                    <tr role="row" class="odd" id="product">
+                                                    <tr role="row" class="odd product_row_{{$product->id}}" id="product">
                                                         <td class="txt-dark sorting_1">{{$product->product_name}}</td>
                                                         <td class="txt-dark">{{$product->id}}</td>
                                                         <td>
@@ -104,10 +104,19 @@
                                                             <a href="{{route('vendor.product.edit',['id'=>$product->id])}}" class="text-inverse pr-10" title="" data-toggle="tooltip" data-original-title="Edit">
                                                                 <i class="zmdi zmdi-edit txt-warning"></i>
                                                             </a>
-                                                            <a href="#myModal" class="trigger-btn" data-toggle="modal" class="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete">
+
+
+
+
+                                                            <a href="#myModal" class="trigger-btn" onclick="deleteProduct({{$product->id}})" class="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete">
                                                                 <i class="zmdi zmdi-delete txt-danger"></i>
                                                             </a>
+
+
+
+
                                                         </td>
+                                                    </tr>
                                                         @endforeach
 
 
@@ -131,6 +140,35 @@
                                                         </div>
 
                                                         <script>
+
+                                                            var product_id=null;
+
+                                                            function deleteProduct(pid) {
+                                                                $('#myModal').modal('show');
+                                                                product_id=pid
+                                                            }
+
+                                                            function confirmDelete() {
+
+                                                                $.ajax({
+                                                                    type: 'POST',
+                                                                    url: "http://127.0.0.1:8000/product/delete",
+                                                                    headers: {
+                                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                                    },
+                                                                    data : {
+                                                                        pid : product_id
+                                                                    },
+                                                                    success: function(result){
+                                                                        console.log(result);
+                                                                        $('#myModal').modal('hide');
+                                                                        $('.product_row_'+product_id).remove();
+                                                                        product_id=null;
+
+                                                                    }
+                                                                });
+
+                                                            }
 
                                                             function changeProductAvability(pid) {
 

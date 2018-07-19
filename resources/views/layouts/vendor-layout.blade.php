@@ -443,7 +443,7 @@
 
                     @foreach($categories as $category)
                         <li>
-                            <a href="{{route('vendor.addProduct')}}">{{$category->category_name}}</a>
+                            <a href="{{route('vendor.product.category',['id'=>$category->id])}}">{{$category->category_name}}</a>
                         </li>
                         @endforeach
 
