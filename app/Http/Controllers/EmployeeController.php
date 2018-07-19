@@ -134,28 +134,38 @@ class EmployeeController extends Controller
         if($employeeType=="HR"){
 
              $this->validate($request,[
+                 'emp_name' =>'required',
+                 'emp_type'=>'required',
                  'emp_email'=>'required|email|unique:employees,email',
-                 'emp_ident'=>'required|unique:employees,Identity_number',
                  'emp_pass' =>'required',
                  'cnpassword'=>'required|same:emp_pass'
             
-            ]);
+            ],
+            [
+            'emp_name.required'     => 'Please provide your name',
+            'emp_type.required'     => 'Provide employee type',
+            'emp_email.required'    => 'You must Provide an email address',
+            'emp_email.email'       => 'You must Provide an email address',
+            'emp_email.unique'      => 'This email already exist ',
+            'emp_pass.required'     => 'Please provide your Password',
+            'cnpassword.required'   => 'Please provide your Password again',
+            'cnpassword.same'       => 'Password and confirm password does not match',
+
+            ]
+             );
             
             $employee = new Employee();
 
                 $employee->name=$request->input('emp_name');
                 $employee->email=$request->input('emp_email');
                 $employee->password=Hash::make($request->input('emp_pass'));
-    //            $employee->current_address=$request->input('emp_address');
-    //            $employee->parmanent_address=$request->input('emp_par_address');
-    //            $employee->contact_number=$request->input('emp_contact');
+
                 $employee->type=$request->input('emp_type');
-                $employee->Identity_number= $request->session()->get('employee.id') .'-'. date("H-i-s").'-'. str_random(2);
+                $employee->Identity_number= $request->session()-> date("H-i-s").'-'. str_random(2);
 
                 $employee->vendor_id=session()->get('employee.vendor_id');
                 $employee->referenced_by=session()->get('employee.id');
 
-                //emp_ident
                 $employee->save();
                 return redirect()->route('hr.index');
 
