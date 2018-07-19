@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Feature_product;
 use App\ViewProductWithDetails;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -453,6 +454,41 @@ class ProductController extends Controller
         Cart::remove($id);
 
         return redirect()->back();
+    }
+
+
+    public function delete(Request $request){
+
+
+//        $details = Detail::where('product_id', '=', $request->pid)->get();
+//
+//        foreach ($details as $detail) {
+//            $detail->delete();
+//        }
+
+//        Feature_product::where('product_id', '=', $request->pid)->delete();
+
+
+        $product=Product::find($request->pid);
+
+
+        if(File::exists($product->image1)) {
+            File::delete($product->image1);
+        }
+        if(File::exists($product->image2)) {
+            File::delete($product->image2);
+        }
+        if(File::exists($product->image3)) {
+            File::delete($product->image3);
+        }
+        if(File::exists($product->image4)) {
+            File::delete($product->image4);
+        }
+
+        $product->delete();
+
+
+        return "Deleted";
     }
 
 }

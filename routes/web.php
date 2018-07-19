@@ -106,6 +106,10 @@ Route::post('/vendor/login', 'VendorController@login')->name('vendor.login');
 
 
 
+Route::post('/product/delete', 'ProductController@delete');
+
+
+
 
 
 
@@ -198,7 +202,8 @@ Route::post('/addeEmployee', 'EmployeeController@createEmployeeByVendor');
 Route::post('/product/changeProductAvability', 'ProductController@changeProductAvability');
 
 Route::get('vendor/product/edit/{id}','ProductController@editProductByVendor')->name('vendor.product.edit');
-Route::post('vendor/product/edit','ProductController@updateProductByVendor');
+
+Route::post('vendor/product/edit/{id}','ProductController@updateProductByVendor');
 
 Route::get('/cart','CartController@cart')->name('cart');
 Route::get('/confirmcheckout','CheckoutController@confirmCheckout')->name('confirmCheckout');
