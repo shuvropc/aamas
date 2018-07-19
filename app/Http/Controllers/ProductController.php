@@ -491,4 +491,14 @@ class ProductController extends Controller
         return "Deleted";
     }
 
+    public function showProductByCategoryId($id){
+
+        $products= Product::where('category_id','=',$id)->paginate(8);
+        $category=Category::find($id);
+
+        return view('vendor.showProductByCategory')
+            ->with('products',$products)
+            ->with('cat_name',$category->category_name);
+    }
+
 }

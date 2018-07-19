@@ -199,6 +199,12 @@ Route::post('/addeEmployee', 'EmployeeController@createEmployeeByVendor');
 
 
 
+    Route::get('/product/showProductByCategoryId/{id}', 'ProductController@showProductByCategoryId')->name('vendor.product.category');
+
+
+
+
+
 Route::post('/product/changeProductAvability', 'ProductController@changeProductAvability');
 
 Route::get('vendor/product/edit/{id}','ProductController@editProductByVendor')->name('vendor.product.edit');
