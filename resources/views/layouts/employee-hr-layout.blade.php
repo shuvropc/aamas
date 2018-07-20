@@ -372,11 +372,9 @@
 
 
             <li>
-<<<<<<< HEAD
-                <a href="javascript:void(0)" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Employee List</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div>
-=======
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Employee List</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
->>>>>>> 9fffce1d939b957b5e22e69ca69186dc4102893e
+
+                <a href="javascript:void(0)" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">Employee List</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+
                 <ul id="maps_dr" class="collapse collapse-level-1">
                     <li>
                         <a href="{{route('hr.emp-list', ['type' => 'HR'])}}">HR</a>
@@ -385,7 +383,7 @@
                         <a href="{{route('hr.emp-list', ['type' => 'Sales'])}}">Sales</a>
                     </li>
                 </ul>
-                </a>
+              
             </li>
 
 
