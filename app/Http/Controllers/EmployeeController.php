@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Detail;
+use App\Product;
 use File;
 use App\Vendor;
 use App\Employee;
@@ -232,7 +234,7 @@ class EmployeeController extends Controller
     }
 
    
-public function changePassword(){
+    public function changePassword(){
         return view('employee.passwordChange');
     }
     public function updatePassword(Request $request){
@@ -261,7 +263,7 @@ public function changePassword(){
 
     }
 
- public function imagechange(Request $request)
+    public function imagechange(Request $request)
     {
         $employee=Employee::find($request->session()->get('employee.id'));
         $file=$request->file('image');
@@ -340,5 +342,12 @@ public function changePassword(){
 
         return view('vendor.employee.hr.employeeList')->with('employees',$employees)->with('type', $type);
     }
+
+    public function productDetails(Request $request){
+        $product= Product::find(1);
+        $details=Detail::where('product_id', '=', '1')->get();
+        return view('vendor.employee.sales.productDetails',['product'=>$product] )->with('details', $details);
+    }
+
 
 }

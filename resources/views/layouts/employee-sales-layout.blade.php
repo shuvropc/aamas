@@ -8,8 +8,11 @@
 
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}">
+    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{{asset('vendors/bower_components/jquery.steps/demo/css/jquery.steps.css')}}">
+    <link href="{{asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" type="text/css"/>
 
     <!-- Morris Charts CSS -->
 
@@ -950,6 +953,7 @@
     
 
 </div>
+</div>
 <!-- /#wrapper -->
 
 <!-- JavaScript -->
@@ -1023,6 +1027,11 @@
 
 <script src="{{asset('dist/js/ecommerce-data.js')}}"></script>
 <script type="text/javascript" src="{{ URL::asset('dist/js/hr.js') }}"></script>
+<script src="{{asset('dist/js/product-detail-data.js')}}"></script>
+<script src="{{asset('dist/js/starrr.js')}}"></script>
+<script src="{{asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js')}}"></script>
+<script src="{{asset('vendors/bower_components/jquery.steps/build/jquery.steps.min.js')}}"></script>
+
 
 @yield('scripts')
 

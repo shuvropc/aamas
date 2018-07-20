@@ -219,7 +219,7 @@ Route::get('/showcart',function (\Illuminate\Http\Request $request){
 
 
 
-
+Route::get('sales/product/details','EmployeeController@productDetails')->name('sales.product.details');
 
 
 
