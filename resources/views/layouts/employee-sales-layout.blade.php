@@ -6,6 +6,8 @@
     <title>Aamas Sales Dashboard</title>
     <meta name="description" content="Admin Dashboard" />
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}">
@@ -411,14 +413,43 @@
             </li>
 
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+                <a href="{{route('employee.all.product')}}" ><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+
+            </li>
+
+
+
+            <li class="navigation-header">
+                <span>Order</span>
+                <i class="zmdi zmdi-more"></i>
+            </li>
+            {{--<li>--}}
+                {{--<a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Product</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>--}}
+                {{--<ul id="dashboard_dr" class="collapse collapse-level-1">--}}
+                    {{--<li>--}}
+                        {{--<a href="{{route('sales.addproduct')}}">Add</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">Edit</a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#">Delete</a>--}}
+                    {{--</li>--}}
+
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
+
+            <li>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Delivered Product</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 
             </li>
 
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target=""><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">All Products</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+                <a href="#" ><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Pending Order</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 
             </li>
+
 
 
 

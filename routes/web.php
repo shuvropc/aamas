@@ -217,9 +217,12 @@ Route::get('/showcart',function (\Illuminate\Http\Request $request){
 
 });
 
+Route::get('employee/product', 'EmployeeController@allProduct')->name('employee.all.product');
 
-
-Route::get('sales/product/details','EmployeeController@productDetails')->name('sales.product.details');
+Route::get('sales/product/details/{id}','EmployeeController@productDetails')->name('sales.product.details');
+Route::get('sales/product/edit/{id}','EmployeeController@editProduct')->name('sales.product.edit');
+Route::post('sales/product/edit/{id}','EmployeeController@updateProduct');
+Route::post('sales/product/delete','EmployeeController@deleteProduct');
 
 
 
