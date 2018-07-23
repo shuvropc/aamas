@@ -212,8 +212,8 @@ Route::get('/confirmcheckout','CheckoutController@confirmCheckout')->name('confi
 
 Route::get('/showcart',function (\Illuminate\Http\Request $request){
 
-    return Cart::destroy();
-//    return Cart::content();
+//    return Cart::destroy();
+    return Cart::content();
 
 });
 
