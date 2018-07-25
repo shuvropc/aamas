@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use File;
 use App\Vendor;
+use App\ViewProductWithDetails;
 use App\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -522,5 +523,14 @@ class EmployeeController extends Controller
         $product->delete();
 
 
+    }
+
+    public function productStatus(Request $request){
+        $products = ViewProductWithDetails::where('vendor_id','=',$request->session()
+            ->get('employee.vendor_id'))
+            ->orderBy('available_quantity', 'ASC')
+            ->get();
+
+        return view('vendor.employee.sales.productStatus')->with('products', $products);
     }
 }

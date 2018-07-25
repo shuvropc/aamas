@@ -177,6 +177,7 @@ Route::post('/vendor/changeEmployeeStatus', 'VendorController@changeEmployeeStat
 
 
 Route::get('/vendor/productStatus', 'VendorController@productStatus')->name('product.status');
+Route::get('/sales/productStatus', 'EmployeeController@productStatus')->name('sales.product.status');
 
 
 Route::get('/details/deleteDetailsByDetailsId', 'ProductController@deleteDetailsByDetailsId');
