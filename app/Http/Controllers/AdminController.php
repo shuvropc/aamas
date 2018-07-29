@@ -36,7 +36,7 @@ class AdminController extends Controller
 
         }else if($request->isMethod('get')){
 
-            $products = $users = DB::table('products')
+            $products = DB::table('products')
                 ->leftJoin('feature_products', 'products.id', '=', 'feature_products.product_id')
                 ->join('vendors', 'vendors.id', '=', 'products.vendor_id')
                 ->select('products.*', 'feature_products.product_id', 'vendors.vendor_name', 'vendors.id as vendorId')

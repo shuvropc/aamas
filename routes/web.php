@@ -224,6 +224,7 @@ Route::get('sales/product/details/{id}','EmployeeController@productDetails')->na
 Route::get('sales/product/edit/{id}','EmployeeController@editProduct')->name('sales.product.edit');
 Route::post('sales/product/edit/{id}','EmployeeController@updateProduct');
 Route::post('sales/product/delete','EmployeeController@deleteProduct');
+Route::get('/category/search/{type}','ProductController@searchByCategory')->name('search.category');
 
 
 

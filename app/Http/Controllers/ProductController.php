@@ -11,6 +11,7 @@ use App\Product;
 use App\Category;
 use App\Detail;
 use App\Employee;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
@@ -499,6 +500,21 @@ class ProductController extends Controller
         return view('vendor.showProductByCategory')
             ->with('products',$products)
             ->with('cat_name',$category->category_name);
+    }
+
+    public function searchByCategory($type){
+        //return $type;
+
+        $products= DB::select("
+                               SELECT products.*, categories.category_name
+                                FROM   `products`
+                                INNER JOIN `categories`
+                                ON products.category_id = categories.id
+                                WHERE  categories.category_name = '$type' 
+                            ");
+
+        //return $products;
+       return view('searchByCategory')->with('products',$products);
     }
 
 }
