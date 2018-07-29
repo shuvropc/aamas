@@ -455,7 +455,7 @@
 
 
             <li>
-                <a href="{{route('product.status')}}" data-toggle="collapse" data-target="">
+                <a href="{{route('product.status')}}"  data-target="">
                     <div class="pull-left">
                         <i class="zmdi zmdi-landscape mr-20"></i>
                         <span class="right-nav-text">Product Status</span>

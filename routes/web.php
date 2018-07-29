@@ -177,6 +177,7 @@ Route::post('/vendor/changeEmployeeStatus', 'VendorController@changeEmployeeStat
 
 
 Route::get('/vendor/productStatus', 'VendorController@productStatus')->name('product.status');
+Route::get('/sales/productStatus', 'EmployeeController@productStatus')->name('sales.product.status');
 
 
 Route::get('/details/deleteDetailsByDetailsId', 'ProductController@deleteDetailsByDetailsId');
@@ -212,14 +213,17 @@ Route::get('/confirmcheckout','CheckoutController@confirmCheckout')->name('confi
 
 Route::get('/showcart',function (\Illuminate\Http\Request $request){
 
-    return Cart::destroy();
-//    return Cart::content();
+//    return Cart::destroy();
+    return Cart::content();
 
 });
 
+Route::get('employee/product', 'EmployeeController@allProduct')->name('employee.all.product');
 
-
-
+Route::get('sales/product/details/{id}','EmployeeController@productDetails')->name('sales.product.details');
+Route::get('sales/product/edit/{id}','EmployeeController@editProduct')->name('sales.product.edit');
+Route::post('sales/product/edit/{id}','EmployeeController@updateProduct');
+Route::post('sales/product/delete','EmployeeController@deleteProduct');
 
 
 

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Detail;
+use App\Product;
+use App\Category;
 use File;
 use App\Vendor;
+use App\ViewProductWithDetails;
 use App\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -232,7 +236,7 @@ class EmployeeController extends Controller
     }
 
    
-public function changePassword(){
+    public function changePassword(){
         return view('employee.passwordChange');
     }
     public function updatePassword(Request $request){
@@ -261,7 +265,7 @@ public function changePassword(){
 
     }
 
- public function imagechange(Request $request)
+    public function imagechange(Request $request)
     {
         $employee=Employee::find($request->session()->get('employee.id'));
         $file=$request->file('image');
@@ -341,4 +345,192 @@ public function changePassword(){
         return view('vendor.employee.hr.employeeList')->with('employees',$employees)->with('type', $type);
     }
 
+    public function productDetails(Request $request, $id){
+        $product= Product::find($id);
+        $details=Detail::where('product_id', '=', $id)->get();
+        return view('vendor.employee.sales.productDetails',['product'=>$product] )->with('details', $details);
+    }
+
+    public function allProduct(Request $request){
+        $products=Product::where('vendor_id', '=' , $request->session()->get('employee.vendor_id') )->paginate(5);
+        return view('vendor.employee.sales.AllProducts', ['products'=>$products ]);
+    }
+
+    public function editProduct(Request $request, $id){
+        $categories = new Category();
+        $product= Product::find($id);
+        $details=Detail::where('product_id', '=', $id )->get();
+
+        //return $details;
+
+        return view('vendor.employee.sales.EditProduct',['categories'=>$categories->get()],['product'=>$product])->with('details', $details);
+
+    }
+
+    public function updateProduct(Request $request){
+        $product = Product::find($request->input('product_id'));
+
+        $category = new Category();
+
+        $cat = Category::where('category_name', $request->input("category"))->first();
+
+        if ($cat === null) {
+            // user doesn't exist
+            //add Category
+            $category->category_name = $request->input("category");
+            $category->sub_category = "";
+            $category->save();
+
+            $product->category_id = $category->id;
+
+        } else {
+            $product->category_id = $cat->id;
+        }
+
+
+        $product->product_name = $request->input("product_name");
+        $product->product_description = $request->input("product_description");
+        $product->buying_price = $request->input("buying_price");
+        $product->selling_price = $request->input("selling_price");
+        $product->discount = $request->input("discount");
+        $product->brand = $request->input("brand");
+        $product->available = $request->input("radio");
+        $product->vendor_id = $request->session()->get('employee.vendor_id');
+
+//        return $request->file('productImage') ;
+        $productImage1=$product->image1;
+        $productImage2=$product->image2;
+        $productImage3=$product->image3;
+        $productImage4=$product->image4;
+
+
+        $file1=$request->file('productImage1');
+        $file2=$request->file('productImage2');
+        $file3=$request->file('productImage3');
+        $file4=$request->file('productImage4');
+
+        if($request->file('productImage1')==null){
+            $product->image1 = $productImage1;
+        }else{
+            if(File::exists($productImage1)) {
+                File::delete($productImage1);
+                $file_name = str_random(30) . sha1(time()) . '.' . $file1->getClientOriginalExtension();
+                $file1->move(public_path('/uploads/vendor/product'), $file_name);
+                $product->image1 = 'uploads/vendor/product/' . $file_name;
+            }
+        }
+        if($request->file('productImage2')==null){
+            $product->image2 = $productImage2;
+        } else{
+            if(File::exists($productImage2)) {
+                File::delete($productImage2);
+                $file_name = str_random(30) . sha1(time()) . '.' . $file2->getClientOriginalExtension();
+                $file2->move(public_path('/uploads/vendor/product'), $file_name);
+                $product->image2 = 'uploads/vendor/product/' . $file_name;
+            }
+        }
+        if($request->file('productImage3')==null){
+            $product->image3 = $productImage3;
+        } else{
+            if(File::exists($productImage3)) {
+                File::delete($productImage3);
+                $file_name = str_random(30) . sha1(time()) . '.' . $file3->getClientOriginalExtension();
+                $file3->move(public_path('/uploads/vendor/product'), $file_name);
+                $product->image3 = 'uploads/vendor/product/' . $file_name;
+            }
+        }
+        if($request->file('productImage4')==null){
+            $product->image4 = $productImage4;
+        }else{
+            if(File::exists($productImage4))
+            {
+                File::delete($productImage4);
+                //unlink($image_path);
+                $file_name = str_random(30) . sha1(time()) . '.' . $file4->getClientOriginalExtension();
+                $file4->move(public_path('/uploads/vendor/product'), $file_name);
+                $product->image4 = 'uploads/vendor/product/' . $file_name;
+            }
+        }
+
+        $product->save();
+
+
+//Details Update start
+
+        $color = $request->input('color');
+        $size = $request->input('size');
+        $total_quantity = $request->input('total_quantity');
+        $detail_id= $request->input('detail_id');
+
+        for ($i = 0; $i < count($color); $i++) {
+
+            $detail = Detail::find($detail_id[$i]);
+            $detail->size = $size[$i];
+            $detail->color = $color[$i];
+            $detail->total_quantity = $total_quantity[$i];
+            $detail->available_quantity = $total_quantity[$i];
+            $detail->save();
+        }
+
+
+
+        $color = $request->input('newcolor');
+        $size = $request->input('newsize');
+        $total_quantity = $request->input('newtotal_quantity');
+
+
+
+
+
+
+        if(is_array ($color)){
+
+
+
+            for ($i = 0; $i < count($color); $i++) {
+                $detail = new Detail();
+                $detail->product_id = $request->input('product_id');
+                $detail->size = $size[$i];
+                $detail->color = $color[$i];
+                $detail->total_quantity = $total_quantity[$i];
+                $detail->available_quantity = $total_quantity[$i];
+                $detail->save();
+            }
+
+        }
+
+        return redirect()->route('employee.all.product');
+
+    }
+
+    public function deleteProduct(Request $request){
+        $product=Product::find($request->pid);
+
+
+        if(File::exists($product->image1)) {
+            File::delete($product->image1);
+        }
+        if(File::exists($product->image2)) {
+            File::delete($product->image2);
+        }
+        if(File::exists($product->image3)) {
+            File::delete($product->image3);
+        }
+        if(File::exists($product->image4)) {
+            File::delete($product->image4);
+        }
+
+        $product->delete();
+
+
+    }
+
+    public function productStatus(Request $request){
+        $products = ViewProductWithDetails::where('vendor_id','=',$request->session()
+            ->get('employee.vendor_id'))
+            ->orderBy('available_quantity', 'ASC')
+            ->get();
+
+        return view('vendor.employee.sales.productStatus')->with('products', $products);
+    }
 }
