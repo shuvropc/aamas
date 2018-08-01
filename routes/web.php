@@ -76,7 +76,7 @@ Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
 
 
 
-Route::get('/admin','AdminController@index')->name('admin');
+Route::get('/admin','AdminController@index')->name('admin.index');
 Route::get('/admin/featureproduct','AdminController@featured')->name('admin.featured');
 
 Route::get('/','HomeController@index')->name('homepage');
@@ -151,7 +151,8 @@ Route::get('/admin/product', 'AdminController@product')->name('admin.product');
 Route::post('/admin/product', 'AdminController@product');
 Route::get('/admin/login', 'AdminController@getLogin')->name('admin.login');
 Route::post('/admin/login', 'AdminController@postLogin');
-Route::get('/admin/Registration', 'AdminController@getRegistration')->name('admin.registration');
+Route::get('/admin/registration', 'AdminController@getRegistration')->name('admin.registration');
+Route::post('/admin/registration', 'AdminController@postRegistration');
 
 
 
