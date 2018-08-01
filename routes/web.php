@@ -149,6 +149,9 @@ Route::get('/admin/product', 'AdminController@product')->name('admin.product');
 
 
 Route::post('/admin/product', 'AdminController@product');
+Route::get('/admin/login', 'AdminController@getLogin')->name('admin.login');
+Route::post('/admin/login', 'AdminController@postLogin');
+Route::get('/admin/Registration', 'AdminController@getRegistration')->name('admin.registration');
 
 
 

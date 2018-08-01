@@ -90,10 +90,13 @@ class UserController extends Controller
         $userAccount->contact_number = $request->input('userPhone');
         $userAccount->shipping_address = $request->input('userShippingAddress');
 
-        $userAccount->save();
+        if($userAccount->save()){
+            return redirect()->route('admin');
+        }else{
+            return 'There is a problem to save this data';
+        }
 
 
-        return redirect()->route('admin');
     }
 
     public function edit(Request $request){

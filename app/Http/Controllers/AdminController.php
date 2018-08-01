@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Admin;
 use App\Product;
 use App\Feature_product;
 use Illuminate\Http\Request;
@@ -8,9 +9,56 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    //
+    function getRegistration(){
+        return view('admin.addAdmin');
+    }
+
+    function postRegistration(Request $request){
+        $name=$request->input('name');
+        $email=$request->input('email');
+        $password=$request->input('password');
+        $conPass=$request->input('cnpassword');
+
+        $this
+            ->validate($request,[
+                'name' =>'required'
+            ]);
+
+        $admin=Admin();
+    }
+
+    function getLogin(){
+        return view('admin.login');
+    }
+    function postLogin(Request $request){
+
+
+        $this->validate($request,[
+            'email'=>'required|email|',
+            'password'=>'required|min:5|max:15'
+        ]);
+
+        $email=$request->input('email');
+        $password=$request->input('password');
+
+        $admin=Admin::where('email', $email)
+            ->where('password', $password)
+            ->first();
+
+        if($admin){
+            if($admin->password==$password){
+                session(['admin'=>$admin]);
+                return view('admin.index');
+            }else{
+                return 'Email or Password is wrong';
+            }
+        }else{
+            return 'Email or Password is wrong';
+        }
+
+    }
     function index(){
-        return view('admin/admin');
+        return view('admin.index');
     }
 
     function product(Request $request){
