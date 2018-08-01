@@ -231,6 +231,21 @@ Route::get('/category/search/{type}','ProductController@searchByCategory')->name
 
 
 
+
+Route::get('/admin/sliders','AdminController@sliders')->name('admin.sliders');
+
+Route::get('/admin/addSlider','AdminController@getAddSlider')->name('admin.addSlider');
+
+Route::post('/admin/addSlider','AdminController@postAddSlider');
+
+
+Route::get('/admin/deleteSlider/{id}','AdminController@deleteSlider')->name('admin.deleteSlider');
+
+
+
+
+
+
 Route::get('/show',function (\Illuminate\Http\Request $request){
 
     return $request->session()->get('employee.vendor_id');

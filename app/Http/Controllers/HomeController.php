@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Feature_product;
 use App\Product;
+use App\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,9 +23,10 @@ class HomeController extends Controller
             )
             ->limit(4)
             ->get();
-       // return $featureProduct;
+
         return view('index', ['newProducts' => $newProducts])
-            ->with('feature_products',$featureProduct);
+            ->with('feature_products',$featureProduct)
+            ->with('sliders',Slider::all());
     }
 
     function searchProduct(Request $request){
