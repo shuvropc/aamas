@@ -16,6 +16,8 @@ Route::group([ 'middleware' => 'UserLoginCheck'], function() {
     Route::post('/user/information', 'UserController@setInformation');
 
     Route::get('/user/profile', 'UserController@profile')->name('user.profile');
+    Route::get('/user/orders', 'UserController@orders')->name('user.orders');
+    Route::get('/user/deliveries', 'UserController@deliveries')->name('user.deliveries');
 
     Route::get('/logout','UserController@logOut')->name('vendor.logout');
 
