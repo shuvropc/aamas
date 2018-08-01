@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Delivery;
+use App\Detail;
+use App\Order;
 use App\User;
 
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -49,6 +53,7 @@ class UserController extends Controller
         $message="";
         return view('user.login',['message'=>$message]);
     }
+
     public function login(Request $request){
 
         $email= $request->input('email');
@@ -123,6 +128,7 @@ class UserController extends Controller
     public function changePassword(){
         return view('user.passwordChange');
     }
+
     public function updatePassword(Request $request){
 
         $this->validate($request,[
@@ -154,6 +160,18 @@ class UserController extends Controller
         }else{
             return "can not found";
         }
+    }
+
+    function orders(Request $request){
+        $orders = Order::where('user_id', '=', $request->session()->get('user.id'))->where('delivery', '=', '0')->get();
+
+        return View('user.order', ['orders' => $orders]);
+    }
+
+    function deliveries(Request $request){
+        $deliveries = Order::where('user_id', '=', $request->session()->get('user.id'))->where('delivery', '=', '1')->get();
+
+        return View('user.delivery', ['deliveries' => $deliveries]);
     }
 
     public function logOut(){
