@@ -7,6 +7,7 @@ use App\Feature_product;
 use App\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use File;
 
 class AdminController extends Controller
 {
@@ -144,11 +145,12 @@ class AdminController extends Controller
 
         $slider->title=$request->input('title');
         $slider->description=$request->input('description');
+        $slider->link=$request->input('link');
 
 
         //File Upload Code Start
         $file = $request->file('image');
-        $file_name = str_random(30).$request->input('title'). '.' . $file->getClientOriginalExtension();
+        $file_name = str_random(30). '.' . $file->getClientOriginalExtension();
         $file->move(public_path('/uploads/aamas/slider'), $file_name);
         //File Upload Code End
 
@@ -163,7 +165,13 @@ class AdminController extends Controller
 
     function deleteSlider($id){
 
-        Slider::find($id)->delete();
+        $slider=Slider::find($id);
+
+        if(File::exists($slider->image)) {
+            File::delete($slider->image);
+        }
+
+        $slider->delete();
 
         return redirect()->route( 'admin.sliders');
     }

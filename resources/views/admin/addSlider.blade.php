@@ -25,6 +25,11 @@
                         <input type="file" class="form-control"  required name="image">
                     </div>
 
+                    <div class="form-group">
+                        <label for="pwd">Link:</label>
+                        <input type="text" class="form-control" required  placeholder="Enter description" name="link">
+                    </div>
+
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>

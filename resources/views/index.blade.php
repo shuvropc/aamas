@@ -30,7 +30,7 @@
 
                             </div>
                             <div class="button-holder fadeInDown-3">
-                                <a href="index6c11.html?page=single-product" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop Now</a>
+                                <a href="{{$slider->link}}" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop Now</a>
                             </div>
                         </div><!-- /.caption -->
                     </div><!-- /.container-fluid -->
