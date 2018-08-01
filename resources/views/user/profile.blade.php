@@ -14,6 +14,7 @@
                     <!-- create a new account -->
                     <div lass="col-md-6 col-sm-6 create-new-account">
                         <h4 align="center" class="checkout-subtitle">Profile</h4>
+                        <a href="/user/orders">Orders</a> | <a href="/user/deliveries">Deliveries</a>
 
                      <p align="center">
                         <a href="{{url('user/edit')}}">Edit</a> | <a href="{{url('/')}}">Back</a>

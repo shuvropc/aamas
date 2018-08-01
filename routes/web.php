@@ -16,6 +16,8 @@ Route::group([ 'middleware' => 'UserLoginCheck'], function() {
     Route::post('/user/information', 'UserController@setInformation');
 
     Route::get('/user/profile', 'UserController@profile')->name('user.profile');
+    Route::get('/user/orders', 'UserController@orders')->name('user.orders');
+    Route::get('/user/deliveries', 'UserController@deliveries')->name('user.deliveries');
 
     Route::get('/logout','UserController@logOut')->name('vendor.logout');
 
@@ -229,6 +231,21 @@ Route::get('sales/product/edit/{id}','EmployeeController@editProduct')->name('sa
 Route::post('sales/product/edit/{id}','EmployeeController@updateProduct');
 Route::post('sales/product/delete','EmployeeController@deleteProduct');
 Route::get('/category/search/{type}','ProductController@searchByCategory')->name('search.category');
+
+
+
+
+Route::get('/admin/sliders','AdminController@sliders')->name('admin.sliders');
+
+Route::get('/admin/addSlider','AdminController@getAddSlider')->name('admin.addSlider');
+
+Route::post('/admin/addSlider','AdminController@postAddSlider');
+
+
+Route::get('/admin/deleteSlider/{id}','AdminController@deleteSlider')->name('admin.deleteSlider');
+
+
+
 
 
 

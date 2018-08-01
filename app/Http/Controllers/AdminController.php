@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 use App\Admin;
 use App\Product;
 use App\Feature_product;
+use App\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Hash;
+
+use File;
+
 
 class AdminController extends Controller
 {
@@ -151,6 +156,50 @@ class AdminController extends Controller
 
         return $products;
 //        return $request->number;
+    }
+
+    function sliders(){
+        return view('admin.sliders')->with('sliders',Slider::all());
+    }
+
+    function getAddSlider(){
+            return view('admin.addSlider');
+    }
+
+    function postAddSlider(Request $request){
+        $slider= new Slider();
+
+        $slider->title=$request->input('title');
+        $slider->description=$request->input('description');
+        $slider->link=$request->input('link');
+
+
+        //File Upload Code Start
+        $file = $request->file('image');
+        $file_name = str_random(30). '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('/uploads/aamas/slider'), $file_name);
+        //File Upload Code End
+
+
+        $slider->image='/uploads/aamas/slider/'.$file_name;
+
+        $slider->save();
+
+        return redirect()->route( 'admin.sliders');
+
+    }
+
+    function deleteSlider($id){
+
+        $slider=Slider::find($id);
+
+        if(File::exists($slider->image)) {
+            File::delete($slider->image);
+        }
+
+        $slider->delete();
+
+        return redirect()->route( 'admin.sliders');
     }
 
 
