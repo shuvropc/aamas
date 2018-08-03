@@ -104,7 +104,7 @@ Route::get('/vendor/adddetail/{size}/{color}/{quantity}','VendorController@addDe
 
 Route::get('/vendor/orders','VendorController@orders')->name('vendor.orders');
 Route::get('/vendor/login', 'VendorController@vendorLogin')->name('vendor.login');
-Route::post('/vendor/login', 'VendorController@login')->name('vendor.login');
+Route::post('/vendor/login', 'VendorController@login');
 
 
 
@@ -155,6 +155,8 @@ Route::get('/admin/login', 'AdminController@getLogin')->name('admin.login');
 Route::post('/admin/login', 'AdminController@postLogin');
 Route::get('/admin/registration', 'AdminController@getRegistration')->name('admin.registration');
 Route::post('/admin/registration', 'AdminController@postRegistration');
+Route::get('/admin/featured', 'AdminController@showFeatureProduct')->name('admin.feature.product');
+Route::post('/admin/featured/delete', 'AdminController@deleteFeatured');
 
 
 

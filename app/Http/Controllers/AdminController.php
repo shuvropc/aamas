@@ -7,9 +7,7 @@ use App\Feature_product;
 use App\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Support\Facades\Hash;
-
 use File;
 
 
@@ -76,7 +74,7 @@ class AdminController extends Controller
             if(Hash::check($password,  $admin->password)){
                 $admin->password=null;
                 session(['admin'=>$admin]);
-                return view('admin.index');
+                return redirect()->route('admin.index');
             }else{
                 return view('admin.login',["errorMessage"=>"Email or Password doesn't match"]);
             }
@@ -121,6 +119,23 @@ class AdminController extends Controller
         }
 
         return view('admin/allProduct', ['products'=>$products]);
+    }
+    public function showFeatureProduct(){
+        $product= DB::table('products')
+            ->select('products.*')
+            ->join('feature_products', 'feature_products.product_id', '=' , 'products.id')
+            ->get();
+        return view('admin.feature_product')
+            ->with('products', $product);
+    }
+
+    public function deleteFeatured(Request $request){
+
+        $featured=Feature_product::where('product_id','=',$request->fid)->first();
+
+        $featured->delete();
+
+
     }
 
     function addOrRemoveFeaturedProduct(Request $request){

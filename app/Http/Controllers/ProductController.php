@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
-
 use File;
 
 class ProductController extends Controller
@@ -337,7 +336,6 @@ class ProductController extends Controller
         } else {
             $product->category_id = $cat->id;
         }
-
 
         //add Product
         $product->product_name = $request->input("product_name");
