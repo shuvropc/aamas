@@ -79,7 +79,7 @@ Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
 
 
 
-Route::get('/admin','AdminController@index')->name('admin');
+Route::get('/admin','AdminController@index')->name('admin.index');
 Route::get('/admin/featureproduct','AdminController@featured')->name('admin.featured');
 
 Route::get('/','HomeController@index')->name('homepage');
@@ -105,7 +105,7 @@ Route::get('/vendor/adddetail/{size}/{color}/{quantity}','VendorController@addDe
 
 Route::get('/vendor/orders','VendorController@orders')->name('vendor.orders');
 Route::get('/vendor/login', 'VendorController@vendorLogin')->name('vendor.login');
-Route::post('/vendor/login', 'VendorController@login')->name('vendor.login');
+Route::post('/vendor/login', 'VendorController@login');
 
 
 
@@ -154,7 +154,10 @@ Route::get('/admin/product', 'AdminController@product')->name('admin.product');
 Route::post('/admin/product', 'AdminController@product');
 Route::get('/admin/login', 'AdminController@getLogin')->name('admin.login');
 Route::post('/admin/login', 'AdminController@postLogin');
-Route::get('/admin/Registration', 'AdminController@getRegistration')->name('admin.registration');
+Route::get('/admin/registration', 'AdminController@getRegistration')->name('admin.registration');
+Route::post('/admin/registration', 'AdminController@postRegistration');
+Route::get('/admin/featured', 'AdminController@showFeatureProduct')->name('admin.feature.product');
+Route::post('/admin/featured/delete', 'AdminController@deleteFeatured');
 
 
 
@@ -231,6 +234,21 @@ Route::get('sales/product/edit/{id}','EmployeeController@editProduct')->name('sa
 Route::post('sales/product/edit/{id}','EmployeeController@updateProduct');
 Route::post('sales/product/delete','EmployeeController@deleteProduct');
 Route::get('/category/search/{type}','ProductController@searchByCategory')->name('search.category');
+
+
+
+
+Route::get('/admin/sliders','AdminController@sliders')->name('admin.sliders');
+
+Route::get('/admin/addSlider','AdminController@getAddSlider')->name('admin.addSlider');
+
+Route::post('/admin/addSlider','AdminController@postAddSlider');
+
+
+Route::get('/admin/deleteSlider/{id}','AdminController@deleteSlider')->name('admin.deleteSlider');
+
+
+
 
 
 

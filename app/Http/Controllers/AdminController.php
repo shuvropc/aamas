@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 use App\Admin;
 use App\Product;
 use App\Feature_product;
+use App\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use File;
+
 
 class AdminController extends Controller
 {
@@ -17,14 +21,37 @@ class AdminController extends Controller
         $name=$request->input('name');
         $email=$request->input('email');
         $password=$request->input('password');
-        $conPass=$request->input('cnpassword');
+
 
         $this
             ->validate($request,[
-                'name' =>'required'
-            ]);
+                'name'       =>'required',
+                'email'      =>'required|email|unique:admins,email',
+                'password'   =>'required|min:5|max:15',
+                'cnpassword' =>'required|min:5|max:15|same:password'
+            ],
+                [
+                    'name.required'         => 'Please provide name',
+                    'email.required'        => 'You must Provide an email address',
+                    'email.email'           => 'You must Provide an email address',
+                    'email.unique'          => 'This email already exist ',
+                    'password.required'     => 'Please provide your Password',
+                    'cnpassword.required'   => 'Please provide your Password again',
+                    'cnpassword.same'       => 'Password and confirm password does not match',
+                ]);
 
-        $admin=Admin();
+        $admin=new Admin();
+
+        $admin->name        =$name;
+        $admin->email       =$email;
+        $admin->password    =Hash::make($password);
+        if($admin->save()){
+            return redirect()->route('admin.login');
+        }else{
+            return 'There is a problem to add';
+        }
+
+
     }
 
     function getLogin(){
@@ -41,19 +68,18 @@ class AdminController extends Controller
         $email=$request->input('email');
         $password=$request->input('password');
 
-        $admin=Admin::where('email', $email)
-            ->where('password', $password)
-            ->first();
+        $admin=Admin::where('email', $email)->first();
 
         if($admin){
-            if($admin->password==$password){
+            if(Hash::check($password,  $admin->password)){
+                $admin->password=null;
                 session(['admin'=>$admin]);
-                return view('admin.index');
+                return redirect()->route('admin.index');
             }else{
-                return 'Email or Password is wrong';
+                return view('admin.login',["errorMessage"=>"Email or Password doesn't match"]);
             }
         }else{
-            return 'Email or Password is wrong';
+            return view('admin.login',["errorMessage"=>"Email or Password doesn't match"]);
         }
 
     }
@@ -94,6 +120,23 @@ class AdminController extends Controller
 
         return view('admin/allProduct', ['products'=>$products]);
     }
+    public function showFeatureProduct(){
+        $product= DB::table('products')
+            ->select('products.*')
+            ->join('feature_products', 'feature_products.product_id', '=' , 'products.id')
+            ->get();
+        return view('admin.feature_product')
+            ->with('products', $product);
+    }
+
+    public function deleteFeatured(Request $request){
+
+        $featured=Feature_product::where('product_id','=',$request->fid)->first();
+
+        $featured->delete();
+
+
+    }
 
     function addOrRemoveFeaturedProduct(Request $request){
 
@@ -128,6 +171,50 @@ class AdminController extends Controller
 
         return $products;
 //        return $request->number;
+    }
+
+    function sliders(){
+        return view('admin.sliders')->with('sliders',Slider::all());
+    }
+
+    function getAddSlider(){
+            return view('admin.addSlider');
+    }
+
+    function postAddSlider(Request $request){
+        $slider= new Slider();
+
+        $slider->title=$request->input('title');
+        $slider->description=$request->input('description');
+        $slider->link=$request->input('link');
+
+
+        //File Upload Code Start
+        $file = $request->file('image');
+        $file_name = str_random(30). '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('/uploads/aamas/slider'), $file_name);
+        //File Upload Code End
+
+
+        $slider->image='/uploads/aamas/slider/'.$file_name;
+
+        $slider->save();
+
+        return redirect()->route( 'admin.sliders');
+
+    }
+
+    function deleteSlider($id){
+
+        $slider=Slider::find($id);
+
+        if(File::exists($slider->image)) {
+            File::delete($slider->image);
+        }
+
+        $slider->delete();
+
+        return redirect()->route( 'admin.sliders');
     }
 
 
