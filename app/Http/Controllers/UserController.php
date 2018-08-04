@@ -8,6 +8,7 @@ use App\User;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
@@ -163,15 +164,32 @@ class UserController extends Controller
     }
 
     function orders(Request $request){
-        $orders = Order::where('user_id', '=', $request->session()->get('user.id'))->where('delivery', '=', '0')->get();
+        $orders = Order::select('order_id', DB::raw('SUM(total_price) as total_price'), 'payment_type', 'shipping_address')
+            ->where('user_id', '=', $request->session()->get('user.id'))
+            ->where('delivery', '=', '0')
+            ->groupBy('order_id')
+            ->get();
 
         return View('user.order', ['orders' => $orders]);
     }
 
     function deliveries(Request $request){
-        $deliveries = Order::where('user_id', '=', $request->session()->get('user.id'))->where('delivery', '=', '1')->get();
+        $deliveries = Order::select('order_id', DB::raw('SUM(total_price) as total_price'), 'payment_type', 'shipping_address')
+            ->where('user_id', '=', $request->session()->get('user.id'))
+            ->where('delivery', '=', '1')
+            ->groupBy('order_id')
+            ->get();
 
         return View('user.delivery', ['deliveries' => $deliveries]);
+    }
+
+    function orderDetails(Request $request, $id){
+        $user_id = $request->session()->get('user.id');
+
+        $orders = Order::where('user_id', '=', $user_id)->where('order_id', '=', $id)->get();
+        $total_price = Order::where('user_id', '=', $user_id)->where('order_id', '=', $id)->sum('total_price');
+
+        return View('user.orderDetails', ['orders' => $orders, 'total_price' => $total_price]);
     }
 
     public function logOut(){

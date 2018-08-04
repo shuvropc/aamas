@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
--- https://www.phpmyadmin.net/
+-- version 4.5.0.2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 01, 2018 at 12:01 PM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Host: localhost
+-- Generation Time: Aug 01, 2018 at 01:31 PM
+-- Server version: 10.0.17-MariaDB
+-- PHP Version: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -137,11 +135,11 @@ CREATE TABLE `details` (
 --
 
 INSERT INTO `details` (`id`, `product_id`, `size`, `color`, `total_quantity`, `available_quantity`, `created_at`, `updated_at`) VALUES
-(3, 2, NULL, 'Black', 10, 10, '2018-07-19 01:20:39', '2018-07-19 01:20:39'),
-(4, 2, NULL, 'Grey', 10, 10, '2018-07-19 01:20:39', '2018-07-19 01:20:39'),
-(5, 2, NULL, 'Sand Stone', 5, 5, '2018-07-19 01:20:39', '2018-07-19 01:20:39'),
-(6, 3, NULL, 'Red', 5, 4, '2018-07-19 01:21:53', '2018-07-25 05:20:45'),
-(7, 3, NULL, 'Pink', 3, 3, '2018-07-19 01:21:53', '2018-07-19 01:21:53'),
+(3, 2, NULL, 'Black', 10, 8, '2018-07-19 01:20:39', '2018-08-01 05:31:01'),
+(4, 2, NULL, 'Grey', 10, 9, '2018-07-19 01:20:39', '2018-08-01 05:31:01'),
+(5, 2, NULL, 'Sand Stone', 5, 4, '2018-07-19 01:20:39', '2018-08-01 05:29:01'),
+(6, 3, NULL, 'Red', 5, 1, '2018-07-19 01:21:53', '2018-08-01 05:24:39'),
+(7, 3, NULL, 'Pink', 3, 2, '2018-07-19 01:21:53', '2018-08-01 05:22:07'),
 (9, 5, NULL, 'Black', 5, 5, '2018-07-19 01:24:53', '2018-07-19 01:24:53'),
 (12, 1, NULL, 'Black', 10, 9, NULL, '2018-07-25 05:20:45'),
 (13, 1, NULL, 'White', 70, 70, '2018-07-22 05:16:21', '2018-07-22 05:16:21'),
@@ -240,6 +238,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `orders` (
   `id` int(10) UNSIGNED NOT NULL,
+  `order_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` int(11) NOT NULL,
   `total_price` double NOT NULL,
   `discount` double NOT NULL,
@@ -248,6 +247,7 @@ CREATE TABLE `orders` (
   `shipping_address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
+  `delivery` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -256,9 +256,15 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `quantity`, `total_price`, `discount`, `payment_amount`, `payment_type`, `shipping_address`, `product_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 100009, 0, 0, '0', 'Dhaka Attack', 3, 1, '2018-07-25 05:20:45', '2018-07-25 05:20:45'),
-(2, 1, 100000, 0, 0, '0', 'Dhaka Attack', 1, 1, '2018-07-25 05:20:45', '2018-07-25 05:20:45');
+INSERT INTO `orders` (`id`, `order_id`, `quantity`, `total_price`, `discount`, `payment_amount`, `payment_type`, `shipping_address`, `product_id`, `user_id`, `delivery`, `created_at`, `updated_at`) VALUES
+(1, '', 1, 100009, 0, 0, '0', 'Dhaka Attack', 3, 1, 0, '2018-07-25 05:20:45', '2018-07-25 05:20:45'),
+(2, '', 1, 100000, 0, 0, '0', 'Dhaka Attack', 1, 1, 0, '2018-07-25 05:20:45', '2018-07-25 05:20:45'),
+(3, 'O-11-22-07-lE', 1, 100009, 0, 0, '0', 'Dhaka', 3, 1, 0, '2018-08-01 05:22:07', '2018-08-01 05:22:07'),
+(4, 'O-11-22-07-ZH', 1, 100009, 0, 0, '0', 'Dhaka', 3, 1, 0, '2018-08-01 05:22:07', '2018-08-01 05:22:07'),
+(6, '', 1, 50000, 0, 0, '0', 'Dhaka', 2, 1, 0, '2018-08-01 05:29:01', '2018-08-01 05:29:01'),
+(7, '', 1, 50000, 0, 0, '0', 'Dhaka', 2, 1, 0, '2018-08-01 05:29:01', '2018-08-01 05:29:01'),
+(8, 'O-11-31-01-hD', 1, 50000, 0, 0, '0', 'Dhaka', 2, 1, 0, '2018-08-01 05:31:01', '2018-08-01 05:31:01'),
+(9, 'O-11-31-01-hD', 1, 50000, 0, 0, '0', 'Dhaka', 2, 1, 0, '2018-08-01 05:31:01', '2018-08-01 05:31:01');
 
 -- --------------------------------------------------------
 
@@ -303,16 +309,15 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_name`, `product_description`, `buying_price`, `selling_price`, `discount`, `brand`, `image1`, `image2`, `image3`, `image4`, `available`, `aamas_status`, `category_id`, `vendor_id`, `created_at`, `updated_at`) VALUES
-(1, 'iPhone X', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 80000, 100000, 5, 'Apple', 'uploads/vendor/product/nFFMUYllegJZ6BMghD8Zp58zPcFJOSb6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 'uploads/vendor/product/sMrjywHTOhjqBFERCN31NbdMI28sVcb6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 'uploads/vendor/product/Fj79PlEpKD5A7Twv1WM7GmemHNgjSob6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 'uploads/vendor/product/bmzKvvzGjWcq2KOpF8l3SryqdyWwDnb6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 0, 1, 1, 1, '2018-07-19 01:19:37', '2018-07-25 05:10:22'),
-(2, 'One Plus 6', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 40000, 50000, 4, 'One Plus', 'uploads/vendor/product/trFch0Z0sfaca3lXIeFyOIC7fNIToV829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 'uploads/vendor/product/nf8HyFhTHie5mNgTgmnTtPFOdnBo14829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 'uploads/vendor/product/jVJinLsq5PXQG6TPp6xAN7N7gBiuLe829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 'uploads/vendor/product/pcYEr9dhzr22S9iDG87C0TlVSNnmNs829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 1, 1, 1, 1, '2018-07-19 01:20:39', '2018-07-19 01:20:39'),
-(3, 'Galaxy Note 8', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 80000, 100009, 3, 'Samsung', 'uploads/vendor/product/eMF8nD2x95isFtW3FETiuay2Ry5EyW29f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 'uploads/vendor/product/wFEkmHH9Gj4Dry2OMoIUF3fOCei00V29f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 'uploads/vendor/product/LFpibC9hSuHHUBeCPVmahWlUYCCNYO29f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 'uploads/vendor/product/R9nGGHglZODkVVdazPna7AG9Oca4m529f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 1, 1, 1, 1, '2018-07-19 01:21:53', '2018-07-19 01:21:53'),
-(5, 'ROG Strix GeForce® GTX 1080 Ti OC edition', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 60000, 80000, 2, 'Asus', 'uploads/vendor/product/0IQX8FmJuDFfI40muQyJOFbhsSxYBr50ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 'uploads/vendor/product/ueE4pDs0cBJPT2XzmL6VAQQWMgd96550ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 'uploads/vendor/product/owKBdZgeuzpyh4LaM3yHOQ75IrciZl50ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 'uploads/vendor/product/stQNY9fKbSZVDipPcajKuljjDPuQwr50ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 1, 1, 1, 1, '2018-07-19 01:24:53', '2018-07-19 01:24:53');
+(1, 'iPhone X', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 80000, 100000, 5, 'Apple', 'uploads/vendor/product/nFFMUYllegJZ6BMghD8Zp58zPcFJOSb6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 'uploads/vendor/product/sMrjywHTOhjqBFERCN31NbdMI28sVcb6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 'uploads/vendor/product/Fj79PlEpKD5A7Twv1WM7GmemHNgjSob6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 'uploads/vendor/product/bmzKvvzGjWcq2KOpF8l3SryqdyWwDnb6010aeefdeb5309b7dfc98e1080fc249d51d239.jpg', 0, 1, 1, 1, '2018-07-19 01:19:37', '2018-07-25 05:10:22'),
+(2, 'One Plus 6', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 40000, 50000, 4, 'One Plus', 'uploads/vendor/product/trFch0Z0sfaca3lXIeFyOIC7fNIToV829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 'uploads/vendor/product/nf8HyFhTHie5mNgTgmnTtPFOdnBo14829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 'uploads/vendor/product/jVJinLsq5PXQG6TPp6xAN7N7gBiuLe829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 'uploads/vendor/product/pcYEr9dhzr22S9iDG87C0TlVSNnmNs829bc76604fa96a18c6ae792d8107f17671fdf56.jpg', 1, 1, 1, 1, '2018-07-19 01:20:39', '2018-07-19 01:20:39'),
+(3, 'Galaxy Note 8', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 80000, 100009, 3, 'Samsung', 'uploads/vendor/product/eMF8nD2x95isFtW3FETiuay2Ry5EyW29f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 'uploads/vendor/product/wFEkmHH9Gj4Dry2OMoIUF3fOCei00V29f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 'uploads/vendor/product/LFpibC9hSuHHUBeCPVmahWlUYCCNYO29f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 'uploads/vendor/product/R9nGGHglZODkVVdazPna7AG9Oca4m529f63799fdd652a6678cd1dc131e9e30c0bd0b4b.jpg', 1, 1, 1, 1, '2018-07-19 01:21:53', '2018-07-19 01:21:53'),
+(5, 'ROG Strix GeForce® GTX 1080 Ti OC edition', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 60000, 80000, 2, 'Asus', 'uploads/vendor/product/0IQX8FmJuDFfI40muQyJOFbhsSxYBr50ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 'uploads/vendor/product/ueE4pDs0cBJPT2XzmL6VAQQWMgd96550ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 'uploads/vendor/product/owKBdZgeuzpyh4LaM3yHOQ75IrciZl50ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 'uploads/vendor/product/stQNY9fKbSZVDipPcajKuljjDPuQwr50ef22fd6c23e7a9da7aab4f006a4972c8dbb7c0.jpg', 1, 1, 1, 1, '2018-07-19 01:24:53', '2018-07-19 01:24:53');
 
 -- --------------------------------------------------------
 
 --
 -- Stand-in structure for view `product_with_details`
--- (See below for the actual view)
 --
 CREATE TABLE `product_with_details` (
 `id` int(10) unsigned
@@ -575,91 +580,76 @@ ALTER TABLE `wishlists`
 --
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `deliveries`
 --
 ALTER TABLE `deliveries`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `feature_products`
 --
 ALTER TABLE `feature_products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `vendors`
 --
 ALTER TABLE `vendors`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- Constraints for dumped tables
 --
@@ -716,7 +706,6 @@ ALTER TABLE `products`
 ALTER TABLE `wishlists`
   ADD CONSTRAINT `wishlists_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `wishlists_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
