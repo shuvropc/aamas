@@ -34,9 +34,16 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
     Route::post('/vendor/addProduct', 'ProductController@addNewProductByVendor');
 
 
-
     Route::get('/vendor/passwordChange', 'VendorController@changePassword')->name('vendor.passwordChange');
     Route::post('/vendor/passwordChange', 'VendorController@updatePassword');
+
+
+    Route::get('/vendor/orders', 'VendorController@orders');
+    Route::get('/vendor/orderdetails/{id}', 'VendorController@orderDetails');
+    Route::get('/vendor/delivered', 'VendorController@delivered');
+    Route::get('/vendor/confirmorder/{id}', 'VendorController@confirmOrder');
+
+
 
 
     Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');

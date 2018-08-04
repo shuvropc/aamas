@@ -417,6 +417,8 @@
                 <ul id="dashboard_dr" class="collapse collapse-level-1">
                     <li>
                         <a href="{{route('vendor.addProduct')}}">Add</a>
+                        <a href="/vendor/orders">Orders</a>
+                        <a href="/vendor/delivered">Delivered</a>
                     </li>
 
                     </li>

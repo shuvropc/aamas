@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\Order;
 use App\Vendor;
 use App\Product;
 use App\Category;
@@ -10,6 +11,7 @@ use App\Detail;
 
 use App\ViewProductWithDetails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use SebastianBergmann\Environment\Console;
 
@@ -201,11 +203,37 @@ class VendorController extends Controller
     }
 
     public function orders(){
-        return view('vendor/ProductOrders');
+        $orders = Order::select('order_id', DB::raw('SUM(total_price) as total_price'), 'payment_type', 'shipping_address')
+            ->where('delivery', '=', '0')
+            ->groupBy('order_id')
+            ->get();
+
+        return view('vendor/order', ['orders' => $orders]);
     }
 
+    public function delivered(){
+        $orders = Order::select('order_id', DB::raw('SUM(total_price) as total_price'), 'payment_type', 'shipping_address')
+            ->where('delivery', '=', '1')
+            ->groupBy('order_id')
+            ->get();
 
+        return view('vendor/delivered', ['deliveries' => $orders]);
+    }
 
+    function orderDetails($id){
+
+        $orders = Order::where('order_id', '=', $id)->get();
+
+        $total_price = Order::where('order_id', '=', $id)->sum('total_price');
+
+        return View('vendor.orderDetails', ['orders' => $orders, 'total_price' => $total_price]);
+    }
+
+    function confirmOrder($id){
+        Order::where('order_id', '=', $id)->update(['delivery' => '1']);
+
+        return redirect()->back();
+    }
 
     public function logOut(Request $request){
         $request->session()->forget('vendor');
