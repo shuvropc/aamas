@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\checkAdmin;
 use App\Http\Middleware\CheckLogin;
 use App\Http\Middleware\CheckVendorLogin;
 use App\Http\Middleware\CheckEmployeeLogin;
@@ -66,5 +67,6 @@ class Kernel extends HttpKernel
         'UserLoginCheck' => CheckLogin::class,
         'VendorLoginCheck' => CheckVendorLogin::class,
         'CheckEmployeeLogin' => CheckEmployeeLogin::class,
+        'CheckAdminLogin'   =>checkAdmin::class,
     ];
 }

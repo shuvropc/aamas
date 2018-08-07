@@ -44,7 +44,8 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
     Route::get('/vendor/confirmorder/{id}', 'VendorController@confirmOrder');
 
 
-
+    Route::get('/addeEmployee', 'EmployeeController@employeeCreateByVendor')->name('vendor.addEmployee');
+    Route::post('/addeEmployee', 'EmployeeController@createEmployeeByVendor');
 
     Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
     Route::get('/vendor/index', 'VendorController@index')->name('vendor.index');
@@ -81,13 +82,62 @@ Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
 
     Route::post('/employee/hr/active','EmployeeController@active')->name('employee.active');
 
+
+
+    Route::get('employee/product', 'EmployeeController@allProduct')->name('employee.all.product');
+
+    Route::get('sales/product/details/{id}','EmployeeController@productDetails')->name('sales.product.details');
+    Route::get('sales/product/edit/{id}','EmployeeController@editProduct')->name('sales.product.edit');
+    Route::post('sales/product/edit/{id}','EmployeeController@updateProduct');
+    Route::post('sales/product/delete','EmployeeController@deleteProduct');
+
+    Route::get('/employee/employeeList/{type}', 'EmployeeController@employeeList')->name('hr.emp-list');
+
+
+
+
+
+});
+
+Route::group(['middleware' => 'CheckAdminLogin'],function (){
+    Route::get('/admin','AdminController@index')->name('admin.index');
+    Route::get('/admin/featureproduct','AdminController@featured')->name('admin.featured');
+    Route::get('/admin/product', 'AdminController@product')->name('admin.product');
+    Route::post('/admin/product', 'AdminController@product');
+    Route::get('/admin/registration', 'AdminController@getRegistration')->name('admin.registration');
+    Route::post('/admin/registration', 'AdminController@postRegistration');
+    Route::get('/admin/featured', 'AdminController@showFeatureProduct')->name('admin.feature.product');
+    Route::post('/admin/featured/delete', 'AdminController@deleteFeatured');
+
+    Route::post('/admin/addOrRemoveFeaturedProduct', 'AdminController@addOrRemoveFeaturedProduct');
+
+    Route::get('/admin/searchByAnything', 'AdminController@searchByAnything');
+
+    Route::get('/admin/vendorList', 'VendorController@vendorList');
+
+    Route::post('/vendor/changeVendorstatus', 'VendorController@changeVendorstatus');
+
+    Route::get('/admin/vendorDetails/{id}', 'VendorController@vendorDetails')->name('vendor.details');
+
+    Route::post('/admin/setNumberInAPage', 'AdminController@setNumberInAPage');
+
+    Route::get('/admin/sliders','AdminController@sliders')->name('admin.sliders');
+
+    Route::get('/admin/addSlider','AdminController@getAddSlider')->name('admin.addSlider');
+
+    Route::post('/admin/addSlider','AdminController@postAddSlider');
+
+
+    Route::get('/admin/deleteSlider/{id}','AdminController@deleteSlider')->name('admin.deleteSlider');
+
+
 });
 
 
 
 
-Route::get('/admin','AdminController@index')->name('admin.index');
-Route::get('/admin/featureproduct','AdminController@featured')->name('admin.featured');
+
+
 
 Route::get('/','HomeController@index')->name('homepage');
 Route::get('/searchproduct','HomeController@searchProduct')->name('searchProduct');
@@ -155,31 +205,13 @@ Route::get('/showcart',function (){
 Route::post('/product/quantityByDetails', 'ProductController@quantityByDetails');
 
 
-Route::get('/admin/product', 'AdminController@product')->name('admin.product');
 
-
-Route::post('/admin/product', 'AdminController@product');
 Route::get('/admin/login', 'AdminController@getLogin')->name('admin.login');
 Route::post('/admin/login', 'AdminController@postLogin');
-Route::get('/admin/registration', 'AdminController@getRegistration')->name('admin.registration');
-Route::post('/admin/registration', 'AdminController@postRegistration');
-Route::get('/admin/featured', 'AdminController@showFeatureProduct')->name('admin.feature.product');
-Route::post('/admin/featured/delete', 'AdminController@deleteFeatured');
 
 
 
 
-Route::post('/admin/addOrRemoveFeaturedProduct', 'AdminController@addOrRemoveFeaturedProduct');
-
-Route::get('/admin/searchByAnything', 'AdminController@searchByAnything');
-
-Route::get('/admin/vendorList', 'VendorController@vendorList');
-
-Route::post('/vendor/changeVendorstatus', 'VendorController@changeVendorstatus');
-
-Route::get('/admin/vendorDetails/{id}', 'VendorController@vendorDetails')->name('vendor.details');
-
-Route::post('/admin/setNumberInAPage', 'AdminController@setNumberInAPage');
 
 
 Route::get('/vendor/product', 'ProductController@showAllProduct')->name('vendor.product');
@@ -199,22 +231,7 @@ Route::get('/sales/productStatus', 'EmployeeController@productStatus')->name('sa
 Route::get('/details/deleteDetailsByDetailsId', 'ProductController@deleteDetailsByDetailsId');
 
 
-Route::get('/addeEmployee', 'EmployeeController@employeeCreateByVendor')->name('vendor.addEmployee');
-Route::post('/addeEmployee', 'EmployeeController@createEmployeeByVendor');
-
-
-
-
-Route::get('/employee/employeeList/{type}', 'EmployeeController@employeeList')->name('hr.emp-list');
-
-
-
-
-
 Route::get('/product/showProductByCategoryId/{id}', 'ProductController@showProductByCategoryId')->name('vendor.product.category');
-
-
-
 
 
 Route::post('/product/changeProductAvability', 'ProductController@changeProductAvability');
@@ -234,28 +251,7 @@ Route::get('/showcart',function (\Illuminate\Http\Request $request){
 
 });
 
-Route::get('employee/product', 'EmployeeController@allProduct')->name('employee.all.product');
-
-Route::get('sales/product/details/{id}','EmployeeController@productDetails')->name('sales.product.details');
-Route::get('sales/product/edit/{id}','EmployeeController@editProduct')->name('sales.product.edit');
-Route::post('sales/product/edit/{id}','EmployeeController@updateProduct');
-Route::post('sales/product/delete','EmployeeController@deleteProduct');
 Route::get('/category/search/{type}','ProductController@searchByCategory')->name('search.category');
-
-
-
-
-Route::get('/admin/sliders','AdminController@sliders')->name('admin.sliders');
-
-Route::get('/admin/addSlider','AdminController@getAddSlider')->name('admin.addSlider');
-
-Route::post('/admin/addSlider','AdminController@postAddSlider');
-
-
-Route::get('/admin/deleteSlider/{id}','AdminController@deleteSlider')->name('admin.deleteSlider');
-
-
-
 
 
 
@@ -266,9 +262,6 @@ Route::get('/show',function (\Illuminate\Http\Request $request){
 });
 
 
-
-
-
 //Route::get('/searchresults','ProductController@searchResult')->name('searchresults');
 
 
@@ -277,3 +270,5 @@ Route::get('/show',function (\Illuminate\Http\Request $request){
 //Route::get('/api/getallproducts','ApiController@getAllProducts')->name('getAllProducts.api');
 //
 //Route::get('/api/getproduct/{id}','ApiController@getProduct')->name('getProduct.api');
+
+Route::get('vendor/search', 'VendorController@search')->name('vendor.search');

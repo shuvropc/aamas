@@ -306,4 +306,9 @@ class VendorController extends Controller
             return view('vendor.productStatus')->with('products', $products);
     }
 
+    public function search(Request $request){
+        $product = Product::Where('product_name', 'like', '%' . $request->value . '%')->get();
+        return $product;
+    }
+
 }

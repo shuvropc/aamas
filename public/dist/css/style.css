@@ -7399,6 +7399,13 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
 }
 
 
+.product-search{
+  width: 300px;
+  height: 35px;
+  border: 2px;
+  border-color: grey;
+  border-radius: 10px;
+}
 
 
 

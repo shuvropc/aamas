@@ -31,7 +31,7 @@ class HomeController extends Controller
 
     function searchProduct(Request $request){
 
-        $product = Product::orWhere('product_name', 'like', '%' . $request->val . '%')->get();
+        $product = Product::Where('product_name', 'like', '%' . $request->val . '%')->get();
 
         return $product;
     }

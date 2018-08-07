@@ -41,9 +41,9 @@
 
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
     <link href="{{asset('dist/css/style.css')}}" rel="stylesheet" type="text/css"/>
 
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
 
 </head>
 
@@ -72,15 +72,7 @@
             <a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view"
                href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a>
             <a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
-            <form id="search_form" role="search" class="top-nav-search collapse pull-left">
-                <div class="input-group">
-                    <input type="text" name="example-input1-group2" class="form-control" placeholder="Search">
-                    <span class="input-group-btn">
-						<button type="button" class="btn  btn-default" data-target="#search_form" data-toggle="collapse"
-                                aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>
-						</span>
-                </div>
-            </form>
+
         </div>
 
         <div class="mobile-only-nav pull-left col-md-offset-2">
