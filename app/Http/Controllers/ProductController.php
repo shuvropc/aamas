@@ -532,7 +532,7 @@ class ProductController extends Controller
         $vendors = DB::select("SELECT vendors.vendor_name,COUNT(*) as total FROM orders
                               INNER JOIN products ON products.id=orders.product_id
                               INNER JOIN vendors ON vendors.id=products.vendor_id
-                              group by `product_id` order by `product_id` desc");
+                              group by `product_id` order by `product_id` desc LIMIT 5");
 
         return $vendors;
 
