@@ -917,7 +917,7 @@
 
 <!-- Init JavaScript -->
 <script src="{{asset('dist/js/init.js')}}"></script>
-<script src="{{asset('dist/js/ecommerce-data.js')}}"></script>
+{{--<script src="{{asset('dist/js/ecommerce-data.js')}}"></script>--}}
 <script src="{{asset('vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
 <script src="{{asset('vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js')}}"></script>
 <script src="{{asset('vendors/bower_components/morris.js/morris.min.js')}}"></script>

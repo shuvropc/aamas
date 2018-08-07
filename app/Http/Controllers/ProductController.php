@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Feature_product;
+use App\Order;
 use App\ViewProductWithDetails;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ use File;
 
 class ProductController extends Controller
 {
+
     public function addProductByVendor(Request $request)
     {
         $categories = new Category();
@@ -131,6 +133,7 @@ class ProductController extends Controller
 
         return "Deleted";
     }
+
     public function showAllProduct(Request $request){
 //        return $request->session()->get('vendor.id');
         $products=Product::where('vendor_id', '=' , $request->session()->get('vendor.id') )->paginate(5);
@@ -155,7 +158,6 @@ class ProductController extends Controller
 
         return "changed";
     }
-
 
     public function editProductByVendor(Request $request, $id)
     {
@@ -315,7 +317,6 @@ class ProductController extends Controller
         return view('vendor.employee.sales.AddProduct', ['employee' => $employee])->with("categories", $categories->get());
     }
 
-
     public function addNewProduct(Request $request)
     {
 
@@ -416,7 +417,6 @@ class ProductController extends Controller
         return redirect()->route('sales.index');
     }
 
-
     public function details($id)
     {
         $product = ViewProductWithDetails::find($id);
@@ -427,7 +427,6 @@ class ProductController extends Controller
             'productInfo' => $productInfo
         ]);
     }
-
 
     public function quantityByDetails(Request $request)
     {
@@ -441,9 +440,7 @@ class ProductController extends Controller
 
     public function addToCart(Request $request){
 
-//       $product['cart'] = [$request->pid,$request->size,$request->color];
         Cart::add(['id' => $request->pid,'name' => $request->pname,'qty' => $request->qty, 'price' => $request->pprice,'options' => ['size' => $request->size,'color'=>$request->color, 'image' => $request->image]]);
-//        Cart::add(['id' => '293ad', 'name' => 'Product 1', 'qty' => 1, 'price' => 9.99, 'options' => ['size' => 'large']]);
 
         return "stored";
 
@@ -454,7 +451,6 @@ class ProductController extends Controller
 
         return redirect()->back();
     }
-
 
     public function delete(Request $request){
 
@@ -513,6 +509,33 @@ class ProductController extends Controller
 
         //return $products;
        return view('searchByCategory')->with('products',$products);
+    }
+
+    public function checkProductQuantity(){
+
+    }
+
+    public function topProducts(Request $request){
+
+        $orders = Order::with('products')
+            ->select('product_id', DB::raw('count(*) as total'))
+            ->groupBy('product_id')
+            ->orderBy('product_id', 'DESC')
+            ->get();
+
+        return $orders;
+
+    }
+
+    public function topVendors(Request $request){
+
+        $vendors = DB::select("SELECT vendors.vendor_name,COUNT(*) as total FROM orders
+                              INNER JOIN products ON products.id=orders.product_id
+                              INNER JOIN vendors ON vendors.id=products.vendor_id
+                              group by `product_id` order by `product_id` desc LIMIT 5");
+
+        return $vendors;
+
     }
 
 }
