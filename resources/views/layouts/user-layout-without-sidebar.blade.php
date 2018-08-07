@@ -202,6 +202,7 @@
                                     </div>
                                     <div class="clearfix"></div>
 
+                                    <a href="/cart" class="btn btn-upper btn-primary btn-block m-t-20">View Cart</a>
                                     <a href="/checkout" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
                                 </div><!-- /.cart-total-->
 

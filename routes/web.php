@@ -44,8 +44,6 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
     Route::get('/vendor/confirmorder/{id}', 'VendorController@confirmOrder');
 
 
-
-
     Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
     Route::get('/vendor/index', 'VendorController@index')->name('vendor.index');
 
@@ -139,6 +137,8 @@ Route::post('/employee/login', 'EmployeeController@login');
 
 
 Route::get('/product/details/{id}', 'ProductController@details')->name('product.details');
+Route::get('/product/topproducts', 'ProductController@topProducts');
+Route::get('/product/topvendors', 'ProductController@topVendors');
 
 
 
