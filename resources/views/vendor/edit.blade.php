@@ -1,4 +1,4 @@
-@extends('layouts.user-layout-without-sidebar')
+@extends('layouts.vendor-layout')
 
 
 @section('title', 'Vendor-Edit')
@@ -12,7 +12,7 @@
 
 
 
-@section('vendor-register-form')
+@section('content')
 
     <div class="container-fluid" style="background-color: seashell">
         <div class="form-wrapper">

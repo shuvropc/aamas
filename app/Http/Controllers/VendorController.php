@@ -237,7 +237,7 @@ class VendorController extends Controller
 
     public function logOut(Request $request){
         $request->session()->forget('vendor');
-        return "Vendor Logged out ";
+        return redirect()->route('vendor.login');
     }
 
     public function vendorList(){
