@@ -71,7 +71,7 @@
                                                     <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Status</th>
                                                     <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 84px;" aria-label="Actions: activate to sort column ascending">Actions</th></tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="show_products">
 
                                                 @foreach($products as $product)
                                                     <tr role="row" class="odd product_row_{{$product->id}}" id="product">
@@ -199,7 +199,78 @@
                                                                         value:value
                                                                     },
                                                                     success: function(result){
-                                                                        console.log(result);
+
+                                                                        var products='';
+
+                                                                        result.forEach(function(product) {
+
+
+                                              products += " <tr role=\"row\" class=\"odd product_row_"+product.id+"\" id=\"product\">\n" +
+                                                 "                                                        <td class=\"txt-dark sorting_1\">"+product.product_name+"</td>\n" +
+                                                 "                                                        <td class=\"txt-dark\">"+product.id+"</td>\n" +
+                                                 "                                                        <td>\n" +
+                                                 "                                                            <img src=\""+"http://127.0.0.1:8000/"+product.image1+"\" width=\"80\">\n" +
+                                                 "                                                        </td>\n" +
+                                                 "                                                        <td>"+product.buying_price+"</td>\n" +
+                                                 "                                                        <td>"+product.selling_price+"</td>\n" +
+                                                 "                                                        <td>"+product.discount+"</td>\n" +
+                                                 "                                                        <td>"+product.brand+"</td>\n" +
+                                                 "\n" +
+                                                 "                                                        <td>"+product.created_at+"</td>\n" +
+                                                 "                                                        <td>\n" +
+                                                 "                                                            <span class=\"label label-default font-weight-100\"></span>\n" +
+                                                 "                                                            <div class=\"toggle\">\n" +
+                                                 "                                                        <span class=\"mid\">\n" +
+                                                 "                                                            <label class=\"switch\">\n";
+
+
+                                              if(product.available==1){
+                                                  products+="<input type=\"checkbox\" checked id=\"feature\" onclick=\"changeProductAvability("+product.id+")\">\n";
+                                              }else{
+                                                  products+="<input type=\"checkbox\" id=\"feature\" onclick=\"changeProductAvability("+product.id+")\">\n";
+                                              }
+
+
+
+                                              {{--products += "                                                                @if($product->available==1)\n" +--}}
+                                                 {{--"                                                                    <input type=\"checkbox\" checked id=\"feature\" onclick=\"changeProductAvability({{$product->id}})\">\n" +--}}
+                                                 {{--"                                                                @else\n" +--}}
+                                                 {{--"                                                                    <input type=\"checkbox\" id=\"feature\" onclick=\"changeProductAvability({{$product->id}})\">\n" +--}}
+                                                 {{--"\n" +--}}
+                                                 {{--"                                                                @endif\n";--}}
+
+
+
+                                              products +="                                                                <span class=\"slider round\"></span>\n" +
+                                                 "                                                            </label>\n" +
+                                                 "                                                        </span>\n" +
+                                                 "                                                            </div>\n" +
+                                                 "                                                        </td>\n" +
+                                                 "                                                        <td>\n" +
+                                                 "                                                            <a href=\"{{route('vendor.product.edit',['id'=>$product->id])}}\" class=\"text-inverse pr-10\" title=\"\" data-toggle=\"tooltip\" data-original-title=\"Edit\">\n" +
+                                                 "                                                                <i class=\"zmdi zmdi-edit txt-warning\"></i>\n" +
+                                                 "                                                            </a>\n" +
+                                                 "\n" +
+                                                 "\n" +
+                                                 "\n" +
+                                                 "\n" +
+                                                 "                                                            <a href=\"#myModal\" class=\"trigger-btn\" onclick=\"deleteProduct({{$product->id}})\" class=\"text-inverse\" title=\"\" data-toggle=\"tooltip\" data-original-title=\"Delete\">\n" +
+                                                 "                                                                <i class=\"zmdi zmdi-delete txt-danger\"></i>\n" +
+                                                 "                                                            </a>\n" +
+                                                 "\n" +
+                                                 "\n" +
+                                                 "\n" +
+                                                 "\n" +
+                                                 "                                                        </td>\n" +
+                                                 "                                                    </tr>";
+
+
+
+
+
+                                                                        });
+
+                                                                        $("#show_products").html(products);
 
 
                                                                     }
