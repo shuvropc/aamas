@@ -12,11 +12,20 @@
     <div class="container-fluid">
         <!-- Title -->
         <div class="row heading-bg">
-            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-3">
                 <h5 class="txt-dark">product orders</h5>
             </div>
+
+            <div id="myTable_filter" class=" col-lg-5 col-md-5 col-sm-5 dataTables_filter all-search">
+                <form>
+                    @csrf
+
+                    <input class="product-search" id="search" name="search-by-name" onkeyup="searchByAnything()" placeholder="Search" aria-controls="myTable" type="search" >
+
+                </form>
+            </div>
             <!-- Breadcrumb -->
-            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <div class="col-lg-4 col-sm-3 col-md-4">
                 <ol class="breadcrumb">
                     <li><a href="index.html">Dashboard</a></li>
                     <li><a href="#"><span>e-commerce</span></a></li>
@@ -46,14 +55,7 @@
                                             {{--</select> entries--}}
                                             {{--</label>--}}
                                         </div>
-                                        <div id="myTable_filter" class="dataTables_filter all-search">
-                                            <form method="POST">
-                                                @csrf
-                                                <label>
-                                                    <input class="" name="search-by-name" placeholder="Search" aria-controls="myTable" type="search" >
-                                                </label>
-                                            </form>
-                                        </div>
+
                                         <table class="table display responsive product-overview mb-30 dataTable no-footer" id="myTable" role="grid" aria-describedby="myTable_info">
                                             <thead>
                                             <tr role="row">
@@ -69,7 +71,7 @@
                                                 <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Status</th>
                                                 <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 84px;" aria-label="Actions: activate to sort column ascending">Actions</th></tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="show_products">
 
                                             @foreach($products as $product)
                                                 <tr role="row" class="odd product_row_{{$product->id}}" id="product">
@@ -188,20 +190,88 @@
                                                 }
 
                                                 function searchByAnything() {
-                                                    var value= $('#searchByAnything').val();
+                                                    var value= $('#search').val();
 
                                                     $.ajax({
                                                         type:'GET',
-                                                        url:"http://127.0.0.1:8000/admin/searchByAnything",
-                                                        headers: {
-                                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                        },
+                                                        url:"http://127.0.0.1:8000/employee/search",
                                                         data:{
                                                             value:value
                                                         },
                                                         success: function(result){
 
-                                                            $("#product").html(result);
+                                                            var products='';
+
+                                                            result.forEach(function(product) {
+
+
+                                                                products += " <tr role=\"row\" class=\"odd product_row_"+product.id+"\" id=\"product\">\n" +
+                                                                    "                                                        <td class=\"txt-dark sorting_1\">"+product.product_name+"</td>\n" +
+                                                                    "                                                        <td class=\"txt-dark\">"+product.id+"</td>\n" +
+                                                                    "                                                        <td>\n" +
+                                                                    "                                                            <img src=\""+"http://127.0.0.1:8000/"+product.image1+"\" width=\"80\">\n" +
+                                                                    "                                                        </td>\n" +
+                                                                    "                                                        <td>"+product.buying_price+"</td>\n" +
+                                                                    "                                                        <td>"+product.selling_price+"</td>\n" +
+                                                                    "                                                        <td>"+product.discount+"</td>\n" +
+                                                                    "                                                        <td>"+product.brand+"</td>\n" +
+                                                                    "\n" +
+                                                                    "                                                        <td>"+product.created_at+"</td>\n" +
+                                                                    "                                                        <td>\n" +
+                                                                    "                                                            <span class=\"label label-default font-weight-100\"></span>\n" +
+                                                                    "                                                            <div class=\"toggle\">\n" +
+                                                                    "                                                        <span class=\"mid\">\n" +
+                                                                    "                                                            <label class=\"switch\">\n";
+
+
+                                                                if(product.available==1){
+                                                                    products+="<input type=\"checkbox\" checked id=\"feature\" onclick=\"changeProductAvability("+product.id+")\">\n";
+                                                                }else{
+                                                                    products+="<input type=\"checkbox\" id=\"feature\" onclick=\"changeProductAvability("+product.id+")\">\n";
+                                                                }
+
+
+
+                                                                {{--products += "                                                                @if($product->available==1)\n" +--}}
+                                                                        {{--"                                                                    <input type=\"checkbox\" checked id=\"feature\" onclick=\"changeProductAvability({{$product->id}})\">\n" +--}}
+                                                                        {{--"                                                                @else\n" +--}}
+                                                                        {{--"                                                                    <input type=\"checkbox\" id=\"feature\" onclick=\"changeProductAvability({{$product->id}})\">\n" +--}}
+                                                                        {{--"\n" +--}}
+                                                                        {{--"                                                                @endif\n";--}}
+
+
+
+                                                                    products +="                                                                <span class=\"slider round\"></span>\n" +
+                                                                    "                                                            </label>\n" +
+                                                                    "                                                        </span>\n" +
+                                                                    "                                                            </div>\n" +
+                                                                    "                                                        </td>\n" +
+                                                                    "                                                        <td>\n" +
+                                                                    "                                                            <a href=\"{{route('vendor.product.edit',['id'=>$product->id])}}\" class=\"text-inverse pr-10\" title=\"\" data-toggle=\"tooltip\" data-original-title=\"Edit\">\n" +
+                                                                    "                                                                <i class=\"zmdi zmdi-edit txt-warning\"></i>\n" +
+                                                                    "                                                            </a>\n" +
+                                                                    "\n" +
+                                                                    "\n" +
+                                                                    "\n" +
+                                                                    "\n" +
+                                                                    "                                                            <a href=\"#myModal\" class=\"trigger-btn\" onclick=\"deleteProduct({{$product->id}})\" class=\"text-inverse\" title=\"\" data-toggle=\"tooltip\" data-original-title=\"Delete\">\n" +
+                                                                    "                                                                <i class=\"zmdi zmdi-delete txt-danger\"></i>\n" +
+                                                                    "                                                            </a>\n" +
+                                                                    "\n" +
+                                                                    "\n" +
+                                                                    "\n" +
+                                                                    "\n" +
+                                                                    "                                                        </td>\n" +
+                                                                    "                                                    </tr>";
+
+
+
+
+
+                                                            });
+
+                                                            $("#show_products").html(products);
+
 
                                                         }
                                                     });
@@ -210,7 +280,7 @@
                                                     var number=$('#number').val();
                                                     //alert(number);
                                                     $.ajax({
-                                                        type: 'POST',
+                                                        type: 'GET',
                                                         url:"http://127.0.0.1:8000/admin/setNumberInAPage",
                                                         headers: {
                                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

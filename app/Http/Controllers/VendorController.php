@@ -307,7 +307,8 @@ class VendorController extends Controller
     }
 
     public function search(Request $request){
-        $product = Product::Where('product_name', 'like', '%' . $request->value . '%')->get();
+        $product = Product::Where('vendor_id', '=', $request->session()->get('vendor.id'))
+        ->Where('product_name', 'like', '%' . $request->value . '%')->get();
         return $product;
     }
 

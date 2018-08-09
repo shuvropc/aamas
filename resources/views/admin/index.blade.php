@@ -61,7 +61,8 @@
 
             </div>
         </div>
-
+    </div>
+</div>
         <script language="JavaScript" type="text/javascript" src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
         <script type="application/javascript">
 

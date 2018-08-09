@@ -44,10 +44,8 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
     Route::get('/vendor/confirmorder/{id}', 'VendorController@confirmOrder');
 
 
-
     Route::get('/addeEmployee', 'EmployeeController@employeeCreateByVendor')->name('vendor.addEmployee');
     Route::post('/addeEmployee', 'EmployeeController@createEmployeeByVendor');
-
 
 
     Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
@@ -85,8 +83,6 @@ Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
 
     Route::post('/employee/hr/active','EmployeeController@active')->name('employee.active');
 
-
-
     Route::get('employee/product', 'EmployeeController@allProduct')->name('employee.all.product');
 
     Route::get('sales/product/details/{id}','EmployeeController@productDetails')->name('sales.product.details');
@@ -114,7 +110,7 @@ Route::group(['middleware' => 'CheckAdminLogin'],function (){
 
     Route::post('/admin/addOrRemoveFeaturedProduct', 'AdminController@addOrRemoveFeaturedProduct');
 
-    Route::get('/admin/searchByAnything', 'AdminController@searchByAnything');
+    Route::get('/admin/search', 'AdminController@search');
 
     Route::get('/admin/vendorList', 'VendorController@vendorList');
 
@@ -122,7 +118,7 @@ Route::group(['middleware' => 'CheckAdminLogin'],function (){
 
     Route::get('/admin/vendorDetails/{id}', 'VendorController@vendorDetails')->name('vendor.details');
 
-    Route::post('/admin/setNumberInAPage', 'AdminController@setNumberInAPage');
+    Route::get('/admin/setNumber', 'AdminController@setNumberInAPage');
 
     Route::get('/admin/sliders','AdminController@sliders')->name('admin.sliders');
 
@@ -277,3 +273,4 @@ Route::get('/show',function (\Illuminate\Http\Request $request){
 //Route::get('/api/getproduct/{id}','ApiController@getProduct')->name('getProduct.api');
 
 Route::get('vendor/search', 'VendorController@search')->name('vendor.search');
+Route::get('employee/search', 'EmployeeController@search')->name('employee.search');

@@ -533,4 +533,11 @@ class EmployeeController extends Controller
 
         return view('vendor.employee.sales.productStatus')->with('products', $products);
     }
+
+    public function search(Request $request){
+        $product = Product::Where('vendor_id', '=', $request->session()->get('employee.vendor_id'))
+            ->Where('product_name', 'like', '%' . $request->value . '%')
+            ->get();
+        return $product;
+    }
 }
