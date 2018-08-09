@@ -265,6 +265,7 @@ class EmployeeController extends Controller
 
     }
 
+
     public function imagechange(Request $request)
     {
         $employee=Employee::find($request->session()->get('employee.id'));
