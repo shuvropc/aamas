@@ -274,9 +274,9 @@ Route::get('/show',function (\Illuminate\Http\Request $request){
 //Route::get('/api/getproduct/{id}','ApiController@getProduct')->name('getProduct.api');
 
 Route::get('vendor/search', 'VendorController@search')->name('vendor.search');
-<<<<<<< HEAD
+
 Route::get('employee/search', 'EmployeeController@search')->name('employee.search');
-=======
+
 
 
 
@@ -285,4 +285,4 @@ Route::get('stest', function (){
 });
 
 
->>>>>>> 7655adcef14807e470ae5e628f9d91741eb2c7df
+
