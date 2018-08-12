@@ -310,7 +310,6 @@ class VendorController extends Controller
             return view('vendor.productStatus')->with('products', $products);
     }
 
-<<<<<<< HEAD
     public function topProducts($id){
         $products = DB::select("select `product_name`, `product_id`, count(*) as total from `orders`
                                 INNER JOIN products ON products.id=orders.product_id
@@ -322,7 +321,8 @@ class VendorController extends Controller
         return $products;
     }
 
-    public function buySell($id){
+    public function buySell($id)
+    {
         $buysell = DB::select("select SUM(total_price) AS TotalSell, SUM(products.buying_price) AS TotalBuy from `orders`
                                 INNER JOIN products ON products.id=orders.product_id
                                 INNER JOIN vendors ON vendors.id=products.vendor_id
@@ -331,12 +331,12 @@ class VendorController extends Controller
                                 order by `product_id` desc");
 
         return $buysell;
-=======
+    }
+
     public function search(Request $request){
         $product = Product::Where('vendor_id', '=', $request->session()->get('vendor.id'))
         ->Where('product_name', 'like', '%' . $request->value . '%')->get();
         return $product;
->>>>>>> 66175b5cd1e7b525aac0f36029277ec7017ecd86
     }
 
 }
