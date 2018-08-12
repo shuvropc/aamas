@@ -18,7 +18,21 @@ use SebastianBergmann\Environment\Console;
 class VendorController extends Controller
 {
     public function index(){
-        return view('vendor.index');
+
+        $id = session('vendor.id');
+
+        $low_stock_products = DB::select("SELECT product_id, color, size, products.product_name, available_quantity  FROM `details`
+                                INNER JOIN products ON products.id = details.product_id
+                                INNER JOIN vendors ON vendors.id=products.vendor_id
+                                WHERE vendors.id = $id AND `available_quantity` < 5 AND `available_quantity` >0");
+
+        $out_of_stock_products = DB::select("SELECT product_id, color, size, products.product_name, available_quantity  FROM `details`
+                                INNER JOIN products ON products.id = details.product_id
+                                INNER JOIN vendors ON vendors.id=products.vendor_id
+                                WHERE vendors.id = $id AND `available_quantity` = 0");
+
+
+        return view('vendor.index', ['low_stock_products' => $low_stock_products, 'out_of_stock_products' => $out_of_stock_products]);
     }
 
     public function register(){
@@ -143,10 +157,6 @@ class VendorController extends Controller
         }else{
             return "id not found";
         }
-
-
-
-      
 }
 
     public function changePassword(){
@@ -260,12 +270,9 @@ class VendorController extends Controller
         return "Status Changed";
     }
 
-
-
     public function vendorDetails($id){
         return view('vendor.vendorDetails',['vendor'=>Vendor::find($id)]);
     }
-
 
     public function employeeList(Request $request, $type){
 
@@ -275,8 +282,6 @@ class VendorController extends Controller
 
         return view('vendor.employeeList')->with('employees',$employees)->with('type', $type);
     }
-
-
 
     public function changeEmployeeStatus(Request $request){
 
@@ -296,7 +301,6 @@ class VendorController extends Controller
         return "Status CHanged";
     }
 
-
     public function productStatus(Request $request){
 
             $products = ViewProductWithDetails::where('vendor_id','=',$request->session()
@@ -304,6 +308,29 @@ class VendorController extends Controller
                 ->orderBy('available_quantity', 'ASC')
                 ->get();
             return view('vendor.productStatus')->with('products', $products);
+    }
+
+    public function topProducts($id){
+        $products = DB::select("select `product_name`, `product_id`, count(*) as total from `orders`
+                                INNER JOIN products ON products.id=orders.product_id
+                                INNER JOIN vendors ON vendors.id=products.vendor_id
+                                where `vendor_id` = $id
+                                group by `product_id`
+                                order by `product_id` desc LIMIT 5");
+
+        return $products;
+    }
+
+    public function buySell($id)
+    {
+        $buysell = DB::select("select SUM(total_price) AS TotalSell, SUM(products.buying_price) AS TotalBuy from `orders`
+                                INNER JOIN products ON products.id=orders.product_id
+                                INNER JOIN vendors ON vendors.id=products.vendor_id
+                                where `vendor_id` = $id
+                                group by `product_id`
+                                order by `product_id` desc");
+
+        return $buysell;
     }
 
     public function search(Request $request){

@@ -31,7 +31,7 @@
                                 <th class="cart-product-name item">Product Name</th>
 
                                 <th class="cart-qty item">Quantity</th>
-                                <th class="cart-sub-total item">Subtotal</th>
+                                <th class="cart-sub-total item">Unit Cost</th>
                                 <th class="cart-total last-item">Grandtotal</th>
                             </tr>
                             </thead><!-- /thead -->
@@ -68,12 +68,12 @@
                                 </td>
 
                                 <td class="cart-product-quantity">
-                                    <input id="p{{$cart->qty}}" onchange="update(this.id, '{{$cart->id}}', '{{$cart->rowId}}')"  type="number" value="{{$cart->qty}}">
+                                    <input id="p{{$cart->id}}" max="10" min="1" onchange="update(this.id, '{{$cart->id}}', '{{$cart->option['size']}}', '{{$cart->options['color']}}', '{{$cart->rowId}}')"  type="number" value="{{$cart->qty}}">
 
                                     </div>
                                 </td>
                                 <td class="cart-product-sub-total"><span class="cart-sub-total-price">${{$cart->price}}</span></td>
-                                <td class="cart-product-grand-total"><span class="cart-grand-total-price">${{$cart->price}}</span></td>
+                                <td class="cart-product-grand-total"><span class="cart-grand-total-price">${{$cart->price * $cart->qty}}</span></td>
                             </tr>
                             @endforeach
 
@@ -179,10 +179,49 @@
 
 
     <script>
-        function update(pid, id, rowId){
-            $.ajax({url: "/", success: function(result){
-                $("#div1").html(result);
-            }});
+
+        function update(id, pid, size, color, rowId){
+
+            $.ajax({
+                url: "/product/checkproductquantity",
+                type: 'post',
+                data: {
+                    'id': pid,
+                    'size': size,
+                    'color': color
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(result){
+                    qty = result[0]['available_quantity'];
+
+                if($('#'+id).val() > qty){
+                    alert('Max Quantity Reached');
+                    $('#'+id).val(qty);
+                }else{
+                    $.ajax({
+                        url: "/product/updatecart",
+                        type: 'post',
+                        data: {
+                            'rowId': rowId,
+                            'qty': $('#'+id).val()
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (result) {
+                            document.location.reload(true);
+                        }
+                    });
+                }
+            },
+                error: function (request, status, error) {
+                console.log(request.responseText);
+                console.log(request.status);
+                console.log(request.error);
+            }
+            });
         }
     </script>
 

@@ -163,6 +163,8 @@ Route::get('/vendor/adddetail/{size}/{color}/{quantity}','VendorController@addDe
 Route::get('/vendor/orders','VendorController@orders')->name('vendor.orders');
 Route::get('/vendor/login', 'VendorController@vendorLogin')->name('vendor.login');
 Route::post('/vendor/login', 'VendorController@login');
+Route::get('/vendor/topproducts/{id}', 'VendorController@topProducts');
+Route::get('/vendor/buysell/{id}', 'VendorController@buySell');
 
 
 
@@ -202,6 +204,7 @@ Route::get('/product/topvendors', 'ProductController@topVendors');
 
 Route::post('/product/addToCart', 'ProductController@addToCart');
 Route::get('/product/removeFromCart/{id}', 'ProductController@removeFromCart')->name('product.removeFromCart');;
+
 
 Route::get('/showcart',function (){
     return Cache::get('cart');;
@@ -301,5 +304,6 @@ Route::get('wtest', function (){
 
 });
 
-
+Route::post('/product/checkproductquantity', 'ProductController@checkProductQuantity');
+Route::post('/product/updatecart', 'ProductController@updateCart');
 

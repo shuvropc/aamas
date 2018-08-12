@@ -67,7 +67,7 @@
         <script type="application/javascript">
 
             $(document).ready(function() {
-                $.ajax({url: "http://localhost:8000/product/topproducts", success: function(result){
+                $.ajax({url: "/product/topproducts", success: function(result){
                     if( $('#top-product').length > 0 ){
                         var ctx7 = document.getElementById("top-product").getContext("2d");
                         var product_name = [];
@@ -131,7 +131,7 @@
                     }
                 }});
 
-                $.ajax({url: "http://localhost:8000/product/topvendors", success: function(result){
+                $.ajax({url: "/product/topvendors", success: function(result){
                     if( $('#top-vendor').length > 0 ){
                         var ctx7 = document.getElementById("top-vendor").getContext("2d");
                         var vendor_name = [];

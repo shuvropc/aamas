@@ -446,6 +446,10 @@ class ProductController extends Controller
 
     }
 
+    public function updateCart(Request $request){
+        Cart::update($request->rowId, $request->qty);
+    }
+
     public function removeFromCart($id){
         Cart::remove($id);
 
@@ -511,8 +515,14 @@ class ProductController extends Controller
        return view('searchByCategory')->with('products',$products);
     }
 
-    public function checkProductQuantity(){
+    public function checkProductQuantity(Request $request){
+        $product_qty = Detail::select('available_quantity')
+            ->where('product_id', '=', $request->id)
+            ->where('size', '=', $request->size)
+            ->where('color', '=', $request->color)
+            ->get();
 
+        return $product_qty;
     }
 
     public function topProducts(Request $request){
