@@ -181,6 +181,10 @@ Route::post('/contact', 'ContactUsController@storeContact');
 
 
 
+Route::get('/wishlist/add', 'WishlistController@add')->name('wishlist.add');
+
+
+
 //Employee
 Route::get('/employee/login', 'EmployeeController@employeeLogin')->name('employee.login');
 Route::post('/employee/login', 'EmployeeController@login');
@@ -280,8 +284,21 @@ Route::get('employee/search', 'EmployeeController@search')->name('employee.searc
 
 
 
-Route::get('stest', function (){
-    return Session::get('employee.image');
+Route::get('wtest', function (){
+//    Cart::instance('wishlist')->destroy();
+//    Cart::instance('wishlist')->add(str_random(18), 'Product 2', 1, 19.95);
+//        Cart::instance('wishlist')->add(['id' => 3, 'name' => 'Product 1', 'qty' => 1, 'price' => 10.00]);
+    return Cart::instance('wishlist')->content();
+
+
+//    foreach (Cart::instance('wishlist')->content() as $wilist){
+//        return $wilist->id;
+//    }
+
+
+
+
+
 });
 
 
