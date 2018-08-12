@@ -114,7 +114,7 @@ class AdminController extends Controller
                 ->leftJoin('feature_products', 'products.id', '=', 'feature_products.product_id')
                 ->join('vendors', 'vendors.id', '=', 'products.vendor_id')
                 ->select('products.*', 'feature_products.product_id', 'vendors.vendor_name', 'vendors.id as vendorId')
-                ->paginate(4);
+                ->paginate(2);
 
         }
 
@@ -152,11 +152,14 @@ class AdminController extends Controller
         }
     }
 
-    function searchByAnything(Request $request){
+    function search(Request $request){
 
-        $product = Product::where('id','=', $request->value )
-            ->orWhere('product_name', 'like', $request->value .'%')
-            ->orWhere('brand', 'like', $request->value .'%')->get();
+        $product = DB::table('products')
+            ->leftJoin('feature_products', 'products.id', '=', 'feature_products.product_id')
+            ->join('vendors', 'vendors.id', '=', 'products.vendor_id')
+            ->select('products.*', 'feature_products.product_id', 'vendors.vendor_name', 'vendors.id as vendorId')
+            ->where('product_name', 'like', '%' . $request->value . '%')->get();
+
         return $product;
     }
 
@@ -167,10 +170,10 @@ class AdminController extends Controller
             ->leftJoin('feature_products', 'products.id', '=', 'feature_products.product_id')
             ->join('vendors', 'vendors.id', '=', 'products.vendor_id')
             ->select('products.*', 'feature_products.product_id', 'vendors.vendor_name', 'vendors.id as vendorId')
-            ->paginate($request->number);
+            ->limit($request->number)
+            ->get();
 
         return $products;
-//        return $request->number;
     }
 
     function sliders(){
@@ -219,3 +222,6 @@ class AdminController extends Controller
 
 
 }
+
+
+

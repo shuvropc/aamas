@@ -265,6 +265,7 @@ class EmployeeController extends Controller
 
     }
 
+
     public function imagechange(Request $request)
     {
         $employee=Employee::find($request->session()->get('employee.id'));
@@ -532,5 +533,12 @@ class EmployeeController extends Controller
             ->get();
 
         return view('vendor.employee.sales.productStatus')->with('products', $products);
+    }
+
+    public function search(Request $request){
+        $product = Product::Where('vendor_id', '=', $request->session()->get('employee.vendor_id'))
+            ->Where('product_name', 'like', '%' . $request->value . '%')
+            ->get();
+        return $product;
     }
 }

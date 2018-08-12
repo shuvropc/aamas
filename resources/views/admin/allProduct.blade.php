@@ -12,11 +12,20 @@
     <div class="container-fluid">
         <!-- Title -->
         <div class="row heading-bg">
-            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-3">
                 <h5 class="txt-dark">product orders</h5>
             </div>
+
+            <div id="myTable_filter" class=" col-lg-5 col-md-5 col-sm-5 dataTables_filter all-search">
+                <form>
+                    @csrf
+
+                    <input class="product-search" id="search" name="search-by-name" onkeyup="searchByAnything()" placeholder="Search" aria-controls="myTable" type="search" >
+
+                </form>
+            </div>
             <!-- Breadcrumb -->
-            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <div class="col-lg-4 col-sm-3 col-md-4">
                 <ol class="breadcrumb">
                     <li><a href="index.html">Dashboard</a></li>
                     <li><a href="#"><span>e-commerce</span></a></li>
@@ -36,24 +45,20 @@
                             <div class="table-wrap">
                                 <div class="table-responsive">
                                     <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
+                                        <form>
+                                            @csrf
                                         <div class="dataTables_length number-entries" id="myTable_length">
                                             <label>Show
-                                                <select name="myTable_length" id="number" aria-controls="myTable" class="" >
-                                                    <option value="2" onclick="setNumber()">2</option>
-                                                    <option value="4" onclick="setNumber()">4</option>
-                                                    <option value="6" onclick="setNumber()">6</option>
-                                                    <option value="10" onclick="setNumber()">10</option>
+                                                <select name="myTable_length" onchange="setNumber()" id="number"  aria-controls="myTable" class="" >
+                                                    <option value="2" >2</option>
+                                                    <option value="4" >4</option>
+                                                    <option value="6" selected>6</option>
+                                                    <option value="10" >10</option>
                                                 </select> entries
                                             </label>
                                         </div>
-                                        <div id="myTable_filter" class="dataTables_filter all-search">
-                                           <form method="POST">
-                                               @csrf
-                                            <label>
-                                                <input class="" name="search-by-name" placeholder="Search" aria-controls="myTable" type="search" >
-                                            </label>
-                                           </form>
-                                        </div>
+                                        </form>
+
                                         <table class="table display responsive product-overview mb-30 dataTable no-footer" id="myTable" role="grid" aria-describedby="myTable_info">
                                             <thead>
                                             <tr role="row">
@@ -64,9 +69,9 @@
                                                 <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 91px;" aria-label="Quantity: activate to sort column ascending">Vendor Name</th>
                                                 <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 114px;" aria-label="Date: activate to sort column ascending">Date</th>
                                                 <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Featured</th>
-                                                <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 84px;" aria-label="Actions: activate to sort column ascending">Actions</th></tr>
+                                                {{--<th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 84px;" aria-label="Actions: activate to sort column ascending">Actions</th></tr>--}}
                                             </thead>
-                                            <tbody>
+                                            <tbody id="show_products">
 
                                         @foreach($products as $product)
                                             <tr role="row" class="odd" id="product">
@@ -94,14 +99,14 @@
                                                         </span>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" class="text-inverse pr-10" title="" data-toggle="tooltip" data-original-title="Edit">
-                                                        <i class="zmdi zmdi-edit txt-warning"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete">
-                                                        <i class="zmdi zmdi-delete txt-danger"></i>
-                                                    </a>
-                                                </td>
+                                                {{--<td>--}}
+                                                    {{--<a href="javascript:void(0)" class="text-inverse pr-10" title="" data-toggle="tooltip" data-original-title="Edit">--}}
+                                                        {{--<i class="zmdi zmdi-edit txt-warning"></i>--}}
+                                                    {{--</a>--}}
+                                                    {{--<a href="javascript:void(0)" class="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete">--}}
+                                                        {{--<i class="zmdi zmdi-delete txt-danger"></i>--}}
+                                                    {{--</a>--}}
+                                                {{--</td>--}}
                                         @endforeach
 
                                                 <script>
@@ -124,20 +129,67 @@
                                                     }
 
                                                     function searchByAnything() {
-                                                        var value= $('#searchByAnything').val();
+                                                        var value= $('#search').val();
 
                                                         $.ajax({
                                                             type:'GET',
-                                                            url:"http://127.0.0.1:8000/admin/searchByAnything",
-                                                            headers: {
-                                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                            },
+                                                            url:"http://127.0.0.1:8000/admin/search",
                                                             data:{
                                                                 value:value
                                                             },
                                                             success: function(result){
+                                                                console.log(result);
 
-                                                               $("#product").html(result);
+                                                                var products='';
+
+                                                                result.forEach(function(product) {
+
+                                                                    products += "<tr role=\"row\" class=\"odd\" id=\"product\">\n" +
+                                                                    "                                                <td class=\"txt-dark sorting_1\">"+product.product_name+"</td>\n" +
+                                                                    "                                                <td class=\"txt-dark\">"+product.id+"</td>\n" +
+                                                                    "                                                <td>\n" +
+                                                                    "                                                    <img src=\""+"http://127.0.0.1:8000/"+product.image1+"\" width=\"80\">\n" +
+                                                                    "                                                </td>\n" +
+                                                                    "                                                <td>"+product.selling_price+"</td>\n" +
+                                                                    "                                                <td>"+product.vendor_name+"</td>\n" +
+                                                                    "                                                <td>"+product.created_at+"</td>\n" +
+                                                                    "                                                <td>\n" +
+                                                                    "                                                    {{--<span class=\"label label-default font-weight-100\"></span>--}}\n" +
+                                                                    "                                                    <div class=\"toggle\">\n" +
+                                                                    "                                                        <span class=\"mid\">\n" +
+                                                                    "                                                            <label class=\"switch\">\n" ;
+
+                                                                    if(product.product_id){
+                                                                        products +="<input type=\"checkbox\" checked id=\"feature\" onclick=\"addOrRemoveFeatured("+product.id+")\">\n" ;
+
+                                                                    }else {
+                                                                        products +="<input type=\"checkbox\" id=\"feature\" onclick=\"addOrRemoveFeatured("+product.id+")\">\n";
+                                                                    }
+                                                                    {{--"                                                                @if($product->product_id)\n" +--}}
+                                                                    {{--"                                                                    <input type=\"checkbox\" checked id=\"feature\" onclick=\"addOrRemoveFeatured({{$product->id}})\">\n" +--}}
+                                                                    {{--"                                                                @else\n" +--}}
+                                                                    {{--"                                                                    <input type=\"checkbox\" id=\"feature\" onclick=\"addOrRemoveFeatured({{$product->id}})\">\n" +--}}
+                                                                    {{--"\n" +--}}
+                                                                    {{--"                                                                @endif\n" +--}}
+                                                                     products += "                                                                <span class=\"slider round\"></span>\n" +
+                                                                    "                                                            </label>\n" +
+                                                                    "                                                        </span>\n" +
+                                                                    "                                                    </div>\n" +
+                                                                    "                                                </td>\n" ;
+                                                                    // "                                                <td>\n" +
+                                                                    // "                                                    <a href=\"javascript:void(0)\" class=\"text-inverse pr-10\" title=\"\" data-toggle=\"tooltip\" data-original-title=\"Edit\">\n" +
+                                                                    // "                                                        <i class=\"zmdi zmdi-edit txt-warning\"></i>\n" +
+                                                                    // "                                                    </a>\n" +
+                                                                    // "                                                    <a href=\"javascript:void(0)\" class=\"text-inverse\" title=\"\" data-toggle=\"tooltip\" data-original-title=\"Delete\">\n" +
+                                                                    // "                                                        <i class=\"zmdi zmdi-delete txt-danger\"></i>\n" +
+                                                                    // "                                                    </a>\n" +
+                                                                    // "                                                </td>"
+
+
+                                                                });
+
+                                                                $("#show_products").html(products);
+
 
                                                             }
                                                         });
@@ -146,23 +198,70 @@
                                                         var number=$('#number').val();
                                                         //alert(number);
                                                         $.ajax({
-                                                            type: 'POST',
-                                                            url:"http://127.0.0.1:8000/admin/setNumberInAPage",
-                                                            headers: {
-                                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                            },
+                                                            type: 'GET',
+                                                            url:"http://127.0.0.1:8000/admin/setNumber",
+
                                                             data:{
                                                                 number:number
                                                             },
                                                             success: function(result){
 
-                                                                console.log(result);
-                                                                var listOfProduct="";
-                                                                for(var i=0; i<result.length; i++){
-                                                                    listOfProduct += "  <tr> "+result[i].product_name +" </tr>";
-                                                                    $("#product").html(listOfProduct);
-                                                                }
-                                                                console.log(listOfProduct);
+
+                                                                var products='';
+
+                                                                result.forEach(function(product) {
+
+                                                                    products += "<tr role=\"row\" class=\"odd\" id=\"product\">\n" +
+                                                                        "                                                <td class=\"txt-dark sorting_1\">"+product.product_name+"</td>\n" +
+                                                                        "                                                <td class=\"txt-dark\">"+product.id+"</td>\n" +
+                                                                        "                                                <td>\n" +
+                                                                        "                                                    <img src=\""+"http://127.0.0.1:8000/"+product.image1+"\" width=\"80\">\n" +
+                                                                        "                                                </td>\n" +
+                                                                        "                                                <td>"+product.selling_price+"</td>\n" +
+                                                                        "                                                <td>"+product.vendor_name+"</td>\n" +
+                                                                        "                                                <td>"+product.created_at+"</td>\n" +
+                                                                        "                                                <td>\n" +
+                                                                        "                                                    <span class=\"label label-default font-weight-100\"></span>\n" +
+                                                                        "                                                    <div class=\"toggle\">\n" +
+                                                                        "                                                        <span class=\"mid\">\n" +
+                                                                        "                                                            <label class=\"switch\">\n" ;
+
+                                                                    if(product.product_id){
+                                                                        products +="<input type=\"checkbox\" checked id=\"feature\" onclick=\"addOrRemoveFeatured("+product.id+")\">\n" ;
+
+                                                                    }else {
+                                                                        products +="<input type=\"checkbox\" id=\"feature\" onclick=\"addOrRemoveFeatured("+product.id+")\">\n";
+                                                                    }
+                                                                    {{--"                                                                @if($product->product_id)\n" +--}}
+                                                                            {{--"                                                                    <input type=\"checkbox\" checked id=\"feature\" onclick=\"addOrRemoveFeatured({{$product->id}})\">\n" +--}}
+                                                                            {{--"                                                                @else\n" +--}}
+                                                                            {{--"                                                                    <input type=\"checkbox\" id=\"feature\" onclick=\"addOrRemoveFeatured({{$product->id}})\">\n" +--}}
+                                                                            {{--"\n" +--}}
+                                                                            {{--"                                                                @endif\n" +--}}
+                                                                        products += "                                                                <span class=\"slider round\"></span>\n" +
+                                                                        "                                                            </label>\n" +
+                                                                        "                                                        </span>\n" +
+                                                                        "                                                    </div>\n" +
+                                                                        "                                                </td>\n" ;
+                                                                    // "                                                <td>\n" +
+                                                                    // "                                                    <a href=\"javascript:void(0)\" class=\"text-inverse pr-10\" title=\"\" data-toggle=\"tooltip\" data-original-title=\"Edit\">\n" +
+                                                                    // "                                                        <i class=\"zmdi zmdi-edit txt-warning\"></i>\n" +
+                                                                    // "                                                    </a>\n" +
+                                                                    // "                                                    <a href=\"javascript:void(0)\" class=\"text-inverse\" title=\"\" data-toggle=\"tooltip\" data-original-title=\"Delete\">\n" +
+                                                                    // "                                                        <i class=\"zmdi zmdi-delete txt-danger\"></i>\n" +
+                                                                    // "                                                    </a>\n" +
+                                                                    // "                                                </td>"
+
+
+                                                                });
+
+
+
+                                                                $("#show_products").html(products);
+
+
+
+
 
                                                             }
                                                         });
@@ -175,7 +274,7 @@
                                             </tbody>
                                         </table>
                                         {{--<div style="margin: 0 auto ;font-size: 20px">--}}
-                                            {{--{{$products->render()}}--}}
+                                            {{$products->render()}}
                                         {{--</div>--}}
 
                                         </div>

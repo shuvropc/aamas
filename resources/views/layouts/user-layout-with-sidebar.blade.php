@@ -138,8 +138,15 @@
 
                             </div>
                         </form>
-                        <label id="show_product"></label>
+
                     </div><!-- /.search-area -->
+                    <div  style="width: 50%; ">
+
+                        <ul id="show_product">
+
+                        </ul>
+
+                    </div>
                     <!-- ============================================================= SEARCH AREA : END ============================================================= -->				</div><!-- /.top-search-holder -->
 
                 <div class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row">
@@ -1678,7 +1685,14 @@
             data: {val:val},
             success: function(response)
             {
-                $('#show_product').html(response[0]['product_name']);
+                console.log(response);
+                var products='';
+                if(response.length>0){
+                    for(var i=0; i<response.length; i++){
+                        products += "<a href='product/details/"+response[i]['id']+"'><li>"+response[i]['product_name']+"</li></a>";
+                    }
+                    $('#show_product').html(products);
+                }
             },
             error: function(response){
                 $('#show_product').html(response);
