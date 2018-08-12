@@ -31,7 +31,7 @@ function updateAvailabelQuantity() {
 
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:8000/product/quantityByDetails",
+        url: "/product/quantityByDetails",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },

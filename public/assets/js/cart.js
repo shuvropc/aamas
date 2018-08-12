@@ -10,7 +10,7 @@ function addToCart() {
 
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:8000/product/addToCart",
+        url: "/product/addToCart",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
