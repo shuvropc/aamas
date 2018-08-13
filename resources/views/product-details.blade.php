@@ -355,11 +355,43 @@
                                         </div>
 
 
+                                                <abbr title="Add to Wishlist">
+                                                <img onclick="addToWishlist()" style="height: 50px;  padding-left: 60px; padding-top: 20px" src="{{asset('/assets/images/wishlist.png')}}">
+                                                </abbr>
+
+
+
+
                                     </div>
                                 </div>
 
 
+        <script>
 
+          function addToWishlist(){
+
+
+              var pid= $("#product_id").text();
+              var pprice= $("#s_price").text();
+              var pname= $("#pro_name").html();
+
+
+              $.ajax({
+                  url: "http://127.0.0.1:8000/wishlist/add",
+                  data:{
+                      pid:pid,
+                      pprice:pprice,
+                      pname:pname
+                  },
+                  success: function(result){
+                     alert(result);
+                  }
+              });
+          }
+
+
+
+        </script>
 
 
 
@@ -542,14 +574,14 @@
 
 
                                         <div class="product-info text-left">
-                                            <h3 class="name"><a href="detail.html">{{$upSellProduct->product_name}}</a>
+                                            <h3 class="name"><a href="detail.html" id="pro_name">{{$upSellProduct->product_name}}</a>
                                             </h3>
                                             <div class="rating rateit-small"></div>
                                             <div class="description"></div>
 
 
                                             <div class="product-price">
-				                                     <span class="price">{{$upSellProduct->selling_price}}</span>
+				                                     <span class="price" id="s_price">{{$upSellProduct->selling_price}}</span>
                                                    <span class="price-before-discount">$ 800</span>
                                             </div>
 
