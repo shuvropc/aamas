@@ -234,6 +234,16 @@ class AdminController extends Controller
         //return $product;
         return view('admin.vendor_details')->with('vendor',$vendor);
     }
+    function profile(Request $request){
+        $admin=Admin::find($request->session()->get('admin.id'));
+        //return $admin;
+
+        return view('admin.profile')->with('admin',$admin);
+    }
+    function logout(){
+        session()->forget('admin');
+        return redirect()->route('admin.login');
+    }
 
 
 }

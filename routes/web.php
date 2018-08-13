@@ -117,7 +117,7 @@ Route::group(['middleware' => 'CheckAdminLogin'],function (){
 
     Route::get('/admin/search', 'AdminController@search');
 
-    Route::get('/admin/vendorList', 'VendorController@vendorList');
+    Route::get('/admin/vendorList', 'VendorController@vendorList')->name('vendor.list');
 
     Route::post('/vendor/changeVendorstatus', 'VendorController@changeVendorstatus');
 
@@ -135,6 +135,10 @@ Route::group(['middleware' => 'CheckAdminLogin'],function (){
     Route::get('/admin/deleteSlider/{id}','AdminController@deleteSlider')->name('admin.deleteSlider');
 
     Route::get('admin/product/details/{id}','AdminController@productDetails')->name('admin.product.details');
+    Route::get('admin/logout','AdminController@logout')->name('admin.logout');
+    Route::get('admin/profile','AdminController@profile')->name('admin.profile');
+
+
 
 
 });
