@@ -93,18 +93,20 @@
             <div class="more-info-tab clearfix ">
                 <h3 class="new-product-title pull-left">New Products</h3>
                 <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
-                    <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">All</a></li>
-                    <li><a data-transition-type="backSlide" href="#smartphone" data-toggle="tab">Clothing</a></li>
-                    <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Electronics</a></li>
-                    <li><a data-transition-type="backSlide" href="#apple" data-toggle="tab">Shoes</a></li>
+                    <li ><a href="javascript:showCategory('All')">All</a></li>
+                    {{--<li ><button onclick="showCategory('Electronics')">electronics</button></li>--}}
+                    <li><a href="javascript:showCategory('Electronics')">Electronics</a></li>
+                    <li><a href="javascript:showCategory('Clothing')">Clothing</a></li>
+                    <li><a href="javascript:showCategory('Shoes')">Shoes</a></li>
                 </ul><!-- /.nav-tabs -->
             </div>
 
             <div class="tab-content outer-top-xs">
                 <div class="tab-pane in active" id="all">
                     <div class="product-slider">
-                        <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
+                        <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4" id="categorySearch">
                             @foreach($newProducts as $newProduct)
+
                                 <div class="item item-carousel">
                                     <div class="products">
 
@@ -129,36 +131,12 @@
 
                                                 </div><!-- /.product-price -->
 
-                                            </div><!-- /.product-info -->
-                                            {{--<div class="cart clearfix animate-effect">--}}
-                                                {{--<div class="action">--}}
-                                                    {{--<ul class="list-unstyled">--}}
-                                                        {{--<li class="add-cart-button btn-group">--}}
-                                                            {{--<button data-toggle="tooltip" class="btn btn-primary icon" type="button" title="Add Cart">--}}
-                                                                {{--<i class="fa fa-shopping-cart"></i>--}}
-                                                            {{--</button>--}}
-                                                            {{--<button class="btn btn-primary cart-btn" type="button">Add to cart</button>--}}
-
-                                                        {{--</li>--}}
-
-                                                        {{--<li class="lnk wishlist">--}}
-                                                            {{--<a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Wishlist">--}}
-                                                                {{--<i class="icon fa fa-heart"></i>--}}
-                                                            {{--</a>--}}
-                                                        {{--</li>--}}
-
-                                                        {{--<li class="lnk">--}}
-                                                            {{--<a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare">--}}
-                                                                {{--<i class="fa fa-signal" aria-hidden="true"></i>--}}
-                                                            {{--</a>--}}
-                                                        {{--</li>--}}
-                                                    {{--</ul>--}}
-                                                {{--</div><!-- /.action -->--}}
-                                            {{--</div><!-- /.cart -->--}}
+                                            </div>
                                         </div><!-- /.product -->
 
                                     </div><!-- /.products -->
                                 </div><!-- /.item -->
+
                             @endforeach
 
 
@@ -1316,6 +1294,8 @@
             <h3 class="section-title">Best seller</h3>
             <div class="sidebar-widget-body outer-top-xs">
                 <div class="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
+            @foreach($bestSelling as $best)
+
                     <div class="item">
                         <div class="products best-product">
                             <div class="product">
@@ -1325,7 +1305,7 @@
                                             <div class="product-image">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="assets/images/products/p20.jpg" alt="">
+                                                        <img src="{{asset($best->products['image1'])}}" alt="">
                                                     </a>
                                                 </div><!-- /.image -->
 
@@ -1335,11 +1315,10 @@
                                         </div><!-- /.col -->
                                         <div class="col2 col-xs-7">
                                             <div class="product-info">
-                                                <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
+                                                <h3 class="name"><a href="#">{{$best->products['product_name']}}</a></h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="product-price">
-				<span class="price">
-					$450.99				</span>
+				                                <span class="price">TK: {{$best->products['selling_price']}}</span>
 
                                                 </div><!-- /.product-price -->
 
@@ -1349,237 +1328,40 @@
                                 </div><!-- /.product-micro -->
 
                             </div>
-                            <div class="product">
-                                <div class="product-micro">
-                                    <div class="row product-micro-row">
-                                        <div class="col col-xs-5">
-                                            <div class="product-image">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="assets/images/products/p21.jpg" alt="">
-                                                    </a>
-                                                </div><!-- /.image -->
+                            {{--<div class="product">--}}
+                                {{--<div class="product-micro">--}}
+                                    {{--<div class="row product-micro-row">--}}
+                                        {{--<div class="col col-xs-5">--}}
+                                            {{--<div class="product-image">--}}
+                                                {{--<div class="image">--}}
+                                                    {{--<a href="#">--}}
+                                                        {{--<img src="assets/images/products/p21.jpg" alt="">--}}
+                                                    {{--</a>--}}
+                                                {{--</div><!-- /.image -->--}}
 
 
-                                            </div><!-- /.product-image -->
-                                        </div><!-- /.col -->
-                                        <div class="col2 col-xs-7">
-                                            <div class="product-info">
-                                                <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="product-price">
-				<span class="price">
-					$450.99				</span>
+                                            {{--</div><!-- /.product-image -->--}}
+                                        {{--</div><!-- /.col -->--}}
+                                        {{--<div class="col2 col-xs-7">--}}
+                                            {{--<div class="product-info">--}}
+                                                {{--<h3 class="name"><a href="#">Floral Print Buttoned</a></h3>--}}
+                                                {{--<div class="rating rateit-small"></div>--}}
+                                                {{--<div class="product-price">--}}
+				{{--<span class="price">--}}
+					{{--$450.99				</span>--}}
 
-                                                </div><!-- /.product-price -->
+                                                {{--</div><!-- /.product-price -->--}}
 
-                                            </div>
-                                        </div><!-- /.col -->
-                                    </div><!-- /.product-micro-row -->
-                                </div><!-- /.product-micro -->
+                                            {{--</div>--}}
+                                        {{--</div><!-- /.col -->--}}
+                                    {{--</div><!-- /.product-micro-row -->--}}
+                                {{--</div><!-- /.product-micro -->--}}
 
-                            </div>
+                            {{--</div>--}}
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="products best-product">
-                            <div class="product">
-                                <div class="product-micro">
-                                    <div class="row product-micro-row">
-                                        <div class="col col-xs-5">
-                                            <div class="product-image">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="assets/images/products/p22.jpg" alt="">
-                                                    </a>
-                                                </div><!-- /.image -->
+                    @endforeach
 
-
-                                            </div><!-- /.product-image -->
-                                        </div><!-- /.col -->
-                                        <div class="col2 col-xs-7">
-                                            <div class="product-info">
-                                                <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="product-price">
-				<span class="price">
-					$450.99				</span>
-
-                                                </div><!-- /.product-price -->
-
-                                            </div>
-                                        </div><!-- /.col -->
-                                    </div><!-- /.product-micro-row -->
-                                </div><!-- /.product-micro -->
-
-                            </div>
-                            <div class="product">
-                                <div class="product-micro">
-                                    <div class="row product-micro-row">
-                                        <div class="col col-xs-5">
-                                            <div class="product-image">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="assets/images/products/p23.jpg" alt="">
-                                                    </a>
-                                                </div><!-- /.image -->
-
-
-
-                                            </div><!-- /.product-image -->
-                                        </div><!-- /.col -->
-                                        <div class="col2 col-xs-7">
-                                            <div class="product-info">
-                                                <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="product-price">
-				<span class="price">
-					$450.99				</span>
-
-                                                </div><!-- /.product-price -->
-
-                                            </div>
-                                        </div><!-- /.col -->
-                                    </div><!-- /.product-micro-row -->
-                                </div><!-- /.product-micro -->
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="products best-product">
-                            <div class="product">
-                                <div class="product-micro">
-                                    <div class="row product-micro-row">
-                                        <div class="col col-xs-5">
-                                            <div class="product-image">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="assets/images/products/p24.jpg" alt="">
-                                                    </a>
-                                                </div><!-- /.image -->
-
-
-
-                                            </div><!-- /.product-image -->
-                                        </div><!-- /.col -->
-                                        <div class="col2 col-xs-7">
-                                            <div class="product-info">
-                                                <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="product-price">
-				<span class="price">
-					$450.99				</span>
-
-                                                </div><!-- /.product-price -->
-
-                                            </div>
-                                        </div><!-- /.col -->
-                                    </div><!-- /.product-micro-row -->
-                                </div><!-- /.product-micro -->
-
-                            </div>
-                            <div class="product">
-                                <div class="product-micro">
-                                    <div class="row product-micro-row">
-                                        <div class="col col-xs-5">
-                                            <div class="product-image">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="assets/images/products/p25.jpg" alt="">
-                                                    </a>
-                                                </div><!-- /.image -->
-
-
-                                            </div><!-- /.product-image -->
-                                        </div><!-- /.col -->
-                                        <div class="col2 col-xs-7">
-                                            <div class="product-info">
-                                                <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="product-price">
-				<span class="price">
-					$450.99				</span>
-
-                                                </div><!-- /.product-price -->
-
-                                            </div>
-                                        </div><!-- /.col -->
-                                    </div><!-- /.product-micro-row -->
-                                </div><!-- /.product-micro -->
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="products best-product">
-                            <div class="product">
-                                <div class="product-micro">
-                                    <div class="row product-micro-row">
-                                        <div class="col col-xs-5">
-                                            <div class="product-image">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="assets/images/products/p26.jpg" alt="">
-                                                    </a>
-                                                </div><!-- /.image -->
-
-
-
-                                            </div><!-- /.product-image -->
-                                        </div><!-- /.col -->
-
-                                        <div class="col2 col-xs-7">
-                                            <div class="product-info">
-                                                <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="product-price">
-				<span class="price">
-					$450.99				</span>
-
-                                                </div><!-- /.product-price -->
-
-                                            </div>
-                                        </div><!-- /.col -->
-
-
-
-                                    </div><!-- /.product-micro-row -->
-                                </div><!-- /.product-micro -->
-
-                            </div>
-                            <div class="product">
-                                <div class="product-micro">
-                                    <div class="row product-micro-row">
-                                        <div class="col col-xs-5">
-                                            <div class="product-image">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="assets/images/products/p27.jpg" alt="">
-                                                    </a>
-                                                </div><!-- /.image -->
-
-
-                                            </div><!-- /.product-image -->
-                                        </div><!-- /.col -->
-                                        <div class="col2 col-xs-7">
-                                            <div class="product-info">
-                                                <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="product-price">
-				<span class="price">
-					$450.99				</span>
-
-                                                </div><!-- /.product-price -->
-
-                                            </div>
-                                        </div><!-- /.col -->
-                                    </div><!-- /.product-micro-row -->
-                                </div><!-- /.product-micro -->
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div><!-- /.sidebar-widget-body -->
         </div><!-- /.sidebar-widget -->
@@ -1706,7 +1488,73 @@
 
 
     </div><!-- /.homebanner-holder -->
-    <!-- ============================================== CONTENT : END ============================================== -->
 
+    <!-- ============================================== CONTENT : END ============================================== -->
+@endsection
+@section('scripts')
+    <script>
+   function showCategory(category) {
+       $.ajax({
+           type: 'POST',
+           url:"/search/category",
+           headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           },
+           data : {
+               category : category
+           },
+           success: function(result){
+               console.log(result);
+               var products="";
+
+               result.forEach(function (product) {
+
+
+
+
+              products += " <div class=\"item item-carousel\">\n" +
+               "                                    <div class=\"products\">\n" +
+               "\n" +
+               "                                        <div class=\"product\">\n" +
+               "                                            <div class=\"product-image\">\n" +
+               "                                                <div class=\"image\">\n" +
+               "                                                    <a href=\"{{route('product.details',['id' => $newProduct['id']])}}\"><img  src=\""+"http://127.0.0.1:8000/"+product.image1+"\" alt=\"\"></a>\n" +
+               "                                                </div><!-- /.image -->\n" +
+               "\n" +
+               "                                                <div class=\"tag new\"><span>new</span></div>\n" +
+               "                                            </div><!-- /.product-image -->\n" +
+               "\n" +
+               "\n" +
+               "                                            <div class=\"product-info text-left\">\n" +
+               "                                                <h3 class=\"name\"><a href=\"detail.html\">"+product.product_name+"</a></h3>\n" +
+               "                                                <div class=\"rating rateit-small\"></div>\n" +
+               "                                                <div class=\"description\"></div>\n" +
+               "\n" +
+               "                                                <div class=\"product-price\">\n" +
+               "                                                    <span class=\"price\">"+product.selling_price+"</span>\n" +
+               "                                                    <span class=\"price-before-discount\">"+product.discount+"</span>\n" +
+               "\n" +
+               "                                                </div>\n" +
+               "\n" +
+               "                                            </div>\n" +
+               "                                        </div>\n" +
+               "\n" +
+               "                                    </div>\n" +
+               "                                </div>";
+
+               });
+               $("#categorySearch").html(products);
+
+           },
+           error: function(data, errorThrown)
+           {
+               console.log('request failed :'+data);
+           }
+
+       });
+   }
+
+
+</script>
 
 @endsection

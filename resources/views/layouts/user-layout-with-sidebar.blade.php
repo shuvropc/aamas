@@ -123,10 +123,10 @@
 
                                         <ul class="dropdown-menu" role="menu" >
                                             <li class="menu-header">Computer</li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Clothing</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Electronics</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Shoes</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Watches</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('search.category',['type'=>'Clothing'])}}">- Clothing</a></li>
+                                            <li role="presentation"><a href="{{route('search.category',['type'=>'Electronics'])}}">- Electronics</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('search.category',['type'=>'Shoes'])}}">- Shoes</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('search.category',['type'=>'Watches'])}}">- Watches</a></li>
 
                                         </ul>
                                     </li>

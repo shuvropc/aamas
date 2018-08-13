@@ -99,13 +99,17 @@ Route::group([ 'middleware' => 'CheckEmployeeLogin'], function() {
 
 });
 
+
 Route::group(['middleware' => 'CheckAdminLogin'],function (){
     Route::get('/admin','AdminController@index')->name('admin.index');
+    Route::get('/admin/registration', 'AdminController@getRegistration')->name('admin.registration');
+    Route::post('/admin/registration', 'AdminController@postRegistration');
+    Route::get('/admin/vendor/details/{id}','AdminController@vendorDetails')->name('admin.vendor.details');
+
     Route::get('/admin/featureproduct','AdminController@featured')->name('admin.featured');
     Route::get('/admin/product', 'AdminController@product')->name('admin.product');
     Route::post('/admin/product', 'AdminController@product');
-    Route::get('/admin/registration', 'AdminController@getRegistration')->name('admin.registration');
-    Route::post('/admin/registration', 'AdminController@postRegistration');
+
     Route::get('/admin/featured', 'AdminController@showFeatureProduct')->name('admin.feature.product');
     Route::post('/admin/featured/delete', 'AdminController@deleteFeatured');
 
@@ -129,6 +133,8 @@ Route::group(['middleware' => 'CheckAdminLogin'],function (){
 
 
     Route::get('/admin/deleteSlider/{id}','AdminController@deleteSlider')->name('admin.deleteSlider');
+
+    Route::get('admin/product/details/{id}','AdminController@productDetails')->name('admin.product.details');
 
 
 });
@@ -289,4 +295,6 @@ Route::get('stest', function (){
 
 Route::post('/product/checkproductquantity', 'ProductController@checkProductQuantity');
 Route::post('/product/updatecart', 'ProductController@updateCart');
+
+Route::post('/search/category', 'HomeController@searchCategory')->name('new.category');
 

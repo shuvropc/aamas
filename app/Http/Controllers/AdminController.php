@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 use App\Admin;
 use App\Product;
+use App\Detail;
 use App\Feature_product;
 use App\Slider;
+use App\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -114,7 +116,7 @@ class AdminController extends Controller
                 ->leftJoin('feature_products', 'products.id', '=', 'feature_products.product_id')
                 ->join('vendors', 'vendors.id', '=', 'products.vendor_id')
                 ->select('products.*', 'feature_products.product_id', 'vendors.vendor_name', 'vendors.id as vendorId')
-                ->paginate(2);
+                ->paginate(5);
 
         }
 
@@ -163,18 +165,18 @@ class AdminController extends Controller
         return $product;
     }
 
-    function setNumberInAPage(Request $request){
-
-
-        $products = $users = DB::table('products')
-            ->leftJoin('feature_products', 'products.id', '=', 'feature_products.product_id')
-            ->join('vendors', 'vendors.id', '=', 'products.vendor_id')
-            ->select('products.*', 'feature_products.product_id', 'vendors.vendor_name', 'vendors.id as vendorId')
-            ->limit($request->number)
-            ->get();
-
-        return $products;
-    }
+//    function setNumberInAPage(Request $request){
+//
+//
+//        $products = $users = DB::table('products')
+//            ->leftJoin('feature_products', 'products.id', '=', 'feature_products.product_id')
+//            ->join('vendors', 'vendors.id', '=', 'products.vendor_id')
+//            ->select('products.*', 'feature_products.product_id', 'vendors.vendor_name', 'vendors.id as vendorId')
+//            ->limit($request->number)
+//            ->get();
+//
+//        return $products;
+//    }
 
     function sliders(){
         return view('admin.sliders')->with('sliders',Slider::all());
@@ -218,6 +220,19 @@ class AdminController extends Controller
         $slider->delete();
 
         return redirect()->route( 'admin.sliders');
+    }
+
+
+    public function productDetails(Request $request, $id){
+        $product= Product::find($id);
+        $details=Detail::where('product_id', '=', $id)->get();
+        return view('admin.product_details',['product'=>$product] )->with('details', $details);
+    }
+
+    public function vendorDetails($id){
+        $vendor=Vendor::find($id);
+        //return $product;
+        return view('admin.vendor_details')->with('vendor',$vendor);
     }
 
 

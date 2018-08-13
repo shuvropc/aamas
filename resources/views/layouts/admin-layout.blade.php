@@ -343,6 +343,14 @@
     <div class="fixed-sidebar-left">
         <ul class="nav navbar-nav side-nav nicescroll-bar">
             <li class="navigation-header">
+                <span>Admin</span>
+                <i class="zmdi zmdi-more"></i>
+            </li>
+            <li>
+                <a href="{{route('admin.registration')}}" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Add admin</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+            </li>
+
+            <li class="navigation-header">
                 <span>Products</span>
                 <i class="zmdi zmdi-more"></i>
             </li>

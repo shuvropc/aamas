@@ -161,13 +161,7 @@
                                                         data : {
                                                             pid : product_id
                                                         },
-                                                        success: function(result){
-                                                            console.log(result);
-                                                            $('#myModal').modal('hide');
-                                                            $('.product_row_'+product_id).remove();
-                                                            product_id=null;
 
-                                                        }
                                                     });
 
                                                 }
@@ -206,10 +200,14 @@
 
 
                                                                 products += " <tr role=\"row\" class=\"odd product_row_"+product.id+"\" id=\"product\">\n" +
-                                                                    "                                                        <td class=\"txt-dark sorting_1\">"+product.product_name+"</td>\n" +
+                                                                    "                                                        <td class=\"txt-dark sorting_1\">\n" +
+                                                                    "                                                        <a href=\""+"http://127.0.0.1:8000/sales/product/details/"+product.id+"\">"+product.product_name+"</a>\n" +
+                                                                    "                                                        </td>\n" +
                                                                     "                                                        <td class=\"txt-dark\">"+product.id+"</td>\n" +
                                                                     "                                                        <td>\n" +
+                                                                    "                                                          <a href=\""+"http://127.0.0.1:8000/sales/product/details/"+product.id+"\">\n" +
                                                                     "                                                            <img src=\""+"http://127.0.0.1:8000/"+product.image1+"\" width=\"80\">\n" +
+                                                                    "                                                          </a>\n"+
                                                                     "                                                        </td>\n" +
                                                                     "                                                        <td>"+product.buying_price+"</td>\n" +
                                                                     "                                                        <td>"+product.selling_price+"</td>\n" +
