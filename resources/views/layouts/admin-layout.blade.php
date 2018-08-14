@@ -77,7 +77,7 @@
 
                 <li class="dropdown auth-drp">
                     <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown">
-                        <img src="{{asset(Session::get('admin.image'))}}" alt="Admin Photo" class="user-auth-img img-circle"/>
+                        <img src="{{asset(Session::get('admin.image'))}}" alt="{{Session::get('admin.name')}}" class="user-auth-img img-circle"/>
                         <span class="user-online-status"></span>
                     </a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
@@ -147,7 +147,7 @@
                 <a href="{{route('vendor.list')}}" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Vendor List</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Vendor Status</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+                <a href="{{route('vendor.disable')}}" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Vendor Status</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
             </li>
 
             <li><hr class="light-grey-hr mb-10"/></li>

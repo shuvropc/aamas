@@ -303,8 +303,8 @@ class VendorController extends Controller
 
     public function productStatus(Request $request){
 
-            $products = ViewProductWithDetails::where('vendor_id','=',$request->session()
-                ->get('vendor.id'))
+            $products = ViewProductWithDetails::where('vendor_id','=',$request->session()->get('vendor.id'))
+                ->where('total_quantity','<',6)
                 ->orderBy('available_quantity', 'ASC')
                 ->get();
             return view('vendor.productStatus')->with('products', $products);
@@ -337,6 +337,19 @@ class VendorController extends Controller
         $product = Product::Where('vendor_id', '=', $request->session()->get('vendor.id'))
         ->Where('product_name', 'like', '%' . $request->value . '%')->get();
         return $product;
+    }
+
+    function quantityUpdate(Request $request){
+        $quantity=Detail::where('product_id','=',$request->product_id)
+            ->where('color','=',$request->color)
+            ->where('size','=',$request->size)
+            ->get();
+        if($quantity){
+            $quantity->total_quantity=$request->value;
+            if($quantity->save()){
+                return $quantity;
+            }
+        }
     }
 
 

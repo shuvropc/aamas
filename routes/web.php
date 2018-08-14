@@ -50,6 +50,7 @@ Route::group(['middleware' => 'VendorLoginCheck'], function (){
 
     Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
     Route::get('/vendor/index', 'VendorController@index')->name('vendor.index');
+    Route::get('/product/update', 'VendorController@quantityUpdate')->name('vendor.index');
 
     
 });
@@ -137,6 +138,9 @@ Route::group(['middleware' => 'CheckAdminLogin'],function (){
     Route::get('admin/product/details/{id}','AdminController@productDetails')->name('admin.product.details');
     Route::get('admin/logout','AdminController@logout')->name('admin.logout');
     Route::get('admin/profile','AdminController@profile')->name('admin.profile');
+    Route::post('admin/profile/update','AdminController@postUpdate');
+    Route::get('admin/vendor/disable','AdminController@disableList')->name('vendor.disable');
+    Route::post('admin/photo/update','AdminController@updatePhoto');
 
 
 

@@ -56,6 +56,23 @@ class AdminController extends Controller
 
     }
 
+    public function postUpdate(Request $request){
+        $admin=Admin::find($request->aid);
+        if($admin){
+            $admin->name=$request->aname;
+            $admin->email=$request->aemail;
+            $admin->phone=$request->acontact;
+            $admin->permanent_address=$request->apermanent;
+            $admin->present_address=$request->apresent;
+
+            if($admin->save()){
+                return $admin;
+            }
+
+        }
+
+    }
+
     function getLogin(){
         return view('admin.login');
     }
@@ -239,6 +256,29 @@ class AdminController extends Controller
         //return $admin;
 
         return view('admin.profile')->with('admin',$admin);
+    }
+
+    public function disableList(){
+        $vendor=Vendor::where('status','=','0')->get();
+        return view('admin.disableList')
+            ->with('vendors',$vendor);
+    }
+
+    public function updatePhoto(Request $request){
+
+        $admin=Admin::find($request->aid);
+        if($admin) {
+
+            $file = $request->aphoto;
+            //return $file;
+            $file_name = str_random(30) . sha1(time()) . '.' . $file->getClientOriginalExtension();
+           // return $file_name;
+            $file->move(public_path('/uploads/admin'), $file_name);
+            $admin->image = 'uploads/admin/' . $file;
+            if ($admin->save()) {
+                return $admin;
+            }
+        }
     }
     function logout(){
         session()->forget('admin');

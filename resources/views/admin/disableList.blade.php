@@ -10,7 +10,7 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Vendor List</h5>
+                    <h5 class="txt-dark">Disable Vendor List</h5>
                 </div>
                 <!-- Breadcrumb -->
                 {{--<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">--}}
@@ -48,20 +48,20 @@
 
                                             @foreach($vendors as $vendor)
 
-                                            <tr>
-                                                <td class="txt-dark">{{$vendor->id}}</td>
-                                                <td class="txt-dark">{{$vendor->name}}</td>
-                                                <td>
-                                                    <img src="{{asset($vendor->logo_image)}}" alt="iMac" width="80">
-                                                </td>
-                                                <td>{{$vendor->product_types}}</td>
-                                                <td>20</td>
+                                                <tr>
+                                                    <td class="txt-dark">{{$vendor->id}}</td>
+                                                    <td class="txt-dark">{{$vendor->name}}</td>
+                                                    <td>
+                                                        <img src="{{asset($vendor->logo_image)}}" alt="iMac" width="80">
+                                                    </td>
+                                                    <td>{{$vendor->product_types}}</td>
+                                                    <td>20</td>
 
-                                                <td>10-10-2016</td>
+                                                    <td>10-10-2016</td>
 
-                                                <td>
-                                                    {{--<span class="label label-default font-weight-100"></span>--}}
-                                                    <div class="toggle">
+                                                    <td>
+                                                        {{--<span class="label label-default font-weight-100"></span>--}}
+                                                        <div class="toggle">
                                                         <span class="mid">
                                                             <label class="switch">
                                                                 @if($vendor->status==1)
@@ -73,13 +73,13 @@
                                                                 <span class="slider round"></span>
                                                             </label>
                                                         </span>
-                                                    </div>
-                                                </td>
+                                                        </div>
+                                                    </td>
 
 
-                                            </tr>
+                                                </tr>
 
-                                                @endforeach
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>

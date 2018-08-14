@@ -13,7 +13,7 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-3 col-sm-3" >
-                    <h5 class="txt-dark">product orders</h5>
+                    <h5 class="txt-dark">All Product</h5>
                 </div>
 
                 <div id="myTable_filter" class=" col-lg-6 col-md-6 col-sm-6 dataTables_filter all-search">
@@ -25,13 +25,13 @@
                     </form>
                 </div>
                 <!-- Breadcrumb -->
-                <div class="col-lg-4 col-sm-3 col-md-4 ">
-                    <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>e-commerce</span></a></li>
-                        <li class="active"><span>product-orders</span></li>
-                    </ol>
-                </div>
+                {{--<div class="col-lg-4 col-sm-3 col-md-4 ">--}}
+                    {{--<ol class="breadcrumb">--}}
+                        {{--<li><a href="index.html">Dashboard</a></li>--}}
+                        {{--<li><a href="#"><span>e-commerce</span></a></li>--}}
+                        {{--<li class="active"><span>product-orders</span></li>--}}
+                    {{--</ol>--}}
+                {{--</div>--}}
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->

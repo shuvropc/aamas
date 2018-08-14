@@ -92,13 +92,13 @@
         <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
             <div class="more-info-tab clearfix ">
                 <h3 class="new-product-title pull-left">New Products</h3>
-                <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
-                    <li ><a href="javascript:showCategory('All')">All</a></li>
+                {{--<ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">--}}
+                    {{--<li ><a href="javascript:showCategory('All')">All</a></li>--}}
                     {{--<li ><button onclick="showCategory('Electronics')">electronics</button></li>--}}
-                    <li><a href="javascript:showCategory('Electronics')">Electronics</a></li>
-                    <li><a href="javascript:showCategory('Clothing')">Clothing</a></li>
-                    <li><a href="javascript:showCategory('Shoes')">Shoes</a></li>
-                </ul><!-- /.nav-tabs -->
+                    {{--<li><a href="javascript:showCategory('Electronics')">Electronics</a></li>--}}
+                    {{--<li><a href="javascript:showCategory('Clothing')">Clothing</a></li>--}}
+                    {{--<li><a href="javascript:showCategory('Shoes')">Shoes</a></li>--}}
+                {{--</ul><!-- /.nav-tabs -->--}}
             </div>
 
             <div class="tab-content outer-top-xs">
@@ -107,11 +107,11 @@
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4" id="categorySearch">
                             @foreach($newProducts as $newProduct)
 
-                                <div class="item item-carousel">
-                                    <div class="products">
+                                <div class="item item-carousel" >
+                                    <div class="products" >
 
                                         <div class="product">
-                                            <div class="product-image">
+                                            <div class="product-image" >
                                                 <div class="image">
                                                     <a href="{{route('product.details',['id' => $newProduct['id']])}}"><img  src="{{asset($newProduct['image1'])}}" alt=""></a>
                                                 </div><!-- /.image -->

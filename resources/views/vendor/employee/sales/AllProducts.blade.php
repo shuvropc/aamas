@@ -179,6 +179,13 @@
                                                         },
                                                         success: function(result){
                                                             console.log(result);
+                                                        },
+                                                        success: function(result){
+                                                            console.log(result);
+                                                            $('#myModal').modal('hide');
+                                                            $('.product_row_'+product_id).remove();
+                                                            product_id=null;
+
                                                         }
                                                     });
                                                 }

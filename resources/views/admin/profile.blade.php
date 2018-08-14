@@ -23,10 +23,10 @@
                                     </div>
                                     <div class="profile-info text-center">
                                         <div class="profile-img-wrap">
-                                            <img class="inline-block mb-10" src="{{asset('$admin->image')}}" alt="Profile Photo"/>
+                                            <img class="inline-block mb-10" src="{{asset('$admin->image')}}" alt="{{$admin->name}}"/>
                                             <div class="fileupload btn btn-default">
                                                 <span class="btn-text">edit</span>
-                                                <input class="upload" type="file">
+                                                <input class="upload" id="profileImage" onchange="photoUpdate({{$admin->id}})" type="file">
                                             </div>
                                         </div>
                                         <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-danger">{{$admin->name}}</h5>
@@ -57,66 +57,40 @@
                                                                                                 <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
                                                                                                 <div class="input-group">
                                                                                                     <div class="input-group-addon"><i class="icon-user"></i></div>
-                                                                                                    <input type="text" class="form-control" id="exampleInputuname_1" value="{{$admin->name}}" placeholder="{{$admin->name}}">
+                                                                                                    <input type="text" class="form-control" id="name" value="{{$admin->name}}" placeholder="{{$admin->name}}">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
                                                                                                 <div class="input-group">
                                                                                                     <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
-                                                                                                    <input type="email" class="form-control" value="{{$admin->email}}" id="exampleInputEmail_1" placeholder="{{$admin->email}}">
+                                                                                                    <input type="email" class="form-control" value="{{$admin->email}}" id="email" placeholder="{{$admin->email}}">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
                                                                                                 <div class="input-group">
                                                                                                     <div class="input-group-addon"><i class="icon-phone"></i></div>
-                                                                                                    <input type="email" class="form-control" value="{{$admin->phone}}" id="exampleInputContact_1" placeholder="+102 9388333">
+                                                                                                    <input type="text" class="form-control" value="{{$admin->phone}}" id="contact" placeholder="+102 9388333">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label mb-10" for="exampleInputpwd_1">Permanent Address</label>
                                                                                                 <div class="input-group">
                                                                                                     <div class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></div>
-                                                                                                    <input type="text" class="form-control" id="exampleInputpwd_1" value="{{$admin->permanent_address}}" placeholder="Address">
+                                                                                                    <input type="text" class="form-control" id="permanent" value="{{$admin->permanent_address}}" placeholder="Address">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label mb-10" for="exampleInputpwd_1">Present Address</label>
                                                                                                 <div class="input-group">
                                                                                                     <div class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></div>
-                                                                                                    <input type="text" class="form-control" id="exampleInputpwd_1" value="{{$admin->present_address}}" placeholder="Address">
+                                                                                                    <input type="text" class="form-control" id="present" value="{{$admin->present_address}}" placeholder="Address">
                                                                                                 </div>
                                                                                             </div>
-                                                                                            {{--<div class="form-group">--}}
-                                                                                                {{--<label class="control-label mb-10">Gender</label>--}}
-                                                                                                {{--<div>--}}
-                                                                                                    {{--<div class="radio">--}}
-                                                                                                        {{--<input type="radio" name="radio1" id="radio_1" value="option1" checked="">--}}
-                                                                                                        {{--<label for="radio_1">--}}
-                                                                                                            {{--M--}}
-                                                                                                        {{--</label>--}}
-                                                                                                    {{--</div>--}}
-                                                                                                    {{--<div class="radio">--}}
-                                                                                                        {{--<input type="radio" name="radio1" id="radio_2" value="option2">--}}
-                                                                                                        {{--<label for="radio_2">--}}
-                                                                                                            {{--F--}}
-                                                                                                        {{--</label>--}}
-                                                                                                    {{--</div>--}}
-                                                                                                {{--</div>--}}
-                                                                                            {{--</div>--}}
-                                                                                            {{--<div class="form-group">--}}
-                                                                                                {{--<label class="control-label mb-10">Country</label>--}}
-                                                                                                {{--<select class="form-control" data-placeholder="Choose a Category" tabindex="1">--}}
-                                                                                                    {{--<option value="Category 1">USA</option>--}}
-                                                                                                    {{--<option value="Category 2">Austrailia</option>--}}
-                                                                                                    {{--<option value="Category 3">India</option>--}}
-                                                                                                    {{--<option value="Category 4">UK</option>--}}
-                                                                                                {{--</select>--}}
-                                                                                            {{--</div>--}}
                                                                                         </div>
                                                                                         <div class="form-actions mt-10">
-                                                                                            <button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
+                                                                                            <button type="submit" class="btn btn-success mr-10 mb-30" onclick="updateProfile({{$admin->id}})">Update profile</button>
                                                                                         </div>
                                                                                     </form>
                                                                                 </div>
@@ -128,7 +102,6 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
                                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                                                     </div>
                                                 </div>
@@ -194,11 +167,71 @@
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
                 <div class="col-sm-12">
-                    <p>2017 &copy; Philbert. Pampered by Hencework</p>
+                    <p>2018 &copy; aamas</p>
                 </div>
             </div>
         </footer>
         <!-- /Footer -->
+
+    <script>
+        function updateProfile(id) {
+          var name=$('#name').val();
+          var email=$('#email').val();
+          var contact=$('#contact').val();
+          var permanent=$('#permanent').val();
+          var present=$('#present').val();
+
+            $.ajax({
+                type: 'POST',
+                url: "http://127.0.0.1:8000/admin/profile/update",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data : {
+                    aid : id,
+                    aname:name,
+                    aemail:email,
+                    acontact:contact,
+                    apermanent:permanent,
+                    apresent:present
+
+
+                },
+                success: function(result){
+                    console.log(result);
+                    $('#myModal').modal('hide');
+
+                }
+
+            });
+
+        }
+
+        function photoUpdate(id) {
+            var photo=$('#profileImage').val();
+            //console.log(photo);
+
+            $.ajax({
+                type: 'POST',
+                url: "/admin/photo/update",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data : {
+                    aid : id,
+                    aphoto:photo
+
+                },
+                success: function(result){
+                    console.log(result);
+
+                }
+
+            });
+
+        }
+
+    </script>
 
 
 @endsection
