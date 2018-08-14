@@ -409,6 +409,8 @@
 <script src="{{ URL::asset('assets/js/wow.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/scripts.js') }}"></script>
 <script src="{{ URL::asset('assets/js/cart.js') }}"></script>
+<script src="{{ URL::asset('assets/js/jspdf.js') }}"></script>
+<script src="{{ URL::asset('assets/js/pdfFromHTML.js') }}"></script>
 <script>
 
     function search() {

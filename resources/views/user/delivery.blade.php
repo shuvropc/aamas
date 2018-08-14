@@ -7,7 +7,7 @@
 @section('content')
 
 
-
+    <div id="HTMLtoPDF">
     <table class="table table-bordered">
         <tr>
             <td>Order Id</td>
@@ -27,7 +27,8 @@
         @endforeach
 
     </table>
-
+    </div>
+    <a href="#" onclick="HTMLtoPDF()">Download PDF</a>
 
 
 @endsection
