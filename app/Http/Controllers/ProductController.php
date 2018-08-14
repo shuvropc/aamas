@@ -422,9 +422,17 @@ class ProductController extends Controller
         $product = ViewProductWithDetails::find($id);
         $productInfo = ViewProductWithDetails::where('id', '=', $id)->get();
         $upSellProducts = Product::orderBy('id', 'asc')->limit(4)->get();
+
+        $vendor = Product::select('name')
+            ->where('products.id', '=', $id)
+            ->join('vendors', 'products.vendor_id', '=', 'vendors.id')
+            ->get();
+
+
         return view('product-details', ['product' => $product,
             'upSellProducts' => $upSellProducts,
-            'productInfo' => $productInfo
+            'productInfo' => $productInfo,
+            'vendor' => $vendor
         ]);
     }
 

@@ -52,5 +52,7 @@ class CheckoutController extends Controller
                 Cart::destroy();
 
             }
+
+            return redirect()->route('homepage');
     }
 }

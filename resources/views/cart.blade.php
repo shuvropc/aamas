@@ -70,7 +70,6 @@
                                 <td class="cart-product-quantity">
                                     <input id="p{{$cart->id}}" max="10" min="1" onchange="update(this.id, '{{$cart->id}}', '{{$cart->option['size']}}', '{{$cart->options['color']}}', '{{$cart->rowId}}')"  type="number" value="{{$cart->qty}}">
 
-                                    </div>
                                 </td>
                                 <td class="cart-product-sub-total"><span class="cart-sub-total-price">${{$cart->price}}</span></td>
                                 <td class="cart-product-grand-total"><span class="cart-grand-total-price">${{$cart->price * $cart->qty}}</span></td>
@@ -98,7 +97,13 @@
                         <tr>
                             <td>
                                 <div class="cart-checkout-btn pull-right">
-                                    <a href="/confirmcheckout" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</a>
+                                    @if(Cart::count() != 0)
+                                        @if(!empty(Session::get('user')))
+                                        <a href="/confirmcheckout" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</a>
+                                        @else
+                                        <a href="/user/login" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</a>
+                                            @endif
+                                    @endif
                                 </div>
                             </td>
                         </tr>

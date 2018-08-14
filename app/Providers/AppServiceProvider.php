@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Category;
 use App\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -25,12 +26,18 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layouts.user-layout-with-sidebar', function($view)
         {
-            $view->with('cart_count', Cart::count())->with('cart_total', Cart::subtotal())->with('carts', Cart::content());
+            $view->with('cart_count', Cart::count())
+                ->with('cart_total', Cart::subtotal())
+                ->with('carts', Cart::content())
+                ->with('catagories', Category::select('category_name')->get());
         });
 
         view()->composer('layouts.user-layout-without-sidebar', function($view)
         {
-            $view->with('cart_count', Cart::count())->with('cart_total', Cart::subtotal())->with('carts', Cart::content());
+            $view->with('cart_count', Cart::count())
+                ->with('cart_total', Cart::subtotal())
+                ->with('carts', Cart::content())
+                ->with('catagories', Category::select('category_name')->get());
         });
 
 
