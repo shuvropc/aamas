@@ -194,7 +194,7 @@ class UserController extends Controller
 
     public function logOut(){
         session()->forget('user');
-        return "Logged out ";
+        return redirect()->route('homepage');
     }
 
 
