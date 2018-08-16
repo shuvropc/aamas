@@ -27,30 +27,6 @@ Route::group([ 'middleware' => 'UserLoginCheck'], function() {
 
 Route::group(['middleware' => 'VendorLoginCheck'], function (){
 
-    Route::get('/vendor/edit', 'VendorController@edit')->name('vendor.edit');
-    Route::post('/vendor/edit', 'VendorController@update');
-
-    Route::get('/vendor/addProduct', 'ProductController@addProductByVendor')->name('vendor.addProduct');
-    Route::post('/vendor/addProduct', 'ProductController@addNewProductByVendor');
-
-
-    Route::get('/vendor/passwordChange', 'VendorController@changePassword')->name('vendor.passwordChange');
-    Route::post('/vendor/passwordChange', 'VendorController@updatePassword');
-
-
-    Route::get('/vendor/orders', 'VendorController@orders');
-    Route::get('/vendor/orderdetails/{id}', 'VendorController@orderDetails');
-    Route::get('/vendor/delivered', 'VendorController@delivered');
-    Route::get('/vendor/confirmorder/{id}', 'VendorController@confirmOrder');
-
-
-    Route::get('/addeEmployee', 'EmployeeController@employeeCreateByVendor')->name('vendor.addEmployee');
-    Route::post('/addeEmployee', 'EmployeeController@createEmployeeByVendor');
-
-
-    Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
-    Route::get('/vendor/index', 'VendorController@index')->name('vendor.index');
-    Route::get('/product/update', 'VendorController@quantityUpdate')->name('vendor.index');
 
     
 });
@@ -323,3 +299,32 @@ Route::post('/product/updatecart', 'ProductController@updateCart');
 
 Route::post('/search/category', 'HomeController@searchCategory')->name('new.category');
 
+
+
+
+
+
+Route::get('/vendor/edit', 'VendorController@edit')->name('vendor.edit');
+Route::post('/vendor/edit', 'VendorController@update');
+
+Route::get('/vendor/addProduct', 'ProductController@addProductByVendor')->name('vendor.addProduct');
+Route::post('/vendor/addProduct', 'ProductController@addNewProductByVendor');
+
+
+Route::get('/vendor/passwordChange', 'VendorController@changePassword')->name('vendor.passwordChange');
+Route::post('/vendor/passwordChange', 'VendorController@updatePassword');
+
+
+Route::get('/vendor/orders', 'VendorController@orders');
+Route::get('/vendor/orderdetails/{id}', 'VendorController@orderDetails');
+Route::get('/vendor/delivered', 'VendorController@delivered');
+Route::get('/vendor/confirmorder/{id}', 'VendorController@confirmOrder');
+
+
+Route::get('/addeEmployee', 'EmployeeController@employeeCreateByVendor')->name('vendor.addEmployee');
+Route::post('/addeEmployee', 'EmployeeController@createEmployeeByVendor');
+
+
+Route::get('/vendor/logout', 'VendorController@logout')->name('vendor.logout');
+Route::get('/vendor/index', 'VendorController@index')->name('vendor.index');
+Route::get('/product/update', 'VendorController@quantityUpdate')->name('vendor.index');

@@ -90,7 +90,7 @@
         <!-- ============================================== INFO BOXES : END ============================================== -->
         <!-- ============================================== SCROLL TABS ============================================== -->
         <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
-<<<<<<< HEAD
+
             <div class="more-info-tab clearfix ">
                 <h3 class="new-product-title pull-left">New Products</h3>
                 {{--<ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">--}}
@@ -101,8 +101,6 @@
                     {{--<li><a href="javascript:showCategory('Shoes')">Shoes</a></li>--}}
                 {{--</ul><!-- /.nav-tabs -->--}}
             </div>
-=======
->>>>>>> 70c38c15615394e90b1b48b9295a58b5e9697a4c
 
             <div class="tab-content outer-top-xs">
                 <div class="tab-pane in active" id="all">
