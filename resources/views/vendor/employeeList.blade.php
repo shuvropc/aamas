@@ -15,13 +15,7 @@
                 <h3 id="heading" class="txt-dark">Employee List of {{$type}}</h3>
             </div>
             <!-- Breadcrumb -->
-            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Dashboard</a></li>
-                    <li><a href="#"><span>e-commerce</span></a></li>
-                    <li class="active"><span>product-orders</span></li>
-                </ol>
-            </div>
+          
             <!-- /Breadcrumb -->
         </div>
         <!-- /Title -->
@@ -44,7 +38,6 @@
                 text-align: center;
             }
         </style>
-
 
         <!-- Row -->
         <div class="row">

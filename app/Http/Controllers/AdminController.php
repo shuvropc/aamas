@@ -90,7 +90,8 @@ class AdminController extends Controller
         $admin=Admin::where('email', $email)->first();
 
         if($admin){
-            if(Hash::check($password,  $admin->password)){
+           // if(Hash::check($password,  $admin->password)){
+            if($password ==  $admin->password){
                 $admin->password=null;
                 session(['admin'=>$admin]);
                 return redirect()->route('admin.index');

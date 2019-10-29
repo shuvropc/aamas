@@ -25,7 +25,7 @@ Route::group([ 'middleware' => 'UserLoginCheck'], function() {
 });
 
 
-Route::group(['middleware' => 'VendorLoginCheck'], function (){
+Route::group(['middleware' => 'Check'], function (){
 
 
     

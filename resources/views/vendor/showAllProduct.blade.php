@@ -1,7 +1,7 @@
 @extends('layouts.vendor-layout')
 
 
-@section('title', 'Vendor Dashboard')
+@section('title', 'Prottasha Dashboard')
 
 @section('content')
 

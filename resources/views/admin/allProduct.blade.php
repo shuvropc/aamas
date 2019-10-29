@@ -27,9 +27,9 @@
             <!-- Breadcrumb -->
             <div class="col-lg-4 col-sm-3 col-md-4">
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Dashboard</a></li>
+                 <!--   <li><a href="index.html">Dashboard</a></li>
                     <li><a href="#"><span>e-commerce</span></a></li>
-                    <li class="active"><span>product-orders</span></li>
+                    <li class="active"><span>product-orders</span></li> -->
                 </ol>
             </div>
             <!-- /Breadcrumb -->
@@ -66,7 +66,7 @@
                                                 <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 123px;" aria-label="Order ID: activate to sort column ascending">Product ID</th>
                                                 <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 124px;" aria-label="Photo: activate to sort column ascending">Photo</th>
                                                 <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 179px;" aria-label="Product: activate to sort column ascending">Price</th>
-                                                <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 91px;" aria-label="Quantity: activate to sort column ascending">Vendor Name</th>
+                                               <!-- <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 91px;" aria-label="Quantity: activate to sort column ascending">Vendor Name</th>-->
                                                 <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 114px;" aria-label="Date: activate to sort column ascending">Date</th>
                                                 <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Featured</th>
                                                 {{--<th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 84px;" aria-label="Actions: activate to sort column ascending">Actions</th></tr>--}}

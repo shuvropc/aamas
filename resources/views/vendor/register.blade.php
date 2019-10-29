@@ -21,7 +21,7 @@
            {{ csrf_field() }}
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="form-title text-center">Vendor Registration</h2>
+                    <h2 class="form-title text-center">Admin Registration</h2>
                 </div>
             </div>
             <p class="section"><span class="number">1</span><span class="text">Basic information</span></p>
@@ -39,7 +39,7 @@
                     <input required type="text" name="address" id="address"  placeholder="Please enter your street,house number" title="It must contain letters and/or separators and a length of minimum 10 characters" required>
                 </div>
             </div>
-            <div class="row">
+           <!-- <div class="row">
                 <div class="col-sm-6">
                     <label for="country"><i class="glyphicon glyphicon-globe"></i> Country<span>*</span></label>
                     <input required type="text" name="country" id="country" placeholder="Please enter your country" title="It must contain only letters and a length of minimum 2 characters" required>
@@ -48,7 +48,7 @@
                     <label for="zipcode">ZIP Code<span>*</span></label>
                     <input required type="text" name="zipcode" id="zipcode" pattern="[0-9 ]{3,}" placeholder="Please enter your zip code" title="It must contain only numbers and a length of minimum 3 characters" required>
                 </div>
-            </div>
+            </div>-->
 
 
 

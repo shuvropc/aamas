@@ -65,7 +65,7 @@
                 <div class="logo-wrap">
                     <a href="{{route('vendor.index')}}">
                         <img class="brand-img" src="{{asset('dist/img/logo.png')}}" alt="brand"/>
-                        <span class="brand-text">Aamas</span>
+                        <span class="brand-text">Prottasha</span>
                     </a>
                 </div>
             </div>
@@ -78,7 +78,7 @@
         </div>
 
         <div class="mobile-only-nav pull-left col-md-offset-2">
-            <h1> Vendor Dashboard</h1>
+            <h1> Prottasha Dashboard</h1>
         </div>
 
         <div id="mobile_only_nav" class="mobile-only-nav pull-right">
